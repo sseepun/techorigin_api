@@ -10,8 +10,10 @@ class Dashboard extends BaseController
 		$data = [];
 		$userRole = $model->getRoleById(session()->get('id'));
 		$data['user_role'] = $userRole;
-		echo view('templates/header', $data);
+		echo view('templates/include/header', $data);
 		echo view('users/dashboard');
+		echo view('templates/include/footer');
+
 	}
 
 	//--------------------------------------------------------------------
