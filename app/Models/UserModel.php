@@ -11,6 +11,7 @@ class UserModel extends Model {
 
     public function __construct(){
         // connect to DB
+        parent::__construct();
         $this->db = \Config\Database::connect();
     }
 
