@@ -3,7 +3,7 @@
 <head>
 	<base href="">
 	<meta charset="utf-8" />
-	<title>ระบบการจัดการเอกสารอัจฉริยะ (IEAT SMART)</title>
+	<title>ระบบจัดการสลิปเงินเดือนกระทรวงศึกษาธิการ</title>
 	<meta name="description" content="Latest updates and statistic charts">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -29,10 +29,10 @@
 
 			<div class="kt-login-v1__section">
 				<div class="kt-login-v1__info display-block">
-					<img alt="Logo" src="/assets/media/logos/logo.png" class="kt-header__brand-logo-default">
-					<h1 class="">Digital Transformation</h1>
-					<h4 >ระบบการจัดการเอกสารอัจฉริยะ (IEAT SMART)</h4>
-					<p>การนิคมอุตสาหกรรมแห่งประเทศไทย</p>
+					<img alt="Logo" src="/assets/logo.png" class="kt-header__brand-logo-default">
+					<h1>ระบบจัดการสลิปเงินเดือน</h1>
+					<h4>กระทรวงศึกษาธิการ</h4>
+					<p>Ministry of Education</p>
 				</div>
 			</div>
 
@@ -53,6 +53,21 @@
 									<input class="form-control KeyAutoLock" type="password" placeholder="รหัสผ่าน" 
 									name="password" autocomplete="off" required />
 								</div>
+								
+								<?php if(isset($validation)){?>
+									<div class="alert alert-danger fade show" role="alert">
+										<div class="alert-icon"><i class="flaticon-questions-circular-button"></i></div>
+										<div class="alert-text">
+											<?= $validation->listErrors(); ?>
+										</div>
+										<div class="alert-close">
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+												<span aria-hidden="true"><i class="la la-close"></i></span>
+											</button>
+										</div>
+									</div>
+								<?php }?>
+
 								<div class="kt-login-v1__actions">
 									<a href="/register" class="kt-login-v1__forgot">
 										ยังไม่มีบัญชีผู้ใช้ ?
@@ -63,13 +78,6 @@
 									<img id="imgRotate" src="/assets/css_lock/strongbox.png" alt="strongbox">
 								</div>
 							</form>
-							<?php if(isset($validation)){?>
-								<div class="col-12">
-									<div class="alert alert-danger" role="alert">
-										<?= $validation->listErrors(); ?>
-									</div>
-								</div>
-							<?php }?>
 						</div>
 					</div>
 				</div>

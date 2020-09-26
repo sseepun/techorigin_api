@@ -6,15 +6,15 @@ style="background-image:url('/assets/images/top-bg-saraban.jpg'); background-siz
          <div class="kt-header__brand   kt-grid__item" id="kt_header_brand">
             <div class="kt-header__brand-logo">
                <a href="/portals">
-                  <img alt="Logo" src="/assets/media/logos/logo.png" class="kt-header__brand-logo-default" />
-                  <img alt="Logo" src="/assets/media/logos/logo.png" class="kt-header__brand-logo-sticky" />
+                  <img alt="Logo" src="/assets/logo.png" class="kt-header__brand-logo-default" />
+                  <img alt="Logo" src="/assets/logo.png" class="kt-header__brand-logo-sticky" />
                   <div class="kt-header__brand-logo-default-txt">
-                     <h4>ระบบสารบรรณอิเล็กทรอนิกส์</h4>
-                     <h6>การนิคมอุตสาหกรรมแห่งประเทศไทย (กนอ.)</h6>
+                     <h4>ระบบจัดการสลิปเงินเดือน</h4>
+                     <h6>กระทรวงศึกษาธิการ<br>Ministry of Education</h6>
                   </div>
                   <div class="kt-header__brand-logo-sticky-txt">
-                     ระบบสารบรรณอิเล็กทรอนิกส์
-                     <p>การนิคมอุตสาหกรรมแห่งประเทศไทย (กนอ.)</p>
+                     ระบบจัดการสลิปเงินเดือน
+                     <p>กระทรวงศึกษาธิการ<br>Ministry of Education</p>
                   </div>
                </a>
             </div>
@@ -25,6 +25,6 @@ style="background-image:url('/assets/images/top-bg-saraban.jpg'); background-siz
       </div>
    </div>
    
-   <?php // include("_header-menu.php");?>
+   <?php include_once('topnav-menu.php');?>
 
 </div>

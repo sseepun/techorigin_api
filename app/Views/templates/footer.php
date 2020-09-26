@@ -2,10 +2,8 @@
 						</div>
 					</div>
 				</div>
-
-            <?php include_once('bottomnav.php'); ?>
+            	<?php include_once('bottomnav.php'); ?>
 			</div>
-
 		</div>
 	</div>
 

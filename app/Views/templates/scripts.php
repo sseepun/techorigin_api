@@ -34,9 +34,9 @@
 <script type="text/javascript" src="/assets/plugins/global/plugins.bundle.js"></script>
 <script type="text/javascript" src="/assets/js/scripts.bundle.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script type="text/javascript" src="/assets/js/data-apex-charts/e-saraban/index.js"></script>
-<script type="text/javascript" src="/assets/js/data-apex-charts/feed/index.js"></script>
+<script type="text/javascript" src="/assets/js/data-apex-charts/feed/index.js"></script> -->
 
 <script type="text/javascript" src="/assets/js/jquery-scrollLock.min.js"></script>
 <script type="text/javascript" src="/assets/js/jquery.scrollbar.min.js"></script>

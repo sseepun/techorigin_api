@@ -1,0 +1,93 @@
+
+/* Topnav */
+.kt-header--fixed.kt-header--minimize .kt-header .kt-header__top 
+.kt-header__brand-logo-sticky{margin:0 15px 0 0; max-height:48px;}
+.kt-header--fixed.kt-header--minimize .kt-header .kt-header__top 
+.kt-header__brand-logo-sticky-txt{font-size:15px; margin:0; line-height:1.25;}
+.kt-header--fixed.kt-header--minimize .kt-header .kt-header__top 
+.kt-header__brand-logo-sticky-txt p{font-size:12px; margin:3px 0 0 0;}
+.kt-header-mobile .kt-header-mobile__logo > a{display:flex; align-items:center;}
+.kt-header-mobile .kt-header__brand-logo-sticky{max-height:38px; margin:0 12px 0 0;}
+.kt-header-mobile .kt-header__brand-logo-sticky-txt{font-size:12px; line-height:1.25;}
+.kt-header-mobile .kt-header__brand-logo-sticky-txt p{font-size:10px; margin:2px 0 0 0;}
+
+.kt-header--minimize-all.kt-header--fixed.kt-header--minimize .kt-header 
+.kt-header__bottom{z-index:1;}
+.kt-header-menu-wrapper{border-radius:10px 10px 0 0!important;}
+.kt-header .kt-header__bottom{height:70px!important; z-index:0;}
+.kt-header-menu-wrapper .kt-header-menu .kt-menu__nav > .kt-menu__item > .kt-menu__link{
+    background:#f3f4f8; color:#3b28cc;
+}
+.kt-header-menu-wrapper .kt-header-menu .kt-menu__nav > .kt-menu__item > .kt-menu__link 
+.kt-menu__link-text{color:#3b28cc;}
+.kt-header-menu-wrapper .kt-header-menu .kt-menu__nav > .kt-menu__item.kt-menu__item--here 
+> .kt-menu__link{background:#3b28cc!important;}
+.kt-header-menu-wrapper .kt-header-menu .kt-menu__nav > .kt-menu__item.kt-menu__item--here 
+> .kt-menu__link .kt-menu__link-text{color:#fff!important;}
+
+
+/* Footer */
+.kt-footer{padding-bottom:5px;}
+.kt-footer .footer-top{
+    padding:35px 0 30px 0; margin:0 0 5px 0; border-bottom:1px solid rgba(255,255,255,.3);
+}
+.kt-footer .footer-top .footer-menu{display:block; width:100%; text-align:center;}
+.kt-footer .footer-top .footer-menu > a{
+    display:inline-block; color:#fff; font-size:14px; font-weight:300; line-height:1;
+    padding:0 35px; border-right:1px solid #fff; white-space:nowrap; margin:3px 0;
+    transition:color .3s;
+}
+.kt-footer .footer-top .footer-menu > a:hover{color:#f3f4f8;}
+.kt-footer .footer-top .footer-menu > a:last-child{border-color:transparent;}
+
+
+/* Container Body */
+#kt_body{background:#f9f9fc!important; border-radius:0 0 10px 10px!important; overflow:hidden;}
+#kt_body > .kt-content.kt-grid__item.kt-grid__item--fluid.kt-grid{background:#fff!important;}
+
+
+/* Table */
+.table-wrapper{width:100%; display:block; overflow-x:auto; overflow-y:hidden;}
+table.table th, table.table td{font-size:15px; width:auto!important;}
+table.table thead th{font-family:'Prompt', san serif; color:#4b5059;}
+table.table td{font-weight:500; padding-top:22px; padding-bottom:22px; color:#4b5059;}
+table.table td .link{
+    font-weight:600; color:#242568; font-family:'Prompt', sans-serif; transition:color .3s;
+}
+table.table td .link:hover{color:#3b28cc;}
+table.table td .link-icon{font-size:17px; transition:color .3s;}
+table.table td .link-icon.link-icon-lg{font-size:20px;}
+table.table td .link-icon.color-gray{color:#bdbdbd;}
+table.table td .link-icon.color-gray:hover{color:#3b28cc;}
+table.table td .link-icon.color-danger{color:#eb5757;}
+table.table td .link-icon.color-danger:hover{color:#fd397a;}
+
+
+/* Buttons */
+.custom-btns{width:100%;}
+.custom-btn-primary, .custom-btn-primary:focus{background:#3b28cc; color:#fff;}
+.custom-btn-primary:hover, .custom-btn-primary:active{background:#5867dd; color:#fff;}
+.custom-btn-secondary, .custom-btn-secondary:focus{background:#f0f3ff; color:#000;}
+.custom-btn-secondary:hover, .custom-btn-secondary:active{background:#e1e1ef; color:#000;}
+
+
+/* Modal */
+.modal .modal-header{border:0;}
+.modal .modal-header h5{
+    font-family:'Sarabun', sans-serif; color:#000; font-size:22px; font-weight:500;
+}
+.modal .modal-footer{
+    border:0; justify-content:center; align-items:center; flex-wrap:wrap;
+}
+.modal .modal-footer .btn{min-width:120px;}
+
+
+/* Table Footer */
+.kt-pagination{width:100%;}
+.kt-pagination .kt-pagination__links li,
+.kt-pagination .kt-pagination__links li > a,
+.kt-pagination .kt-pagination__links li > a > i{transition:background .25s, color .25s;}
+.kt-pagination .kt-pagination__links li:hover > a,
+.kt-pagination .kt-pagination__links li:hover > a i{color:#fff;}
+.kt-pagination .kt-pagination__links li:hover{background:#3b28cc;}
+.kt-pagination .kt-pagination__links li.kt-pagination__link--active{background:#3b28cc;}

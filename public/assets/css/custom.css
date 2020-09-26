@@ -753,8 +753,11 @@ div {
   color: #fff;
   font-size: 1.8rem;
   font-weight: 500;
-  margin-left: 10px;
+  margin-left: 15px;
 }
+
+.kt-header__brand-logo-default-txt > h4{margin:8px 0 0 0;}
+.kt-header__brand-logo-default-txt > h6{margin:0;}
 
 .kt-header__brand-logo-default-txt p {
   font-size: 1.2rem;
@@ -765,7 +768,12 @@ div {
   max-height: 45px;
   max-width: 350px;
   margin-top: 10px;
+  margin-right: 10px;
   display: inline-table;
+}
+
+.kt-header__brand .kt-header__brand-logo > a {
+  display:flex; align-items:center;
 }
 
 .kt-header__brand-logo-sticky-txt {
@@ -783,7 +791,6 @@ div {
 .kt-header-mobile .kt-header__brand-logo-sticky {
   max-height: 35px;
   max-width: 350px;
-  margin-top: 10px;
   display: inline-table;
 }
 
@@ -2787,4 +2794,3 @@ a:hover i,
     display: none;
   }
 }
-/*# sourceMappingURL=custom.css.map */

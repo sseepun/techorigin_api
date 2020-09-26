@@ -2,7 +2,7 @@
 
 use App\Models\UserModel;
 
-class Portals extends BaseController{
+class Admins extends BaseController{
 	private $userModel;
 
     public function __construct(){
@@ -12,20 +12,10 @@ class Portals extends BaseController{
 	
 	public function index(){
 		$data = $this->commonData();
-		$data['pageActive'] = 'Slip Report';
+		$data['pageActive'] = 'Admin Panel';
 
 		echo view('templates/header', $data);
-		echo view('portals/index');
-		echo view('templates/footer');
-		echo view('modals/upload-modal');
-	}
-	
-	public function report(){
-		$data = $this->commonData();
-		$data['pageActive'] = 'Report';
-		
-		echo view('templates/header', $data);
-		echo view('portals/report');
+		echo view('admins/index');
 		echo view('templates/footer');
 	}
 

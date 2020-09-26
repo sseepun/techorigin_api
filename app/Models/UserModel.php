@@ -114,6 +114,18 @@ class UserModel extends Model {
         else return false;
     }
 
+    public function isAdmin(){
+        if($this->isSignedIn() && ($this->role['is_admin'] || $this->role['is_super_admin'])){
+            return true;
+        }else return false;
+    }
+
+    public function isSuperAdmin(){
+        if($this->isSignedIn() && $this->role['is_super_admin']){
+            return true;
+        }else return false;
+    }
+
 }
 
 ?>

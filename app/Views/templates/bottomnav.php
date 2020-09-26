@@ -1,39 +1,19 @@
 <div class="kt-footer kt-grid__item" style="background-image:url('/assets/images/footer-bg.jpg')" id="kt_footer">
-   <div class="kt-container ">
-      <div class="kt-footer__top">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="kt-footer__section">
-                        <h3 class="kt-footer__title">Quick Links</h3>
-                        <div class="row">
-                            <div class="col">
-                                <ul class="kt-footer__nav">
-                                    <li><a href="#" class="kt-link">Pravicy Policy</a></li>
-                                </ul>
-                            </div>
-                            <div class="col">
-                                <ul class="kt-footer__nav">
-                                    <li><a href="#" class="kt-link">Community</a></li>
-                                </ul>
-                            </div>
-                            <div class="col">
-                                <ul class="kt-footer__nav">
-                                    <li><a href="#" class="kt-link">Community</a></li>
-                                </ul>
-                            </div>
-                            <div class="col">
-                                <ul class="kt-footer__nav">
-                                    <li><a href="#" class="kt-link">Community</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="footer-top">
+        <div class="kt-container">
+            <div class="footer-menu">
+                <a href="#">E-Office Automation (v1.00#10000)</a>
+                <a href="#">เกี่ยวกับ E-Office</a>
+                <a href="#">คู่มือการใช้งาน</a>
+                <a href="#">แจ้งปัญหาการใช้งาน</a>
             </div>
         </div>
+    </div>
+    <div class="kt-container">
         <div class="kt-footer__bottom">
-            <div class="kt-footer__copyright">
-                <?= date('Y');?>&nbsp;&copy;&nbsp;JigsawOffice License
+            <div class="kt-footer__copyright text-white">
+                Powered by a free JigsawOffice license. 
+                Please consider purchasing it today.
             </div>
             <div class="kt-footer__menu"></div>
         </div>

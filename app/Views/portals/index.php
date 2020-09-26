@@ -1,361 +1,100 @@
-<div class="kt-subheader kt-grid__item" id="kt_subheader">
-    <div class="kt-container ">
-        <div class="kt-subheader__main">
-            <h3 class="kt-subheader__title"> </h3>
-            <span class="kt-subheader__separator kt-hidden"></span>
-            <div class="kt-subheader__breadcrumbs"> </div>
-        </div>
-    </div>
-</div>
 
-<div class="kt-container kt-grid__item kt-grid__item--fluid">
-    <div class="row">
-        <div class="col-lg-6 col-xl-6">
-            <div class="kt-portlet graph-card">
-                <div class="kt-portlet__head kt-portlet__head--noborder">
-                    <div class="kt-portlet__head-label">
-                        <h3 class="kt-portlet__head-title">สถิติหนังสือภายใน <span>(เดือนนี้)</span></h3>
-                    </div>
-                    <div class="kt-portlet__head-toolbar">
-                        <div class="kt-portlet__head-toolbar-wrapper">
-                            <div class="dropdown dropdown-inline">
-                                <button type="button" class="btn btn-clean btn-sm btn-icon btn-icon-md" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="la la-ellipsis-v"></i>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <ul class="kt-nav">
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link">
-                                                <span class="kt-nav__link-text">สัปดาห์นี้</span>
-                                            </a>
-                                        </li>
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link">
-                                                <span class="kt-nav__link-text">เดือนนี้</span>
-                                            </a>
-                                        </li>
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link">
-                                                <span class="kt-nav__link-text">ไตรมาสนี้</span>
-                                            </a>
-                                        </li>
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link">
-                                                <span class="kt-nav__link-text">เดือนที่ผ่านมา</span>
-                                            </a>
-                                        </li>
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link">
-                                                <span class="kt-nav__link-text">ไตรมาสที่ผ่านมา</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="kt-portlet__body kt-portlet__body--fluid">
-                    <div class="graph-card-body">
-                        <div class="number">
-                            <h1>1,234</h1>
-                        </div>
-                        <div class="graph-card-chart">
-                            <div id="chartdiv" class="graph-card-chart_chart"></div>
-                        </div>
-                    </div>
-                </div>
+<div class="kt-subheader kt-grid__item mb-0">
+    <div class="kt-container">
+
+        <div class="custom-btns mb-4">
+            <button class="btn custom-btn-primary" type="button"data-toggle="modal" data-target="#uploadModal">
+                Import เงินเดือน
+            </button>
+        </div>
+
+        <div class="table-wrapper kt-scroll" data-scroll="true" data-scroll-x="true" data-scroll-y="false">
+            <table class="table table-striped m-table">
+                <thead>
+                    <tr>
+                        <th style="min-width:240px;">รายการเงินเดือน</th>
+                        <th class="text-center" style="min-width:100px;">เดือน/ปี</th>
+                        <th class="text-center" style="min-width:120px;">จำนวนรายการ</th>
+                        <th class="text-center" style="min-width:80px;">ไฟล์แนบ</th>
+                        <th class="text-center" style="min-width:140px;">สถานะการใช้งาน</th>
+                        <th class="text-center" style="min-width:70px;">จัดการ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php for($i=0; $i<10; $i++){?>
+                        <tr>
+                            <td>
+                                <a href="#" class="link">
+                                    สลิปเงินเดือนประจำเดือน กรกฎาคม 2563
+                                </a>
+                            </td>
+                            <td class="text-center">ก.ค.2563</td>
+                            <td class="text-center">2,345</td>
+                            <td class="text-center">
+                                <a href="#" class="link-icon link-icon-lg color-gray">
+                                    <i class="flaticon2-download"></i>
+                                </a>
+                            </td>
+                            <td class="text-center">
+                                เปิดใช้งาน
+                            </td>
+                            <td class="text-center">
+                                <a href="#" class="link-icon color-danger">
+                                    <i class="flaticon2-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php }?>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="kt-pagination mt-4">
+            <ul class="kt-pagination__links">
+                <li class="kt-pagination__link--first">
+                    <a href="#"><i class="fa fa-angle-double-left"></i></a>
+                </li>
+                <li class="kt-pagination__link--next">
+                    <a href="#"><i class="fa fa-angle-left"></i></a>
+                </li>
+                <li>
+                    <a href="#">...</a>
+                </li>
+                <li>
+                    <a href="#">29</a>
+                </li>
+                <li>
+                    <a href="#">30</a>
+                </li>
+                <li class="kt-pagination__link--active">
+                    <a href="#">32</a>
+                </li>
+                <li>
+                    <a href="#">34</a>
+                </li>
+                <li>
+                    <a href="#">...</a>
+                </li>
+                <li class="kt-pagination__link--prev">
+                    <a href="#"><i class="fa fa-angle-right"></i></a>
+                </li>
+                <li class="kt-pagination__link--last">
+                    <a href="#"><i class="fa fa-angle-double-right"></i></a>
+                </li>
+            </ul>
+            <div class="kt-pagination__toolbar">
+                <select class="form-control" style="width: 60px;">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+                <span class="pagination__desc">
+                    แสดง 1 - 10 จาก 230
+                </span>
             </div>
         </div>
-        <div class="col-lg-6 col-xl-6">
-            <div class="kt-portlet graph-card">
-                <div class="kt-portlet__head kt-portlet__head--noborder">
-                    <div class="kt-portlet__head-label">
-                        <h3 class="kt-portlet__head-title">สถิติหนังสือภายนอก <span>(เดือนนี้)</span></h3>
-                    </div>
-                    <div class="kt-portlet__head-toolbar">
-                        <div class="kt-portlet__head-toolbar-wrapper">
-                            <div class="dropdown dropdown-inline">
-                                <button type="button" class="btn btn-clean btn-sm btn-icon btn-icon-md" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="la la-ellipsis-v"></i>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <ul class="kt-nav">
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link">
-                                                <span class="kt-nav__link-text">สัปดาห์นี้</span>
-                                            </a>
-                                        </li>
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link">
-                                                <span class="kt-nav__link-text">เดือนนี้</span>
-                                            </a>
-                                        </li>
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link">
-                                                <span class="kt-nav__link-text">ไตรมาสนี้</span>
-                                            </a>
-                                        </li>
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link">
-                                                <span class="kt-nav__link-text">เดือนที่ผ่านมา</span>
-                                            </a>
-                                        </li>
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link">
-                                                <span class="kt-nav__link-text">ไตรมาสที่ผ่านมา</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="kt-portlet__body kt-portlet__body--fluid">
-                    <div class="graph-card-body">
-                        <div class="number">
-                            <h1>1,456</h1>
-                        </div>
-                        <div class="graph-card-chart">
-                            <div id="chartdiv2" class="graph-card-chart_chart"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-6 col-xl-6">
-            <div class="kt-portlet graph-card">
-                <div class="kt-portlet__head kt-portlet__head--noborder">
-                    <div class="kt-portlet__head-label">
-                        <h3 class="kt-portlet__head-title">สถิติชั้นความเร็วหนังสือ <span>(เดือนนี้)</span></h3>
-                    </div>
-                    <div class="kt-portlet__head-toolbar">
-                        <div class="kt-portlet__head-toolbar-wrapper">
-                            <div class="dropdown dropdown-inline">
-                                <button type="button" class="btn btn-clean btn-sm btn-icon btn-icon-md" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="la la-ellipsis-v"></i>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <ul class="kt-nav">
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link">
-                                                <span class="kt-nav__link-text">สัปดาห์นี้</span>
-                                            </a>
-                                        </li>
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link">
-                                                <span class="kt-nav__link-text">เดือนนี้</span>
-                                            </a>
-                                        </li>
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link">
-                                                <span class="kt-nav__link-text">ไตรมาสนี้</span>
-                                            </a>
-                                        </li>
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link">
-                                                <span class="kt-nav__link-text">เดือนที่ผ่านมา</span>
-                                            </a>
-                                        </li>
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link">
-                                                <span class="kt-nav__link-text">ไตรมาสที่ผ่านมา</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="kt-portlet__body kt-portlet__body--fluid">
-                    <div class="graph-card-body">
-                        <div class="number">
-                            <h1>3,456</h1>
-                        </div>
-                        <div class="graph-card-chart">
-                            <div id="chartdiv3" class="graph-card-chart_chart"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-6 col-xl-6">
-            <div class="kt-portlet graph-card">
-                <div class="kt-portlet__head kt-portlet__head--noborder">
-                    <div class="kt-portlet__head-label">
-                        <h3 class="kt-portlet__head-title">สถิติชั้นความลับหนังสือ <span>(เดือนนี้)</span></h3>
-                    </div>
-                    <div class="kt-portlet__head-toolbar">
-                        <div class="kt-portlet__head-toolbar-wrapper">
-                            <div class="dropdown dropdown-inline">
-                                <button type="button" class="btn btn-clean btn-sm btn-icon btn-icon-md" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="la la-ellipsis-v"></i>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <ul class="kt-nav">
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link">
-                                                <span class="kt-nav__link-text">สัปดาห์นี้</span>
-                                            </a>
-                                        </li>
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link">
-                                                <span class="kt-nav__link-text">เดือนนี้</span>
-                                            </a>
-                                        </li>
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link">
-                                                <span class="kt-nav__link-text">ไตรมาสนี้</span>
-                                            </a>
-                                        </li>
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link">
-                                                <span class="kt-nav__link-text">เดือนที่ผ่านมา</span>
-                                            </a>
-                                        </li>
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link">
-                                                <span class="kt-nav__link-text">ไตรมาสที่ผ่านมา</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="kt-portlet__body kt-portlet__body--fluid">
-                    <div class="graph-card-body">
-                        <div class="number">
-                            <h1>5,801</h1>
-                        </div>
-                        <div class="graph-card-chart">
-                            <div id="chartdiv4" class="graph-card-chart_chart"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="kt-portlet graph-card">
-                <div class="kt-portlet__head kt-portlet__head--noborder">
-                    <div class="kt-portlet__head-label">
-                        <h3 class="kt-portlet__head-title">สถิติหมวดหมู่หนังสือ <span>(เดือนนี้)</span></h3>
-                    </div>
-                    <div class="kt-portlet__head-toolbar">
-                        <div class="kt-portlet__head-toolbar-wrapper">
-                            <div class="dropdown dropdown-inline">
-                                <button type="button" class="btn btn-clean btn-sm btn-icon btn-icon-md" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="la la-ellipsis-v"></i>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <ul class="kt-nav">
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link">
-                                                <span class="kt-nav__link-text">สัปดาห์นี้</span>
-                                            </a>
-                                        </li>
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link">
-                                                <span class="kt-nav__link-text">เดือนนี้</span>
-                                            </a>
-                                        </li>
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link">
-                                                <span class="kt-nav__link-text">ไตรมาสนี้</span>
-                                            </a>
-                                        </li>
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link">
-                                                <span class="kt-nav__link-text">เดือนที่ผ่านมา</span>
-                                            </a>
-                                        </li>
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link">
-                                                <span class="kt-nav__link-text">ไตรมาสที่ผ่านมา</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="kt-portlet__body kt-portlet__body--fluid">
-                    <div class="graph-card-body">
-                        <div class="number">
-                            <h1>1,765</h1>
-                        </div>
-                        <div class="graph-card-chart">
-                            <div id="booktypechartdiv" class="graph-card-chart_chart"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="kt-portlet table-card">
-                <div class="kt-portlet__head kt-portlet__head--noborder">
-                    <div class="kt-portlet__head-label">
-                        <h3 class="kt-portlet__head-title">หนังสือมาใหม่</h3>
-                    </div>
-                </div>
-                <div class="kt-portlet__body kt-portlet__body--fluid">
-                    <div class="table-card-body">
-                        <table class="table table-head-noborder">
-                            <thead>
-                                <tr>
-                                    <th>เลขที่หนังสือ</th>
-                                    <th>เลขที่รับ</th>
-                                    <th>เรื่อง</th>
-                                    <th>หน่วยงาน</th>
-                                    <th>ลงวันที่</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>กก 012.2/45.6</td>
-                                    <td></td>
-                                    <td class="text-accent">ขอส่งสรุปทุนการศึกษา ปีการศึกษา 2561</td>
-                                    <td>กองแผนงาน กก</td>
-                                    <td>10:45</td>
-                                </tr>
-                                <tr>
-                                    <td>กก 012.2/45.6</td>
-                                    <td></td>
-                                    <td class="text-accent">ขอส่งสรุปทุนการศึกษา ปีการศึกษา 2561</td>
-                                    <td>กองแผนงาน กก</td>
-                                    <td>10:45</td>
-                                </tr>
-                                <tr>
-                                    <td>กก 012.2/45.6</td>
-                                    <td></td>
-                                    <td class="text-accent">ขอส่งสรุปทุนการศึกษา ปีการศึกษา 2561</td>
-                                    <td>กองแผนงาน กก</td>
-                                    <td>10:45</td>
-                                </tr>
-                                <tr>
-                                    <td>กก 012.2/45.6</td>
-                                    <td></td>
-                                    <td class="text-accent">ขอส่งสรุปทุนการศึกษา ปีการศึกษา 2561</td>
-                                    <td>กองแผนงาน กก</td>
-                                    <td>10:45</td>
-                                </tr>
-                                <tr>
-                                    <td>กก 012.2/45.6</td>
-                                    <td></td>
-                                    <td class="text-accent">ขอส่งสรุปทุนการศึกษา ปีการศึกษา 2561</td>
-                                    <td>กองแผนงาน กก</td>
-                                    <td>10:45</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="d-flex justify-content-center">
-                            <button class="btn app-btn app-btn-light">ดูทั้งหมด</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </div>
 </div>
