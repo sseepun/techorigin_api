@@ -1,30 +1,4 @@
-<!-- begin:: Header -->
-
-<div id="kt_header" class="kt-header kt-grid__item  kt-header--fixed bg-color-brand" data-ktheader-minimize="on" style="background-image: url(../assets/images/top-bg-feed.jpg); background-size: cover;">
-   <div class="kt-header__top">
-      <div class="kt-container">
-
-         <!-- begin:: Brand -->
-         <div class="kt-header__brand   kt-grid__item" id="kt_header_brand">
-            <div class="kt-header__brand-logo">
-               <a href="index.php">
-                  <img alt="Logo" src="../assets/media/logos/logo.png" class="kt-header__brand-logo-default" />
-                  <img alt="Logo" src="../assets/media/logos/logo.png" class="kt-header__brand-logo-sticky" />
-                  <div class="kt-header__brand-logo-default-txt">
-                     <h4>ระบบการจัดการเอกสารอัจฉริยะ (IEAT SMART)</h4>
-                     <h6>การนิคมอุตสาหกรรมแห่งประเทศไทย (กนอ.)</h6>
-                  </div>
-                  <div class="kt-header__brand-logo-sticky-txt">
-                     ระบบการจัดการเอกสารอัจฉริยะ (IEAT SMART) 
-                     <p>การนิคมอุตสาหกรรมแห่งประเทศไทย (กนอ.)</p>
-                  </div>
-               </a>
-            </div>
-         </div>
-
-         <!-- end:: Brand -->
-
-         <!-- begin:: Topbar -->
+<!-- begin:: Topbar -->
 <div class="kt-header__topbar">
 
 <!--begin: Search -->
@@ -58,6 +32,35 @@
    <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-l">
       <div class="kt-head kt-head--sm">
          <h3 class="kt-head__title">Chat</h3>
+      </div>
+      <div class="kt-notification kt-margin-t-10 kt-margin-b-10 kt-scroll scroll-wrapper listview__scroll scrollbar-inner" data-scroll="true" data-height="400">
+         <?php
+         $str = file_get_contents('assets/data/personal.json');
+         $str2 = file_get_contents('assets/data/chat.json');
+         $json = json_decode($str, true);
+         $json2 = json_decode($str2, true);
+         $aa = 0;
+         foreach ($json2 as $value) {
+         ?>
+         <a href="#" class="kt-notification__item">
+            <div class="kt-notification__item-icon">
+               <span href="#" class="kt-media kt-media--sm kt-media--circle" data-toggle="kt-tooltip" data-skin="brand" data-placement="top" title="" data-original-title="John Myer">
+                  <img src="<?php echo $json[$aa]['img'];?>" alt="<?php echo $json[$aa]['fname'];?>">
+               </span>
+            </div>
+            <div class="kt-notification__item-details">
+               <div class="kt-notification__item-title">
+                  <?php echo $json[$aa]['fname'];?>
+                  <div><?php echo $value['msg'];?></div>
+               </div>
+               <div class="kt-notification__item-time">
+                  <?php echo $value['time'];?>
+               </div>
+            </div>
+         </a>
+         <?php 
+         $aa++;
+         }?>
       </div>
    </div>
 </div>
@@ -97,10 +100,81 @@
       </div>
       <div class="kt-notification kt-margin-t-30 kt-margin-b-10 kt-scroll scroll-wrapper listview__scroll scrollbar-inner" data-scroll="true" data-height="350">
          <div class="tab-content">
+            <div class="tab-pane fade active show" role="tabpanel" aria-labelledby="top-notification-tab">
+                <?php
+                    $str = file_get_contents('assets/data/personal.json');
+                    $str2 = file_get_contents('assets/data/notify.json');
+                    $json = json_decode($str, true);
+                    $json2 = json_decode($str2, true);
+                    $aa = 0;
+                    foreach ($json2 as $value) {
+                ?>
+                <a href="#" onclick="cls();" class="kt-notification__item">
+                  <div class="kt-notification__item-icon">
+                     <span href="#" class="kt-media kt-media--sm kt-media--circle" data-toggle="kt-tooltip" data-skin="brand" data-placement="top" title="" data-original-title="John Myer">
+                        <img src="<?php echo $json[$aa]['img'];?>" alt="<?php echo $json[$aa]['fname'];?>">
+                     </span>
+                  </div>
+                  <div class="kt-notification__item-details">
+                     <div class="kt-notification__item-title">
+                        <span class="text-a-link">การะเกต์  แสงขัย</span> ได้เพิ่มเนื้อหาใน <span class="text-a-link">ระบบจัดการงานเอกสาร</span> 
+                     </div>
+                     <div class="kt-notification__item-time">
+                        24 เมษายน เวลา 12:09 น.
+                     </div>
+                  </div>
+               </a>
+               <?php 
+               $aa++;
+               }?>
+            </div>
             <div class="tab-pane fade" id="decision-tab" role="tabpanel" aria-labelledby="top-decision-tab">
+               <?php
+               $aa = 0;
+               foreach ($json2 as $value) {
+               ?>
+               <a href="#" onclick="cls();" class="kt-notification__item">
+                  <div class="kt-notification__item-icon">
+                     <span href="#" class="kt-media kt-media--sm kt-media--circle" data-toggle="kt-tooltip" data-skin="brand" data-placement="top" title="" data-original-title="John Myer">
+                        <img src="<?php echo $json[$aa]['img'];?>" alt="<?php echo $json[$aa]['fname'];?>">
+                     </span>
+                  </div>
+                  <div class="kt-notification__item-details">
+                     <div class="kt-notification__item-title">
+                        <span class="text-a-link">การะเกต์  แสงขัย</span> ได้เพิ่มเนื้อหาใน <span class="text-a-link">ระบบจัดการงานเอกสาร</span> 
+                     </div>
+                     <div class="kt-notification__item-time">
+                        24 เมษายน เวลา 12:09 น.
+                     </div>
+                  </div>
+               </a>
+               <?php 
+               $aa++;
+               }?>
             </div>
             <div class="tab-pane fade" id="comment-tab" role="tabpanel" aria-labelledby="top-comment-tab">
-    
+            <?php
+               $aa = 0;
+               foreach ($json2 as $value) {
+               ?>
+               <a href="#" onclick="cls();" class="kt-notification__item">
+                  <div class="kt-notification__item-icon">
+                     <span href="#" class="kt-media kt-media--sm kt-media--circle" data-toggle="kt-tooltip" data-skin="brand" data-placement="top" title="" data-original-title="John Myer">
+                        <img src="<?php echo $json[$aa]['img'];?>" alt="<?php echo $json[$aa]['fname'];?>">
+                     </span>
+                  </div>
+                  <div class="kt-notification__item-details">
+                     <div class="kt-notification__item-title">
+                        <span class="text-a-link">การะเกต์  แสงขัย</span> ได้เพิ่มเนื้อหาใน <span class="text-a-link">ระบบจัดการงานเอกสาร</span> 
+                     </div>
+                     <div class="kt-notification__item-time">
+                        24 เมษายน เวลา 12:09 น.
+                     </div>
+                  </div>
+               </a>
+               <?php 
+               $aa++;
+               }?>
             </div>
          </div>
          
@@ -120,6 +194,17 @@
          <h3 class="kt-head__title">แอพพลิเคชั่น</h3>
       </div>
       <div class="kt-grid-nav kt-margin-t-10 kt-padding-10 kt-margin-b-10 kt-scroll" data-scroll="true" data-height="600">
+         <?php
+         $str = file_get_contents('assets/data/apps.json');
+         $json = json_decode($str, true);
+         foreach ($json as $value) {
+         ?>
+         <a href="<?php echo $value['url'];?>" class="kt-grid-nav__item">
+            <div class="kt-grid-nav__item-icon"><i class="<?php echo $value['icon'];?>"></i></div>
+            <div class="kt-grid-nav__item-title"><?php echo $value['app-name'];?></div>
+            <span class="kt-grid-nav__item-shortcuts kt-badge" style="background-color:<?php echo $value['color'];?>;"></span>
+         </a>
+         <?php }?>
       </div>
    </div>
 </div>
@@ -137,6 +222,14 @@
          </div>
       </div>
       <ul class="kt-nav kt-margin-b-10">
+         <?php for($aa=1;$aa<5;$aa++){?>
+         <li class="kt-nav__item">
+            <a href="custom/profile/personal-information.html" class="kt-nav__link">
+               <span class="kt-nav__link-icon"><i class="la la-circle"></i></span>
+               <span class="kt-nav__link-text">คู่มือสำหรับผู้ใช้งาน <?=$aa?></span>
+            </a>
+         </li>
+         <?php }?>
       </ul>
       <div class="kt-user-card-v4 kt-user-card-v4--skin-light kt-notification-item-padding-x">
          <div class="kt-user-card-v4__name">
@@ -144,6 +237,14 @@
          </div>
       </div>
       <ul class="kt-nav kt-margin-b-10">
+      <?php for($aa=1;$aa<5;$aa++){?>
+         <li class="kt-nav__item">
+            <a href="custom/profile/personal-information.html" class="kt-nav__link">
+               <span class="kt-nav__link-icon"><i class="la la-circle"></i></span>
+               <span class="kt-nav__link-text">คู่มือสำหรับผู้ดูแล <?=$aa?></span>
+            </a>
+         </li>
+         <?php }?>
       </ul>
    </div>
 </div>
@@ -153,14 +254,14 @@
 <!--begin: User -->
 <div class="kt-header__topbar-item kt-header__topbar-item--user">
    <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="20px,10px">
-      <img alt="Pic" src="../assets/media/users/300_21.jpg" />
+      <img alt="Pic" src="assets/media/users/300_21.jpg" />
    </div>
    <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-md">
       <div class="kt-user-card-v4 kt-user-card-v4--skin-light kt-notification-item-padding-x">
          <div class="kt-user-card-v4__avatar">
 
             <!--use "kt-rounded" class for rounded avatar style-->
-            <img class="kt-rounded-" alt="Pic" src="../assets/media/users/300_25.jpg" />
+            <img class="kt-rounded-" alt="Pic" src="assets/media/users/300_25.jpg" />
 
             <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
             <span class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold kt-hidden">S</span>
@@ -200,7 +301,7 @@
          </li>
          <li class="kt-nav__separator kt-nav__separator--fit"></li>
          <li class="kt-nav__custom kt-space-between">
-            <a href="logout" class="btn btn-label-brand btn-upper btn-sm btn-bold">Sign Out</a>
+            <a href="/signout" class="btn btn-label-brand btn-upper btn-sm btn-bold">SIGN OUT</a>
             <i class="flaticon2-information kt-label-font-color-2" data-toggle="kt-tooltip" data-placement="right" title="" data-original-title="Click to learn more..."></i>
          </li>
       </ul>
@@ -209,53 +310,3 @@
 
 <!--end: User -->
 </div>
-
-<!-- end:: Topbar -->
-      </div>
-   </div>
-   
-    <div class="kt-header__bottom">
-        <div class="kt-container">
-
-            <!-- begin: Header Menu -->
-            <button class="kt-header-menu-wrapper-close" id="kt_header_menu_mobile_close_btn"><i class="la la-close"></i></button>
-            <div class="kt-header-menu-wrapper" id="kt_header_menu_wrapper">
-                <div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile ">
-                    <ul class="kt-menu__nav ">
-                     <li class="kt-menu__item  kt-menu__item--open kt-menu__item--rel kt-menu__item--here">
-                           <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
-                              <span class="kt-menu__link-text">ฟีดกิจกรรม</span>
-                           </a>
-                     </li>
-                     <li class="kt-menu__item  kt-menu__item--open kt-menu__item--rel">
-                           <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
-                              <span class="kt-menu__link-text">ผลการค้นหา</span>
-                           </a>
-                     </li>
-                     <?php if(isset($user_role['is_admin']) && $user_role['is_admin'] ==1){?>
-                        <?php if(isset($user_role['is_super_admin']) && $user_role['is_super_admin'] ==1){?>
-                           <li class="kt-menu__item  kt-menu__item--open kt-menu__item--rel">
-                              <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
-                                 <span class="kt-menu__link-text">You are also Super Admin</span>
-                              </a>
-                           </li>
-                        <?php }?>
-                        <li class="kt-menu__item  kt-menu__item--open kt-menu__item--rel">
-                           <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
-                              <span class="kt-menu__link-text">You are Admin</span>
-                           </a>
-                        </li>
-                     <?php }?>
-                     
-                    </ul>
-                </div>
-            </div>
-
-
-            <!-- end: Header Menu -->
-        </div>
-    </div>
-
-</div>
-
-<!-- end:: Header -->

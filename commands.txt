@@ -1,0 +1,9 @@
+
+composer update
+
+php spark serve
+
+php spark migrate:create [database_table_name]
+php spark migrate
+
+php spark db:seed [seeder_filename]

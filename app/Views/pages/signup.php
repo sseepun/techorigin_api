@@ -43,7 +43,6 @@
                                     <?= $validation->listErrors(); ?>
                                 </div>
                             </div>
-                           
                         <?php }?>
                     </div>
                     <div class="row">

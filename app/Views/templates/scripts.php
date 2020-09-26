@@ -1,4 +1,3 @@
-<!-- begin::Global Config(global config for global JS sciprts) -->
 <script>
     var KTAppOptions = {
       "colors": {
@@ -32,21 +31,13 @@
     };
 </script>
 
-<!-- end::Global Config -->
+<script type="text/javascript" src="/assets/plugins/global/plugins.bundle.js"></script>
+<script type="text/javascript" src="/assets/js/scripts.bundle.js"></script>
 
-<!--begin::Global Theme Bundle(used by all pages) -->
-<script src="../assets/plugins/global/plugins.bundle.js" type="text/javascript"></script>
-<script src="../assets/js/scripts.bundle.js" type="text/javascript"></script>
-
-<!--end::Global Theme Bundle -->
-
-
-<!-- apexcharts -->
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-<script src="../assets/js/data-apex-charts/feed/index.js" type="text/javascript"></script>
+<script type="text/javascript" src="/assets/js/data-apex-charts/e-saraban/index.js"></script>
+<script type="text/javascript" src="/assets/js/data-apex-charts/feed/index.js"></script>
 
-
-
-<script src="../assets/js/jquery-scrollLock.min.js" type="text/javascript"></script>
-<script src="../assets/js/jquery.scrollbar.min.js" type="text/javascript"></script>
-<script src="../assets/js/custom.js" type="text/javascript"></script>
+<script type="text/javascript" src="/assets/js/jquery-scrollLock.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.scrollbar.min.js"></script>
+<script type="text/javascript" src="/assets/js/custom.js"></script>
