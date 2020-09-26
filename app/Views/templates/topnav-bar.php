@@ -251,6 +251,8 @@
 
 <!--end: Help -->
 
+
+<?php if(session()->get('isLoggedIn')){?>
 <!--begin: User -->
 <div class="kt-header__topbar-item kt-header__topbar-item--user">
    <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="20px,10px">
@@ -307,6 +309,10 @@
       </ul>
    </div>
 </div>
+<?php }else{?>
+<a href="/" class="kt-menu__link">Log In</a>
+<?php }?>
+
 
 <!--end: User -->
 </div>
