@@ -2,10 +2,25 @@
 <div class="kt-subheader kt-grid__item mb-0">
     <div class="kt-container">
 
-        <div class="custom-btns mb-4">
-            <button class="btn custom-btn-primary" type="button"data-toggle="modal" data-target="#uploadModal">
-                Import เงินเดือน
-            </button>
+        <div class="table-options mb-2">
+            <div class="custom-btns mb-4">
+                <button class="btn custom-btn-primary" type="button"data-toggle="modal" data-target="#uploadModal">
+                    Import เงินเดือน
+                </button>
+            </div>
+            <div class="options">
+                <div class="option mr-2">
+                    <select class="form-control">
+                        <option value="" selected>สถานะการ</option>
+                        <option value="1">เปิดใช้งาน</option>
+                        <option value="2">ปิดใช้งาน</option>
+                    </select>
+                </div>
+                <div class="option option-search">
+                    <input type="text" class="form-control" placeholder="ค้นหา" required />
+                    <i class="flaticon2-search-1"></i>
+                </div>
+            </div>
         </div>
 
         <div class="table-wrapper kt-scroll" data-scroll="true" data-scroll-x="true" data-scroll-y="false">
@@ -24,7 +39,7 @@
                     <?php for($i=0; $i<10; $i++){?>
                         <tr>
                             <td>
-                                <a href="#" class="link">
+                                <a href="portals/monthly-records/2563/9" class="link">
                                     สลิปเงินเดือนประจำเดือน กรกฎาคม 2563
                                 </a>
                             </td>
@@ -36,7 +51,12 @@
                                 </a>
                             </td>
                             <td class="text-center">
-                                เปิดใช้งาน
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" checked />
+                                    <label class="custom-control-label">
+                                        เปิดใช้งาน
+                                    </label>
+                                </div>
                             </td>
                             <td class="text-center">
                                 <a href="#" class="link-icon color-danger">
@@ -83,7 +103,7 @@
                 </li>
             </ul>
             <div class="kt-pagination__toolbar">
-                <select class="form-control" style="width: 60px;">
+                <select class="form-control" style="width:60px;">
                     <option value="10">10</option>
                     <option value="20">20</option>
                     <option value="30">30</option>

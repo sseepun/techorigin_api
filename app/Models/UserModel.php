@@ -68,13 +68,9 @@ class UserModel extends Model {
     }
 
 
-    public function getInfo(){
-        return $this->user;
-    }
-
-    public function getRole(){
-        return $this->role;
-    }
+    public function getInfo(){return $this->user;}
+    public function getRole(){return $this->role;}
+    public function getUserId(){return $this->user['id'];}
 
 
     public function authUserByUsernameOrEmain($string, $password){

@@ -19,6 +19,19 @@ class Portals extends BaseController{
 		echo view('templates/footer');
 		echo view('modals/upload-modal');
 	}
+
+	public function monthlyRecords($year, $month){
+		echo $year.' - '.$month; exit;
+
+		$data = $this->commonData();
+		$data['pageActive'] = 'Slip Report';
+
+		echo view('templates/header', $data);
+		echo view('portals/index');
+		echo view('templates/footer');
+		echo view('modals/upload-modal');
+	}
+
 	
 	public function report(){
 		$data = $this->commonData();

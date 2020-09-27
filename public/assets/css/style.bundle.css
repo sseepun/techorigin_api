@@ -1772,7 +1772,7 @@ pre {
   color: #495057;
   background-color: #fff;
   background-clip: padding-box;
-  border: 1px solid #e2e5ec;
+  border: 1px solid #c5c5c5;
   border-radius: 4px;
   -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
@@ -11496,6 +11496,7 @@ code {
   .form-group.form-group-marginless, .form-group.form-group-last {
     margin-bottom: 0px; }
   .form-group label {
+    color: #444856;
     font-size: 1rem;
     font-weight: 400; }
   .form-group .invalid-feedback,

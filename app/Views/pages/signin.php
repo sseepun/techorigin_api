@@ -44,7 +44,7 @@
 							<h3 class="kt-login-v1__title">
 								เข้าสู่ระบบ
 							</h3>
-							<form class="kt-login-v1__form kt-form" action="/" method="post" autocomplete="off">
+							<form class="kt-login-v1__form kt-form" action="/" method="POST" autocomplete="off">
 								<div class="form-group">
 									<input class="form-control" type="text" placeholder="ชื่อผู้ใช้ / อีเมล์" value="SuperAdmin" 
 									name="username" autocomplete="off" required />

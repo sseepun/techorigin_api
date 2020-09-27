@@ -15,9 +15,10 @@ class Pages extends BaseController{
             return redirect()->to('portals');
         }
 
+        helper(['form']);
         $data = [];
 
-        if($this->request->getMethod() == 'post'){
+        if($this->request->getMethod()=='post'){
             $rules = [
                 'username' => 'required|min_length[6]|max_length[256]',
                 'password' => 'required|min_length[8]|max_length[128]|validateUser[username, password]',
@@ -47,6 +48,7 @@ class Pages extends BaseController{
             return redirect()->to('portals');
         }
 
+        helper(['form']);
         $data = [];
 
         if($this->request->getMethod() == 'post'){

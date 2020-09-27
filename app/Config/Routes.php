@@ -35,9 +35,15 @@ $routes->get('/', 'Pages::index');
 $routes->get('/signout', 'Pages::signout');
 
 $routes->get('portals', 'Portals::index', ['filter' => 'auth_user']);
+$routes->match(['get'], 'portals/monthly-records/(:year)/(:month)', 'Portals::monthlyRecords/$1/$2', ['filter' => 'auth_user']);
+
 $routes->get('portals/report', 'Portals::report', ['filter' => 'auth_user']);
 
 $routes->get('admins', 'Admins::index', ['filter' => 'auth_admin']);
+
+
+$routes->match(['post'], 'api/upload-slips', 'Apis::uploadSlips', ['filter' => 'auth_user']);
+$routes->match(['post'], 'api/ajax/upload-text-files', 'Apis::ajaxUploadTextFiles', ['filter' => 'auth_user']);
 
 // $routes->match(['get', 'post'], 'register', 'Users::register', ['filter' => 'noauth']);
 // $routes->match(['get', 'post'], 'profile', 'Users::profile', ['filter' => 'auth']);
