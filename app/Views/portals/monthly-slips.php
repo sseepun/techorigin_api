@@ -4,14 +4,14 @@
 
         <div class="table-options mb-2">
             <div class="custom-btns mb-4">
-                <button class="btn custom-btn-primary" type="button"data-toggle="modal" data-target="#uploadModal">
-                    Import เงินเดือน
-                </button>
+                <a href="/portals" class="ml-3 a-link">
+                    กลับไปหน้ารวมรายการ
+                </a>
             </div>
             <div class="options">
                 <div class="option mr-2">
                     <select class="form-control">
-                        <option value="" selected>สถานะการ</option>
+                        <option value="" selected>สำนัก</option>
                         <option value="1">เปิดใช้งาน</option>
                         <option value="2">ปิดใช้งาน</option>
                     </select>
@@ -28,44 +28,25 @@
             <table class="table table-striped m-table">
                 <thead>
                     <tr>
-                        <th style="min-width:240px;">รายการเงินเดือน</th>
-                        <th class="text-center" style="min-width:100px;">เดือน/ปี</th>
-                        <th class="text-center" style="min-width:120px;">จำนวนรายการ</th>
-                        <th class="text-center" style="min-width:80px;">ไฟล์แนบ</th>
-                        <th class="text-center" style="min-width:140px;">สถานะการใช้งาน</th>
-                        <th class="text-center" style="min-width:70px;">จัดการ</th>
+                        <th style="min-width:220px;">เจ้าหน้าที่</th>
+                        <th class="text-center" style="min-width:100px;">เลขสลิป</th>
+                        <th class="text-center" style="min-width:120px;">เลข PSN</th>
+                        <th class="text-center" style="min-width:80px;">เปิดดูโดยตรง</th>
+                        <th class="text-center" style="min-width:140px;">เปิดดูผ่าน QR Code</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach($tablePaginate['data'] as $d){?>
                         <tr>
                             <td>
-                                <a href="portals/monthly-slips/<?= $d['year']; ?>/<?= $d['month']; ?>" class="link">
-                                    สลิปเงินเดือนประจำเดือน <?= $d['month']; ?>/<?= $d['year']; ?>
+                                <a href="portals/slip/<?= $d['id']; ?>" class="link">
+                                    <?= $d['prefix']; ?> <?= $d['firstname']; ?> <?= $d['lastname']; ?>
                                 </a>
                             </td>
-                            <td class="text-center">
-                                <?= $d['month']; ?>/<?= $d['year']; ?>
-                            </td>
-                            <td class="text-center"><?= number_format($d['total'], 0); ?></td>
-                            <td class="text-center">
-                                <a href="#" class="link-icon link-icon-lg color-gray">
-                                    <i class="flaticon2-download"></i>
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" checked />
-                                    <label class="custom-control-label">
-                                        เปิดใช้งาน
-                                    </label>
-                                </div>
-                            </td>
-                            <td class="text-center">
-                                <a href="#" class="link-icon color-danger">
-                                    <i class="flaticon2-trash"></i>
-                                </a>
-                            </td>
+                            <td class="text-center"><?= $d['slip_id']; ?></td>
+                            <td class="text-center"><?= $d['psn_id']; ?></td>
+                            <td class="text-center">3</td>
+                            <td class="text-center">12</td>
                         </tr>
                     <?php }?>
                 </tbody>

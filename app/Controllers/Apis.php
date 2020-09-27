@@ -61,7 +61,7 @@ class Apis extends BaseController{
 				'FLASH_MSG' => 'Slips have been imported successfully.',
 			]);
 		}
-		return redirect()->to('../portals');
+		return redirect()->to('/portals');
 	}
 
 

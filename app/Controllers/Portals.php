@@ -1,6 +1,7 @@
 <?php namespace App\Controllers;
 
 use App\Models\UserModel;
+use App\Models\SlipModel;
 
 class Portals extends BaseController{
 	private $userModel;
@@ -14,22 +15,25 @@ class Portals extends BaseController{
 		$data = $this->commonData();
 		$data['pageActive'] = 'Slip Report';
 
+		$slipModel = new SlipModel();
+		$data['tablePaginate'] = $slipModel->getMonthlyPaginate();
+
 		echo view('templates/header', $data);
 		echo view('portals/index');
 		echo view('templates/footer');
 		echo view('modals/upload-modal');
 	}
 
-	public function monthlyRecords($year, $month){
-		echo $year.' - '.$month; exit;
-
+	public function monthlySlips($year, $month){
 		$data = $this->commonData();
 		$data['pageActive'] = 'Slip Report';
+		
+		$slipModel = new SlipModel();
+		$data['tablePaginate'] = $slipModel->getMonthlyReportPaginate($year, $month);
 
 		echo view('templates/header', $data);
-		echo view('portals/index');
+		echo view('portals/monthly-slips');
 		echo view('templates/footer');
-		echo view('modals/upload-modal');
 	}
 
 	

@@ -1,4 +1,8 @@
 
+/* General */
+.a-link{font-size:14px; color:#2C1A6B; transition:color .3s;}
+
+
 /* Topnav */
 .kt-header--fixed.kt-header--minimize .kt-header .kt-header__top 
 .kt-header__brand-logo-sticky{margin:0 15px 0 0; max-height:48px;}

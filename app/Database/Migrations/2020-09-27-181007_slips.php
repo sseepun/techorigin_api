@@ -131,7 +131,7 @@ class Slips extends Migration
 			'updated_at datetime default current_timestamp on update current_timestamp',
 		]);
 		$this->forge->addPrimaryKey('id');
-		$this->forge->addForeignKey('slip_import_id', 'slip_imports', 'id', 'SET NULL');
+		$this->forge->addForeignKey('slip_import_id', 'slip_imports', 'id', 'NO ACTION', 'SET NULL');
 		$this->forge->addUniqueKey('slip_id');
 		$this->forge->createTable('slips', true);
 		

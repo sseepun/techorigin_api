@@ -38,7 +38,7 @@ class SlipImports extends Migration
 			'updated_at datetime default current_timestamp on update current_timestamp',
 		]);
 		$this->forge->addPrimaryKey('id');
-		$this->forge->addForeignKey('user_id', 'users', 'id', 'SET NULL');
+		$this->forge->addForeignKey('user_id', 'users', 'id', 'NO ACTION', 'SET NULL');
 		$this->forge->createTable('slip_imports', true);
 		
         $this->db->enableForeignKeyChecks();

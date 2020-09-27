@@ -35,7 +35,7 @@ $routes->get('/', 'Pages::index');
 $routes->get('/signout', 'Pages::signout');
 
 $routes->get('portals', 'Portals::index', ['filter' => 'auth_user']);
-$routes->match(['get'], 'portals/monthly-records/(:year)/(:month)', 'Portals::monthlyRecords/$1/$2', ['filter' => 'auth_user']);
+$routes->get('portals/monthly-slips/(:num)/(:num)', 'Portals::monthlySlips/$1/$2', ['filter' => 'auth_user']);
 
 $routes->get('portals/report', 'Portals::report', ['filter' => 'auth_user']);
 

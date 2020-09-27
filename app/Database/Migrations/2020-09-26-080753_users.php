@@ -57,7 +57,7 @@ class Users extends Migration
 			'updated_at datetime default current_timestamp on update current_timestamp',
 		]);
 		$this->forge->addPrimaryKey('id');
-		$this->forge->addForeignKey('role_id', 'user_roles', 'id', 'SET NULL');
+		$this->forge->addForeignKey('role_id', 'user_roles', 'id', 'NO ACTION', 'SET NULL');
 		$this->forge->addUniqueKey('username');
 		$this->forge->addUniqueKey('email');
 		$this->forge->createTable('users', true);
