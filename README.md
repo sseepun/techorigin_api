@@ -12,12 +12,12 @@
 ## Initial accounts
 
 <p>
-Username: SuperAdmin\
-Password: 123456\\
+Username: SuperAdmin<br />
+Password: 123456<br /><br />
 
-Username: Admin\
-Password: 123456\\
+Username: Admin<br />
+Password: 123456<br /><br />
 
-Username: Member\
+Username: Member<br />
 Password: 123456
 </p>
