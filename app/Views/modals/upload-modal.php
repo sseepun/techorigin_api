@@ -1,5 +1,5 @@
 <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalTitle" aria-hidden="true">
-    <form action="api/upload-slips" method="POST" id="uploader-form" enctype="multipart/form-data">
+    <form action="/api/upload-slips" method="POST" id="uploader-form" enctype="multipart/form-data">
         <?= csrf_field(); ?>
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -66,7 +66,7 @@
             uploaded = false;
         if(uploadModal.length){
             uploadModal.find('#uploader-zone').dmUploader({
-                url: './api/ajax/upload-text-files',
+                url: '/api/ajax/upload-text-files',
                 auto: false,
                 queue: true,
                 method: 'POST',

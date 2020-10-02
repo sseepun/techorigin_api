@@ -10,7 +10,7 @@ class UserSeeder extends \CodeIgniter\Database\Seeder
             'firstname' => 'Super',
             'lastname' => 'Admin',
             'email' => 'sarun.seepun@gmail.com',
-            'password' => password_hash('ABCtest123!', PASSWORD_DEFAULT),
+            'password' => password_hash('123456', PASSWORD_DEFAULT),
             'status' => 1
         ]);
         $this->db->table('users')->insert([
@@ -19,7 +19,7 @@ class UserSeeder extends \CodeIgniter\Database\Seeder
             'firstname' => 'General',
             'lastname' => 'Admin',
             'email' => 'sarun_sla@hotmail.com',
-            'password' => password_hash('ABCtest123!', PASSWORD_DEFAULT),
+            'password' => password_hash('123456', PASSWORD_DEFAULT),
             'status' => 1
         ]);
         $this->db->table('users')->insert([
@@ -28,7 +28,7 @@ class UserSeeder extends \CodeIgniter\Database\Seeder
             'firstname' => 'General',
             'lastname' => 'Member',
             'email' => 'a@a.com',
-            'password' => password_hash('ABCtest123!', PASSWORD_DEFAULT),
+            'password' => password_hash('123456', PASSWORD_DEFAULT),
             'status' => 1
         ]);
     }

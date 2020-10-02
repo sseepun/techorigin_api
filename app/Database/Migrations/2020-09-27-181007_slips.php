@@ -118,10 +118,20 @@ class Slips extends Migration
 			'debit_15' => [ 'type' => 'VARCHAR', 'constraint' => 128, 'null' => true, ],
 			'debit_amount_15' => [ 'type' => 'DECIMAL', 'constraint' => '10,2', 'null' => true, ],
 			
-			'income' => [ 'type' => 'DECIMAL', 'constraint' => '10,2', 'null' => true, ],
-			'payment' => [ 'type' => 'DECIMAL', 'constraint' => '10,2', 'null' => true, ],
-			'amount' => [ 'type' => 'DECIMAL', 'constraint' => '10,2', 'null' => true, ],
+			'total_credit' => [ 'type' => 'DECIMAL', 'constraint' => '10,2', 'null' => true, ],
+			'total_debit' => [ 'type' => 'DECIMAL', 'constraint' => '10,2', 'null' => true, ],
+			'total' => [ 'type' => 'DECIMAL', 'constraint' => '10,2', 'null' => true, ],
 
+			'view_count' => [
+				'type' => 'INT',
+				'constraint' => 7,
+				'default' => 0
+			],
+			'qr_view_count' => [
+				'type' => 'INT',
+				'constraint' => 7,
+				'default' => 0
+			],
 			'status' => [
 				'type' => 'INT',
 				'constraint' => 1,

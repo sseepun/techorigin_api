@@ -57,8 +57,8 @@ class Apis extends BaseController{
 				$slipImportModel->importSlip($slipImportId, $slipPath);
 			}
 			session()->set([
-				'FLASH' => 'success',
-				'FLASH_MSG' => 'Slips have been imported successfully.',
+				getenv('app.sessionCookieName').'FLASH' => 'success',
+				getenv('app.sessionCookieName').'FLASH_MSG' => 'Slips have been imported successfully.',
 			]);
 		}
 		return redirect()->to('/portals');

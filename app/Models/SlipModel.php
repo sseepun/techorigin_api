@@ -9,6 +9,7 @@ class SlipModel extends Model {
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
 
+    protected $allowedFields = ['view_count', 'qr_view_count', 'status'];
     protected $beforeInsert = ['beforeInsert'];
     protected $beforeUpdate = ['beforeUpdate'];
 
@@ -47,7 +48,8 @@ class SlipModel extends Model {
     }
 
     public function getMonthlyReportPaginate($year, $month, $page=1, $pp=10, $keywords='', $condition=''){
-        $queryStr = "SELECT `id`, `slip_id`, `prefix`, `firstname`, `lastname`, `psn_id`, `bank_id` 
+        $queryStr = "SELECT `id`, `slip_id`, `prefix`, `firstname`, `lastname`, 
+            `psn_id`, `bank_id`, `view_count`, `qr_view_count`  
             FROM `slips` 
             WHERE `year` = :year: AND `month` = :month: 
             ORDER BY `slip_id` ASC";

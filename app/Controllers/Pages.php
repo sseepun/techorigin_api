@@ -21,7 +21,7 @@ class Pages extends BaseController{
         if($this->request->getMethod()=='post'){
             $rules = [
                 'username' => 'required|min_length[6]|max_length[256]',
-                'password' => 'required|min_length[8]|max_length[128]|validateUser[username, password]',
+                'password' => 'required|min_length[6]|max_length[128]|validateUser[username, password]',
             ];
             $errors = [
                 'password' => [
@@ -57,7 +57,7 @@ class Pages extends BaseController{
                 'firstname' => 'required|min_length[3]|max_length[20]',
                 'lastname' => 'required|min_length[3]|max_length[20]',
                 'email' => 'required|min_length[6]|max_length[50]|valid_email|is_unique[users.email]',
-                'password' => 'required|min_length[8]|max_length[50]',
+                'password' => 'required|min_length[6]|max_length[50]',
                 'password_confirm' => 'matches[password]'
             ];
 

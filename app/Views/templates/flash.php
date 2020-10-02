@@ -1,4 +1,4 @@
-<?php if(isset($_SESSION['FLASH']) && isset($_SESSION['FLASH_MSG'])){?>
+<?php if(isset($_SESSION[getenv('app.sessionCookieName').'FLASH']) && isset($_SESSION[getenv('app.sessionCookieName').'FLASH_MSG'])){?>
     <script>
         toastr.options = {
             'closeButton': false,
@@ -17,14 +17,14 @@
             'showMethod': 'fadeIn',
             'hideMethod': 'fadeOut'
         };
-        <?php if($_SESSION['FLASH']=='success'){?>
-            toastr.success('<?= $_SESSION['FLASH_MSG']; ?>');
-        <?php }else if($_SESSION['FLASH']=='info'){?>
-            toastr.info('<?= $_SESSION['FLASH_MSG']; ?>');
-        <?php }else if($_SESSION['FLASH']=='warning'){?>
-            toastr.warning('<?= $_SESSION['FLASH_MSG']; ?>');
-        <?php }else if($_SESSION['FLASH']=='error'){?>
-            toastr.error('<?= $_SESSION['FLASH_MSG']; ?>');
+        <?php if($_SESSION[getenv('app.sessionCookieName').'FLASH']=='success'){?>
+            toastr.success('<?= $_SESSION[getenv('app.sessionCookieName').'FLASH_MSG']; ?>');
+        <?php }else if($_SESSION[getenv('app.sessionCookieName').'FLASH']=='info'){?>
+            toastr.info('<?= $_SESSION[getenv('app.sessionCookieName').'FLASH_MSG']; ?>');
+        <?php }else if($_SESSION[getenv('app.sessionCookieName').'FLASH']=='warning'){?>
+            toastr.warning('<?= $_SESSION[getenv('app.sessionCookieName').'FLASH_MSG']; ?>');
+        <?php }else if($_SESSION[getenv('app.sessionCookieName').'FLASH']=='error'){?>
+            toastr.error('<?= $_SESSION[getenv('app.sessionCookieName').'FLASH_MSG']; ?>');
         <?php }?>
     </script>
-<?php unset($_SESSION['FLASH']); unset($_SESSION['FLASH_MSG']); }?>
+<?php unset($_SESSION[getenv('app.sessionCookieName').'FLASH']); unset($_SESSION[getenv('app.sessionCookieName').'FLASH_MSG']); }?>

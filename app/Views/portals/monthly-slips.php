@@ -39,14 +39,14 @@
                     <?php foreach($tablePaginate['data'] as $d){?>
                         <tr>
                             <td>
-                                <a href="portals/slip/<?= $d['id']; ?>" class="link">
+                                <a href="/portals/slip-view/<?= $d['id']; ?>" class="link">
                                     <?= $d['prefix']; ?> <?= $d['firstname']; ?> <?= $d['lastname']; ?>
                                 </a>
                             </td>
                             <td class="text-center"><?= $d['slip_id']; ?></td>
                             <td class="text-center"><?= $d['psn_id']; ?></td>
-                            <td class="text-center">3</td>
-                            <td class="text-center">12</td>
+                            <td class="text-center"><?= number_format($d['view_count']); ?></td>
+                            <td class="text-center"><?= number_format($d['qr_view_count']); ?></td>
                         </tr>
                     <?php }?>
                 </tbody>

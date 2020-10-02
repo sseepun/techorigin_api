@@ -9212,9 +9212,9 @@ class SlipImportModel extends Model {
                         }
                     }
                 
-                    $N['income'] = floatval($x[42]/100);
-                    $N['payment'] = floatval($x[76]/100);
-                    $N['amount'] = floatval($x[77]/100);
+                    $N['total_credit'] = floatval($x[42]/100);
+                    $N['total_debit'] = floatval($x[76]/100);
+                    $N['total'] = floatval($x[77]/100);
                     $N['status'] = 0;
 
                     // Insert Process

@@ -36,6 +36,26 @@ class Portals extends BaseController{
 		echo view('templates/footer');
 	}
 
+	public function slipView($id){
+		if(empty($id)) return redirect()->to('/portals');
+
+		$data = $this->commonData();
+		$data['pageActive'] = 'Slip Report';
+		
+		$slipModel = new SlipModel();
+		$data['slip'] = $slipModel->find($id);
+		if(empty($data['slip'])) return redirect()->to('/portals');
+		
+		$slipModel
+			->set('view_count', $data['slip']['view_count'] + 1)
+			->where('id', $id)
+			->update();
+
+		echo view('templates/header', $data);
+		echo view('portals/slip-view');
+		echo view('templates/footer');
+	}
+
 	
 	public function report(){
 		$data = $this->commonData();

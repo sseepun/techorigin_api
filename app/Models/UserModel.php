@@ -23,8 +23,11 @@ class UserModel extends Model {
     }
     
     protected function checkSignIn(){
-        if(session()->get('SALT') && session()->get('USERNAME') && session()->get('EMAIL') 
-        && session()->get('FIRSTNAME') && session()->get('LASTNAME')){
+        if(session()->get(getenv('app.sessionCookieName').'SALT') 
+        && session()->get(getenv('app.sessionCookieName').'USERNAME') 
+        && session()->get(getenv('app.sessionCookieName').'EMAIL') 
+        && session()->get(getenv('app.sessionCookieName').'FIRSTNAME') 
+        && session()->get(getenv('app.sessionCookieName').'LASTNAME')){
             $this->signInWithSession();
         }
     }
@@ -34,8 +37,8 @@ class UserModel extends Model {
         $query = $this->db->query(
             "SELECT * FROM `users` WHERE `id` = ? OR `username` = ?", 
             [
-                $encrypter->decrypt(session()->get('SALT')), 
-                session()->get('USERNAME')
+                $encrypter->decrypt(session()->get(getenv('app.sessionCookieName').'SALT')), 
+                session()->get(getenv('app.sessionCookieName').'USERNAME')
             ]
         );
         $user = $query->getRowArray();
@@ -90,11 +93,11 @@ class UserModel extends Model {
     public function setUserSession($user){
         $encrypter = \Config\Services::encrypter();
         session()->set([
-            'SALT' => $encrypter->encrypt($user['id']),
-            'USERNAME' => $user['username'],
-            'EMAIL' => $user['email'],
-            'FIRSTNAME' => $user['firstname'],
-            'LASTNAME' => $user['lastname'],
+            getenv('app.sessionCookieName').'SALT' => $encrypter->encrypt($user['id']),
+            getenv('app.sessionCookieName').'USERNAME' => $user['username'],
+            getenv('app.sessionCookieName').'EMAIL' => $user['email'],
+            getenv('app.sessionCookieName').'FIRSTNAME' => $user['firstname'],
+            getenv('app.sessionCookieName').'LASTNAME' => $user['lastname'],
         ]);
         return true;
     }
