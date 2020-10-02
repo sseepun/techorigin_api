@@ -11,6 +11,7 @@
 
 ## Initial accounts
 
+<p>
 Username: SuperAdmin\
 Password: 123456\\
 
@@ -19,3 +20,4 @@ Password: 123456\\
 
 Username: Member\
 Password: 123456
+</p>
