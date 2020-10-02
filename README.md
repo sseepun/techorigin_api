@@ -11,13 +11,14 @@
 
 ## Initial accounts
 
-<p>
-Username: SuperAdmin<br />
-Password: 123456<br /><br />
+Username: SuperAdmin
 
-Username: Admin<br />
-Password: 123456<br /><br />
-
-Username: Member<br />
 Password: 123456
-</p>
+
+Username: Admin
+
+Password: 123456
+
+Username: Member
+
+Password: 123456
