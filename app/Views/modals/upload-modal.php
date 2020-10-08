@@ -42,7 +42,7 @@
     </form>
 </div>
 
-<script src="/assets/plugins/dm-uploader/js/jquery.dm-uploader.min.js"></script>
+<script src="/assets/plugins/uploader/jquery.dm-uploader.min.js"></script>
 <script type="text/html" id="uploader-file-template">
     <li class="media">
         <div class="media-body mb-1">
