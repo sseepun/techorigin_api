@@ -1,167 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<base href="">
-	<meta charset="utf-8" />
-	<title>ระบบจัดการสลิปเงินเดือนกระทรวงศึกษาธิการ</title>
-	<meta name="description" content="Latest updates and statistic charts">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-	<link rel="shortcut icon" href="/assets/media/logos/favicon.png" />
-
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" />
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prompt:wght@200;300;400;500&display=swap" />
-
-	<link rel="stylesheet" type="text/css" href="/assets/css/pages/login/login-v1.css" />
-	<link rel="stylesheet" type="text/css" href="/assets/plugins/global/plugins.bundle.css" />
-	<link rel="stylesheet" type="text/css" href="/assets/css/style.bundle.css" />
-	<link rel="stylesheet" type="text/css" href="/assets/css/auth-page.css" />
-</head>
-<body class="kt-login-v1--enabled kt-login-v1--enabled kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header--minimize-menu kt-header-mobile--fixed kt-subheader--enabled kt-subheader--transparent kt-page--loading" style="background-image:url('/assets/media/misc/bg_1.jpg')">
-
-	<div class="kt-grid kt-grid--ver kt-grid--root">
-		<div class="kt-grid__item  kt-grid__item--fluid kt-grid kt-grid--hor kt-login-v1" id="kt_login_v1">
-			
-			<div class="global-overlay" style="opacity:1; transform:translateX(100%);">
-				<div class="overlay skew-part"></div>
-			</div>
-
-			<div class="kt-login-v1__section">
-				<div class="kt-login-v1__info display-block">
-					<img alt="Logo" src="/assets/logo.png" class="kt-header__brand-logo-default">
-					<h1>ระบบจัดการสลิปเงินเดือน</h1>
-					<h4>กระทรวงศึกษาธิการ</h4>
-					<p>Ministry of Education</p>
+<div class="container sm:px-10">
+	<div class="block xl:grid grid-cols-2 gap-4">
+	
+		<div class="hidden xl:flex flex-col min-h-screen">
+			<a href="" class="-intro-x flex items-center pt-5">
+				<img alt="Midone Tailwind HTML Admin Template" class="w-6" src="public/images/logo.svg">
+				<span class="text-white text-lg ml-3">
+					<?= $appTitle ?>
+				</span>
+			</a>
+			<div class="my-auto">
+				<img alt="Midone Tailwind HTML Admin Template" class="-intro-x w-1/2 -mt-16" src="public/images/illustration.svg">
+				<div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">
+					A few more clicks to 
+					<br>
+					sign in to your account.
 				</div>
+				<div class="-intro-x mt-5 text-lg text-white dark:text-gray-500">Manage all your e-commerce accounts in one place</div>
 			</div>
+		</div>
+		
+		<div class="h-screen xl:h-auto flex py-5 xl:py-0 xl:my-0">
+			<div class="my-auto mx-auto xl:ml-20 bg-white xl:bg-transparent px-5 sm:px-8 py-8 xl:p-0 rounded-md shadow-md xl:shadow-none w-full sm:w-3/4 lg:w-2/4 xl:w-auto">
+				<h2 class="intro-x font-bold text-2xl xl:text-3xl text-center xl:text-left">
+					เข้าสู่ระบบ
+				</h2>
+				<div class="intro-x mt-2 text-gray-500 xl:hidden text-center">
+					กรอกข้อมูลเพื่อเข้าสู่ระบบการจัดการข้อมูลลูกค้าครบวงจร
+				</div>
+				
+				<form class="kt-login-v1__form kt-form" action="" method="POST" autocomplete="off">
+					<div class="intro-x mt-8">
 
-			<div class="kt-grid__item  kt-grid kt-grid--ver  kt-grid__item--fluid">
-				<div class="kt-login-v1__body">
-					<div class="kt-login-v1__seaprator"></div>
-					<div class="kt-login-v1__wrapper display-block2">
-						<div class="kt-login-v1__container">
-							<h3 class="kt-login-v1__title">
-								เข้าสู่ระบบ
-							</h3>
-							<form class="kt-login-v1__form kt-form" action="/" method="POST" autocomplete="off">
-								<div class="form-group">
-									<input class="form-control" type="text" placeholder="ชื่อผู้ใช้ / อีเมล์" value="SuperAdmin" 
-									name="username" autocomplete="off" required />
-								</div>
-								<div class="form-group">
-									<input class="form-control KeyAutoLock" type="password" placeholder="รหัสผ่าน" 
-									name="password" autocomplete="off" required />
-								</div>
-								
-								<?php if(isset($validation)){?>
-									<div class="alert alert-danger fade show" role="alert">
-										<div class="alert-icon"><i class="flaticon-questions-circular-button"></i></div>
-										<div class="alert-text">
-											<?= $validation->listErrors(); ?>
-										</div>
-										<div class="alert-close">
-											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-												<span aria-hidden="true"><i class="la la-close"></i></span>
-											</button>
-										</div>
-									</div>
-								<?php }?>
+						<input type="text" name="username" class="intro-x login__input input input--lg border border-gray-300 block" 
+						placeholder="ชื่อผู้ใช้ / อีเมล์" value="SuperAdmin" autocomplete="off" required />
+						
+						<input type="password" name="password" class="intro-x login__input input input--lg border border-gray-300 block mt-4" 
+						placeholder="รหัสผ่าน" autocomplete="off" required />
 
-								<div class="kt-login-v1__actions">
-									<a href="/register" class="kt-login-v1__forgot">
-										ยังไม่มีบัญชีผู้ใช้ ?
-									</a>
-									<button type="submit" class="btn btn-pill btn-elevate">เข้าสู่ระบบ</button>
-								</div>
-								<div class="lockbox">
-									<img id="imgRotate" src="/assets/css_lock/strongbox.png" alt="strongbox">
-								</div>
-							</form>
-						</div>
 					</div>
-				</div>
+					<div class="intro-x flex text-gray-700 dark:text-gray-600 text-xs sm:text-sm mt-4">
+						<div class="flex items-center mr-auto">
+							<input type="checkbox" name="remember" class="input border mr-2" id="remember-me" value="1" />
+							<label class="cursor-pointer select-none" for="remember-me">
+								จำฉันไว้ในระบบ
+							</label>
+						</div>
+						<a href="pages/forget-password">
+							ลืมรหัสผ่าน?
+						</a> 
+					</div>
+					<div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
+						<button type="submit" class="inline-block button button--lg w-full xl:w-32 text-white bg-theme-1 xl:mr-3 align-top">
+							เข้าสู่ระบบ
+						</button>
+						<a class="inline-block button button--lg w-full xl:w-32 text-gray-700 border border-gray-300 dark:border-dark-5 dark:text-gray-300 mt-3 xl:mt-0 align-top" href="pages/signup">
+							สมัครสมาชิก
+						</a>
+					</div>
+
+					<?php if(isset($validation)){?>
+						<div class="rounded-md flex items-center px-5 py-4 mt-5 bg-theme-6 text-white alert-card" style="max-width:350px;">
+							<i data-feather="alert-octagon" class="w-6 h-6 mr-2"></i>
+							<div class="mr-2">
+								<?= $validation->listErrors() ?>
+							</div>
+							<i data-feather="x" class="w-4 h-4 ml-auto"></i>
+						</div>
+					<?php }?>
+
+				</form>
 			</div>
-			
 		</div>
 	</div>
-
-	<script>
-		var KTAppOptions = {
-			"colors": {
-				"state": {
-					"brand": "#4d5cf2",
-					"metal": "#c4c5d6",
-					"light": "#ffffff",
-					"accent": "#00c5dc",
-					"primary": "#5867dd",
-					"success": "#34bfa3",
-					"info": "#36a3f7",
-					"warning": "#ffb822",
-					"danger": "#fd3995",
-					"focus": "#9816f4"
-				},
-				"base": {
-					"label": [
-						"#c5cbe3",
-						"#a1a8c3",
-						"#3d4465",
-						"#3e4466"
-					],
-					"shape": [
-						"#f0f3ff",
-						"#d9dffa",
-						"#afb4d4",
-						"#646c9a"
-					]
-				}
-			}
-		};
-	</script>
-
-	<script type="text/javascript" src="/assets/plugins/global/plugins.bundle.js"></script>
-	<script type="text/javascript" src="/assets/js/scripts.bundle.js"></script>
-	<script type="text/javascript" src="/assets/js/pages/custom/user/login.js"></script>
-	<script src="/assets/css_lock/jQueryRotate.js"></script>
-	<script>
-		function showpanel(){
-			$('.global-overlay').css('left', '-100vw');
-		}
-		function rotate(){
-			$('.overlay').css({
-				'-moz-transform': 'rotate(0deg)',
-				'-webkit-transform': 'rotate(0deg)',
-				'-o-transform': 'rotate(0deg)',
-				'-ms-transform': 'rotate(0deg)',
-				'transform': 'rotate(0deg)'
-			});  
-			setTimeout(showtext, 500);
-		}
-		function showtext(){
-			$('.display-block').css({
-				transform: 'translateY(0%)'
-			});
-			setTimeout(showtext2, 250);
-		}
-		function showtext2(){
-			$('.display-block2').css({
-				transform: 'translateY(0%)'
-			});
-		}
-		$(document).ready(function($) {
-			var lastKey = 0;
-			$('.KeyAutoLock').keypress(function(event) {
-				var nRand = Math.floor((Math.random() * 360) + 1);
-				$('#imgRotate').rotate({
-					angle: lastKey,
-					animateTo:nRand,
-					easing: $.easing.easeInOutBack
-					});
-				lastKey = nRand;
-			});
-			setTimeout(showpanel, 750);
-			setTimeout(rotate, 1500);
-		});
-	</script>
-</body>
-</html>
+</div>

@@ -48,6 +48,11 @@ class Users extends Migration
 				'constraint' => 256,
 				'null' => true,
 			],
+			'last_ip' => [
+				'type' => 'VARCHAR',
+				'constraint' => 32,
+				'null' => true,
+			],
 			'status' => [
 				'type' => 'INT',
 				'constraint' => 1,

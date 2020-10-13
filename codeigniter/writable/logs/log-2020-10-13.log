@@ -20,3 +20,9 @@ CRITICAL - 2020-10-13 00:46:45 --> Class 'Config\Database' not found
 #7 C:\xampp\htdocs\techorigin_works\lotto\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(293): CodeIgniter\Events\Events::trigger('pre_system')
 #8 C:\xampp\htdocs\techorigin_works\lotto\index.php(45): CodeIgniter\CodeIgniter->run()
 #9 {main}
+CRITICAL - 2020-10-13 01:08:18 --> Call to undefined function App\Controllers\commonData()
+#0 C:\xampp\htdocs\techorigin_works\lotto\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Pages->index()
+#1 C:\xampp\htdocs\techorigin_works\lotto\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pages))
+#2 C:\xampp\htdocs\techorigin_works\lotto\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\techorigin_works\lotto\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}

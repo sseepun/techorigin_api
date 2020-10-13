@@ -1,0 +1,8 @@
+
+/* Reset */
+html, body, html body{font-family:'Roboto', 'Prompt';}
+body.login{padding-top:0; padding-bottom:0;}
+
+
+/* Alert Card */
+.alert-card{cursor:pointer;}

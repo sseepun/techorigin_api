@@ -12,11 +12,13 @@ class Pages extends BaseController{
 
 	public function index(){
         if($this->userModel->isSignedIn()){
-            return redirect()->to('portals');
+            return redirect()->to('admins');
         }
 
         helper(['form']);
-        $data = [];
+
+        $data = $this->commonData();
+        $data['bodyClass'] = 'login';
 
         if($this->request->getMethod()=='post'){
             $rules = [
@@ -40,7 +42,9 @@ class Pages extends BaseController{
             }
         }
 
-        echo view('pages/signin', $data);
+        echo view('templates/header', $data);
+        echo view('pages/signin');
+        echo view('templates/footer');
     }
 
     public function signup(){
@@ -89,6 +93,12 @@ class Pages extends BaseController{
     public function signout(){
         $this->userModel->signout();
         return redirect()->to('/');
+    }
+
+    private function commonData(){
+        return [
+            'appTitle' => getenv('app.title'),
+        ];
     }
 
 }
