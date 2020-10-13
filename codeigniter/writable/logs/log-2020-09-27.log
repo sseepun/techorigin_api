@@ -1,0 +1,356 @@
+CRITICAL - 2020-09-27 09:17:19 --> Cannot use object of type CodeIgniter\HTTP\Files\UploadedFile as array
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Portals->ajaxUploadTextFiles()
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Portals))
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#5 {main}
+CRITICAL - 2020-09-27 09:18:46 --> Undefined index: text-file
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Controllers\Portals.php(43): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 43, Array)
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Portals->ajaxUploadTextFiles()
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Portals))
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#6 {main}
+CRITICAL - 2020-09-27 09:19:02 --> Undefined variable: _FILE
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Controllers\Portals.php(43): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 43, Array)
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Portals->ajaxUploadTextFiles()
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Portals))
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#6 {main}
+CRITICAL - 2020-09-27 09:20:11 --> Too few arguments to function CodeIgniter\HTTP\IncomingRequest::getFile(), 0 passed in C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Controllers\Portals.php on line 44 and exactly 1 expected
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Controllers\Portals.php(44): CodeIgniter\HTTP\IncomingRequest->getFile()
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Portals->ajaxUploadTextFiles()
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Portals))
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#6 {main}
+CRITICAL - 2020-09-27 09:24:47 --> Call to a member function isValid() on array
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Portals->ajaxUploadTextFiles()
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Portals))
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#5 {main}
+CRITICAL - 2020-09-27 09:25:19 --> Call to a member function getRandomName() on array
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Portals->ajaxUploadTextFiles()
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Portals))
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#5 {main}
+CRITICAL - 2020-09-27 09:26:19 --> Call to a member function getRandomName() on array
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Portals->ajaxUploadTextFiles()
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Portals))
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#5 {main}
+CRITICAL - 2020-09-27 09:27:54 --> Too few arguments to function CodeIgniter\HTTP\IncomingRequest::getFile(), 0 passed in C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Controllers\Portals.php on line 43 and exactly 1 expected
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Controllers\Portals.php(43): CodeIgniter\HTTP\IncomingRequest->getFile()
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Portals->ajaxUploadTextFiles()
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Portals))
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#6 {main}
+CRITICAL - 2020-09-27 09:48:35 --> Class 'App\Controllers\DateTime' not found
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Portals->ajaxUploadTextFiles()
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Portals))
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#5 {main}
+CRITICAL - 2020-09-27 09:50:23 --> Class 'App\Controllers\DateTime' not found
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Portals->ajaxUploadTextFiles()
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Portals))
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#5 {main}
+CRITICAL - 2020-09-27 09:52:39 --> Class 'App\Controllers\Time' not found
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Portals->ajaxUploadTextFiles()
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Portals))
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#5 {main}
+CRITICAL - 2020-09-27 09:53:24 --> Class 'App\Controllers\Time' not found
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Portals->ajaxUploadTextFiles()
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Portals))
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#5 {main}
+CRITICAL - 2020-09-27 09:59:27 --> Class 'App\Controllers\DateTime' not found
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Portals->ajaxUploadTextFiles()
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Portals))
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#5 {main}
+CRITICAL - 2020-09-27 13:28:16 --> Call to undefined method App\Models\SlipImportModel::checkSignIn
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Models\SlipImportModel.php(19): CodeIgniter\Model->__call('checkSignIn', Array)
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Controllers\Apis.php(47): App\Models\SlipImportModel->__construct()
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Apis->uploadSlips()
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Apis))
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#7 {main}
+CRITICAL - 2020-09-27 13:29:07 --> Call to undefined method App\Models\SlipImportModel::checkSignIn
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Models\SlipImportModel.php(19): CodeIgniter\Model->__call('checkSignIn', Array)
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Controllers\Apis.php(47): App\Models\SlipImportModel->__construct()
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Apis->uploadSlips()
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Apis))
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#7 {main}
+CRITICAL - 2020-09-27 13:29:37 --> Call to undefined method App\Models\SlipImportModel::checkSignIn
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Models\SlipImportModel.php(19): CodeIgniter\Model->__call('checkSignIn', Array)
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Controllers\Apis.php(47): App\Models\SlipImportModel->__construct()
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Apis->uploadSlips()
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Apis))
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#7 {main}
+CRITICAL - 2020-09-27 13:29:39 --> Call to undefined method App\Models\SlipImportModel::checkSignIn
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Models\SlipImportModel.php(19): CodeIgniter\Model->__call('checkSignIn', Array)
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Controllers\Apis.php(47): App\Models\SlipImportModel->__construct()
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Apis->uploadSlips()
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Apis))
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#7 {main}
+CRITICAL - 2020-09-27 13:45:36 --> Undefined variable: psnList
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Models\SlipImportModel.php(9172): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 9172, Array)
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Controllers\Apis.php(57): App\Models\SlipImportModel->importSlip('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Apis->uploadSlips()
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Apis))
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#7 {main}
+CRITICAL - 2020-09-27 13:46:03 --> syntax error, unexpected '->' (T_OBJECT_OPERATOR), expecting ',' or ';'
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Slip...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Slip...')
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Controllers\Apis.php(47): spl_autoload_call('App\\Models\\Slip...')
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Apis->uploadSlips()
+#5 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Apis))
+#6 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#9 {main}
+CRITICAL - 2020-09-27 13:46:18 --> Undefined offset: 3350400653488
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Models\SlipImportModel.php(9172): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\xampp\\htdocs...', 9172, Array)
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Controllers\Apis.php(57): App\Models\SlipImportModel->importSlip('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Apis->uploadSlips()
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Apis))
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#7 {main}
+CRITICAL - 2020-09-27 13:54:21 --> A non-numeric value encountered
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Models\SlipImportModel.php(9184): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', 'C:\\xampp\\htdocs...', 9184, Array)
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Controllers\Apis.php(57): App\Models\SlipImportModel->importSlip(9, 'C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Apis->uploadSlips()
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Apis))
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#7 {main}
+CRITICAL - 2020-09-27 14:16:14 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ':slip_import_id,:slip_id,:year,:month,:prefix,:firstname,:lastname,:psn_id,:bank' at line 3
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(331): mysqli->query('INSERT INTO `sl...')
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Database\BaseConnection.php(741): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sl...')
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Database\BaseConnection.php(669): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sl...')
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Models\SlipImportModel.php(9229): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sl...', Array)
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Controllers\Apis.php(57): App\Models\SlipImportModel->importSlip(11, 'C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Apis->uploadSlips()
+#6 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Apis))
+#7 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2020-09-27 14:21:52 --> Column 'slip_id' cannot be null
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(331): mysqli->query('INSERT INTO `sl...')
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Database\BaseConnection.php(741): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sl...')
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Database\BaseConnection.php(669): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sl...')
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Models\SlipImportModel.php(9233): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sl...', Array)
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Controllers\Apis.php(57): App\Models\SlipImportModel->importSlip(14, 'C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Apis->uploadSlips()
+#6 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Apis))
+#7 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2020-09-27 14:56:44 --> Class 'App\Controllers\App\Models\UserModel' not found
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(890): App\Controllers\Portals->__construct()
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->createController()
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#5 {main}
+CRITICAL - 2020-09-27 15:02:24 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::getRowsArray()
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Controllers\Portals.php(21): App\Models\SlipModel->getMonthlyPaginate()
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Portals->index()
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Portals))
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#6 {main}
+CRITICAL - 2020-09-27 15:08:22 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::countAllResults()
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Controllers\Portals.php(21): App\Models\SlipModel->getMonthlyPaginate()
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Portals->index()
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Portals))
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#6 {main}
+CRITICAL - 2020-09-27 15:08:56 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::num_rows()
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Controllers\Portals.php(21): App\Models\SlipModel->getMonthlyPaginate()
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Portals->index()
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Portals))
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#6 {main}
+CRITICAL - 2020-09-27 15:09:35 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::numRows()
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Controllers\Portals.php(21): App\Models\SlipModel->getMonthlyPaginate()
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Portals->index()
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Portals))
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#6 {main}
+CRITICAL - 2020-09-27 15:10:21 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::numRows()
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Controllers\Portals.php(21): App\Models\SlipModel->getMonthlyPaginate()
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Portals->index()
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Portals))
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#6 {main}
+CRITICAL - 2020-09-27 15:10:22 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::numRows()
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Controllers\Portals.php(21): App\Models\SlipModel->getMonthlyPaginate()
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Portals->index()
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Portals))
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#6 {main}
+CRITICAL - 2020-09-27 15:11:27 --> Undefined variable: numRows
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Models\SlipModel.php(40): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 40, Array)
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Controllers\Portals.php(21): App\Models\SlipModel->getMonthlyPaginate()
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Portals->index()
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Portals))
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#7 {main}
+CRITICAL - 2020-09-27 15:15:43 --> Call to a member function count() on array
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Controllers\Portals.php(21): App\Models\SlipModel->getMonthlyPaginate()
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Portals->index()
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Portals))
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#6 {main}
+CRITICAL - 2020-09-27 15:16:22 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::countAll()
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Controllers\Portals.php(21): App\Models\SlipModel->getMonthlyPaginate()
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Portals->index()
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Portals))
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#6 {main}
+CRITICAL - 2020-09-27 15:16:31 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::countAllResults()
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Controllers\Portals.php(21): App\Models\SlipModel->getMonthlyPaginate()
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Portals->index()
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Portals))
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#6 {main}
+CRITICAL - 2020-09-27 15:16:37 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::countAllResults()
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Controllers\Portals.php(21): App\Models\SlipModel->getMonthlyPaginate()
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Portals->index()
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Portals))
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#6 {main}
+CRITICAL - 2020-09-27 15:18:18 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::getNumRows()
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Controllers\Portals.php(21): App\Models\SlipModel->getMonthlyPaginate()
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Portals->index()
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Portals))
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#6 {main}
+CRITICAL - 2020-09-27 15:18:19 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::getNumRows()
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Controllers\Portals.php(21): App\Models\SlipModel->getMonthlyPaginate()
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Portals->index()
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Portals))
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#6 {main}
+CRITICAL - 2020-09-27 15:18:48 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::getNumRows()
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Controllers\Portals.php(21): App\Models\SlipModel->getMonthlyPaginate()
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Portals->index()
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Portals))
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#6 {main}
+CRITICAL - 2020-09-27 15:19:26 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::getNumRows()
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Controllers\Portals.php(21): App\Models\SlipModel->getMonthlyPaginate()
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Portals->index()
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Portals))
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#6 {main}
+CRITICAL - 2020-09-27 15:22:55 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::countAllResults()
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Controllers\Portals.php(21): App\Models\SlipModel->getMonthlyPaginate()
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Portals->index()
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Portals))
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#6 {main}
+CRITICAL - 2020-09-27 15:23:48 --> Trying to get property 'numRows' of non-object
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Models\SlipModel.php(38): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 38, Array)
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Controllers\Portals.php(21): App\Models\SlipModel->getMonthlyPaginate()
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Portals->index()
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Portals))
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#7 {main}
+CRITICAL - 2020-09-27 15:34:06 --> Too few arguments to function App\Controllers\Portals::monthlyRecords(), 0 passed in C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php on line 918 and exactly 2 expected
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Portals->monthlyRecords()
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Portals))
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#5 {main}
+CRITICAL - 2020-09-27 15:42:44 --> Undefined index: year
+#0 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Views\portals\monthly-records.php(43): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 43, Array)
+#1 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\View\View.php(246): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('portals/monthly...', Array, true)
+#3 C:\xampp\htdocs\techorigin_works\codeigniter_app\app\Controllers\Portals.php(35): view('portals/monthly...')
+#4 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Portals->monthlyRecords('2563', '8')
+#5 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Portals))
+#6 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\techorigin_works\codeigniter_app\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\techorigin_works\codeigniter_app\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(34): require_once('C:\\xampp\\htdocs...')
+#9 {main}

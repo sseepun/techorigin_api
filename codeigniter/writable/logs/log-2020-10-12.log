@@ -1,0 +1,11 @@
+CRITICAL - 2020-10-12 14:26:41 --> Class 'Config\Database' not found
+#0 C:\xampp\htdocs\techorigin_works\lotto\vendor\codeigniter4\framework\system\Debug\Toolbar.php(96): CodeIgniter\Debug\Toolbar\Collectors\Database->__construct()
+#1 C:\xampp\htdocs\techorigin_works\lotto\vendor\codeigniter4\framework\system\Config\Services.php(856): CodeIgniter\Debug\Toolbar->__construct(Object(Config\Toolbar))
+#2 C:\xampp\htdocs\techorigin_works\lotto\vendor\codeigniter4\framework\system\Config\BaseService.php(123): CodeIgniter\Config\Services::toolbar(Object(Config\Toolbar), false)
+#3 C:\xampp\htdocs\techorigin_works\lotto\vendor\codeigniter4\framework\system\Config\Services.php(848): CodeIgniter\Config\BaseService::getSharedInstance('toolbar', NULL)
+#4 C:\xampp\htdocs\techorigin_works\lotto\app\Config\Events.php(50): CodeIgniter\Config\Services::toolbar()
+#5 [internal function]: CodeIgniter\Events\Events::Config\{closure}()
+#6 C:\xampp\htdocs\techorigin_works\lotto\vendor\codeigniter4\framework\system\Events\Events.php(188): call_user_func(Object(Closure))
+#7 C:\xampp\htdocs\techorigin_works\lotto\vendor\codeigniter4\framework\system\CodeIgniter.php(293): CodeIgniter\Events\Events::trigger('pre_system')
+#8 C:\xampp\htdocs\techorigin_works\lotto\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
