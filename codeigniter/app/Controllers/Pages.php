@@ -9,8 +9,12 @@ class Pages extends BaseController{
         $this->userModel = new UserModel();
     }
 
+    public function index(){
+        return redirect()->to('signin');
+    }
 
-	public function index(){
+
+	public function signin(){
         if($this->userModel->isSignedIn()){
             return redirect()->to('admins');
         }
@@ -20,25 +24,39 @@ class Pages extends BaseController{
         $data = $this->commonData();
         $data['bodyClass'] = 'login';
 
-        if($this->request->getMethod()=='post'){
+        if($this->request->getMethod()=='post' && empty($this->request->getVar('killbot'))){
             $rules = [
-                'username' => 'required|min_length[6]|max_length[256]',
-                'password' => 'required|min_length[6]|max_length[128]|validateUser[username, password]',
-            ];
-            $errors = [
+                'username' => [
+                    'rules' => 'required|max_length[64]',
+                    'errors' => [
+                        'required' => 'ใส่ชื่อผู้ใช้หรืออีเมล',
+                        'max_length' => 'ชื่อผู้ใช้สูงสุด 64 ตัวอักษร',
+                    ]
+                ],
                 'password' => [
-                    'validateUser' => 'Username, Email or Password don\'t match'
-                ]
+                    'rules' => 'required|max_length[64]|validateUser[username, password]',
+                    'errors' => [
+                        'required' => 'ใส่รหัสผ่าน',
+                        'max_length' => 'รหัสผ่านสูงสุด 64 ตัวอักษร',
+                        'validateUser' => 'ไม่พบผู้ใช้ในระบบ',
+                    ]
+                ],
             ];
 
-            if(!$this->validate($rules, $errors)){
+            if(!$this->validate($rules)){
                 $data['validation'] = $this->validator;
-            }else {
+            }else{
                 $user = $this->userModel->authUserByUsernameOrEmain(
                     $this->request->getVar('username'), $this->request->getVar('password')
                 );
-                $this->userModel->setUserSession($user);
-                return redirect()->to('portals');
+                if($user){
+                    $this->userModel->setUserSession(
+                        $user, $this->request->getVar('remember')
+                    );
+                    return redirect()->to('admins');
+                }else{
+                    $data['validation'] = $this->validator; 
+                }
             }
         }
 
@@ -49,39 +67,84 @@ class Pages extends BaseController{
 
     public function signup(){
         if($this->userModel->isSignedIn()){
-            return redirect()->to('portals');
+            return redirect()->to('admins');
         }
 
         helper(['form']);
-        $data = [];
 
-        if($this->request->getMethod() == 'post'){
-            // form validator
+        $data = $this->commonData();
+        $data['bodyClass'] = 'login';
+
+        if($this->request->getMethod()=='post' && empty($this->request->getVar('killbot'))){
             $rules = [
-                'firstname' => 'required|min_length[3]|max_length[20]',
-                'lastname' => 'required|min_length[3]|max_length[20]',
-                'email' => 'required|min_length[6]|max_length[50]|valid_email|is_unique[users.email]',
                 'password' => 'required|min_length[6]|max_length[50]',
                 'password_confirm' => 'matches[password]'
             ];
+            $rules = [
+                'firstname' => [
+                    'rules' => 'required|min_length[3]|max_length[64]',
+                    'errors' => [
+                        'required' => 'ใส่ชื่อจริง',
+                        'min_length' => 'ชื่อจริงขั้นต่ำ 3 ตัวอักษร',
+                        'max_length' => 'ชื่อจริงสูงสุด 64 ตัวอักษร',
+                    ]
+                ],
+                'lastname' => [
+                    'rules' => 'required|min_length[3]|max_length[64]',
+                    'errors' => [
+                        'required' => 'ใส่นามสกุล',
+                        'min_length' => 'นามสกุลขั้นต่ำ 3 ตัวอักษร',
+                        'max_length' => 'นามสกุลสูงสุด 64 ตัวอักษร',
+                    ]
+                ],
+                'email' => [
+                    'rules' => 'required|min_length[6]|max_length[64]|valid_email|isUniqureEmail[email]',
+                    'errors' => [
+                        'required' => 'ใส่อีเมล',
+                        'min_length' => 'อีเมลขั้นต่ำ 6 ตัวอักษร',
+                        'max_length' => 'อีเมลสูงสุด 64 ตัวอักษร',
+                        'valid_email' => 'ใส่อีเมลที่ถูกต้อง',
+                        'isUniqureEmail' => 'อีเมลนี้ถูกใช้งานแล้ว',
+                    ]
+                ],
+                'username' => [
+                    'rules' => 'required|min_length[6]|max_length[64]|isUniqureUsername[username]',
+                    'errors' => [
+                        'required' => 'ใส่ชื่อผู้ใช้',
+                        'min_length' => 'ชื่อผู้ใช้ขั้นต่ำ 6 ตัวอักษร',
+                        'max_length' => 'ชื่อผู้ใช้สูงสุด 64 ตัวอักษร',
+                        'isUniqureUsername' => 'ชื่อผู้ใช้นี้ถูกใช้งานแล้ว',
+                    ]
+                ],
+                'password' => [
+                    'rules' => 'required|min_length[6]|max_length[64]',
+                    'errors' => [
+                        'required' => 'ใส่รหัสผ่าน',
+                        'min_length' => 'รหัสผ่านขั้นต่ำ 6 ตัวอักษร',
+                        'max_length' => 'รหัสผ่านสูงสุด 64 ตัวอักษร',
+                    ]
+                ],
+                'password_confirm' => [
+                    'rules' => 'required|matches[password]',
+                    'errors' => [
+                        'required' => 'ใส่ยืนยันรหัสผ่าน',
+                        'matches' => 'ยืนยันรหัสผ่านไม่ตรงกับรหัสผ่าน',
+                    ]
+                ],
+            ];
 
-            if(! $this->validate($rules)){
+            if(!$this->validate($rules)){
                 $data['validation'] = $this->validator;
-            }else {
-                // Store information in database
-                $model = new UserModel();
-                $newData = [
+            }else{
+                $this->userModel->save([
                     'firstname' => $this->request->getPost('firstname'),
                     'lastname' => $this->request->getPost('lastname'),
                     'email' => $this->request->getPost('email'),
                     'password' => $this->request->getPost('password')
-                ];
-                $model->save($newData);
-
+                ]);
                 $session = session();
-                $session->setFlashData('success', 'Successful Registration');
-
-                return redirect()->to('/');
+                $session->setFlashData('success', 'สมัครสมาชิกสำเร็จแล้ว');
+                return redirect()->to(getenv('app.baseURL'));
             }
         }
 
@@ -92,12 +155,13 @@ class Pages extends BaseController{
 
     public function signout(){
         $this->userModel->signout();
-        return redirect()->to('/');
+        return redirect()->to(getenv('app.baseURL'));
     }
 
     private function commonData(){
         return [
             'appTitle' => getenv('app.title'),
+            'appUrl' => getenv('app.baseURL'),
         ];
     }
 

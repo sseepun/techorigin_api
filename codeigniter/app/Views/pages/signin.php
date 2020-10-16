@@ -3,20 +3,20 @@
 	<div class="block xl:grid grid-cols-2 gap-4">
 	
 		<div class="hidden xl:flex flex-col min-h-screen">
-			<a href="" class="-intro-x flex items-center pt-5">
-				<img alt="Midone Tailwind HTML Admin Template" class="w-6" src="public/images/logo.svg">
+			<a href="signin" class="-intro-x flex items-center pt-5">
+				<img alt="Midone Tailwind HTML Admin Template" class="w-6" src="<?= $appUrl; ?>public/images/logo.svg">
 				<span class="text-white text-lg ml-3">
 					<?= $appTitle ?>
 				</span>
 			</a>
 			<div class="my-auto">
-				<img alt="Midone Tailwind HTML Admin Template" class="-intro-x w-1/2 -mt-16" src="public/images/illustration.svg">
+				<img alt="Midone Tailwind HTML Admin Template" class="-intro-x w-1/2 -mt-16" src="<?= $appUrl; ?>public/images/illustration.svg">
 				<div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">
-					A few more clicks to 
-					<br>
-					sign in to your account.
+					ลงชื่อเข้าใช้งาน
 				</div>
-				<div class="-intro-x mt-5 text-lg text-white dark:text-gray-500">Manage all your e-commerce accounts in one place</div>
+				<div class="-intro-x mt-5 text-lg text-white dark:text-gray-500">
+					ระบบการจัดการข้อมูลลูกค้าครบวงจร
+				</div>
 			</div>
 		</div>
 		
@@ -28,15 +28,16 @@
 				<div class="intro-x mt-2 text-gray-500 xl:hidden text-center">
 					กรอกข้อมูลเพื่อเข้าสู่ระบบการจัดการข้อมูลลูกค้าครบวงจร
 				</div>
-				
 				<form class="kt-login-v1__form kt-form" action="" method="POST" autocomplete="off">
 					<div class="intro-x mt-8">
 
 						<input type="text" name="username" class="intro-x login__input input input--lg border border-gray-300 block" 
-						placeholder="ชื่อผู้ใช้ / อีเมล์" value="SuperAdmin" autocomplete="off" required />
+						placeholder="ชื่อผู้ใช้ / อีเมล์" value="<?= set_value('username') ?>" autocomplete="off" required />
 						
 						<input type="password" name="password" class="intro-x login__input input input--lg border border-gray-300 block mt-4" 
 						placeholder="รหัสผ่าน" autocomplete="off" required />
+
+						<input type="hidden" name="killbot" />
 
 					</div>
 					<div class="intro-x flex text-gray-700 dark:text-gray-600 text-xs sm:text-sm mt-4">
@@ -46,7 +47,7 @@
 								จำฉันไว้ในระบบ
 							</label>
 						</div>
-						<a href="pages/forget-password">
+						<a href="<?= $appUrl; ?>forget-password">
 							ลืมรหัสผ่าน?
 						</a> 
 					</div>
@@ -54,13 +55,12 @@
 						<button type="submit" class="inline-block button button--lg w-full xl:w-32 text-white bg-theme-1 xl:mr-3 align-top">
 							เข้าสู่ระบบ
 						</button>
-						<a class="inline-block button button--lg w-full xl:w-32 text-gray-700 border border-gray-300 dark:border-dark-5 dark:text-gray-300 mt-3 xl:mt-0 align-top" href="pages/signup">
+						<a class="inline-block button button--lg w-full xl:w-32 text-gray-700 border border-gray-300 dark:border-dark-5 dark:text-gray-300 mt-3 xl:mt-0 align-top" href="signup">
 							สมัครสมาชิก
 						</a>
 					</div>
-
 					<?php if(isset($validation)){?>
-						<div class="rounded-md flex items-center px-5 py-4 mt-5 bg-theme-6 text-white alert-card" style="max-width:350px;">
+						<div class="rounded-md flex items-center px-5 py-4 mt-5 bg-theme-6 text-white alert-card">
 							<i data-feather="alert-octagon" class="w-6 h-6 mr-2"></i>
 							<div class="mr-2">
 								<?= $validation->listErrors() ?>
@@ -68,9 +68,9 @@
 							<i data-feather="x" class="w-4 h-4 ml-auto"></i>
 						</div>
 					<?php }?>
-
 				</form>
 			</div>
 		</div>
+		
 	</div>
 </div>

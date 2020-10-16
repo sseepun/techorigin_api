@@ -4,7 +4,7 @@ use App\Models\UserModel;
 
 class UserAuth {
 
-    public function validateUser(string $str, string $fields, array $data) {
+    public function validateUser(string $str, string $fields, array $data){
         $model = new UserModel();
 
         $userByEmail = $model->where('email', $data['username'])->first();
@@ -16,6 +16,20 @@ class UserAuth {
 
         return password_verify($data['password'], $user['password']);
     }
+
+    public function isUniqureEmail(string $str, string $fields, array $data){
+        $model = new UserModel();
+        $userByEmail = $model->where('email', $data['email'])->first();
+        if($userByEmail) return false;
+        else return true;
+    }
+    public function isUniqureUsername(string $str, string $fields, array $data){
+        $model = new UserModel();
+        $userByUsername = $model->where('username', $data['username'])->first();
+        if($userByUsername) return false;
+        else return true;
+    }
+
 }
 
 ?>

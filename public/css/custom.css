@@ -5,4 +5,9 @@ body.login{padding-top:0; padding-bottom:0;}
 
 
 /* Alert Card */
-.alert-card{cursor:pointer;}
+.alert-card{cursor:pointer; max-width:350px;}
+.alert-card ul{list-style:disc; padding:0 0 0 22px;}
+.alert-card ul > li{padding:2px 0;}
+@media screen and (max-width:1299.98px){
+    .alert-card{max-width:100%;}
+}
