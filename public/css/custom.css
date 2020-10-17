@@ -11,3 +11,8 @@ body.login{padding-top:0; padding-bottom:0;}
 @media screen and (max-width:1299.98px){
     .alert-card{max-width:100%;}
 }
+
+
+/* Pagination */
+.pagination li .pagination__link.pagination__link--active{pointer-events:none;}
+.pagination li .pagination__link.disabled{pointer-events:none; opacity:.6;}

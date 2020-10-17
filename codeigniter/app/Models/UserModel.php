@@ -112,6 +112,13 @@ class UserModel extends Model {
     public function getInfo(){return $this->user;}
     public function getRole(){return $this->role;}
     public function getUserId(){return $this->user['id'];}
+    public function getProfile(){
+        if(!$this->isSignedIn()) return getenv('app.baseURL').'public/images/default/profile.png';
+        else{
+            if(!empty($this->user['profile'])) return getenv('app.baseURL').$this->user['profile'];
+            else return getenv('app.baseURL').'public/images/default/profile.png';
+        }
+    }
 
     public function getDefaultRoleId(){
         $query = $this->db->query("SELECT `id` FROM `user_roles` WHERE `is_default` = 1 LIMIT 1");
@@ -266,6 +273,59 @@ class UserModel extends Model {
             $pass[] = $alphabet[$n];
         }
         return implode($pass);
+    }
+
+
+    public function getTableObject($page=1, $pp=10, $keyword=''){
+        if(!$this->isSuperAdmin()) return false;
+
+        $whereQuery = "";
+        if(!empty($keyword)){
+            $whereQuery = " AND u.`firstname` LIKE '%".$keyword."%' 
+                OR u.`lastname` LIKE '%".$keyword."%' 
+                OR u.`email` LIKE '%".$keyword."%' 
+                OR u.`username` LIKE '%".$keyword."%' 
+                OR ur.`name` LIKE '%".$keyword."%'";
+        }
+
+        $getQuery = $this->db->query(
+            "SELECT u.*, ur.`name` AS `role` 
+            FROM `users` AS u 
+            INNER JOIN `user_roles` AS ur ON ur.`id` = u.`role_id` 
+            WHERE 1 ".$whereQuery." 
+            ORDER BY u.`created_at` DESC 
+            LIMIT :start:, :pp:",
+            [ 'start' => ($page - 1) * $pp, 'pp' => $pp ]
+        );
+        $result = $getQuery->getResultArray();
+
+        $totalQuery = $this->db->query(
+            "SELECT COUNT(u.`id`) AS `total` 
+            FROM `users` AS u 
+            INNER JOIN `user_roles` AS ur ON ur.`id` = u.`role_id` 
+            WHERE 1 ".$whereQuery,
+        );
+        $total = $totalQuery->getRowArray()['total'];
+
+        return [
+            'result' => $result,
+            'page' => $page,
+            'pp' => $pp,
+            'total' => $total,
+            'total_pages' => ceil($total / $pp)
+        ];
+    }
+
+
+    public function getUserById($id){
+        $query = $this->db->query(
+            "SELECT u.*, ur.`name` AS `role` 
+            FROM `users` AS u 
+            INNER JOIN `user_roles` AS ur ON ur.`id` = u.`role_id` 
+            WHERE u.`id` = ?",
+            [ $id ]
+        );
+        return $query->getRowArray();
     }
 
 }

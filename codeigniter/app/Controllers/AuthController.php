@@ -2,7 +2,7 @@
 
 use App\Models\UserModel;
 
-class Pages extends BaseController {
+class AuthController extends BaseController {
 
     private $userModel;
 
@@ -17,10 +17,6 @@ class Pages extends BaseController {
 
 
 	public function signin(){
-        if($this->userModel->isSignedIn()){
-            return redirect()->to(getenv('app.baseURL').'admins');
-        }
-
         helper(['form']);
         $data = $this->commonData();
         $data['bodyClass'] = 'login';
@@ -53,7 +49,7 @@ class Pages extends BaseController {
                 );
                 if($user){
                     $this->userModel->setUserSession($user, $this->request->getVar('remember'));
-                    return redirect()->to(getenv('app.baseURL').'admins');
+                    return redirect()->to(getenv('app.baseURL').'signin');
                 }else{
                     $data['validation'] = $this->validator; 
                 }
@@ -61,15 +57,11 @@ class Pages extends BaseController {
         }
 
         echo view('templates/header', $data);
-        echo view('pages/signin');
+        echo view('users/signin');
         echo view('templates/footer');
     }
 
     public function signup(){
-        if($this->userModel->isSignedIn()){
-            return redirect()->to(getenv('app.baseURL').'admins');
-        }
-
         helper(['form']);
         $data = $this->commonData();
         $data['bodyClass'] = 'login';
@@ -157,22 +149,18 @@ class Pages extends BaseController {
 
 
                 echo view('templates/header', $data);
-                echo view('pages/signup-success');
+                echo view('users/signup-success');
                 echo view('templates/footer');
                 return true;
             }
         }
 
         echo view('templates/header', $data);
-        echo view('pages/signup');
+        echo view('users/signup');
         echo view('templates/footer');
     }
 
     public function forgetPassword(){
-        if($this->userModel->isSignedIn()){
-            return redirect()->to(getenv('app.baseURL').'admins');
-        }
-
         helper(['form']);
         $data = $this->commonData();
         $data['bodyClass'] = 'login';
@@ -213,21 +201,19 @@ class Pages extends BaseController {
 
 
                 echo view('templates/header', $data);
-                echo view('pages/forget-password-success');
+                echo view('users/forget-password-success');
                 echo view('templates/footer');
                 return true;
             }
         }
 
         echo view('templates/header', $data);
-        echo view('pages/forget-password');
+        echo view('users/forget-password');
         echo view('templates/footer');
     }
 
     public function resetPassword($salt=''){
-        if($this->userModel->isSignedIn()){
-            return redirect()->to(getenv('app.baseURL').'admins');
-        }else if(empty($salt)){
+        if(empty($salt)){
             return redirect()->to(getenv('app.baseURL').'forget-password');
         }
 
@@ -267,20 +253,20 @@ class Pages extends BaseController {
                 $this->userModel->update($user['id'], [ 'password' => $this->request->getVar('password_new') ]);
                 
                 echo view('templates/header', $data);
-                echo view('pages/reset-password-success');
+                echo view('users/reset-password-success');
                 echo view('templates/footer');
                 return true;
             }
         }
 
         echo view('templates/header', $data);
-        echo view('pages/reset-password');
+        echo view('users/reset-password');
         echo view('templates/footer');
     }
 
     public function signout(){
         $this->userModel->signout();
-        return redirect()->to(getenv('app.baseURL').getenv('app.baseURL'));
+        return redirect()->to(getenv('app.baseURL'));
     }
 
 
@@ -288,6 +274,7 @@ class Pages extends BaseController {
         return [
             'appTitle' => getenv('app.title'),
             'appUrl' => getenv('app.baseURL'),
+            'userModel' => $this->userModel,
         ];
     }
 

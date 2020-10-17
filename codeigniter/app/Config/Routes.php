@@ -27,30 +27,24 @@ $routes->setAutoRoute(true);
  * Route Definitions
  * --------------------------------------------------------------------
  */
+$routes->get('/', 'PageController::index');
 
-// We get a performance increase by specifying the default
-// route since we don't have to scan directories.
+// AuthController
+$routes->match(['post', 'get'], 'signin', 'AuthController::signin', ['filter' => 'auth_sign_in']);
+$routes->match(['post', 'get'], 'signup', 'AuthController::signup', ['filter' => 'auth_sign_in']);
+$routes->match(['post', 'get'], 'forget-password', 'AuthController::forgetPassword', ['filter' => 'auth_sign_in']);
+$routes->match(['post', 'get'], 'reset-password/(:alphanum)', 'AuthController::resetPassword/$1', ['filter' => 'auth_sign_in']);
+$routes->get('signout', 'AuthController::signout');
 
-$routes->get('/', 'Pages::index');
-$routes->match(['post', 'get'], 'signin', 'Pages::signin');
-$routes->match(['post', 'get'], 'signup', 'Pages::signup');
-$routes->match(['post', 'get'], 'forget-password', 'Pages::forgetPassword');
-$routes->get('reset-password', 'Pages::resetPassword');
-$routes->match(['post', 'get'], 'reset-password/(:alphanum)', 'Pages::resetPassword/$1');
-$routes->get('signout', 'Pages::signout');
+// AdminController
+$routes->get('admin', 'AdminController::index', ['filter' => 'auth_admin']);
+$routes->get('admin/my-accounts', 'AdminController::myAccounts', ['filter' => 'auth_admin']);
 
-// $routes->get('portals', 'Portals::index', ['filter' => 'auth_user']);
-// $routes->get('portals/monthly-slips/(:num)/(:num)', 'Portals::monthlySlips/$1/$2', ['filter' => 'auth_user']);
-// $routes->get('portals/slip-view/(:num)', 'Portals::slipView/$1', ['filter' => 'auth_user']);
+// SuperAdminController
+$routes->get('admin/users', 'SuperAdminController::users', ['filter' => 'auth_super_admin']);
+$routes->get('admin/user-read/(:alphanum)', 'SuperAdminController::userRead/$1', ['filter' => 'auth_super_admin']);
 
-// $routes->get('portals/report', 'Portals::report', ['filter' => 'auth_user']);
-
-// $routes->get('admins', 'Admins::index', ['filter' => 'auth_admin']);
-
-
-// $routes->match(['post'], 'api/upload-slips', 'Apis::uploadSlips', ['filter' => 'auth_user']);
-// $routes->match(['post'], 'api/ajax/upload-text-files', 'Apis::ajaxUploadTextFiles', ['filter' => 'auth_user']);
-
+$routes->get('admin/accounts', 'SuperAdminController::accounts', ['filter' => 'auth_super_admin']);
 
 
 /**

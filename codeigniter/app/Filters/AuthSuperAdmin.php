@@ -6,13 +6,13 @@ use CodeIgniter\Filters\FilterInterface;
 
 use App\Models\UserModel;
 
-class AuthAdmin implements FilterInterface {
+class AuthSuperAdmin implements FilterInterface {
     private $userModel;
 
     public function before(RequestInterface $request, $arguments=null){
         $this->userModel = new UserModel();
-        if(!$this->userModel->isSignedIn() || !$this->userModel->isAdmin()){
-            return redirect()->to(getenv('app.baseURL').'signin');
+        if(!$this->userModel->isSignedIn() || !$this->userModel->isSuperAdmin()){
+            return redirect()->to(getenv('app.baseURL').'admin');
         }
     }
 
