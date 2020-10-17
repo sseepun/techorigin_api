@@ -16,6 +16,13 @@ class UserAuth {
 
         return password_verify($data['password'], $user['password']);
     }
+    public function validateForgetPassword(string $str, string $fields, array $data){
+        $model = new UserModel();
+        $userByEmail = $model->where('email', $data['username'])->first();
+        $userByUsername = $model->where('username', $data['username'])->first();
+        if(!$userByEmail && !$userByUsername) return false;
+        else return true;
+    }
 
     public function isUniqureEmail(string $str, string $fields, array $data){
         $model = new UserModel();

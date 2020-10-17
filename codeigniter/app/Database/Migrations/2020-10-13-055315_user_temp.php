@@ -34,6 +34,16 @@ class UserTemp extends Migration
 				'constraint' => 1,
 				'default' => 0
 			],
+			'ip' => [
+				'type' => 'VARCHAR',
+				'constraint' => 32,
+				'null' => true,
+			],
+			'used_ip' => [
+				'type' => 'VARCHAR',
+				'constraint' => 32,
+				'null' => true,
+			],
 			'created_at datetime default current_timestamp',
 			'updated_at datetime default current_timestamp on update current_timestamp',
 		]);

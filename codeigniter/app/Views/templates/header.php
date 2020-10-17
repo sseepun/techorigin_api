@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-	<link rel="shortcut icon" href="/public/images/logo.svg" />
+	<link rel="shortcut icon" href="<?= $appUrl ?>/public/favicon.png" />
 	<meta name="description" content="Latest updates and statistic charts" />
 	<meta name="keywords" content="admin template, Midone admin template, dashboard template, flat admin template, responsive admin template, web app" />
 

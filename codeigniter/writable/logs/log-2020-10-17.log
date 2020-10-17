@@ -1,0 +1,33 @@
+CRITICAL - 2020-10-17 05:12:09 --> Invalid file: pages/forget-password-success.php
+#0 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pages/forget-pa...')
+#1 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('pages/forget-pa...', Array, true)
+#2 C:\xampp\htdocs\techorigin_works\gov\codeigniter\app\Controllers\Pages.php(220): view('pages/forget-pa...')
+#3 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Pages->forgetPassword()
+#4 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pages))
+#5 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\techorigin_works\gov\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-10-17 05:32:29 --> Argument 1 passed to CodeIgniter\Router\RouteCollection::match() must be of the type array, string given, called in C:\xampp\htdocs\techorigin_works\gov\codeigniter\app\Config\Routes.php on line 38
+#0 C:\xampp\htdocs\techorigin_works\gov\codeigniter\app\Config\Routes.php(38): CodeIgniter\Router\RouteCollection->match('/reset-password...', 'Pages::resetPas...')
+#1 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(780): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(364): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\techorigin_works\gov\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-10-17 05:32:35 --> Argument 1 passed to CodeIgniter\Router\RouteCollection::match() must be of the type array, string given, called in C:\xampp\htdocs\techorigin_works\gov\codeigniter\app\Config\Routes.php on line 38
+#0 C:\xampp\htdocs\techorigin_works\gov\codeigniter\app\Config\Routes.php(38): CodeIgniter\Router\RouteCollection->match('/reset-password...', 'Pages::resetPas...')
+#1 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(780): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(364): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\techorigin_works\gov\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-10-17 05:50:52 --> syntax error, unexpected 'public' (T_PUBLIC)
+#0 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(869): class_exists('\\App\\Controller...', true)
+#5 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(394): CodeIgniter\CodeIgniter->startController()
+#6 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\techorigin_works\gov\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}

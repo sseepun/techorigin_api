@@ -32,9 +32,12 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 
 $routes->get('/', 'Pages::index');
-$routes->match(['post', 'get'], '/signin', 'Pages::signin');
-$routes->match(['post', 'get'], '/signup', 'Pages::signup');
-$routes->get('/signout', 'Pages::signout');
+$routes->match(['post', 'get'], 'signin', 'Pages::signin');
+$routes->match(['post', 'get'], 'signup', 'Pages::signup');
+$routes->match(['post', 'get'], 'forget-password', 'Pages::forgetPassword');
+$routes->get('reset-password', 'Pages::resetPassword');
+$routes->match(['post', 'get'], 'reset-password/(:alphanum)', 'Pages::resetPassword/$1');
+$routes->get('signout', 'Pages::signout');
 
 // $routes->get('portals', 'Portals::index', ['filter' => 'auth_user']);
 // $routes->get('portals/monthly-slips/(:num)/(:num)', 'Portals::monthlySlips/$1/$2', ['filter' => 'auth_user']);

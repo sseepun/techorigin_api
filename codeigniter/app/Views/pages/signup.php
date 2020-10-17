@@ -3,8 +3,8 @@
     <div class="block xl:grid grid-cols-2 gap-4">
 	
 		<div class="hidden xl:flex flex-col min-h-screen">
-			<a href="signin" class="-intro-x flex items-center pt-5">
-				<img alt="Midone Tailwind HTML Admin Template" class="w-6" src="<?= $appUrl; ?>public/images/logo.svg">
+			<a href="<?= $appUrl ?>signin" class="-intro-x flex items-center pt-5">
+				<img alt="Midone Tailwind HTML Admin Template" class="w-6" src="<?= $appUrl; ?>public/logo_white.png">
 				<span class="text-white text-lg ml-3">
 					<?= $appTitle ?>
 				</span>
@@ -30,6 +30,8 @@
                 </div>
                 
 				<form class="kt-login-v1__form kt-form" action="" method="POST" autocomplete="off">
+                    <?= csrf_field() ?>
+
                     <div class="intro-x mt-8">
                         <input type="text" name="firstname" class="intro-x login__input input input--lg border border-gray-300 block" 
                         placeholder="ชื่อจริง" value="<?= set_value('firstname') ?>" required />
@@ -49,12 +51,13 @@
                         <button type="submit" class="inline-block button button--lg w-full xl:w-32 text-white bg-theme-1 xl:mr-3 align-top">
                             สมัครสมาชิก
                         </button>
-                        <a class="inline-block button button--lg w-full xl:w-32 text-gray-700 border border-gray-300 dark:border-dark-5 dark:text-gray-300 mt-3 xl:mt-0 align-top" href="signin">
+                        <a class="inline-block button button--lg w-full xl:w-32 text-gray-700 border border-gray-300 dark:border-dark-5 dark:text-gray-300 mt-3 xl:mt-0 align-top" 
+                        href="<?= $appUrl ?>signin">
                             เข้าสู่ระบบ
                         </a>
                     </div>
 					<?php if(isset($validation)){?>
-						<div class="rounded-md flex items-center px-5 py-4 mt-5 bg-theme-6 text-white alert-card">
+						<div class="intro-x rounded-md flex items-center px-5 py-4 mt-5 bg-theme-6 text-white alert-card">
 							<i data-feather="alert-octagon" class="w-6 h-6 mr-2"></i>
 							<div class="mr-2">
 								<?= $validation->listErrors() ?>
