@@ -1,6 +1,7 @@
 <?php namespace App\Controllers;
 
 use App\Models\UserModel;
+use App\Models\UserRoleModel;
 
 class SuperAdminController extends BaseController {
 
@@ -28,7 +29,6 @@ class SuperAdminController extends BaseController {
         echo view('admins/pages/users');
         echo view('admins/templates/footer');
     }
-
     public function userRead($string=''){
         if(empty($string)){
             return redirect()->to(getenv('app.baseURL').'admin/users');
@@ -52,6 +52,50 @@ class SuperAdminController extends BaseController {
     }
 
 
+    public function userRoles(){
+        helper(['security']);
+        $data = $this->commonData();
+        $data['bodyClass'] = 'app';
+        $data['pageActive'] = 'User Roles';
+        $data['breadcrumb'][] = [ 'url' => getenv('app.title').'admin/user-roles', 'display' => 'ตำแหน่งผู้ใช้' ];
+
+        $userRoleModel = new UserRoleModel();
+        $data['tableObject'] = $userRoleModel->getTableObject(
+            $page = empty($_GET['page'])? 1: (int) $_GET['page'],
+            $pp = empty($_GET['pp'])? 10: (int) $_GET['pp'],
+            $keyword = empty($_GET['keyword'])? '': $_GET['keyword'],
+        );
+        
+        echo view('admins/templates/header', $data);
+        echo view('admins/pages/user-roles');
+        echo view('admins/templates/footer');
+    }
+    public function userRoleRead($string=''){
+        if(empty($string)){
+            return redirect()->to(getenv('app.baseURL').'admin/user-roles');
+        }
+        
+        helper(['security']);
+        $data = $this->commonData();
+        $data['bodyClass'] = 'app';
+        $data['pageActive'] = 'User Roles';
+        $data['breadcrumb'][] = [ 'url' => getenv('app.title').'admin/user-roles', 'display' => 'ตำแหน่งผู้ใช้' ];
+        $data['breadcrumb'][] = [ 'url' => '#', 'display' => 'ดูข้อมูลตำแหน่งผู้ใช้' ];
+
+        $userRoleModel = new UserRoleModel();
+        $data['targetUserRole'] = $userRoleModel->getUserRoleById(ssDecrypt($string, 'User Role'));
+        if(!$data['targetUserRole']){
+            return redirect()->to(getenv('app.baseURL').'admin/user-roles');
+        }
+
+        print_r($data['targetUserRole']); exit;
+        
+        echo view('admins/templates/header', $data);
+        echo view('admins/pages/user-role-read');
+        echo view('admins/templates/footer');
+    }
+
+
     public function accounts(){
         $data = $this->commonData();
         $data['bodyClass'] = 'app';
@@ -67,6 +111,7 @@ class SuperAdminController extends BaseController {
     private function commonData(){
         return [
             'appTitle' => getenv('app.title'),
+            'pageName' => 'Admin Portal',
             'appUrl' => getenv('app.baseURL'),
             'userModel' => $this->userModel,
             'breadcrumb' => [

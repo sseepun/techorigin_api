@@ -57,7 +57,7 @@ class AuthController extends BaseController {
         }
 
         echo view('templates/header', $data);
-        echo view('users/signin');
+        echo view('auths/signin');
         echo view('templates/footer');
     }
 
@@ -149,14 +149,14 @@ class AuthController extends BaseController {
 
 
                 echo view('templates/header', $data);
-                echo view('users/signup-success');
+                echo view('auths/signup-success');
                 echo view('templates/footer');
                 return true;
             }
         }
 
         echo view('templates/header', $data);
-        echo view('users/signup');
+        echo view('auths/signup');
         echo view('templates/footer');
     }
 
@@ -201,14 +201,14 @@ class AuthController extends BaseController {
 
 
                 echo view('templates/header', $data);
-                echo view('users/forget-password-success');
+                echo view('auths/forget-password-success');
                 echo view('templates/footer');
                 return true;
             }
         }
 
         echo view('templates/header', $data);
-        echo view('users/forget-password');
+        echo view('auths/forget-password');
         echo view('templates/footer');
     }
 
@@ -253,14 +253,14 @@ class AuthController extends BaseController {
                 $this->userModel->update($user['id'], [ 'password' => $this->request->getVar('password_new') ]);
                 
                 echo view('templates/header', $data);
-                echo view('users/reset-password-success');
+                echo view('auths/reset-password-success');
                 echo view('templates/footer');
                 return true;
             }
         }
 
         echo view('templates/header', $data);
-        echo view('users/reset-password');
+        echo view('auths/reset-password');
         echo view('templates/footer');
     }
 

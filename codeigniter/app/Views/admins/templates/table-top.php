@@ -8,7 +8,7 @@
     <div class="hidden md:block mx-auto text-gray-600">
         แสดง <?= min($pp * ($page - 1) + 1, $total) ?> 
         ถึง <?= min($pp * $page + 1, $total) ?> 
-        ของ <?= $total ?> entries
+        ของ <?= $total ?>
     </div>
     <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
         <div class="w-56 relative text-gray-700 dark:text-gray-300">

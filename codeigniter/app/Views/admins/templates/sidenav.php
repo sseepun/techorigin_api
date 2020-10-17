@@ -28,6 +28,12 @@
                 </a>
             </li>
             <li>
+                <a href="<?= $appUrl ?>admin/user-roles" class="side-menu <?php if($pageActive=='User Roles')echo 'side-menu--active'; ?>">
+                    <div class="side-menu__icon"><i data-feather="edit"></i></div>
+                    <div class="side-menu__title">ตำเเหน่งผู้ใช้</div>
+                </a>
+            </li>
+            <li>
                 <a href="<?= $appUrl ?>admin/accounts" class="side-menu <?php if($pageActive=='Accounts')echo 'side-menu--active'; ?>">
                     <div class="side-menu__icon"><i data-feather="trello"></i></div>
                     <div class="side-menu__title">บัญชีผู้ใช้ย่อย</div>

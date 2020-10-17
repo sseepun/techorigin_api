@@ -1,11 +1,11 @@
 <h2 class="intro-y text-lg font-medium mt-8">
-    บัญชีผู้ใช้
+    ตำแหน่งผู้ใช้
 </h2>
 <form id="table_form" action="" method="GET">
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-no-wrap items-center mt-2">
             <a href="<?= $appUrl ?>admin/user-create" class="button text-white bg-theme-1 shadow-md mr-2">
-                เพิ่มบัญชีผู้ใช้
+                เพิ่มตำแหน่ง
             </a>
             <div class="dropdown">
                 <a href="javascript:" class="block dropdown-toggle button px-2 box text-gray-700 dark:text-gray-300">
@@ -34,11 +34,12 @@
             <table class="table table-report -mt-2">
                 <thead>
                     <tr>
-                        <th class="whitespace-no-wrap">รูปโปรไฟล์</th>
-                        <th class="whitespace-no-wrap">ชื่อ-นามสกุล</th>
-                        <th class="text-center whitespace-no-wrap">ตำเเหน่ง</th>
+                        <th class="whitespace-no-wrap">ตำแหน่ง</th>
+                        <th class="text-center whitespace-no-wrap">ผู้ดูแลระบบ</th>
+                        <th class="text-center whitespace-no-wrap">ผู้ดูแลระบบขั้นสูง</th>
+                        <th class="text-center whitespace-no-wrap">ค่าเริ่มต้น</th>
+                        <th class="text-center whitespace-no-wrap">ลำดับ</th>
                         <th class="text-center whitespace-no-wrap">สภานะ</th>
-                        <th class="text-center whitespace-no-wrap">วันที่สมัคร</th>
                         <th class="text-center whitespace-no-wrap">การจัดการ</th>
                     </tr>
                 </thead>
@@ -48,41 +49,46 @@
                             foreach($tableObject['result'] as $r){
                     ?>
                         <tr class="intro-x">
-                            <td class="w-30">
-                                <div class="flex">
-                                    <div class="w-10 h-10 image-fit zoom-in">
-                                        <img alt="User Profile" class="tooltip rounded-full" src="<?php 
-                                            if(!empty($r['profile'])) echo $appUrl.$r['profile'];
-                                            else echo $appUrl.'public/images/default/profile.png';
-                                        ?>" />
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <a href="<?= $appUrl.'admin/user-read/'.ssEncrypt($r['id']) ?>" class="font-medium whitespace-no-wrap">
-                                    <?= $r['firstname'] ?> <?= $r['lastname'] ?>
+                            <td class="whitespace-no-wrap">
+                                <a href="<?= $appUrl.'admin/user-role-read/'.ssEncrypt($r['id'], 'User Role') ?>" class="font-medium whitespace-no-wrap">
+                                    <?= $r['name'] ?>
                                 </a> 
-                                <div class="text-gray-600 text-xs whitespace-no-wrap">
-                                    <?= $r['email'] ?>
-                                </div>
                             </td>
-                            <td class="text-center"><?= $r['role'] ?></td>
+                            <td class="w-30 text-center font-medium">
+                                <?php if($r['is_admin']){?>
+                                    <div class="text-theme-9">Yes</div>
+                                <?php }else{?>
+                                    <div class="text-theme-6">No</div>
+                                <?php }?>
+                            </td>
+                            <td class="w-30 text-center font-medium">
+                                <?php if($r['is_super_admin']){?>
+                                    <div class="text-theme-9">Yes</div>
+                                <?php }else{?>
+                                    <div class="text-theme-6">No</div>
+                                <?php }?>
+                            </td>
+                            <td class="w-30 text-center font-medium">
+                                <?php if($r['is_default']){?>
+                                    <div class="text-theme-9">Yes</div>
+                                <?php }else{?>
+                                    <div class="text-theme-6">No</div>
+                                <?php }?>
+                            </td>
+                            <td class="w-30 text-center"><?= $r['rank'] ?></td>
                             <td class="w-30 text-center font-medium">
                                 <?php if($r['status']==1){?>
                                     <div class="text-theme-9">Active</div>
-                                <?php }else if($r['status']==0){?>
-                                    <div class="text-theme-11">Pending</div>
-                                <?php }else if($r['status']==-1){?>
-                                    <div class="text-theme-6">Banned</div>
+                                <?php }else{?>
+                                    <div class="text-theme-6">Inactive</div>
                                 <?php }?>
                             </td>
-                            <td class="text-center"><?= $r['created_at'] ?></td>
                             <td class="table-report__action w-56">
                                 <div class="flex justify-center items-center">
-                                    <a href="<?= $appUrl.'admin/user-read/'.ssEncrypt($r['id']) ?>" class="button button--sm text-white bg-theme-1 mr-2">
+                                    <a href="<?= $appUrl.'admin/user-role-read/'.ssEncrypt($r['id'], 'User Role') ?>" class="button button--sm text-white bg-theme-1 mr-2">
                                         ดูข้อมูล
                                     </a>
-                                    <a href="<?= $appUrl.'admin/user-edit/'.ssEncrypt($r['id']) ?>" class="button button--sm text-gray-700 border border-gray-300 dark:border-dark-5 dark:text-gray-300">
+                                    <a href="<?= $appUrl.'admin/user-role-edit/'.ssEncrypt($r['id'], 'User Role') ?>" class="button button--sm text-gray-700 border border-gray-300 dark:border-dark-5 dark:text-gray-300">
                                         แก้ไข
                                     </a>
                                 </div>
@@ -90,7 +96,7 @@
                         </tr>
                     <?php }}else{?>
                         <tr class="intro-x">
-                            <td colspan="6" class="text-center">
+                            <td colspan="7" class="text-center">
                                 <h1 class="text-base font-medium">
                                     ไม่พบข้อมูลที่ค้นหา 
                                     <a class="text-theme-1" href="<?= $appUrl ?>admin/users">

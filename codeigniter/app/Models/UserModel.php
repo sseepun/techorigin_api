@@ -20,7 +20,7 @@ class UserModel extends Model {
     private $role;
 
     public function __construct(){
-        helper('cookie');
+        helper(['cookie']);
         parent::__construct();
         $this->db = \Config\Database::connect();
         $this->checkSignIn();
@@ -217,7 +217,8 @@ class UserModel extends Model {
                 $user = $query->getRowArray();
                 if(!$user) return false;
                 else{
-                    $salt = $this->randomChars(64);
+                    helper(['security']);
+                    $salt = randomAlphanum(64);
                     $query2 = $this->db->query(
                         "INSERT INTO `user_temp` (`user_id`, `action`, `salt`, `ip`) 
                         VALUES (?, ?, ?, ?)", 
@@ -262,17 +263,6 @@ class UserModel extends Model {
             return $user;
         }
         return false;
-    }
-
-    public function randomChars($size){
-        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-        $pass = array();
-        $alphaLength = strlen($alphabet) - 1;
-        for($i=0; $i<$size; $i++){
-            $n = rand(0, $alphaLength);
-            $pass[] = $alphabet[$n];
-        }
-        return implode($pass);
     }
 
 

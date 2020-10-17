@@ -294,3 +294,19 @@ CRITICAL - 2020-10-17 12:55:25 --> Call to a member function isSuperAdmin() on n
 #6 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
 #7 C:\xampp\htdocs\techorigin_works\gov\index.php(45): CodeIgniter\CodeIgniter->run()
 #8 {main}
+CRITICAL - 2020-10-17 14:55:24 --> Call to undefined method App\Models\UserRoleModel::getUserRoleById
+#0 C:\xampp\htdocs\techorigin_works\gov\codeigniter\app\Controllers\SuperAdminController.php(86): CodeIgniter\Model->__call('getUserRoleById', Array)
+#1 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\SuperAdminController->userRoleRead('WXNZZE5sY1RuTkZ...')
+#2 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdminController))
+#3 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\techorigin_works\gov\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-10-17 14:56:00 --> Invalid file: admins/pages/user-role-read.php
+#0 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admins/pages/us...')
+#1 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('admins/pages/us...', Array, true)
+#2 C:\xampp\htdocs\techorigin_works\gov\codeigniter\app\Controllers\SuperAdminController.php(92): view('admins/pages/us...')
+#3 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\SuperAdminController->userRoleRead('WXNZZE5sY1RuTkZ...')
+#4 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdminController))
+#5 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\techorigin_works\gov\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}

@@ -19,7 +19,17 @@ $routes->setDefaultNamespace('App\Controllers');
 $routes->setDefaultController('Pages');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
-$routes->set404Override();
+$routes->set404Override(function(){
+	$data = [
+		'appTitle' => getenv('app.title'),
+		'appUrl' => getenv('app.baseURL'),
+        'bodyClass' => 'app',
+	];
+	echo view('templates/header', $data);
+	echo view('errors/404');
+	echo view('templates/footer');
+	return true;
+});
 $routes->setAutoRoute(true);
 
 /**
@@ -43,6 +53,9 @@ $routes->get('admin/my-accounts', 'AdminController::myAccounts', ['filter' => 'a
 // SuperAdminController
 $routes->get('admin/users', 'SuperAdminController::users', ['filter' => 'auth_super_admin']);
 $routes->get('admin/user-read/(:alphanum)', 'SuperAdminController::userRead/$1', ['filter' => 'auth_super_admin']);
+
+$routes->get('admin/user-roles', 'SuperAdminController::userRoles', ['filter' => 'auth_super_admin']);
+$routes->get('admin/user-role-read/(:alphanum)', 'SuperAdminController::userRoleRead/$1', ['filter' => 'auth_super_admin']);
 
 $routes->get('admin/accounts', 'SuperAdminController::accounts', ['filter' => 'auth_super_admin']);
 

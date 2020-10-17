@@ -12,10 +12,11 @@
 			<div class="my-auto">
 				<img alt="Midone Tailwind HTML Admin Template" class="-intro-x w-1/2 -mt-16" src="<?= $appUrl; ?>public/images/illustration.svg">
 				<div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">
-					ลืมรหัสผ่าน
+					<?= $appTitle ?>
 				</div>
 				<div class="-intro-x mt-5 text-lg text-white dark:text-gray-500">
-					ระบบการจัดการข้อมูลลูกค้าครบวงจร
+					มุ่งสู่ความสำเร็จด้วยระบบที่เหนือระดับ 
+					<br> ด้วยเทคโนโลยีทันที่สมัย และบริการระดับไฮเอนด์
 				</div>
 			</div>
 		</div>

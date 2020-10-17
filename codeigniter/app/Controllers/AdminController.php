@@ -38,6 +38,7 @@ class AdminController extends BaseController {
     private function commonData(){
         return [
             'appTitle' => getenv('app.title'),
+            'pageName' => 'Admin Portal',
             'appUrl' => getenv('app.baseURL'),
             'userModel' => $this->userModel,
             'breadcrumb' => [
