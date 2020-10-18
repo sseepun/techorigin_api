@@ -55,7 +55,8 @@ $routes->get('admin/users', 'SuperAdminController::users', ['filter' => 'auth_su
 $routes->get('admin/user-read/(:alphanum)', 'SuperAdminController::userRead/$1', ['filter' => 'auth_super_admin']);
 
 $routes->get('admin/user-roles', 'SuperAdminController::userRoles', ['filter' => 'auth_super_admin']);
-$routes->get('admin/user-role-read/(:alphanum)', 'SuperAdminController::userRoleRead/$1', ['filter' => 'auth_super_admin']);
+$routes->match(['post', 'get'], 'admin/user-role/(:alpha)', 'SuperAdminController::userRole/$1', ['filter' => 'auth_super_admin']);
+$routes->match(['post', 'get'], 'admin/user-role/(:alpha)/(:alphanum)', 'SuperAdminController::userRole/$1/$2', ['filter' => 'auth_super_admin']);
 
 $routes->get('admin/accounts', 'SuperAdminController::accounts', ['filter' => 'auth_super_admin']);
 

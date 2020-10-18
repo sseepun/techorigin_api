@@ -4,7 +4,7 @@
 <form id="table_form" action="" method="GET">
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-no-wrap items-center mt-2">
-            <a href="<?= $appUrl ?>admin/user-create" class="button text-white bg-theme-1 shadow-md mr-2">
+            <a href="<?= $appUrl ?>admin/user-role/create" class="button text-white bg-theme-1 shadow-md mr-2">
                 เพิ่มตำแหน่ง
             </a>
             <div class="dropdown">
@@ -50,7 +50,7 @@
                     ?>
                         <tr class="intro-x">
                             <td class="whitespace-no-wrap">
-                                <a href="<?= $appUrl.'admin/user-role-read/'.ssEncrypt($r['id'], 'User Role') ?>" class="font-medium whitespace-no-wrap">
+                                <a href="<?= $appUrl.'admin/user-role/read/'.ssEncrypt($r['id'], 'User Role') ?>" class="font-medium whitespace-no-wrap">
                                     <?= $r['name'] ?>
                                 </a> 
                             </td>
@@ -85,12 +85,14 @@
                             </td>
                             <td class="table-report__action w-56">
                                 <div class="flex justify-center items-center">
-                                    <a href="<?= $appUrl.'admin/user-role-read/'.ssEncrypt($r['id'], 'User Role') ?>" class="button button--sm text-white bg-theme-1 mr-2">
+                                    <a href="<?= $appUrl.'admin/user-role/read/'.ssEncrypt($r['id'], 'User Role') ?>" class="button button--sm text-white bg-theme-1 mr-2 whitespace-no-wrap">
                                         ดูข้อมูล
                                     </a>
-                                    <a href="<?= $appUrl.'admin/user-role-edit/'.ssEncrypt($r['id'], 'User Role') ?>" class="button button--sm text-gray-700 border border-gray-300 dark:border-dark-5 dark:text-gray-300">
-                                        แก้ไข
-                                    </a>
+                                    <?php if($r['id'] > 2){?>
+                                        <a href="<?= $appUrl.'admin/user-role/update/'.ssEncrypt($r['id'], 'User Role') ?>" class="button button--sm text-gray-700 border border-gray-300 dark:border-dark-5 dark:text-gray-300 whitespace-no-wrap">
+                                            แก้ไข
+                                        </a>
+                                    <?php }?>
                                 </div>
                             </td>
                         </tr>

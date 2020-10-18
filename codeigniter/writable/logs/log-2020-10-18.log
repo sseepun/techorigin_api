@@ -1,0 +1,9 @@
+CRITICAL - 2020-10-18 13:55:44 --> Call to a member function getError() on null
+#0 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\View\View.php(246): include()
+#1 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('admins/pages/us...', Array, true)
+#2 C:\xampp\htdocs\techorigin_works\gov\codeigniter\app\Controllers\SuperAdminController.php(166): view('admins/pages/us...')
+#3 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\SuperAdminController->userRole('create')
+#4 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdminController))
+#5 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\techorigin_works\gov\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}

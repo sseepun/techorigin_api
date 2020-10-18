@@ -310,3 +310,17 @@ CRITICAL - 2020-10-17 14:56:00 --> Invalid file: admins/pages/user-role-read.php
 #5 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
 #6 C:\xampp\htdocs\techorigin_works\gov\index.php(45): CodeIgniter\CodeIgniter->run()
 #7 {main}
+CRITICAL - 2020-10-17 23:12:01 --> Unable to connect to the database.
+#0 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1860): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\Model.php(506): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\techorigin_works\gov\codeigniter\app\Validation\UserAuth.php(10): CodeIgniter\Model->first()
+#4 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\Validation\Validation.php(325): App\Validation\UserAuth->validateUser('123456', 'username, passw...', Array, NULL)
+#5 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\Validation\Validation.php(189): CodeIgniter\Validation\Validation->processRules('password', 'password', '123456', Array, Array)
+#6 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\Controller.php(219): CodeIgniter\Validation\Validation->run()
+#7 C:\xampp\htdocs\techorigin_works\gov\codeigniter\app\Controllers\AuthController.php(44): CodeIgniter\Controller->validate(Array)
+#8 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\AuthController->signin()
+#9 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+#10 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\techorigin_works\gov\index.php(45): CodeIgniter\CodeIgniter->run()
+#12 {main}

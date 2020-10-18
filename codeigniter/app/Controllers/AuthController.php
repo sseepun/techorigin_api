@@ -124,7 +124,7 @@ class AuthController extends BaseController {
             if(!$this->validate($rules)){
                 $data['validation'] = $this->validator;
             }else{
-                $this->userModel->save([
+                $this->userModel->insert([
                     'role_id' => $this->userModel->getDefaultRoleId(),
                     'firstname' => $this->request->getPost('firstname'),
                     'lastname' => $this->request->getPost('lastname'),

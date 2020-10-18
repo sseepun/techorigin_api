@@ -24,4 +24,19 @@ $(function(){ 'use strict';
         });
     }
 
+
+    // CRUD Form
+    if($('form#crud_form').length){
+        var crudForm = $('form#crud_form'),
+            crudReady = true;
+        crudForm.find('#confirm_delete_btn').click(function(e){
+            e.preventDefault();
+            if(crudReady){
+                crudReady = false;
+                crudForm.find('[name="process"]').val('delete');
+                crudForm[0].submit();
+            }
+        });
+    }
+
 });

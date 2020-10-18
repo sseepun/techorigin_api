@@ -3,7 +3,7 @@
     <h2 class="intro-y text-lg font-medium mr-auto">
         บัญชีผู้ใช้
     </h2>
-    <a href="<?= $appUrl.'admin/user-edit/'.ssEncrypt($targetUser['id']) ?>" class="button text-white bg-theme-1 shadow-md mr-2">
+    <a href="<?= $appUrl.'admin/user-edit/'.ssEncrypt($target['id']) ?>" class="button text-white bg-theme-1 shadow-md mr-2">
         แก้ไขผู้ใช้
     </a>
 </div>
@@ -13,21 +13,21 @@
         <div class="flex flex-1 px-5 items-center justify-center lg:justify-start">
             <div class="w-20 h-20 sm:w-24 sm:h-24 flex-none lg:w-32 lg:h-32 image-fit relative">
                 <img alt="User Profile" class="rounded-full" src="<?php 
-                    if(!empty($targetUser['profile'])) echo $appUrl.$targetUser['profile'];
+                    if(!empty($target['profile'])) echo $appUrl.$target['profile'];
                     else echo $appUrl.'public/images/default/profile.png';
                 ?>" />
             </div>
             <div class="ml-5">
                 <div class="w-24 sm:w-40 truncate sm:whitespace-normal font-medium text-lg">
-                    <?= $targetUser['firstname'] ?> <?= $targetUser['lastname'] ?>
+                    <?= $target['firstname'] ?> <?= $target['lastname'] ?>
                 </div>
-                <div class="text-gray-600"><?= $targetUser['role'] ?></div>
+                <div class="text-gray-600"><?= $target['role'] ?></div>
             </div>
         </div>
         <div class="flex mt-6 lg:mt-0 items-center lg:items-start flex-1 flex-col justify-center text-gray-600 dark:text-gray-300 px-5 border-l border-r border-gray-200 dark:border-dark-5 border-t lg:border-t-0 pt-5 lg:pt-0">
             <div class="truncate sm:whitespace-normal flex items-center">
                 <i data-feather="mail" class="w-4 h-4 mr-2"></i>
-                <?= $targetUser['email'] ?>
+                <?= $target['email'] ?>
             </div>
             <div class="truncate sm:whitespace-normal flex items-center mt-3">
                 <i data-feather="instagram" class="w-4 h-4 mr-2"></i>

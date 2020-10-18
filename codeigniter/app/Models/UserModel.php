@@ -20,7 +20,7 @@ class UserModel extends Model {
     private $role;
 
     public function __construct(){
-        helper(['cookie']);
+        helper(['cookie', 'security']);
         parent::__construct();
         $this->db = \Config\Database::connect();
         $this->checkSignIn();
@@ -121,7 +121,8 @@ class UserModel extends Model {
     }
 
     public function getDefaultRoleId(){
-        $query = $this->db->query("SELECT `id` FROM `user_roles` WHERE `is_default` = 1 LIMIT 1");
+        $query = $this->db->query("SELECT `id` FROM `user_roles` WHERE `is_default` = 1 
+            ORDER BY `created_at` DESC LIMIT 1");
         $role = $query->getRowArray();
         if(!$role) return null;
         else return $role['id'];
@@ -217,7 +218,6 @@ class UserModel extends Model {
                 $user = $query->getRowArray();
                 if(!$user) return false;
                 else{
-                    helper(['security']);
                     $salt = randomAlphanum(64);
                     $query2 = $this->db->query(
                         "INSERT INTO `user_temp` (`user_id`, `action`, `salt`, `ip`) 
