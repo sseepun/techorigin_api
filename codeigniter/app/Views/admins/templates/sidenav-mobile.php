@@ -36,8 +36,14 @@
             </li>
             <li>
                 <a href="<?= $appUrl ?>admin/accounts" class="menu <?php if($pageActive=='Accounts')echo 'menu--active'; ?>">
-                    <div class="menu__icon"><i data-feather="trello"></i></div>
+                    <div class="menu__icon"><i data-feather="users"></i></div>
                     <div class="menu__title">บัญชีผู้ใช้ย่อย</div>
+                </a>
+            </li>
+            <li>
+                <a href="<?= $appUrl ?>admin/account-roles" class="menu <?php if($pageActive=='Account Roles')echo 'menu--active'; ?>">
+                    <div class="menu__icon"><i data-feather="edit"></i></div>
+                    <div class="menu__title">ตำเเหน่งผู้ใช้ย่อย</div>
                 </a>
             </li>
         <?php }?>

@@ -3,8 +3,8 @@
     <h2 class="intro-y text-lg font-medium mr-auto">
         บัญชีผู้ใช้
     </h2>
-    <a href="<?= $appUrl.'admin/user-edit/'.ssEncrypt($target['id']) ?>" class="button text-white bg-theme-1 shadow-md mr-2">
-        แก้ไขผู้ใช้
+    <a href="<?= $appUrl ?>admin/users" class="inline-block button w-24 border dark:border-dark-5 text-gray-700 dark:text-gray-300 bg-white">
+        ย้อนกลับ
     </a>
 </div>
 

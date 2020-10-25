@@ -1,6 +1,6 @@
 <div class="intro-y flex items-center mt-8">
     <h2 class="text-lg font-medium mr-auto">
-        ตำแหน่งผู้ใช้
+        ตำแหน่งผู้ใช้ย่อย
     </h2>
 </div>
 <form action="" id="crud_form" method="POST">
@@ -14,25 +14,19 @@
                     value="<?= inputValue($target, 'name', '', set_value('name')) ?>" required />
                     <?= errorDisplay($validation, 'name') ?>
                 </div>
-                <div class="col-span-6 md:col-span-4">
-                    <label>ผู้ดูแลระบบ</label>
+                <div class="col-span-6">
+                    <label>การเข้าถึง</label>
                     <div class="mt-2">
-                        <select name="is_admin" class="input w-full border" <?= intputAttr($process) ?>>
-                            <?= optionValue($target, 'is_admin', 1, 'Yes', false, set_value('is_admin')) ?>
-                            <?= optionValue($target, 'is_admin', 0, 'No', true, set_value('is_admin')) ?>
+                        <select name="access_code" class="input w-full border" <?= intputAttr($process) ?>>
+                            <?php
+                                for($i=0; $i<100; $i++){
+                                    echo optionValue($target, 'access_code', $i, $i, $i==0, set_value('access_code'));
+                                }
+                            ?>
                         </select>
                     </div>
                 </div>
-                <div class="col-span-6 md:col-span-4">
-                    <label>ผู้ดูแลระบบขั้นสูง</label>
-                    <div class="mt-2">
-                        <select name="is_super_admin" class="input w-full border" <?= intputAttr($process) ?>>
-                            <?= optionValue($target, 'is_super_admin', 1, 'Yes', false, set_value('is_super_admin')) ?>
-                            <?= optionValue($target, 'is_super_admin', 0, 'No', true, set_value('is_super_admin')) ?>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-span-6 md:col-span-4">
+                <div class="col-span-6">
                     <label>ค่าเริ่มต้น</label>
                     <div class="mt-2">
                         <select name="is_default" class="input w-full border" <?= intputAttr($process) ?>>
@@ -60,7 +54,7 @@
                     <input type="hidden" name="process" value="<?= $process ?>" />
                     <input type="hidden" name="killbot" />
                     <?= buttonSet($process) ?>
-                    <a href="<?= $appUrl ?>admin/user-roles" class="inline-block button w-24 border dark:border-dark-5 text-gray-700 dark:text-gray-300 mr-1">
+                    <a href="<?= $appUrl ?>admin/account-roles" class="inline-block button w-24 border dark:border-dark-5 text-gray-700 dark:text-gray-300 mr-1">
                         ย้อนกลับ
                     </a>
                 </div>

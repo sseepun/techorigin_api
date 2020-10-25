@@ -2,10 +2,8 @@
 
 use CodeIgniter\Database\Migration;
 
-class UserTemp extends Migration
-{
-	public function up()
-	{
+class UserTemp extends Migration{
+	public function up(){
 		$this->db->disableForeignKeyChecks();
 
 		$this->forge->addField([
@@ -55,8 +53,7 @@ class UserTemp extends Migration
         $this->db->enableForeignKeyChecks();
 	}
 
-	public function down()
-	{
+	public function down(){
 		$this->forge->dropTable('user_temp');
 	}
 }

@@ -2,14 +2,14 @@
 
 use CodeIgniter\Model;
 
-class UserRoleModel extends Model {
-    protected $table = 'user_roles';
+class AccountRoleModel extends Model {
+    protected $table = 'account_roles';
     protected $primaryKey = 'id';
     
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['name', 'is_admin', 'is_default', 'order', 'status'];
+    protected $allowedFields = ['name', 'access_code', 'is_default', 'order', 'status'];
     protected $beforeInsert = ['beforeInsert'];
     protected $beforeUpdate = ['beforeUpdate'];
 
@@ -33,7 +33,7 @@ class UserRoleModel extends Model {
         }
 
         $getQuery = $this->db->query(
-            "SELECT * FROM `user_roles` 
+            "SELECT * FROM `account_roles` 
             WHERE 1 ".$whereQuery." 
             ORDER BY `order` ASC, `created_at` DESC 
             LIMIT :start:, :pp:",
@@ -43,7 +43,7 @@ class UserRoleModel extends Model {
 
         $totalQuery = $this->db->query(
             "SELECT COUNT(`id`) AS `total` 
-            FROM `user_roles` 
+            FROM `account_roles` 
             WHERE 1 ".$whereQuery,
         );
         $total = $totalQuery->getRowArray()['total'];
@@ -58,9 +58,9 @@ class UserRoleModel extends Model {
     }
 
 
-    public function getUserRoleById($id){
+    public function getAccountRoleById($id){
         $query = $this->db->query(
-            "SELECT * FROM `user_roles` WHERE `id` = ?",
+            "SELECT * FROM `account_roles` WHERE `id` = ?",
             [ $id ]
         );
         return $query->getRowArray();

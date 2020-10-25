@@ -2,7 +2,7 @@
 
 use CodeIgniter\Database\Migration;
 
-class UserRoles extends Migration{
+class AccountRoles extends Migration{
 	public function up(){
 		$this->db->disableForeignKeyChecks();
 
@@ -17,14 +17,9 @@ class UserRoles extends Migration{
 				'type' => 'VARCHAR',
 				'constraint' => 256
 			],
-			'is_admin' => [
+			'access_code' => [
 				'type' => 'INT',
-				'constraint' => 1,
-				'default' => 0
-			],
-			'is_super_admin' => [
-				'type' => 'INT',
-				'constraint' => 1,
+				'constraint' => 2,
 				'default' => 0
 			],
 			'is_default' => [
@@ -47,12 +42,12 @@ class UserRoles extends Migration{
 		]);
 		$this->forge->addPrimaryKey('id');
 		$this->forge->addUniqueKey('name');
-		$this->forge->createTable('user_roles', true);
+		$this->forge->createTable('account_roles', true);
 		
         $this->db->enableForeignKeyChecks();
 	}
 
 	public function down(){
-		$this->forge->dropTable('user_roles');
+		$this->forge->dropTable('account_roles');
 	}
 }

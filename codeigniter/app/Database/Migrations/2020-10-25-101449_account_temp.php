@@ -2,73 +2,58 @@
 
 use CodeIgniter\Database\Migration;
 
-class Users extends Migration{
+class AccountTemp extends Migration{
 	public function up(){
 		$this->db->disableForeignKeyChecks();
-		
+
 		$this->forge->addField([
 			'id' => [
 				'type' => 'INT',
-				'constraint' => 11,
+				'constraint' => 13,
 				'unsigned' => true,
 				'auto_increment' => true
 			],
-			'role_id' => [
+			'account_id' => [
 				'type' => 'INT',
-				'constraint' => 5,
+				'constraint' => 13,
 				'unsigned' => true,
 				'null' => true,
 			],
-			'username' => [
+			'action' => [
 				'type' => 'VARCHAR',
 				'constraint' => 128
 			],
-			'firstname' => [
-				'type' => 'VARCHAR',
-				'constraint' => 256,
-				'null' => true,
-			],
-			'lastname' => [
-				'type' => 'VARCHAR',
-				'constraint' => 256,
-				'null' => true,
-			],
-			'email' => [
+			'salt' => [
 				'type' => 'VARCHAR',
 				'constraint' => 256,
 			],
-			'password' => [
-				'type' => 'VARCHAR',
-				'constraint' => 512,
+			'is_used' => [
+				'type' => 'INT',
+				'constraint' => 1,
+				'default' => 0
 			],
-			'profile' => [
-				'type' => 'VARCHAR',
-				'constraint' => 256,
-				'null' => true,
-			],
-			'last_ip' => [
+			'ip' => [
 				'type' => 'VARCHAR',
 				'constraint' => 32,
 				'null' => true,
 			],
-			'status' => [
-				'type' => 'INT',
-				'constraint' => 1,
-				'default' => 1
+			'used_ip' => [
+				'type' => 'VARCHAR',
+				'constraint' => 32,
+				'null' => true,
 			],
 			'created_at datetime default current_timestamp',
 			'updated_at datetime default current_timestamp on update current_timestamp',
 		]);
 		$this->forge->addPrimaryKey('id');
-		$this->forge->addForeignKey('role_id', 'user_roles', 'id', 'NO ACTION', 'SET NULL');
-		$this->forge->addUniqueKey('username');
-		$this->forge->addUniqueKey('email');
-		$this->forge->createTable('users', true);
+		$this->forge->addForeignKey('account_id', 'accounts', 'id', 'NO ACTION', 'CASCADE');
+		$this->forge->addUniqueKey('salt');
+		$this->forge->createTable('account_temp', true);
 		
         $this->db->enableForeignKeyChecks();
 	}
 
 	public function down(){
-		$this->forge->dropTable('users');
+		$this->forge->dropTable('account_temp');
 	}
 }

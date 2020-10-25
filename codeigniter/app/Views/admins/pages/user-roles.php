@@ -75,7 +75,7 @@
                                     <div class="text-theme-6">No</div>
                                 <?php }?>
                             </td>
-                            <td class="w-30 text-center"><?= $r['rank'] ?></td>
+                            <td class="w-30 text-center"><?= $r['order'] ?></td>
                             <td class="w-30 text-center font-medium">
                                 <?php if($r['status']==1){?>
                                     <div class="text-theme-9">Active</div>
@@ -88,11 +88,9 @@
                                     <a href="<?= $appUrl.'admin/user-role/read/'.ssEncrypt($r['id'], 'User Role') ?>" class="button button--sm text-white bg-theme-1 mr-2 whitespace-no-wrap">
                                         ดูข้อมูล
                                     </a>
-                                    <?php if($r['id'] > 2){?>
-                                        <a href="<?= $appUrl.'admin/user-role/update/'.ssEncrypt($r['id'], 'User Role') ?>" class="button button--sm text-gray-700 border border-gray-300 dark:border-dark-5 dark:text-gray-300 whitespace-no-wrap">
-                                            แก้ไข
-                                        </a>
-                                    <?php }?>
+                                    <a href="<?= $appUrl.'admin/user-role/update/'.ssEncrypt($r['id'], 'User Role') ?>" class="button button--sm text-gray-700 border border-gray-300 dark:border-dark-5 dark:text-gray-300 whitespace-no-wrap">
+                                        แก้ไข
+                                    </a>
                                 </div>
                             </td>
                         </tr>
@@ -101,7 +99,7 @@
                             <td colspan="7" class="text-center">
                                 <h1 class="text-base font-medium">
                                     ไม่พบข้อมูลที่ค้นหา 
-                                    <a class="text-theme-1" href="<?= $appUrl ?>admin/users">
+                                    <a class="text-theme-1" href="<?= $appUrl ?>admin/user-roless">
                                         <u>เริ่มค้นหาใหม่</u>
                                     </a>
                                 </h1>

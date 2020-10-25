@@ -1,0 +1,51 @@
+CRITICAL - 2020-10-25 05:25:06 --> Class 'App\Database\Seeds\AccountRoleSeeder' not found
+#0 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\Commands\Database\Seed.php(124): CodeIgniter\Database\Seeder->call('App\\Database\\Se...')
+#1 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CLI\Commands.php(100): CodeIgniter\Commands\Database\Seed->run(Array)
+#2 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CLI\CommandRunner.php(107): CodeIgniter\CLI\Commands->run('db:seed', Array)
+#3 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CLI\CommandRunner.php(85): CodeIgniter\CLI\CommandRunner->index(Array)
+#4 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(914): CodeIgniter\CLI\CommandRunner->_remap('index', 'db:seed', 'AccountRoleSeed...')
+#5 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(CodeIgniter\CLI\CommandRunner))
+#6 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CLI\Console.php(86): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\techorigin_works\gov\codeigniter\spark(57): CodeIgniter\CLI\Console->run()
+#9 {main}
+CRITICAL - 2020-10-25 05:26:07 --> Class 'App\Database\Seeds\AccountRoleSeeder' not found
+#0 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\Commands\Database\Seed.php(124): CodeIgniter\Database\Seeder->call('App\\Database\\Se...')
+#1 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CLI\Commands.php(100): CodeIgniter\Commands\Database\Seed->run(Array)
+#2 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CLI\CommandRunner.php(107): CodeIgniter\CLI\Commands->run('db:seed', Array)
+#3 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CLI\CommandRunner.php(85): CodeIgniter\CLI\CommandRunner->index(Array)
+#4 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(914): CodeIgniter\CLI\CommandRunner->_remap('index', 'db:seed', 'AccountRoleSeed...')
+#5 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(CodeIgniter\CLI\CommandRunner))
+#6 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CLI\Console.php(86): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\techorigin_works\gov\codeigniter\spark(57): CodeIgniter\CLI\Console->run()
+#9 {main}
+CRITICAL - 2020-10-25 05:26:51 --> Class 'App\Database\Seeds\AccountRoleSeeder' not found
+#0 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\Commands\Database\Seed.php(124): CodeIgniter\Database\Seeder->call('App\\Database\\Se...')
+#1 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CLI\Commands.php(100): CodeIgniter\Commands\Database\Seed->run(Array)
+#2 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CLI\CommandRunner.php(107): CodeIgniter\CLI\Commands->run('db:seed', Array)
+#3 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CLI\CommandRunner.php(85): CodeIgniter\CLI\CommandRunner->index(Array)
+#4 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(914): CodeIgniter\CLI\CommandRunner->_remap('index', 'db:seed', 'AccountRoleSeed...')
+#5 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(CodeIgniter\CLI\CommandRunner))
+#6 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CLI\Console.php(86): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\techorigin_works\gov\codeigniter\spark(57): CodeIgniter\CLI\Console->run()
+#9 {main}
+CRITICAL - 2020-10-25 05:43:12 --> Invalid file: admins/pages/account-role-process.php
+#0 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admins/pages/ac...')
+#1 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('admins/pages/ac...', Array, true)
+#2 C:\xampp\htdocs\techorigin_works\gov\codeigniter\app\Controllers\SuperAdminController.php(297): view('admins/pages/ac...')
+#3 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\SuperAdminController->accountRole('create')
+#4 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdminController))
+#5 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\techorigin_works\gov\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-10-25 05:43:19 --> Invalid file: admins/pages/account-role-process.php
+#0 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admins/pages/ac...')
+#1 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('admins/pages/ac...', Array, true)
+#2 C:\xampp\htdocs\techorigin_works\gov\codeigniter\app\Controllers\SuperAdminController.php(297): view('admins/pages/ac...')
+#3 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\SuperAdminController->accountRole('create')
+#4 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdminController))
+#5 C:\xampp\htdocs\techorigin_works\gov\codeigniter\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\techorigin_works\gov\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}

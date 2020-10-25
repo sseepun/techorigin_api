@@ -52,7 +52,8 @@ $routes->get('admin/my-accounts', 'AdminController::myAccounts', ['filter' => 'a
 
 // SuperAdminController
 $routes->get('admin/users', 'SuperAdminController::users', ['filter' => 'auth_super_admin']);
-$routes->get('admin/user-read/(:alphanum)', 'SuperAdminController::userRead/$1', ['filter' => 'auth_super_admin']);
+$routes->match(['post', 'get'], 'admin/user/(:alpha)', 'SuperAdminController::user/$1', ['filter' => 'auth_super_admin']);
+$routes->match(['post', 'get'], 'admin/user/(:alpha)/(:alphanum)', 'SuperAdminController::user/$1/$2', ['filter' => 'auth_super_admin']);
 
 $routes->get('admin/user-roles', 'SuperAdminController::userRoles', ['filter' => 'auth_super_admin']);
 $routes->match(['post', 'get'], 'admin/user-role/(:alpha)', 'SuperAdminController::userRole/$1', ['filter' => 'auth_super_admin']);
@@ -60,6 +61,9 @@ $routes->match(['post', 'get'], 'admin/user-role/(:alpha)/(:alphanum)', 'SuperAd
 
 $routes->get('admin/accounts', 'SuperAdminController::accounts', ['filter' => 'auth_super_admin']);
 
+$routes->get('admin/account-roles', 'SuperAdminController::accountRoles', ['filter' => 'auth_super_admin']);
+$routes->match(['post', 'get'], 'admin/account-role/(:alpha)', 'SuperAdminController::accountRole/$1', ['filter' => 'auth_super_admin']);
+$routes->match(['post', 'get'], 'admin/account-role/(:alpha)/(:alphanum)', 'SuperAdminController::accountRole/$1/$2', ['filter' => 'auth_super_admin']);
 
 /**
  * --------------------------------------------------------------------
