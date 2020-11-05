@@ -60,7 +60,7 @@ class Accounts extends Migration{
 			],
 			'thai_id' => [
 				'type' => 'VARCHAR',
-				'constraint' => 16,
+				'constraint' => 256,
 				'null' => true,
 			],
 			'last_ip' => [
@@ -75,12 +75,6 @@ class Accounts extends Migration{
 			],
 			'created_at datetime default current_timestamp',
 			'updated_at datetime default current_timestamp on update current_timestamp',
-			'token' => [
-				'type' => 'VARCHAR',
-				'constraint' => 256,
-				'null' => true,
-			],
-			'token_expired_at datetime default NULL',
 		]);
 		$this->forge->addPrimaryKey('id');
 		$this->forge->addForeignKey('owner_id', 'users', 'id', 'NO ACTION', 'SET NULL');

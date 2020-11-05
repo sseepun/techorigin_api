@@ -11,275 +11,150 @@ class AuthController extends ResourceController{
     public function __construct(){ }
 
 	public function signin(){
-        if($this->request->getMethod()=='post' && !empty($this->request->getVar('username')) 
-        && !empty($this->request->getVar('password'))){
+        if($this->request->getMethod()=='post'){
+            helper(['input', 'jwt']);
+            $input = stdClassToArray($this->request->getJSON());
+
+            $validation = \Config\Services::validation();
+            if(!$validation->run($input, 'signin')){
+                return $this->respond([
+                    'status' => 400,
+                    'messages' => $validation->getErrors()
+                ]);
+            }
+
             $userModel = new UserModel();
             $user = $userModel->authUserByUsernameOrEmail(
-                $this->request->getVar('username'), $this->request->getVar('password')
+                $input['username'], $input['password']
             );
-            if(!$user){
-                return $this->failNotFound();
-            }else{
-                // $userToken = $userModel->generateToken($user);
-                return $this->respond($user);
+            
+            if(!empty($input['ip'])){
+                $userModel->update($user['id'], [ 'last_ip' => $input['ip'] ]);
             }
+
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'คุณได้เข้าสู่ระบบสำเร็จแล้ว' ],
+                'jwt' => jwtGenerateUserToken($user),
+            ]);
         } 
         return $this->failValidationError();
-        // helper(['form']);
-        // $data = $this->commonData();
-        // $data['bodyClass'] = 'login';
-
-        // if($this->request->getMethod()=='post' && empty($this->request->getVar('killbot')) 
-        // && $this->request->getVar(getenv('app.CSRFTokenName'))){
-        //     $rules = [
-        //         'username' => [
-        //             'rules' => 'required|max_length[64]',
-        //             'errors' => [
-        //                 'required' => 'ใส่ชื่อผู้ใช้หรืออีเมล',
-        //                 'max_length' => 'ชื่อผู้ใช้สูงสุด 64 ตัวอักษร',
-        //             ]
-        //         ],
-        //         'password' => [
-        //             'rules' => 'required|max_length[64]|validateUser[username, password]',
-        //             'errors' => [
-        //                 'required' => 'ใส่รหัสผ่าน',
-        //                 'max_length' => 'รหัสผ่านสูงสุด 64 ตัวอักษร',
-        //                 'validateUser' => 'ไม่พบผู้ใช้ในระบบ',
-        //             ]
-        //         ],
-        //     ];
-
-        //     if(!$this->validate($rules)){
-        //         $data['validation'] = $this->validator;
-        //     }else{
-        //         $user = $this->userModel->authUserByUsernameOrEmail(
-        //             $this->request->getVar('username'), $this->request->getVar('password')
-        //         );
-        //         if($user){
-        //             $this->userModel->setUserSession($user, $this->request->getVar('remember'));
-        //             return redirect()->to(getenv('app.baseURL').'signin');
-        //         }else{
-        //             $data['validation'] = $this->validator; 
-        //         }
-        //     }
-        // }
     }
 
     public function signup(){
-        helper(['form']);
-        $data = $this->commonData();
-        $data['bodyClass'] = 'login';
+        if($this->request->getMethod()=='post'){
+            helper(['input']);
+            $input = stdClassToArray($this->request->getJSON());
 
-        if($this->request->getMethod()=='post' && empty($this->request->getVar('killbot')) 
-        && $this->request->getVar(getenv('app.CSRFTokenName'))){
-            $rules = [
-                'firstname' => [
-                    'rules' => 'required|min_length[3]|max_length[64]',
-                    'errors' => [
-                        'required' => 'ใส่ชื่อจริง',
-                        'min_length' => 'ชื่อจริงขั้นต่ำ 3 ตัวอักษร',
-                        'max_length' => 'ชื่อจริงสูงสุด 64 ตัวอักษร',
-                    ]
-                ],
-                'lastname' => [
-                    'rules' => 'required|min_length[3]|max_length[64]',
-                    'errors' => [
-                        'required' => 'ใส่นามสกุล',
-                        'min_length' => 'นามสกุลขั้นต่ำ 3 ตัวอักษร',
-                        'max_length' => 'นามสกุลสูงสุด 64 ตัวอักษร',
-                    ]
-                ],
-                'email' => [
-                    'rules' => 'required|min_length[6]|max_length[64]|valid_email|isUniqureEmail[email]',
-                    'errors' => [
-                        'required' => 'ใส่อีเมล',
-                        'min_length' => 'อีเมลขั้นต่ำ 6 ตัวอักษร',
-                        'max_length' => 'อีเมลสูงสุด 64 ตัวอักษร',
-                        'valid_email' => 'ใส่อีเมลที่ถูกต้อง',
-                        'isUniqureEmail' => 'อีเมลนี้ถูกใช้งานแล้ว',
-                    ]
-                ],
-                'username' => [
-                    'rules' => 'required|min_length[6]|max_length[64]|isUniqureUsername[username]',
-                    'errors' => [
-                        'required' => 'ใส่ชื่อผู้ใช้',
-                        'min_length' => 'ชื่อผู้ใช้ขั้นต่ำ 6 ตัวอักษร',
-                        'max_length' => 'ชื่อผู้ใช้สูงสุด 64 ตัวอักษร',
-                        'isUniqureUsername' => 'ชื่อผู้ใช้นี้ถูกใช้งานแล้ว',
-                    ]
-                ],
-                'password' => [
-                    'rules' => 'required|min_length[6]|max_length[64]',
-                    'errors' => [
-                        'required' => 'ใส่รหัสผ่าน',
-                        'min_length' => 'รหัสผ่านขั้นต่ำ 6 ตัวอักษร',
-                        'max_length' => 'รหัสผ่านสูงสุด 64 ตัวอักษร',
-                    ]
-                ],
-                'password_confirm' => [
-                    'rules' => 'required|matches[password]',
-                    'errors' => [
-                        'required' => 'ใส่ยืนยันรหัสผ่าน',
-                        'matches' => 'ยืนยันรหัสผ่านไม่ตรงกับรหัสผ่าน',
-                    ]
-                ],
-            ];
-
-            if(!$this->validate($rules)){
-                $data['validation'] = $this->validator;
-            }else{
-                $this->userModel->insert([
-                    'role_id' => $this->userModel->getDefaultRoleId(),
-                    'firstname' => $this->request->getPost('firstname'),
-                    'lastname' => $this->request->getPost('lastname'),
-                    'email' => $this->request->getPost('email'),
-                    'username' => $this->request->getPost('username'),
-                    'password' => $this->request->getPost('password'),
-                    'last_ip' => $this->request->getIPAddress(),
+            $validation = \Config\Services::validation();
+            if(!$validation->run($input, 'signup')){
+                return $this->respond([
+                    'status' => 400,
+                    'messages' => $validation->getErrors()
                 ]);
-
-                
-                $emailTemplate = view('emails/signup');
-                $emailTemplate = str_replace('{appTitle}', $data['appTitle'], $emailTemplate);
-                $emailTemplate = str_replace('{appLogo}', $data['appUrl'].'public/logo.png', $emailTemplate);
-                $emailTemplate = str_replace('{appUrl}', $data['appUrl'], $emailTemplate);
-                
-                $email = \Config\Services::email();
-                $email->setTo($this->request->getPost('email'));
-                $email->setFrom('sarun.seepun@gmail.com', getenv('app.title').' Team');
-                $email->setSubject('ยืนยันการสมัครสมาชิกในระบบ '.getenv('app.title'));
-                $email->setMessage($emailTemplate);
-                $email->send();
-
-
-                echo view('templates/header', $data);
-                echo view('auths/signup-success');
-                echo view('templates/footer');
-                return true;
             }
+            
+            $userModel = new UserModel();
+            $userModel->insert([
+                'role_id' => $userModel->getDefaultRoleId(),
+                'firstname' => $input['firstname'],
+                'lastname' => $input['lastname'],
+                'email' => $input['email'],
+                'username' => $input['username'],
+                'password' => $input['password'],
+                'last_ip' => $input['ip'],
+            ]);
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'คุณได้สมัครสมาชิกสำเร็จแล้ว' ],
+            ]);
         }
-
-        echo view('templates/header', $data);
-        echo view('auths/signup');
-        echo view('templates/footer');
+        return $this->failValidationError();
     }
 
     public function forgetPassword(){
-        helper(['form']);
-        $data = $this->commonData();
-        $data['bodyClass'] = 'login';
+        if($this->request->getMethod()=='post'){
+            helper(['input']);
+            $input = stdClassToArray($this->request->getJSON());
 
-        if($this->request->getMethod()=='post' && empty($this->request->getVar('killbot')) 
-        && $this->request->getVar(getenv('app.CSRFTokenName'))){
-            $rules = [
-                'username' => [
-                    'rules' => 'required|max_length[64]|validateForgetPassword[username]',
-                    'errors' => [
-                        'required' => 'ใส่ชื่อผู้ใช้หรืออีเมล',
-                        'max_length' => 'ชื่อผู้ใช้สูงสุด 64 ตัวอักษร',
-                        'validateForgetPassword' => 'ไม่พบผู้ใช้ในระบบ',
-                    ]
-                ],
-            ];
-
-            if(!$this->validate($rules)){
-                $data['validation'] = $this->validator;
-            }else{
-                $result = $this->userModel->generateUserTemp(
-                    $action = 'RESET PASSWORD', $username = $this->request->getVar('username')
-                );
-
-
-                $emailTemplate = view('emails/reset-password');
-                $emailTemplate = str_replace('{appTitle}', $data['appTitle'], $emailTemplate);
-                $emailTemplate = str_replace('{appLogo}', $data['appUrl'].'public/logo.png', $emailTemplate);
-                $emailTemplate = str_replace('{appUrl}', $data['appUrl'], $emailTemplate);
-                $emailTemplate = str_replace('{salt}', $result['salt'], $emailTemplate);
-                
-                $email = \Config\Services::email();
-                $email->setTo($result['email']);
-                $email->setFrom('sarun.seepun@gmail.com', getenv('app.title').' Team');
-                $email->setSubject('ตั้งรหัสผ่านใหม่ในระบบ '.getenv('app.title'));
-                $email->setMessage($emailTemplate);
-                $email->send();
-
-
-                echo view('templates/header', $data);
-                echo view('auths/forget-password-success');
-                echo view('templates/footer');
-                return true;
+            $validation = \Config\Services::validation();
+            if(!$validation->run($input, 'forgetPassword')){
+                return $this->respond([
+                    'status' => 400,
+                    'messages' => $validation->getErrors()
+                ]);
             }
+            
+            $userModel = new UserModel();
+            $data = $userModel->generateUserTemp(
+                $action = 'RESET PASSWORD', 
+                $email = $input['email'],
+                $userId = false,
+                $ip = $input['ip'],
+            );
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'ทำตามขั้นตอนต่อไปเพื่อตั้งรหัสผ่านใหม่' ],
+                'data' => $data,
+            ]);
         }
-
-        echo view('templates/header', $data);
-        echo view('auths/forget-password');
-        echo view('templates/footer');
+        return $this->failValidationError();
     }
 
-    public function resetPassword($salt=''){
-        if(empty($salt)){
-            return redirect()->to(getenv('app.baseURL').'forget-password');
+    public function resetPasswordExists($salt=''){
+        if($this->request->getMethod()=='get' && !empty($salt)){
+            $userModel = new UserModel();
+            $userTemp = $userModel->getUserTemp(
+                $action = 'RESET PASSWORD', $salt = $salt
+            );
+            if(!$userTemp) return $this->failValidationError();
+
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'คุณสามารถตั้งรหัสผ่านใหม่ได้' ],
+                'data' => $userTemp,
+            ]);
         }
+        return $this->failValidationError();
+    }
 
-        helper(['form']);
-        $data = $this->commonData();
-        $data['bodyClass'] = 'login';
+    public function resetPassword(){
+        if($this->request->getMethod()=='post'){
+            helper(['input']);
+            $input = stdClassToArray($this->request->getJSON());
 
-        $data['user_temp'] = $this->userModel->getUserTemp($action = 'RESET PASSWORD', $salt = $salt);
-        if(!$data['user_temp']){
-            return redirect()->to(getenv('app.baseURL').'forget-password');
-        }
-        
-        if($this->request->getMethod()=='post' && empty($this->request->getVar('killbot')) 
-        && $this->request->getVar(getenv('app.CSRFTokenName'))){
-            $rules = [
-                'password_new' => [
-                    'rules' => 'required|min_length[6]|max_length[64]',
-                    'errors' => [
-                        'required' => 'ใส่รหัสผ่านใหม่',
-                        'min_length' => 'รหัสผ่านใหม่ขั้นต่ำ 6 ตัวอักษร',
-                        'max_length' => 'รหัสผ่านใหม่สูงสุด 64 ตัวอักษร',
-                    ]
-                ],
-                'password_confirm' => [
-                    'rules' => 'required|matches[password_new]',
-                    'errors' => [
-                        'required' => 'ใส่ยืนยันรหัสผ่าน',
-                        'matches' => 'ยืนยันรหัสผ่านไม่ตรงกับรหัสผ่านใหม่',
-                    ]
-                ],
-            ];
-
-            if(!$this->validate($rules)){
-                $data['validation'] = $this->validator;
-            }else{
-                $user = $this->userModel->useUserTemp($action = 'RESET PASSWORD', $salt = $salt);
-                $this->userModel->update($user['id'], [ 'password' => $this->request->getVar('password_new') ]);
-                
-                echo view('templates/header', $data);
-                echo view('auths/reset-password-success');
-                echo view('templates/footer');
-                return true;
+            $userModel = new UserModel();
+            $userTemp = $userModel->getUserTemp(
+                $action = 'RESET PASSWORD', $salt = $input['salt']
+            );
+            if(!$userTemp) return $this->failValidationError();
+            
+            $validation = \Config\Services::validation();
+            if(!$validation->run($input, 'setNewPassword')){
+                return $this->respond([
+                    'status' => 400,
+                    'messages' => $validation->getErrors()
+                ]);
             }
+            
+            $user = $userModel->useUserTemp(
+                $action = 'RESET PASSWORD', $salt = $input['salt'], $ip = $input['ip']
+            );
+            $userModel->update($user['id'], [ 'password' => $input['password_new'] ]);
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'คุณตั้งรหัสผ่านใหม่ได้สำเร็จแล้ว' ],
+                'data' => $user,
+            ]);
         }
-
-        echo view('templates/header', $data);
-        echo view('auths/reset-password');
-        echo view('templates/footer');
+        return $this->failValidationError();
     }
 
     public function signout(){
-        $this->userModel->signout();
-        return redirect()->to(getenv('app.baseURL'));
+        return $this->respond([
+            'status' => 200,
+            'messages' => [ 'success' => 'คุณได้ออกจากระบบสำเร็จแล้ว' ],
+            'jwt' => null,
+        ]);
     }
-
-
-    private function commonData(){
-        return [
-            'appTitle' => getenv('app.title'),
-            'appUrl' => getenv('app.baseURL'),
-            'userModel' => $this->userModel,
-        ];
-    }
-
 }

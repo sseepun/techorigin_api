@@ -11,7 +11,7 @@ class UserModel extends Model {
 
     protected $allowedFields = [
         'role_id', 'username', 'firstname', 'lastname', 'email', 'password', 
-        'status', 'profile', 'thai_id', 'last_ip', 'token', 'token_expired_at',
+        'status', 'profile', 'thai_id', 'last_ip',
     ];
     protected $beforeInsert = ['beforeInsert'];
     protected $beforeUpdate = ['beforeUpdate'];
@@ -23,24 +23,21 @@ class UserModel extends Model {
         helper(['security']);
         parent::__construct();
         $this->db = \Config\Database::connect();
-        // $this->checkSignIn();
     }
     
-    // protected function checkSignIn(){
-    //     if(session()->get(getenv('app.sessionCookieName').'_SALT') 
-    //     && session()->get(getenv('app.sessionCookieName').'_USERNAME') 
-    //     && session()->get(getenv('app.sessionCookieName').'_EMAIL') 
-    //     && session()->get(getenv('app.sessionCookieName').'_FIRSTNAME') 
-    //     && session()->get(getenv('app.sessionCookieName').'_LASTNAME')){
-    //         $this->signInWithSession();
-    //     }
-
-    //     if(get_cookie(getenv('app.cookiePrefix').'_SALT') 
-    //     && get_cookie(getenv('app.cookiePrefix').'_USERNAME') 
-    //     && get_cookie(getenv('app.cookiePrefix').'_EMAIL') 
-    //     && get_cookie(getenv('app.cookiePrefix').'_FIRSTNAME') 
-    //     && get_cookie(getenv('app.cookiePrefix').'_LASTNAME')){
-    //         $this->signInWithCookies();
+    // public function signin($userId){
+    //     $query = $this->db->query(
+    //         "SELECT * FROM `users` WHERE `id` = ?", [ $userId ]
+    //     );
+    //     $user = $query->getRowArray();
+    //     if($user){
+    //         $this->setUserSession($user);
+    //         $this->user = $user;
+    //         $query2 = $this->db->query(
+    //             "SELECT * FROM `user_roles` WHERE `id` = ?", 
+    //             [ $this->user['role_id'] ]
+    //         );
+    //         $this->role = $query2->getRowArray();
     //     }
 
     //     if($this->isSignedIn()){
@@ -50,84 +47,43 @@ class UserModel extends Model {
     //         );
     //     }
     // }
-    // protected function signInWithSession(){
-    //     $encrypter = \Config\Services::encrypter();
-    //     $query = $this->db->query(
-    //         "SELECT * FROM `users` WHERE `id` = ? OR `username` = ?", 
-    //         [
-    //             $encrypter->decrypt(session()->get(getenv('app.sessionCookieName').'_SALT')), 
-    //             session()->get(getenv('app.sessionCookieName').'_USERNAME')
-    //         ]
-    //     );
-    //     $user = $query->getRowArray();
-    //     if($user){
-    //         $this->setUserSession($user);
-    //         $this->user = $user;
-    //         $query2 = $this->db->query(
-    //             "SELECT * FROM `user_roles` WHERE `id` = ?", 
-    //             [ $this->user['role_id'] ]
-    //         );
-    //         $this->role = $query2->getRowArray();
-    //     }
-    // }
-    // protected function signInWithCookies(){
-    //     $encrypter = \Config\Services::encrypter();
-    //     $query = $this->db->query(
-    //         "SELECT * FROM `users` WHERE `id` = ? OR `username` = ?", 
-    //         [
-    //             $encrypter->decrypt(get_cookie(getenv('app.cookiePrefix').'_SALT')), 
-    //             get_cookie(getenv('app.cookiePrefix').'_USERNAME')
-    //         ]
-    //     );
-    //     $user = $query->getRowArray();
-    //     if($user){
-    //         $this->setUserSession($user);
-    //         $this->user = $user;
-    //         $query2 = $this->db->query(
-    //             "SELECT * FROM `user_roles` WHERE `id` = ?", 
-    //             [ $this->user['role_id'] ]
-    //         );
-    //         $this->role = $query2->getRowArray();
-    //     }
-    // }
 
 
-    // protected function beforeInsert(array $data){
-    //     $data = $this->passwordHash($data);
-    //     return $data;
-    // }
-    // protected function beforeUpdate(array $data){
-    //     $data = $this->passwordHash($data);
-    //     return $data;
-    // }
+    protected function beforeInsert(array $data){
+        $data = $this->passwordHash($data);
+        return $data;
+    }
+    protected function beforeUpdate(array $data){
+        $data = $this->passwordHash($data);
+        return $data;
+    }
+    protected function passwordHash(array $data){
+        if(isset($data['data']['password'])){
+            $data['data']['password'] = password_hash($data['data']['password'], PASSWORD_DEFAULT);
+        }
+        return $data;
+    }
 
-    // protected function passwordHash(array $data){
-    //     if(isset($data['data']['password'])){
-    //         $data['data']['password'] = password_hash($data['data']['password'], PASSWORD_DEFAULT);
-    //     }
-    //     return $data;
-    // }
 
+    public function getInfo($userId){
+        $query = $this->db->query(
+            "SELECT `id`, `role_id`, `username`, `firstname`, `lastname`, 
+            `email`, `profile`, `thai_id`, `last_ip`, `status` 
+            FROM `users` WHERE `id` = ?",
+            [ $userId ]
+        );
+        $user = $query->getRowArray();
+        if(!$user) return false;
+        return $user;
+    }
 
-    // public function getInfo(){return $this->user;}
-    // public function getRole(){return $this->role;}
-    // public function getUserId(){return $this->user['id'];}
-    // public function getProfile(){
-    //     if(!$this->isSignedIn()) return getenv('app.baseURL').'public/images/default/profile.png';
-    //     else{
-    //         if(!empty($this->user['profile'])) return getenv('app.baseURL').$this->user['profile'];
-    //         else return getenv('app.baseURL').'public/images/default/profile.png';
-    //     }
-    // }
-
-    // public function getDefaultRoleId(){
-    //     $query = $this->db->query("SELECT `id` FROM `user_roles` WHERE `is_default` = 1 
-    //         ORDER BY `created_at` DESC LIMIT 1");
-    //     $role = $query->getRowArray();
-    //     if(!$role) return null;
-    //     else return $role['id'];
-    // }
-
+    public function getDefaultRoleId(){
+        $query = $this->db->query("SELECT `id` FROM `user_roles` WHERE `is_default` = 1 
+            ORDER BY `created_at` DESC LIMIT 1");
+        $role = $query->getRowArray();
+        if(!$role) return null;
+        else return $role['id'];
+    }
 
     public function authUserByUsernameOrEmail($string, $password){
         $query = $this->db->query(
@@ -142,56 +98,7 @@ class UserModel extends Model {
             return $user;
         }
     }
-    public function generateToken($user){
-        
-    }
 
-    // public function setUserSession($user, $remember=false){
-    //     $encrypter = \Config\Services::encrypter();
-    //     session()->set([
-    //         getenv('app.sessionCookieName').'_SALT' => $encrypter->encrypt($user['id']),
-    //         getenv('app.sessionCookieName').'_USERNAME' => $user['username'],
-    //         getenv('app.sessionCookieName').'_EMAIL' => $user['email'],
-    //         getenv('app.sessionCookieName').'_FIRSTNAME' => $user['firstname'],
-    //         getenv('app.sessionCookieName').'_LASTNAME' => $user['lastname'],
-    //     ]);
-
-    //     if($remember){
-    //         set_cookie(
-    //             getenv('app.cookiePrefix').'_SALT', $encrypter->encrypt($user['id']), 
-    //             $expire = 60 * 60 * 24 * 30, $path = getenv('app.cookiePath')
-    //         );
-    //         set_cookie(
-    //             getenv('app.cookiePrefix').'_USERNAME', $user['username'], 
-    //             $expire = 60 * 60 * 24 * 30, $path = getenv('app.cookiePath')
-    //         );
-    //         set_cookie(
-    //             getenv('app.cookiePrefix').'_EMAIL', $user['email'], 
-    //             $expire = 60 * 60 * 24 * 30, $path = getenv('app.cookiePath')
-    //         );
-    //         set_cookie(
-    //             getenv('app.cookiePrefix').'_FIRSTNAME', $user['firstname'], 
-    //             $expire = 60 * 60 * 24 * 30, $path = getenv('app.cookiePath')
-    //         );
-    //         set_cookie(
-    //             getenv('app.cookiePrefix').'_LASTNAME', $user['lastname'], 
-    //             $expire = 60 * 60 * 24 * 30, $path = getenv('app.cookiePath')
-    //         );
-    //     }
-
-    //     return true;
-    // }
-
-    // public function signout(){
-    //     session()->destroy();
-    //     delete_cookie(getenv('app.sessionCookieName').'_SALT', $path = getenv('app.cookiePath'));
-    //     delete_cookie(getenv('app.sessionCookieName').'_USERNAME', $path = getenv('app.cookiePath'));
-    //     delete_cookie(getenv('app.sessionCookieName').'_EMAIL', $path = getenv('app.cookiePath'));
-    //     delete_cookie(getenv('app.sessionCookieName').'_FIRSTNAME', $path = getenv('app.cookiePath'));
-    //     delete_cookie(getenv('app.sessionCookieName').'_LASTNAME', $path = getenv('app.cookiePath'));
-    //     return true;
-    // }
-    
 
     // public function isSignedIn(){
     //     if($this->user && $this->role) return true;
@@ -211,62 +118,74 @@ class UserModel extends Model {
     // }
 
 
-    // public function generateUserTemp($action, $username=false, $userId=false){
-    //     if(!empty($action)){
-    //         if($username){
-    //             $query = $this->db->query(
-    //                 "SELECT `id`, `email` FROM `users` WHERE `username` = ? OR `email` = ?", 
-    //                 [ $username, $username ]
-    //             );
-    //             $user = $query->getRowArray();
-    //             if(!$user) return false;
-    //             else{
-    //                 $salt = randomAlphanum(64);
-    //                 $query2 = $this->db->query(
-    //                     "INSERT INTO `user_temp` (`user_id`, `action`, `salt`, `ip`) 
-    //                     VALUES (?, ?, ?, ?)", 
-    //                     [ $user['id'], $action, $salt, service('request')->getIPAddress() ]
-    //                 );
-    //                 return [ 'email' => $user['email'], 'salt' => $salt ];
-    //             }
-    //         }else if($userId){
+    public function generateUserTemp($action, $email=false, $userId=false, $ip=null){
+        if(!empty($action)){
+            $user = false;
+            if($email){
+                $query = $this->db->query(
+                    "SELECT `id`, `email` FROM `users` WHERE `email` = ?", [ $email ]
+                );
+                $user = $query->getRowArray();
+            }else if($userId){
+                $query = $this->db->query(
+                    "SELECT `id`, `email` FROM `users` WHERE `id` = ?", [ $userId ]
+                );
+                $user = $query->getRowArray();
+            }
+            
+            if(!$user) return false;
+            $salt = randomAlphanum(64);
+            if(!empty($ip)){
+                $this->db->query(
+                    "INSERT INTO `user_temp` (`user_id`, `action`, `salt`, `ip`) 
+                    VALUES (?, ?, ?, ?)", 
+                    [ $user['id'], $action, $salt, $ip ]
+                );
+            }else{
+                $this->db->query(
+                    "INSERT INTO `user_temp` (`user_id`, `action`, `salt`) 
+                    VALUES (?, ?, ?)", 
+                    [ $user['id'], $action, $salt ]
+                );
+            }
+            return [ 'email' => $user['email'], 'salt' => $salt ];
+        }
+        return false;
+    }
+    public function getUserTemp($action, $salt, $isUsed=0){
+        if(!empty($action) && !empty($salt)){
+            $query = $this->db->query(
+                "SELECT ut.* 
+                FROM `users` AS u 
+                INNER JOIN `user_temp` AS ut ON ut.`user_id` = u.`id` 
+                WHERE ut.`action` = ? AND ut.`salt` = ? AND ut.`is_used` = ?", 
+                [ $action, $salt, $isUsed ]
+            );
+            return $query->getRowArray();
+        }
+        return false;
+    }
+    public function useUserTemp($action, $salt, $ip=null){
+        if(!empty($action) && !empty($salt)){
+            $query = $this->db->query(
+                "SELECT u.`id`, u.`email`, u.`username` 
+                FROM `users` AS u 
+                INNER JOIN `user_temp` AS ut ON ut.`user_id` = u.`id` 
+                WHERE ut.`action` = ? AND ut.`salt` = ? AND ut.`is_used` = ?", 
+                [ $action, $salt, 0 ]
+            );
+            $user = $query->getRowArray();
+            if(!$user) return false;
 
-    //         }
-    //     }
-    //     return false;
-    // }
-    // public function getUserTemp($action, $salt, $isUsed=0){
-    //     if(!empty($action) && !empty($salt)){
-    //         $query = $this->db->query(
-    //             "SELECT u.* FROM `users` AS u 
-    //             INNER JOIN `user_temp` AS ut ON ut.`user_id` = u.`id` 
-    //             WHERE ut.`action` = ? AND ut.`salt` = ? AND ut.`is_used` = ?", 
-    //             [ $action, $salt, $isUsed ]
-    //         );
-    //         return $query->getRowArray();
-    //     }
-    //     return false;
-    // }
-    // public function useUserTemp($action, $salt){
-    //     if(!empty($action) && !empty($salt)){
-    //         $query = $this->db->query(
-    //             "SELECT u.* FROM `users` AS u 
-    //             INNER JOIN `user_temp` AS ut ON ut.`user_id` = u.`id` 
-    //             WHERE ut.`action` = ? AND ut.`salt` = ? AND ut.`is_used` = ?", 
-    //             [ $action, $salt, 0 ]
-    //         );
-    //         $user = $query->getRowArray();
-    //         if(!$user) return false;
-
-    //         $this->db->query(
-    //             "UPDATE `user_temp` SET `is_used` = ?, `used_ip` = ? 
-    //             WHERE `user_id` = ? AND `salt` = ?", 
-    //             [ 1, service('request')->getIPAddress(), $user['id'], $salt ]
-    //         );
-    //         return $user;
-    //     }
-    //     return false;
-    // }
+            $this->db->query(
+                "UPDATE `user_temp` SET `is_used` = ?, `used_ip` = ? 
+                WHERE `user_id` = ? AND `salt` = ?", 
+                [ 1, $ip, $user['id'], $salt ]
+            );
+            return $user;
+        }
+        return false;
+    }
 
 
     // public function getTableObject($page=1, $pp=10, $keyword=''){

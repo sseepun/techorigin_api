@@ -34,35 +34,25 @@ $routes->setAutoRoute(true);
  * Route Definitions
  * --------------------------------------------------------------------
  */
-// $routes->get('/', 'PageController::index');
 
-// AuthController
-$routes->post('api/auth/signin', 'AuthController::signin', ['filter' => 'authApi']);
+// Auth Controller
+$routes->post( 'api/auth/signin', 'AuthController::signin');
+$routes->post( 'api/auth/signup', 'AuthController::signup');
+$routes->post( 'api/auth/forget-password', 'AuthController::forgetPassword');
+$routes->get(  'api/auth/reset-password/(:alphanum)', 'AuthController::resetPasswordExists/$1');
+$routes->post( 'api/auth/reset-password', 'AuthController::resetPassword');
+$routes->get(  'api/auth/signout', 'AuthController::signout');
 
-// $routes->match(['post', 'get'], 'signin', 'AuthController::signin', ['filter' => 'auth_sign_in']);
-// $routes->match(['post', 'get'], 'signup', 'AuthController::signup', ['filter' => 'auth_sign_in']);
-// $routes->match(['post', 'get'], 'forget-password', 'AuthController::forgetPassword', ['filter' => 'auth_sign_in']);
-// $routes->match(['post', 'get'], 'reset-password/(:alphanum)', 'AuthController::resetPassword/$1', ['filter' => 'auth_sign_in']);
-// $routes->get('signout', 'AuthController::signout');
+// User Controller
+$routes->get(  'api/user/read', 'UserController::userRead', ['filter' => 'authUser']);
+$routes->post( 'api/user/update', 'UserController::userUpdate', ['filter' => 'authUser']);
+$routes->get(  'api/user/role/read', 'UserController::roleRead', ['filter' => 'authUser']);
 
-// AdminController
-// $routes->get('admin', 'AdminController::index', ['filter' => 'auth_admin']);
-// $routes->get('admin/my-accounts', 'AdminController::myAccounts', ['filter' => 'auth_admin']);
-
-// SuperAdminController
+// Super Admin Controller
 // $routes->get('admin/users', 'SuperAdminController::users', ['filter' => 'auth_super_admin']);
 // $routes->match(['post', 'get'], 'admin/user/(:alpha)', 'SuperAdminController::user/$1', ['filter' => 'auth_super_admin']);
 // $routes->match(['post', 'get'], 'admin/user/(:alpha)/(:alphanum)', 'SuperAdminController::user/$1/$2', ['filter' => 'auth_super_admin']);
 
-// $routes->get('admin/user-roles', 'SuperAdminController::userRoles', ['filter' => 'auth_super_admin']);
-// $routes->match(['post', 'get'], 'admin/user-role/(:alpha)', 'SuperAdminController::userRole/$1', ['filter' => 'auth_super_admin']);
-// $routes->match(['post', 'get'], 'admin/user-role/(:alpha)/(:alphanum)', 'SuperAdminController::userRole/$1/$2', ['filter' => 'auth_super_admin']);
-
-// $routes->get('admin/accounts', 'SuperAdminController::accounts', ['filter' => 'auth_super_admin']);
-
-// $routes->get('admin/account-roles', 'SuperAdminController::accountRoles', ['filter' => 'auth_super_admin']);
-// $routes->match(['post', 'get'], 'admin/account-role/(:alpha)', 'SuperAdminController::accountRole/$1', ['filter' => 'auth_super_admin']);
-// $routes->match(['post', 'get'], 'admin/account-role/(:alpha)/(:alphanum)', 'SuperAdminController::accountRole/$1/$2', ['filter' => 'auth_super_admin']);
 
 /**
  * --------------------------------------------------------------------

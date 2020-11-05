@@ -8,22 +8,17 @@ use \Firebase\JWT\JWT;
 use Firebase\JWT\ExpiredException;
 use Exception;
 
-class AuthApi implements FilterInterface{
+class AuthUser implements FilterInterface{
     public function before(RequestInterface $request, $arguments=null){
-        $jwtSecretKey = getenv('jwt.secretKey');
-        list(, $jwt) = explode(' ', $request->getHeaderLine('Authorization'));
-
+        helper(['jwt']);
         try{
-            $decoded = JWT::decode($jwt, $jwtSecretKey, array('HS256'));
-
-            $response = service('response');
-            return $response->setStatusCode(401)->setJSON($decoded);  
+            $decoded = jwtDecodeToken( $request->getHeaderLine('Authorization') );
         }catch(ExpiredException $e){
             $data = [
                 "status" => 401,
                 "error" => 401,
                 "messages" => [
-                    "error"  => "Token expired"
+                    "error"  => "JWT expired"
                 ]
             ];
             $response = service('response');

@@ -26,44 +26,35 @@ class UserRoleModel extends Model {
     }
 
     
-    public function getTableObject($page=1, $pp=10, $keyword=''){
-        $whereQuery = "";
-        if(!empty($keyword)){
-            $whereQuery = " AND `name` LIKE '%".$keyword."%'";
-        }
+    // public function getTableObject($page=1, $pp=10, $keyword=''){
+    //     $whereQuery = "";
+    //     if(!empty($keyword)){
+    //         $whereQuery = " AND `name` LIKE '%".$keyword."%'";
+    //     }
 
-        $getQuery = $this->db->query(
-            "SELECT * FROM `user_roles` 
-            WHERE 1 ".$whereQuery." 
-            ORDER BY `order` ASC, `created_at` DESC 
-            LIMIT :start:, :pp:",
-            [ 'start' => ($page - 1) * $pp, 'pp' => $pp ]
-        );
-        $result = $getQuery->getResultArray();
+    //     $getQuery = $this->db->query(
+    //         "SELECT * FROM `user_roles` 
+    //         WHERE 1 ".$whereQuery." 
+    //         ORDER BY `order` ASC, `created_at` DESC 
+    //         LIMIT :start:, :pp:",
+    //         [ 'start' => ($page - 1) * $pp, 'pp' => $pp ]
+    //     );
+    //     $result = $getQuery->getResultArray();
 
-        $totalQuery = $this->db->query(
-            "SELECT COUNT(`id`) AS `total` 
-            FROM `user_roles` 
-            WHERE 1 ".$whereQuery,
-        );
-        $total = $totalQuery->getRowArray()['total'];
+    //     $totalQuery = $this->db->query(
+    //         "SELECT COUNT(`id`) AS `total` 
+    //         FROM `user_roles` 
+    //         WHERE 1 ".$whereQuery,
+    //     );
+    //     $total = $totalQuery->getRowArray()['total'];
 
-        return [
-            'result' => $result,
-            'page' => $page,
-            'pp' => $pp,
-            'total' => $total,
-            'total_pages' => ceil($total / $pp)
-        ];
-    }
-
-
-    public function getUserRoleById($id){
-        $query = $this->db->query(
-            "SELECT * FROM `user_roles` WHERE `id` = ?",
-            [ $id ]
-        );
-        return $query->getRowArray();
-    }
+    //     return [
+    //         'result' => $result,
+    //         'page' => $page,
+    //         'pp' => $pp,
+    //         'total' => $total,
+    //         'total_pages' => ceil($total / $pp)
+    //     ];
+    // }
 
 }

@@ -18,9 +18,8 @@ class UserAuth {
     }
     public function validateForgetPassword(string $str, string $fields, array $data){
         $model = new UserModel();
-        $userByEmail = $model->where('email', $data['username'])->first();
-        $userByUsername = $model->where('username', $data['username'])->first();
-        if(!$userByEmail && !$userByUsername) return false;
+        $user = $model->where('email', $data['email'])->first();
+        if(!$user) return false;
         else return true;
     }
 
