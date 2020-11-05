@@ -1,64 +1,68 @@
 <?php namespace App\Controllers;
 
+use CodeIgniter\RESTful\ResourceController;
+use CodeIgniter\API\ResponseTrait;
+
 use App\Models\UserModel;
 
-class AuthController extends BaseController {
+class AuthController extends ResourceController{
+    protected $format = 'json';
 
-    private $userModel;
-
-    public function __construct(){
-        $this->userModel = new UserModel();
-    }
-
-
-    public function index(){
-        return redirect()->to(getenv('app.baseURL').'signin');
-    }
-
+    public function __construct(){ }
 
 	public function signin(){
-        helper(['form']);
-        $data = $this->commonData();
-        $data['bodyClass'] = 'login';
-
-        if($this->request->getMethod()=='post' && empty($this->request->getVar('killbot')) 
-        && $this->request->getVar(getenv('app.CSRFTokenName'))){
-            $rules = [
-                'username' => [
-                    'rules' => 'required|max_length[64]',
-                    'errors' => [
-                        'required' => 'ใส่ชื่อผู้ใช้หรืออีเมล',
-                        'max_length' => 'ชื่อผู้ใช้สูงสุด 64 ตัวอักษร',
-                    ]
-                ],
-                'password' => [
-                    'rules' => 'required|max_length[64]|validateUser[username, password]',
-                    'errors' => [
-                        'required' => 'ใส่รหัสผ่าน',
-                        'max_length' => 'รหัสผ่านสูงสุด 64 ตัวอักษร',
-                        'validateUser' => 'ไม่พบผู้ใช้ในระบบ',
-                    ]
-                ],
-            ];
-
-            if(!$this->validate($rules)){
-                $data['validation'] = $this->validator;
+        if($this->request->getMethod()=='post' && !empty($this->request->getVar('username')) 
+        && !empty($this->request->getVar('password'))){
+            $userModel = new UserModel();
+            $user = $userModel->authUserByUsernameOrEmail(
+                $this->request->getVar('username'), $this->request->getVar('password')
+            );
+            if(!$user){
+                return $this->failNotFound();
             }else{
-                $user = $this->userModel->authUserByUsernameOrEmail(
-                    $this->request->getVar('username'), $this->request->getVar('password')
-                );
-                if($user){
-                    $this->userModel->setUserSession($user, $this->request->getVar('remember'));
-                    return redirect()->to(getenv('app.baseURL').'signin');
-                }else{
-                    $data['validation'] = $this->validator; 
-                }
+                // $userToken = $userModel->generateToken($user);
+                return $this->respond($user);
             }
-        }
+        } 
+        return $this->failValidationError();
+        // helper(['form']);
+        // $data = $this->commonData();
+        // $data['bodyClass'] = 'login';
 
-        echo view('templates/header', $data);
-        echo view('auths/signin');
-        echo view('templates/footer');
+        // if($this->request->getMethod()=='post' && empty($this->request->getVar('killbot')) 
+        // && $this->request->getVar(getenv('app.CSRFTokenName'))){
+        //     $rules = [
+        //         'username' => [
+        //             'rules' => 'required|max_length[64]',
+        //             'errors' => [
+        //                 'required' => 'ใส่ชื่อผู้ใช้หรืออีเมล',
+        //                 'max_length' => 'ชื่อผู้ใช้สูงสุด 64 ตัวอักษร',
+        //             ]
+        //         ],
+        //         'password' => [
+        //             'rules' => 'required|max_length[64]|validateUser[username, password]',
+        //             'errors' => [
+        //                 'required' => 'ใส่รหัสผ่าน',
+        //                 'max_length' => 'รหัสผ่านสูงสุด 64 ตัวอักษร',
+        //                 'validateUser' => 'ไม่พบผู้ใช้ในระบบ',
+        //             ]
+        //         ],
+        //     ];
+
+        //     if(!$this->validate($rules)){
+        //         $data['validation'] = $this->validator;
+        //     }else{
+        //         $user = $this->userModel->authUserByUsernameOrEmail(
+        //             $this->request->getVar('username'), $this->request->getVar('password')
+        //         );
+        //         if($user){
+        //             $this->userModel->setUserSession($user, $this->request->getVar('remember'));
+        //             return redirect()->to(getenv('app.baseURL').'signin');
+        //         }else{
+        //             $data['validation'] = $this->validator; 
+        //         }
+        //     }
+        // }
     }
 
     public function signup(){

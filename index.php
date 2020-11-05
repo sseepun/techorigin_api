@@ -9,11 +9,11 @@ if (phpversion() < $minPHPVersion)
 unset($minPHPVersion);
 
 // Path to the front controller (this file)
-define('FCPATH', __DIR__ . DIRECTORY_SEPARATOR);
+define('FCPATH', __DIR__ . DIRECTORY_SEPARATOR . 'api/');
 
 // Location of the Paths config file.
 // This is the line that might need to be changed, depending on your folder structure.
-$pathsPath = realpath(FCPATH . 'api/app/Config/Paths.php');
+$pathsPath = realpath(FCPATH . 'app/Config/Paths.php');
 // ^^^ Change this if you move your application folder
 
 /*
