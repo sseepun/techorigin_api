@@ -4,7 +4,6 @@ class UserRoleSeeder extends \CodeIgniter\Database\Seeder{
     public function run(){
         $this->db->table('user_roles')->insert([
             'name' => 'Super Admin',
-            'is_admin' => 1,
             'is_super_admin' => 1,
             'is_default' => 0,
             'order' => 99,
@@ -12,7 +11,6 @@ class UserRoleSeeder extends \CodeIgniter\Database\Seeder{
         $this->db->table('user_roles')->insert([
             'name' => 'Admin',
             'is_admin' => 1,
-            'is_super_admin' => 0,
             'is_default' => 0,
             'order' => 98,
         ]);

@@ -157,4 +157,5 @@ class AuthController extends ResourceController{
             'jwt' => null,
         ]);
     }
+    
 }

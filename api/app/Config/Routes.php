@@ -35,6 +35,7 @@ $routes->setAutoRoute(true);
  * --------------------------------------------------------------------
  */
 
+
 // Auth Controller
 $routes->post( 'api/auth/signin', 'AuthController::signin');
 $routes->post( 'api/auth/signup', 'AuthController::signup');
@@ -43,10 +44,13 @@ $routes->get(  'api/auth/reset-password/(:alphanum)', 'AuthController::resetPass
 $routes->post( 'api/auth/reset-password', 'AuthController::resetPassword');
 $routes->get(  'api/auth/signout', 'AuthController::signout');
 
+
 // User Controller
 $routes->get(  'api/user/read', 'UserController::userRead', ['filter' => 'authUser']);
 $routes->post( 'api/user/update', 'UserController::userUpdate', ['filter' => 'authUser']);
-$routes->get(  'api/user/role/read', 'UserController::roleRead', ['filter' => 'authUser']);
+$routes->post( 'api/user/detail/update', 'UserController::userDetailUpdate', ['filter' => 'authUser']);
+$routes->post( 'api/user/password/update', 'UserController::userPasswordUpdate', ['filter' => 'authUser']);
+
 
 // Super Admin Controller
 // $routes->get('admin/users', 'SuperAdminController::users', ['filter' => 'auth_super_admin']);

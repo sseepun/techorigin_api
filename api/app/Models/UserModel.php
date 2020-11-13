@@ -24,29 +24,6 @@ class UserModel extends Model {
         parent::__construct();
         $this->db = \Config\Database::connect();
     }
-    
-    // public function signin($userId){
-    //     $query = $this->db->query(
-    //         "SELECT * FROM `users` WHERE `id` = ?", [ $userId ]
-    //     );
-    //     $user = $query->getRowArray();
-    //     if($user){
-    //         $this->setUserSession($user);
-    //         $this->user = $user;
-    //         $query2 = $this->db->query(
-    //             "SELECT * FROM `user_roles` WHERE `id` = ?", 
-    //             [ $this->user['role_id'] ]
-    //         );
-    //         $this->role = $query2->getRowArray();
-    //     }
-
-    //     if($this->isSignedIn()){
-    //         $query = $this->db->query(
-    //             "UPDATE `users` SET `last_ip` = ? WHERE `id` = ?", 
-    //             [ service('request')->getIPAddress(), $this->user['id'] ]
-    //         );
-    //     }
-    // }
 
 
     protected function beforeInsert(array $data){
@@ -65,10 +42,10 @@ class UserModel extends Model {
     }
 
 
-    public function getInfo($userId){
+    public function getUser($userId){
         $query = $this->db->query(
             "SELECT `id`, `role_id`, `username`, `firstname`, `lastname`, 
-            `email`, `profile`, `thai_id`, `last_ip`, `status` 
+            `email`, `profile`, `thai_id`, `code`, `last_ip`, `status` 
             FROM `users` WHERE `id` = ?",
             [ $userId ]
         );
@@ -98,24 +75,6 @@ class UserModel extends Model {
             return $user;
         }
     }
-
-
-    // public function isSignedIn(){
-    //     if($this->user && $this->role) return true;
-    //     else return false;
-    // }
-
-    // public function isAdmin(){
-    //     if($this->isSignedIn() && ($this->role['is_admin'] || $this->role['is_super_admin'])){
-    //         return true;
-    //     }else return false;
-    // }
-
-    // public function isSuperAdmin(){
-    //     if($this->isSignedIn() && $this->role['is_super_admin']){
-    //         return true;
-    //     }else return false;
-    // }
 
 
     public function generateUserTemp($action, $email=false, $userId=false, $ip=null){

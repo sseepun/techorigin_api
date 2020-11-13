@@ -74,22 +74,22 @@ class Validation
 			]
 		],
 		'email' => [
-			'rules' => 'required|min_length[4]|max_length[64]|valid_email|isUniqureEmail[email]',
+			'rules' => 'required|min_length[4]|max_length[64]|valid_email|isUniqueEmail[email]',
 			'errors' => [
 				'required' => 'ใส่อีเมล',
 				'min_length' => 'อีเมลขั้นต่ำ 4 ตัวอักษร',
 				'max_length' => 'อีเมลสูงสุด 64 ตัวอักษร',
 				'valid_email' => 'ใส่อีเมลที่ถูกต้อง',
-				'isUniqureEmail' => 'อีเมลนี้ถูกใช้งานแล้ว',
+				'isUniqueEmail' => 'อีเมลนี้ถูกใช้งานแล้ว',
 			]
 		],
 		'username' => [
-			'rules' => 'required|min_length[4]|max_length[64]|isUniqureUsername[username]',
+			'rules' => 'required|min_length[4]|max_length[64]|isUniqueUsername[username]',
 			'errors' => [
 				'required' => 'ใส่ชื่อผู้ใช้',
 				'min_length' => 'ชื่อผู้ใช้ขั้นต่ำ 4 ตัวอักษร',
 				'max_length' => 'ชื่อผู้ใช้สูงสุด 64 ตัวอักษร',
-				'isUniqureUsername' => 'ชื่อผู้ใช้ถูกใช้งานแล้ว',
+				'isUniqueUsername' => 'ชื่อผู้ใช้ถูกใช้งานแล้ว',
 			]
 		],
 		'password' => [
@@ -185,12 +185,76 @@ class Validation
 		],
 	];
 
-	// User Role Update
-	public $userRoleUpdate = [
-		'role_id' => [
+	// User Update
+	public $userDetailUpdate = [
+		'user_id' => [
 			'rules' => 'required',
 			'errors' => [
-				'required' => 'เลือกประเภทผู้ใช้',
+				'required' => 'ใส่เลขผู้ใช้',
+			]
+		],
+		'address' => [
+			'rules' => 'max_length[512]',
+			'errors' => [
+				'max_length' => 'ที่อยู่สูงสุด 512 ตัวอักษร',
+			]
+		],
+		'phone' => [
+			'rules' => 'max_length[64]',
+			'errors' => [
+				'max_length' => 'เบอร์โทรศัพท์สูงสุด 64 ตัวอักษร',
+			]
+		],
+		'title' => [
+			'rules' => 'max_length[256]',
+			'errors' => [
+				'max_length' => 'ตำแหน่งสูงสุด 256 ตัวอักษร',
+			]
+		],
+		'company' => [
+			'rules' => 'max_length[256]',
+			'errors' => [
+				'max_length' => 'บริษัทสูงสุด 256 ตัวอักษร',
+			]
+		],
+		'company_address' => [
+			'rules' => 'max_length[512]',
+			'errors' => [
+				'max_length' => 'ที่อยู่บริษัทสูงสุด 512 ตัวอักษร',
+			]
+		],
+		'company_phone' => [
+			'rules' => 'max_length[64]',
+			'errors' => [
+				'max_length' => 'เบอร์โทรบริษัทสูงสุด 64 ตัวอักษร',
+			]
+		],
+	];
+
+	// User Update
+	public $userPasswordUpdate = [
+		'password' => [
+			'rules' => 'required|min_length[6]|max_length[64]|isPasswordVerified[id,password]',
+			'errors' => [
+				'required' => 'รหัสผ่านไม่ถูกต้อง',
+				'min_length' => 'รหัสผ่านไม่ถูกต้อง',
+				'max_length' => 'รหัสผ่านไม่ถูกต้อง',
+				'isPasswordVerified' => 'รหัสผ่านไม่ถูกต้อง',
+			]
+		],
+		'new_password' => [
+			'rules' => 'required|min_length[6]|max_length[64]',
+			'errors' => [
+				'required' => 'ใส่รหัสผ่านใหม่',
+				'min_length' => 'รหัสผ่านใหม่ขั้นต่ำ 6 ตัวอักษร',
+				'max_length' => 'รหัสผ่านใหม่สูงสุด 64 ตัวอักษร',
+			]
+		],
+		'new_password_confirm' => [
+			'rules' => 'required|matches[new_password]',
+			'errors' => [
+				'required' => 'ใส่ยืนยันรหัสผ่าน',
+				'matches' => 'ยืนยันรหัสผ่านไม่ตรงกับรหัสผ่านใหม่',
 			]
 		],
 	];
