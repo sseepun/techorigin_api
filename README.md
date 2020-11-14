@@ -2,23 +2,19 @@
 
 ## How to inslall
 
-1. Change `app/Config/Database.php` to connect to your database.
-2. Run `composer update` to install necessary packages.
-3. Run `php spark migrate` to create database structures.
-4. Run `php spark db:seed UserRoleSeeder` and `php spark db:seed UserSeeder` to populate initial data.
-5. Change `env` to `.env`.
-6. Run `php spark serve` to start you app in `http://localhost:8080/`.
+1. Change `api/.env` to your appropriate settings.
+2. Navigate to `api` folder.
+3. Run `composer update` to install necessary packages.
+4. Run `php spark migrate` to create database structures.
+5. Run `php spark db:seed DataSeeder` to populate initial data.
 
 ## Initial accounts
 
-Username: SuperAdmin
-
+Username: SuperAdmin \n
 Password: 123456
 
-Username: Admin
-
+Username: Admin \n
 Password: 123456
 
-Username: Member
-
+Username: Member \n
 Password: 123456
