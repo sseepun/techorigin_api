@@ -17,6 +17,10 @@ class Modules extends Migration{
 				'type' => 'VARCHAR',
 				'constraint' => 256
 			],
+			'code' => [
+				'type' => 'VARCHAR',
+				'constraint' => 64
+			],
 			'order' => [
 				'type' => 'INT',
 				'constraint' => 2,
@@ -32,6 +36,7 @@ class Modules extends Migration{
 		]);
 		$this->forge->addPrimaryKey('id');
 		$this->forge->addUniqueKey('name');
+		$this->forge->addUniqueKey('code');
 		$this->forge->createTable('modules', true);
 		
         $this->db->enableForeignKeyChecks();

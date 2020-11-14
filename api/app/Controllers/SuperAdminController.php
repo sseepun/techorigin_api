@@ -7,6 +7,9 @@ use App\Models\UserModel;
 use App\Models\UserDetailModel;
 use App\Models\UserRoleModel;
 
+use App\Models\ModuleModel;
+use App\Models\ModulePermissionModel;
+
 class SuperAdminController extends ResourceController{
     protected $format = 'json';
 
@@ -35,22 +38,6 @@ class SuperAdminController extends ResourceController{
     }
 
 
-    // public function checkRoleAccess($userId){
-    //     $user = $this->userModel->getUserById($userId);
-    //     if(!$user) return false;
-
-    //     if(!$this->userRole['is_super_admin']){
-    //         $role = $this->userModel->getRoleByUserId($userId);
-    //         if($this->user['id'] != $user['id'] 
-    //         && (!$role || $role['is_admin'] || $role['is_super_admin'])){
-    //             return false;
-    //         }
-    //     }
-        
-    //     return $user;
-    // }
-
-
     public function userRoleCreate(){
         if($this->request->getMethod()=='post'){
             $input = stdClassToArray($this->request->getJSON());
@@ -76,10 +63,13 @@ class SuperAdminController extends ResourceController{
     }
     public function userRoleRead($roleId){
         if($this->request->getMethod()=='get' && !empty($roleId)){
+            $role = $this->userRoleModel->find($roleId);
+            if(!$role) return $this->failValidationError();
+
             return $this->respond([
                 'status' => 200,
                 'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
-                'data' => $this->userRoleModel->find($roleId),
+                'data' => $role,
             ]);
         }
         return $this->failValidationError();
@@ -96,6 +86,9 @@ class SuperAdminController extends ResourceController{
                     'messages' => $validation->getErrors()
                 ]);
             }
+            
+            $role = $this->userRoleModel->find($input['id']);
+            if(!$role) return $this->failValidationError();
 
             $this->userRoleModel->save($input);
             return $this->respond([
@@ -109,7 +102,6 @@ class SuperAdminController extends ResourceController{
     public function userRoleDelete(){
         if($this->request->getMethod()=='post'){
             $input = stdClassToArray($this->request->getJSON());
-            if($input['id']<3) return $this->failValidationError();
             
             $validation = \Config\Services::validation();
             if(!$validation->run($input, 'sadminUserRoleDelete')){
@@ -118,11 +110,157 @@ class SuperAdminController extends ResourceController{
                     'messages' => $validation->getErrors()
                 ]);
             }
+            if($input['id']<3) return $this->failValidationError();
+            
+            $role = $this->userRoleModel->find($input['id']);
+            if(!$role) return $this->failValidationError();
             
             $this->userRoleModel->delete($input['id']);
             return $this->respond([
                 'status' => 200,
                 'messages' => [ 'success' => 'ลบข้อมูลสำเร็จ' ],
+                'data' => $input,
+            ]);
+        }
+        return $this->failValidationError();
+    }
+
+    public function moduleCreate(){
+        if($this->request->getMethod()=='post'){
+            $input = stdClassToArray($this->request->getJSON());
+            unset($input['id']);
+
+            $validation = \Config\Services::validation();
+            if(!$validation->run($input, 'sadminModuleCreate')){
+                return $this->respond([
+                    'status' => 400,
+                    'messages' => $validation->getErrors()
+                ]);
+            }
+
+            $moduleModel = new ModuleModel();
+            $moduleModel->save($input);
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'สร้างข้อมูลสำเร็จ' ],
+                'data' => $input,
+            ]);
+        }
+        return $this->failValidationError();
+    }
+    public function moduleRead($moduleId){
+        if($this->request->getMethod()=='get' && !empty($moduleId)){
+            $moduleModel = new ModuleModel();
+            $module = $moduleModel->find($moduleId);
+            if(!$module) return $this->failValidationError();
+
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
+                'data' => $module,
+            ]);
+        }
+        return $this->failValidationError();
+    }
+    public function moduleUpdate(){
+        if($this->request->getMethod()=='post'){
+            $input = stdClassToArray($this->request->getJSON());
+            unset($input['code']);
+
+            $validation = \Config\Services::validation();
+            if(!$validation->run($input, 'sadminModuleUpdate')){
+                return $this->respond([
+                    'status' => 400,
+                    'messages' => $validation->getErrors()
+                ]);
+            }
+
+            $moduleModel = new ModuleModel();
+            $module = $moduleModel->find($input['id']);
+            if(!$module) return $this->failValidationError();
+
+            $moduleModel->save($input);
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'แก้ไขข้อมูลสำเร็จ' ],
+                'data' => $input,
+            ]);
+        }
+        return $this->failValidationError();
+    }
+    public function moduleDelete(){
+        if($this->request->getMethod()=='post'){
+            $input = stdClassToArray($this->request->getJSON());
+            
+            $validation = \Config\Services::validation();
+            if(!$validation->run($input, 'sadminModuleDelete')){
+                return $this->respond([
+                    'status' => 400,
+                    'messages' => $validation->getErrors()
+                ]);
+            }
+            if($input['id']<2) return $this->failValidationError();
+
+            $moduleModel = new ModuleModel();
+            $module = $moduleModel->find($input['id']);
+            if(!$module) return $this->failValidationError();
+            
+            $moduleModel->delete($input['id']);
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'ลบข้อมูลสำเร็จ' ],
+                'data' => $input,
+            ]);
+        }
+        return $this->failValidationError();
+    }
+
+    public function rolePermissionsRead($roleId){
+        if($this->request->getMethod()=='get' && !empty($roleId)){
+            $role = $this->userRoleModel->find($roleId);
+            if(!$role) return $this->failValidationError();
+
+            $moduleModel = new ModuleModel();
+            $permissions = $moduleModel->getPermissionsByUserRoleId($roleId);
+            
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
+                'data' => $permissions,
+            ]);
+        }
+        return $this->failValidationError();
+    }
+    public function rolePermissionsUpdate(){
+        if($this->request->getMethod()=='post'){
+            $input = stdClassToArray($this->request->getJSON());
+            unset($input['id']);
+
+            $validation = \Config\Services::validation();
+            if(!$validation->run($input, 'sadminRolePermissionsUpdate')){
+                return $this->respond([
+                    'status' => 400,
+                    'messages' => $validation->getErrors()
+                ]);
+            }
+
+            $role = $this->userRoleModel->find($input['role_id']);
+            if(!$role) return $this->failValidationError();
+
+            $moduleModel = new ModuleModel();
+            $module = $moduleModel->find($input['module_id']);
+            if(!$module) return $this->failValidationError();
+
+            $pmoduleModel = new ModulePermissionModel();
+            $pmodule = $pmoduleModel->where([
+                'module_id' => $input['module_id'], 'role_id' => $input['role_id']
+            ])->first();
+            if($pmodule) $input['id'] = $pmodule['id'];
+
+            $pmoduleModel->save($input);
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'แก้ไขข้อมูลสำเร็จ' ],
                 'data' => $input,
             ]);
         }

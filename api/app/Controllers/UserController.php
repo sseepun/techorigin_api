@@ -7,6 +7,8 @@ use App\Models\UserModel;
 use App\Models\UserDetailModel;
 use App\Models\UserRoleModel;
 
+use App\Models\ModuleModel;
+
 class UserController extends ResourceController{
     protected $format = 'json';
 
@@ -150,7 +152,8 @@ class UserController extends ResourceController{
             $userRoleModel = new UserRoleModel();
 
             $data = $userModel->where(['id' => $id])->first();
-            if($data){
+            if(!$data) return $this->failValidationError();
+            else{
                 unset($data['password']);
                 unset($data['thai_id']);
                 unset($data['thai_id_path']);
@@ -165,6 +168,19 @@ class UserController extends ResourceController{
                 'status' => 200,
                 'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
                 'data' => $data,
+            ]);
+        }
+        return $this->failValidationError();
+    }
+
+    public function selfModulePermissions(){
+        if($this->request->getMethod()=='get'){
+            $moduleModel = new ModuleModel();
+            $permissions = $moduleModel->getPermissionsByUserRoleId($this->user['role_id']);
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
+                'data' => $permissions,
             ]);
         }
         return $this->failValidationError();

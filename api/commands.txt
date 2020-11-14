@@ -7,3 +7,4 @@ php spark migrate:create [database_table_name]
 php spark migrate
 
 php spark db:seed [seeder_filename]
+php spark db:seed DataSeeder

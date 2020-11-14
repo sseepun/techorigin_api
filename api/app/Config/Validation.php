@@ -337,12 +337,6 @@ class Validation
 				'is_unique' => 'ชื่อตำเเหน่งซ้ำในระบบ',
 			]
 		],
-		'order' => [
-			'rules' => 'required',
-			'errors' => [
-				'required' => 'ใส่ลำดับ',
-			]
-		],
 	];
 	public $sadminUserRoleUpdate = [
 		'id' => [
@@ -359,12 +353,6 @@ class Validation
 				'is_unique' => 'ชื่อตำเเหน่งซ้ำในระบบ',
 			]
 		],
-		'order' => [
-			'rules' => 'required',
-			'errors' => [
-				'required' => 'ใส่ลำดับ',
-			]
-		],
 	];
 	public $sadminUserRoleDelete = [
 		'id' => [
@@ -375,5 +363,62 @@ class Validation
 		],
 	];
 
+	public $sadminModuleCreate = [
+		'name' => [
+			'rules' => 'required|max_length[256]|is_unique[modules.name,id,{id}]',
+			'errors' => [
+				'required' => 'ใส่ชื่อโมดูล',
+				'max_length' => 'ชื่อโมดูลสูงสุด 256 ตัวอักษร',
+				'is_unique' => 'ชื่อโมดูลซ้ำในระบบ',
+			]
+		],
+		'code' => [
+			'rules' => 'required|max_length[64]|is_unique[modules.code,id,{id}]',
+			'errors' => [
+				'required' => 'ใส่โมดูลโค๊ด',
+				'max_length' => 'โมดูลโค๊ดสูงสุด 64 ตัวอักษร',
+				'is_unique' => 'โมดูลโค๊ดซ้ำในระบบ',
+			]
+		],
+	];
+	public $sadminModuleUpdate = [
+		'id' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'เลือกโมดูล',
+			]
+		],
+		'name' => [
+			'rules' => 'required|max_length[256]|is_unique[modules.name,id,{id}]',
+			'errors' => [
+				'required' => 'ใส่ชื่อโมดูล',
+				'max_length' => 'ชื่อโมดูลสูงสุด 256 ตัวอักษร',
+				'is_unique' => 'ชื่อโมดูลซ้ำในระบบ',
+			]
+		],
+	];
+	public $sadminModuleDelete = [
+		'id' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'เลือกโมดูล',
+			]
+		],
+	];
+
+	public $sadminRolePermissionsUpdate = [
+		'module_id' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'เลือกโมดูล',
+			]
+		],
+		'role_id' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'เลือกตำแน่งผู้ใช้',
+			]
+		],
+	];
 
 }

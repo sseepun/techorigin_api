@@ -25,10 +25,6 @@ class ModulePermissions extends Migration{
 				'unsigned' => true,
 				'null' => true,
 			],
-			'name' => [
-				'type' => 'VARCHAR',
-				'constraint' => 256
-			],
 			'create' => [
 				'type' => 'INT',
 				'constraint' => 1,

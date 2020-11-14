@@ -53,6 +53,8 @@ $routes->post( 'api/user/password-update', 'UserController::selfPasswordUpdate',
 $routes->get(  'api/user/user-list', 'UserController::userList', ['filter' => 'authUser']);
 $routes->get(  'api/user/user-read/(:num)', 'UserController::userRead/$1', ['filter' => 'authUser']);
 
+$routes->get(  'api/user/module-permissions', 'UserController::selfModulePermissions', ['filter' => 'authUser']);
+
 
 // Admin Controller
 $routes->post( 'api/admin/user-create', 'AdminController::userCreate', ['filter' => 'authUser']);
@@ -68,6 +70,14 @@ $routes->post( 'api/sadmin/user-role-create', 'SuperAdminController::userRoleCre
 $routes->get(  'api/sadmin/user-role-read/(:num)', 'SuperAdminController::userRoleRead/$1', ['filter' => 'authUser']);
 $routes->post( 'api/sadmin/user-role-update', 'SuperAdminController::userRoleUpdate', ['filter' => 'authUser']);
 $routes->post( 'api/sadmin/user-role-delete', 'SuperAdminController::userRoleDelete', ['filter' => 'authUser']);
+
+$routes->post( 'api/sadmin/module-create', 'SuperAdminController::moduleCreate', ['filter' => 'authUser']);
+$routes->get(  'api/sadmin/module-read/(:num)', 'SuperAdminController::moduleRead/$1', ['filter' => 'authUser']);
+$routes->post( 'api/sadmin/module-update', 'SuperAdminController::moduleUpdate', ['filter' => 'authUser']);
+$routes->post( 'api/sadmin/module-delete', 'SuperAdminController::moduleDelete', ['filter' => 'authUser']);
+
+$routes->get(  'api/sadmin/role-permissions-read/(:num)', 'SuperAdminController::rolePermissionsRead/$1', ['filter' => 'authUser']);
+$routes->post( 'api/sadmin/role-permissions-update', 'SuperAdminController::rolePermissionsUpdate', ['filter' => 'authUser']);
 
 
 /**

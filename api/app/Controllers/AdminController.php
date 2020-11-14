@@ -146,7 +146,6 @@ class AdminController extends ResourceController{
     public function userDelete(){
         if($this->request->getMethod()=='post'){
             $input = stdClassToArray($this->request->getJSON());
-            if($input['id']<3) unset($input['id']);
             
             $validation = \Config\Services::validation();
             if(!$validation->run($input, 'adminUserDelete')){
@@ -155,6 +154,7 @@ class AdminController extends ResourceController{
                     'messages' => $validation->getErrors()
                 ]);
             }
+            if($input['id']<3) unset($input['id']);
 
             $user = $this->checkRoleAccess($input['id']);
             if(!$user) return $this->failValidationError();
