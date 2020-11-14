@@ -1,4 +1,4 @@
-# MOE Slip Codeigniter 4
+# Tech Origin API
 
 ## How to inslall
 
