@@ -35,8 +35,6 @@ class Validation
 	//--------------------------------------------------------------------
 	// Auth
 	//--------------------------------------------------------------------
-
-	// Sign In
 	public $signin = [
 		'username' => [
 			'rules' => 'required|max_length[64]',
@@ -54,8 +52,6 @@ class Validation
 			]
 		],
 	];
-
-	// Sign Up
 	public $signup = [
 		'firstname' => [
 			'rules' => 'required|min_length[3]|max_length[64]',
@@ -108,8 +104,6 @@ class Validation
 			]
 		],
 	];
-
-	// Forget Password
 	public $forgetPassword = [
 		'email' => [
 			'rules' => 'required|max_length[64]|valid_email|validateForgetPassword[email]',
@@ -121,8 +115,6 @@ class Validation
 			]
 		],
 	];
-
-	// Set New Password
 	public $setNewPassword = [
 		'password_new' => [
 			'rules' => 'required|min_length[6]|max_length[64]',
@@ -145,8 +137,6 @@ class Validation
 	//--------------------------------------------------------------------
 	// User
 	//--------------------------------------------------------------------
-
-	// User Update
 	public $userUpdate = [
 		'firstname' => [
 			'rules' => 'required|min_length[3]|max_length[64]',
@@ -184,8 +174,6 @@ class Validation
 			]
 		],
 	];
-
-	// User Update
 	public $userDetailUpdate = [
 		'user_id' => [
 			'rules' => 'required',
@@ -230,8 +218,6 @@ class Validation
 			]
 		],
 	];
-
-	// User Update
 	public $userPasswordUpdate = [
 		'password' => [
 			'rules' => 'required|min_length[6]|max_length[64]|isPasswordVerified[id,password]',
@@ -258,5 +244,136 @@ class Validation
 			]
 		],
 	];
+
+	
+	//--------------------------------------------------------------------
+	// Admin User
+	//--------------------------------------------------------------------
+	public $adminUserUpdate = [
+		'id' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'เลือกผู้ใช้',
+			]
+		],
+		'firstname' => [
+			'rules' => 'required|min_length[3]|max_length[64]',
+			'errors' => [
+				'required' => 'ใส่ชื่อจริง',
+				'min_length' => 'ชื่อจริงขั้นต่ำ 3 ตัวอักษร',
+				'max_length' => 'ชื่อจริงสูงสุด 64 ตัวอักษร',
+			]
+		],
+		'lastname' => [
+			'rules' => 'required|min_length[3]|max_length[64]',
+			'errors' => [
+				'required' => 'ใส่นามสกุล',
+				'min_length' => 'นามสกุลขั้นต่ำ 3 ตัวอักษร',
+				'max_length' => 'นามสกุลสูงสุด 64 ตัวอักษร',
+			]
+		],
+		'email' => [
+			'rules' => 'required|min_length[4]|max_length[64]|valid_email|is_unique[users.email,id,{id}]',
+			'errors' => [
+				'required' => 'ใส่อีเมล',
+				'min_length' => 'อีเมลขั้นต่ำ 4 ตัวอักษร',
+				'max_length' => 'อีเมลสูงสุด 64 ตัวอักษร',
+				'valid_email' => 'ใส่อีเมลที่ถูกต้อง',
+				'is_unique' => 'อีเมลนี้ถูกใช้งานแล้ว',
+			]
+		],
+		'username' => [
+			'rules' => 'required|min_length[4]|max_length[64]|is_unique[users.username,id,{id}]',
+			'errors' => [
+				'required' => 'ใส่ชื่อผู้ใช้',
+				'min_length' => 'ชื่อผู้ใช้ขั้นต่ำ 4 ตัวอักษร',
+				'max_length' => 'ชื่อผู้ใช้สูงสุด 64 ตัวอักษร',
+				'is_unique' => 'ชื่อผู้ใช้ถูกใช้งานแล้ว',
+			]
+		],
+	];
+	public $adminUserPasswordUpdate = [
+		'id' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'เลือกผู้ใช้',
+			]
+		],
+		'new_password' => [
+			'rules' => 'required|min_length[6]|max_length[64]',
+			'errors' => [
+				'required' => 'ใส่รหัสผ่านใหม่',
+				'min_length' => 'รหัสผ่านใหม่ขั้นต่ำ 6 ตัวอักษร',
+				'max_length' => 'รหัสผ่านใหม่สูงสุด 64 ตัวอักษร',
+			]
+		],
+		'new_password_confirm' => [
+			'rules' => 'required|matches[new_password]',
+			'errors' => [
+				'required' => 'ใส่ยืนยันรหัสผ่าน',
+				'matches' => 'ยืนยันรหัสผ่านไม่ตรงกับรหัสผ่านใหม่',
+			]
+		],
+	];
+	public $adminUserDelete = [
+		'id' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'เลือกผู้ใช้',
+			]
+		],
+	];
+
+	
+	//--------------------------------------------------------------------
+	// SuperAdmin User
+	//--------------------------------------------------------------------
+	public $sadminUserRoleCreate = [
+		'name' => [
+			'rules' => 'required|max_length[128]|is_unique[user_roles.name,id,{id}]',
+			'errors' => [
+				'required' => 'ใส่ชื่อตำเเหน่ง',
+				'max_length' => 'ชื่อตำเเหน่งสูงสุด 128 ตัวอักษร',
+				'is_unique' => 'ชื่อตำเเหน่งซ้ำในระบบ',
+			]
+		],
+		'order' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'ใส่ลำดับ',
+			]
+		],
+	];
+	public $sadminUserRoleUpdate = [
+		'id' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'เลือกตำแน่งผู้ใช้',
+			]
+		],
+		'name' => [
+			'rules' => 'required|max_length[128]|is_unique[user_roles.name,id,{id}]',
+			'errors' => [
+				'required' => 'ใส่ชื่อตำเเหน่ง',
+				'max_length' => 'ชื่อตำเเหน่งสูงสุด 128 ตัวอักษร',
+				'is_unique' => 'ชื่อตำเเหน่งซ้ำในระบบ',
+			]
+		],
+		'order' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'ใส่ลำดับ',
+			]
+		],
+	];
+	public $sadminUserRoleDelete = [
+		'id' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'เลือกตำแหน่งผู้ใช้',
+			]
+		],
+	];
+
 
 }

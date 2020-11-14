@@ -24,20 +24,17 @@ class UserController extends ResourceController{
         ));
 
         $this->userModel = new UserModel();
-        $this->user = $this->userModel->getUser($this->decoded['id']);
-        
+        $this->user = $this->userModel->getUserById($this->decoded['id']);
         if(!$this->user){ echo '404'; exit; }
     }
 
-    public function userRead(){
+    
+    public function selfRead(){
         if($this->request->getMethod()=='get'){
             $userDetailModel = new UserDetailModel();
             $userRoleModel = new UserRoleModel();
 
             $data = $this->user;
-            if(!empty($data['profile']) && strpos($data['profile'], 'http')===false){
-                $data['profile'] = getenv('app.baseURL').$data['profile'];
-            }
             $detail = $userDetailModel->where('user_id', $data['id'])->first();
             if($detail) $data['detail'] = $detail;
             $data['role'] = $userRoleModel->find($data['role_id']);
@@ -50,14 +47,12 @@ class UserController extends ResourceController{
         }
         return $this->failValidationError();
     }
-
-    public function userUpdate(){
+    public function selfUpdate(){
         if($this->request->getMethod()=='post'){
             $input = stdClassToArray($this->request->getJSON());
             unset($input['id']);
             unset($input['role_id']);
             unset($input['password']);
-            unset($input['thai_id']);
             unset($input['code']);
             unset($input['status']);
             
@@ -72,9 +67,7 @@ class UserController extends ResourceController{
             }
             
             $this->userModel->update($this->decoded['id'], $input);
-            if(!empty($input['profile']) && strpos($input['profile'], 'http')===false){
-                $input['profile'] = getenv('app.baseURL').$input['profile'];
-            }
+            $input = $this->userModel->cleanData($input);
 
             return $this->respond([
                 'status' => 200,
@@ -85,11 +78,11 @@ class UserController extends ResourceController{
         }
         return $this->failValidationError();
     }
-
-    public function userDetailUpdate(){
+    public function selfDetailUpdate(){
         if($this->request->getMethod()=='post'){
             $input = stdClassToArray($this->request->getJSON());
-            $input = array_merge(['user_id' => $this->decoded['id']], $input);
+            $input['user_id'] = $this->decoded['id'];
+            unset($input['id']);
             
             $validation = \Config\Services::validation();
             if(!$validation->run($input, 'userDetailUpdate')){
@@ -101,11 +94,8 @@ class UserController extends ResourceController{
             
             $userDetailModel = new UserDetailModel();
             $detail = $userDetailModel->where('user_id', $input['user_id'])->first();
-            if($detail){
-                $userDetailModel->save(array_merge(['id' => $detail['id']], $input));
-            }else{
-                $userDetailModel->save($input);
-            }
+            if($detail) $input['id'] = $detail['id'];
+            $userDetailModel->save($input);
 
             return $this->respond([
                 'status' => 200,
@@ -115,11 +105,10 @@ class UserController extends ResourceController{
         }
         return $this->failValidationError();
     }
-
-    public function userPasswordUpdate(){
+    public function selfPasswordUpdate(){
         if($this->request->getMethod()=='post'){
             $input = stdClassToArray($this->request->getJSON());
-            $input = array_merge(['id' => $this->decoded['id']], $input);
+            $input['id'] = $this->decoded['id'];
             
             $validation = \Config\Services::validation();
             if(!$validation->run($input, 'userPasswordUpdate')){
@@ -137,6 +126,45 @@ class UserController extends ResourceController{
                 'status' => 200,
                 'messages' => [ 'success' => 'แก้ไขข้อมูลสำเร็จ' ],
                 'data' => true,
+            ]);
+        }
+        return $this->failValidationError();
+    }
+
+    
+    public function userList(){
+        if($this->request->getMethod()=='get'){
+            $tableObject = $this->userModel->getTableObject();
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
+                'data' => $tableObject,
+            ]);
+        }
+        return $this->failValidationError();
+    }
+    public function userRead($id){
+        if($this->request->getMethod()=='get' && !empty($id)){
+            $userModel = new UserModel();
+            $userDetailModel = new UserDetailModel();
+            $userRoleModel = new UserRoleModel();
+
+            $data = $userModel->where(['id' => $id])->first();
+            if($data){
+                unset($data['password']);
+                unset($data['thai_id']);
+                unset($data['thai_id_path']);
+                unset($data['code']);
+                unset($data['last_ip']);
+                $detail = $userDetailModel->where('user_id', $data['id'])->first();
+                if($detail) $data['detail'] = $detail;
+                $data['role'] = $userRoleModel->find($data['role_id']);
+            }
+
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
+                'data' => $data,
             ]);
         }
         return $this->failValidationError();

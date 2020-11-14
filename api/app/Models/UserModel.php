@@ -11,7 +11,7 @@ class UserModel extends Model {
 
     protected $allowedFields = [
         'role_id', 'username', 'firstname', 'lastname', 'email', 'password', 
-        'status', 'profile', 'thai_id', 'last_ip',
+        'profile', 'thai_id', 'thai_id_path', 'code', 'last_ip', 'status',
     ];
     protected $beforeInsert = ['beforeInsert'];
     protected $beforeUpdate = ['beforeUpdate'];
@@ -27,25 +27,32 @@ class UserModel extends Model {
 
 
     protected function beforeInsert(array $data){
-        $data = $this->passwordHash($data);
+        $data['data'] = $this->cleanData($data['data']);
         return $data;
     }
     protected function beforeUpdate(array $data){
-        $data = $this->passwordHash($data);
+        $data['data'] = $this->cleanData($data['data']);
         return $data;
     }
-    protected function passwordHash(array $data){
-        if(isset($data['data']['password'])){
-            $data['data']['password'] = password_hash($data['data']['password'], PASSWORD_DEFAULT);
+
+    public function cleanData(array $data){
+        if(!empty($data['password'])){
+            $data['password'] = password_hash( $data['password'], PASSWORD_DEFAULT);
+        }
+        if(!empty($data['profile']) && strpos($data['profile'], 'http')===false){
+            $data['profile'] = getenv('app.baseURL').$data['profile'];
+        }
+        if(!empty($data['thai_id_path']) && strpos($data['thai_id_path'], 'http')===false){
+            $data['thai_id_path'] = getenv('app.baseURL').$data['thai_id_path'];
         }
         return $data;
     }
 
 
-    public function getUser($userId){
+    public function getUserById($userId){
         $query = $this->db->query(
-            "SELECT `id`, `role_id`, `username`, `firstname`, `lastname`, 
-            `email`, `profile`, `thai_id`, `code`, `last_ip`, `status` 
+            "SELECT `id`, `role_id`, `username`, `firstname`, `lastname`, `email`, 
+            `profile`, `thai_id`, `thai_id_path`, `code`, `last_ip`, `status` 
             FROM `users` WHERE `id` = ?",
             [ $userId ]
         );
@@ -60,6 +67,15 @@ class UserModel extends Model {
         $role = $query->getRowArray();
         if(!$role) return null;
         else return $role['id'];
+    }
+    public function getRoleByUserId($userId){
+        $query = $this->db->query("SELECT ur.* 
+            FROM `users` AS u 
+            INNER JOIN `user_roles` AS ur ON ur.`id` = u.`role_id` 
+            WHERE u.`id` = ?", [ $userId ]);
+        $role = $query->getRowArray();
+        if(!$role) return null;
+        else return $role;
     }
 
     public function authUserByUsernameOrEmail($string, $password){
@@ -147,57 +163,46 @@ class UserModel extends Model {
     }
 
 
-    // public function getTableObject($page=1, $pp=10, $keyword=''){
-    //     if(!$this->isSuperAdmin()) return false;
+    public function getTableObject($page=1, $pp=10, $keyword=''){
+        $whereQuery = "";
+        if(!empty($keyword)){
+            $whereQuery = " AND u.`firstname` LIKE '%".$keyword."%' 
+                OR u.`lastname` LIKE '%".$keyword."%' 
+                OR u.`email` LIKE '%".$keyword."%' 
+                OR u.`username` LIKE '%".$keyword."%' 
+                OR ur.`name` LIKE '%".$keyword."%'";
+        }
 
-    //     $whereQuery = "";
-    //     if(!empty($keyword)){
-    //         $whereQuery = " AND u.`firstname` LIKE '%".$keyword."%' 
-    //             OR u.`lastname` LIKE '%".$keyword."%' 
-    //             OR u.`email` LIKE '%".$keyword."%' 
-    //             OR u.`username` LIKE '%".$keyword."%' 
-    //             OR ur.`name` LIKE '%".$keyword."%'";
-    //     }
+        $getQuery = $this->db->query(
+            "SELECT u.`id`, u.`role_id`, u.`firstname`, u.`lastname`, u.`email`, 
+            u.`profile`, u.`status`, u.`last_ip`, u.`created_at`, u.`updated_at`, 
+            ur.`name` AS `role`, ur.`is_admin` AS `role_is_admin`, 
+            ur.`is_super_admin` AS `role_is_super_admin` 
+            FROM `users` AS u 
+            INNER JOIN `user_roles` AS ur ON ur.`id` = u.`role_id` 
+            WHERE 1 ".$whereQuery." 
+            ORDER BY u.`created_at` DESC 
+            LIMIT :start:, :pp:",
+            [ 'start' => ($page - 1) * $pp, 'pp' => $pp ]
+        );
+        $result = $getQuery->getResultArray();
 
-    //     $getQuery = $this->db->query(
-    //         "SELECT u.*, ur.`name` AS `role` 
-    //         FROM `users` AS u 
-    //         INNER JOIN `user_roles` AS ur ON ur.`id` = u.`role_id` 
-    //         WHERE 1 ".$whereQuery." 
-    //         ORDER BY u.`created_at` DESC 
-    //         LIMIT :start:, :pp:",
-    //         [ 'start' => ($page - 1) * $pp, 'pp' => $pp ]
-    //     );
-    //     $result = $getQuery->getResultArray();
+        $totalQuery = $this->db->query(
+            "SELECT COUNT(u.`id`) AS `total` 
+            FROM `users` AS u 
+            INNER JOIN `user_roles` AS ur ON ur.`id` = u.`role_id` 
+            WHERE 1 ".$whereQuery,
+        );
+        $total = $totalQuery->getRowArray()['total'];
 
-    //     $totalQuery = $this->db->query(
-    //         "SELECT COUNT(u.`id`) AS `total` 
-    //         FROM `users` AS u 
-    //         INNER JOIN `user_roles` AS ur ON ur.`id` = u.`role_id` 
-    //         WHERE 1 ".$whereQuery,
-    //     );
-    //     $total = $totalQuery->getRowArray()['total'];
-
-    //     return [
-    //         'result' => $result,
-    //         'page' => $page,
-    //         'pp' => $pp,
-    //         'total' => $total,
-    //         'total_pages' => ceil($total / $pp)
-    //     ];
-    // }
-
-
-    // public function getUserById($id){
-    //     $query = $this->db->query(
-    //         "SELECT u.*, ur.`name` AS `role` 
-    //         FROM `users` AS u 
-    //         INNER JOIN `user_roles` AS ur ON ur.`id` = u.`role_id` 
-    //         WHERE u.`id` = ?",
-    //         [ $id ]
-    //     );
-    //     return $query->getRowArray();
-    // }
+        return [
+            'page' => $page,
+            'pp' => $pp,
+            'total' => $total,
+            'total_pages' => ceil($total / $pp),
+            'result' => $result,
+        ];
+    }
 
 }
 

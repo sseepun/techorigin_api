@@ -51,6 +51,11 @@ class Users extends Migration{
 				'constraint' => 256,
 				'null' => true,
 			],
+			'thai_id_path' => [
+				'type' => 'VARCHAR',
+				'constraint' => 256,
+				'null' => true,
+			],
 			'code' => [
 				'type' => 'VARCHAR',
 				'constraint' => 64,
