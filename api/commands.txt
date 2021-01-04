@@ -1,4 +1,5 @@
 
+composer install
 composer update
 
 php spark serve
