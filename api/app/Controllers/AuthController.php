@@ -10,7 +10,15 @@ use App\Models\TrafficLogModel;
 class AuthController extends ResourceController{
     protected $format = 'json';
 
-    public function __construct(){ }
+    public function __construct(){
+        helper(['input', 'jwt']);
+        $request = \Config\Services::request();
+        
+        $input = stdClassToArray($request->getJSON());
+        if(empty($input['app_id']) || $input['app_id']!=getenv('app.id')){
+            echo '404'; exit;
+        }
+    }
 
 
 	public function signin(){

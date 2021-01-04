@@ -26,6 +26,11 @@ class SuperAdminController extends ResourceController{
         helper(['input', 'jwt']);
         $request = \Config\Services::request();
         
+        $input = stdClassToArray($request->getJSON());
+        if(empty($input['app_id']) || $input['app_id']!=getenv('app.id')){
+            echo '404'; exit;
+        }
+        
         $this->decoded = stdClassToArray(jwtDecodeToken(
             $request->getHeaderLine('Authorization')
         ));
