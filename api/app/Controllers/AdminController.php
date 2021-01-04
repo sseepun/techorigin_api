@@ -7,6 +7,8 @@ use App\Models\UserModel;
 use App\Models\UserDetailModel;
 use App\Models\UserRoleModel;
 
+use App\Models\ActionLogModel;
+
 class AdminController extends ResourceController{
     protected $format = 'json';
 
@@ -76,8 +78,18 @@ class AdminController extends ResourceController{
                 'email' => $input['email'],
                 'username' => $input['username'],
                 'password' => $input['password'],
-                'last_ip' => $input['ip'],
+                'profile' => !empty($input['profile'])? $input['profile']: null,
             ]);
+            
+            $actionLogModel = new ActionLogModel();
+            $actionLogModel->insert([
+                'user_id' => $this->user['id'],
+                'target_user_id' => $this->userModel->getInsertID(),
+                'action' => 'Admin - User Create',
+                'url' => !empty($input['url'])? $input['url']: null,
+                'ip' => !empty($input['ip'])? $input['ip']: null,
+            ]);
+
             return $this->respond([
                 'status' => 200,
                 'messages' => [ 'success' => 'สร้างข้อมูลสำเร็จ' ],
@@ -86,6 +98,7 @@ class AdminController extends ResourceController{
         }
         return $this->failValidationError();
     }
+
     public function userRead($id){
         if($this->request->getMethod()=='get' && !empty($id)){
             $userDetailModel = new UserDetailModel();
@@ -106,6 +119,7 @@ class AdminController extends ResourceController{
         }
         return $this->failValidationError();
     }
+
     public function userUpdate(){
         if($this->request->getMethod()=='post'){
             $input = stdClassToArray($this->request->getJSON());
@@ -126,6 +140,15 @@ class AdminController extends ResourceController{
             $this->userModel->update($input['id'], $input);
             $input = $this->userModel->cleanData($input);
 
+            $actionLogModel = new ActionLogModel();
+            $actionLogModel->insert([
+                'user_id' => $this->user['id'],
+                'target_user_id' => $user['id'],
+                'action' => 'Admin - User Update',
+                'url' => !empty($input['url'])? $input['url']: null,
+                'ip' => !empty($input['ip'])? $input['ip']: null,
+            ]);
+
             if($this->user['id']==$user['id']){
                 return $this->respond([
                     'status' => 200,
@@ -143,6 +166,81 @@ class AdminController extends ResourceController{
         }
         return $this->failValidationError();
     }
+    public function userUpdateDetail(){
+        if($this->request->getMethod()=='post'){
+            $input = stdClassToArray($this->request->getJSON());
+            unset($input['id']);
+            
+            $validation = \Config\Services::validation();
+            if(!$validation->run($input, 'userUpdateDetail')){
+                return $this->respond([
+                    'status' => 400,
+                    'messages' => $validation->getErrors()
+                ]);
+            }
+            
+            $user = $this->checkRoleAccess($input['user_id']);
+            if(!$user) return $this->failValidationError();
+            
+            $userDetailModel = new UserDetailModel();
+            $detail = $userDetailModel->where('user_id', $input['user_id'])->first();
+            if($detail) $input['id'] = $detail['id'];
+            $userDetailModel->save($input);
+
+            $actionLogModel = new ActionLogModel();
+            $actionLogModel->insert([
+                'user_id' => $this->user['id'],
+                'target_user_id' => $user['id'],
+                'action' => 'Admin - User Update Detail',
+                'url' => !empty($input['url'])? $input['url']: null,
+                'ip' => !empty($input['ip'])? $input['ip']: null,
+            ]);
+
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'แก้ไขข้อมูลสำเร็จ' ],
+                'data' => $user,
+            ]);
+        }
+        return $this->failValidationError();
+    }
+    public function userUpdatePassword(){
+        if($this->request->getMethod()=='post'){
+            $input = stdClassToArray($this->request->getJSON());
+            
+            $validation = \Config\Services::validation();
+            if(!$validation->run($input, 'adminUserUpdatePassword')){
+                return $this->respond([
+                    'status' => 400,
+                    'messages' => $validation->getErrors()
+                ]);
+            }
+            
+            $user = $this->checkRoleAccess($input['id']);
+            if(!$user) return $this->failValidationError();
+            
+            $this->userModel->save([
+                'id' => $input['id'], 'password' => $input['new_password']
+            ]);
+
+            $actionLogModel = new ActionLogModel();
+            $actionLogModel->insert([
+                'user_id' => $this->user['id'],
+                'target_user_id' => $input['id'],
+                'action' => 'Admin - User Update Password',
+                'url' => !empty($input['url'])? $input['url']: null,
+                'ip' => !empty($input['ip'])? $input['ip']: null,
+            ]);
+
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'แก้ไขข้อมูลสำเร็จ' ],
+                'data' => true,
+            ]);
+        }
+        return $this->failValidationError();
+    }
+
     public function userDelete(){
         if($this->request->getMethod()=='post'){
             $input = stdClassToArray($this->request->getJSON());
@@ -161,67 +259,19 @@ class AdminController extends ResourceController{
             
             $this->userModel->delete($input['id']);
 
+            $actionLogModel = new ActionLogModel();
+            $actionLogModel->insert([
+                'user_id' => $this->user['id'],
+                'target_user_id' => $input['id'],
+                'action' => 'Admin - User Delete',
+                'url' => !empty($input['url'])? $input['url']: null,
+                'ip' => !empty($input['ip'])? $input['ip']: null,
+            ]);
+
             return $this->respond([
                 'status' => 200,
                 'messages' => [ 'success' => 'ลบข้อมูลสำเร็จ' ],
                 'data' => $input,
-            ]);
-        }
-        return $this->failValidationError();
-    }
-
-    public function userDetailUpdate(){
-        if($this->request->getMethod()=='post'){
-            $input = stdClassToArray($this->request->getJSON());
-            unset($input['id']);
-            
-            $validation = \Config\Services::validation();
-            if(!$validation->run($input, 'userDetailUpdate')){
-                return $this->respond([
-                    'status' => 400,
-                    'messages' => $validation->getErrors()
-                ]);
-            }
-            
-            $user = $this->checkRoleAccess($input['user_id']);
-            if(!$user) return $this->failValidationError();
-            
-            $userDetailModel = new UserDetailModel();
-            $detail = $userDetailModel->where('user_id', $input['user_id'])->first();
-            if($detail) $input['id'] = $detail['id'];
-            $userDetailModel->save($input);
-
-            return $this->respond([
-                'status' => 200,
-                'messages' => [ 'success' => 'แก้ไขข้อมูลสำเร็จ' ],
-                'data' => $user,
-            ]);
-        }
-        return $this->failValidationError();
-    }
-    public function userPasswordUpdate(){
-        if($this->request->getMethod()=='post'){
-            $input = stdClassToArray($this->request->getJSON());
-            
-            $validation = \Config\Services::validation();
-            if(!$validation->run($input, 'adminUserPasswordUpdate')){
-                return $this->respond([
-                    'status' => 400,
-                    'messages' => $validation->getErrors()
-                ]);
-            }
-            
-            $user = $this->checkRoleAccess($input['id']);
-            if(!$user) return $this->failValidationError();
-            
-            $this->userModel->save([
-                'id' => $input['id'], 'password' => $input['new_password']
-            ]);
-
-            return $this->respond([
-                'status' => 200,
-                'messages' => [ 'success' => 'แก้ไขข้อมูลสำเร็จ' ],
-                'data' => true,
             ]);
         }
         return $this->failValidationError();

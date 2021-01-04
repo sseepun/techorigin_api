@@ -10,8 +10,9 @@ class UserModel extends Model {
     protected $useSoftDeletes = false;
 
     protected $allowedFields = [
-        'role_id', 'username', 'firstname', 'lastname', 'email', 'password', 
-        'profile', 'thai_id', 'thai_id_path', 'code', 'last_ip', 'status',
+        'role_id', 'username', 'firstname', 'lastname', 'email', 
+        'password', 'is_password_set', 'profile', 'thai_id', 'thai_id_path', 
+        'code', 'facebook_id', 'google_id', 'last_ip', 'status',
     ];
     protected $beforeInsert = ['beforeInsert'];
     protected $beforeUpdate = ['beforeUpdate'];
@@ -45,6 +46,9 @@ class UserModel extends Model {
         if(!empty($data['thai_id_path']) && strpos($data['thai_id_path'], 'http')===false){
             $data['thai_id_path'] = getenv('app.baseURL').$data['thai_id_path'];
         }
+        if(!empty($data['ip'])){
+            $data['last_ip'] = $data['ip'];
+        }
         return $data;
     }
 
@@ -52,7 +56,8 @@ class UserModel extends Model {
     public function getUserById($userId){
         $query = $this->db->query(
             "SELECT `id`, `role_id`, `username`, `firstname`, `lastname`, `email`, 
-            `profile`, `thai_id`, `thai_id_path`, `code`, `last_ip`, `status` 
+            `is_password_set`, `profile`, `thai_id`, `thai_id_path`, `code`, 
+            `facebook_id`, `google_id`, `last_ip`, `status` 
             FROM `users` WHERE `id` = ?",
             [ $userId ]
         );

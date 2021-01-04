@@ -41,6 +41,11 @@ class Users extends Migration{
 				'type' => 'VARCHAR',
 				'constraint' => 512,
 			],
+			'is_password_set' => [
+				'type' => 'INT',
+				'constraint' => 1,
+				'default' => 1,
+			],
 			'profile' => [
 				'type' => 'VARCHAR',
 				'constraint' => 256,
@@ -59,6 +64,16 @@ class Users extends Migration{
 			'code' => [
 				'type' => 'VARCHAR',
 				'constraint' => 64,
+				'null' => true,
+			],
+			'facebook_id' => [
+				'type' => 'VARCHAR',
+				'constraint' => 48,
+				'null' => true,
+			],
+			'google_id' => [
+				'type' => 'VARCHAR',
+				'constraint' => 48,
 				'null' => true,
 			],
 			'last_ip' => [

@@ -39,30 +39,34 @@ $routes->setAutoRoute(true);
 $routes->post( 'api/auth/signin', 'AuthController::signin');
 $routes->post( 'api/auth/signup', 'AuthController::signup');
 $routes->post( 'api/auth/forget-password', 'AuthController::forgetPassword');
-$routes->get(  'api/auth/reset-password/(:alphanum)', 'AuthController::resetPasswordExists/$1');
+$routes->get(  'api/auth/reset-password/(:segment)', 'AuthController::resetPasswordExists/$1');
 $routes->post( 'api/auth/reset-password', 'AuthController::resetPassword');
-$routes->get(  'api/auth/signout', 'AuthController::signout');
+$routes->post( 'api/auth/traffic-create', 'AuthController::trafficCreate');
 
 
 // User Controller
 $routes->get(  'api/user/read', 'UserController::selfRead', ['filter' => 'authUser']);
 $routes->post( 'api/user/update', 'UserController::selfUpdate', ['filter' => 'authUser']);
-$routes->post( 'api/user/detail-update', 'UserController::selfDetailUpdate', ['filter' => 'authUser']);
-$routes->post( 'api/user/password-update', 'UserController::selfPasswordUpdate', ['filter' => 'authUser']);
+$routes->post( 'api/user/update-detail', 'UserController::selfUpdateDetail', ['filter' => 'authUser']);
+$routes->post( 'api/user/update-password', 'UserController::selfUpdatePassword', ['filter' => 'authUser']);
 
 $routes->get(  'api/user/user-list', 'UserController::userList', ['filter' => 'authUser']);
 $routes->get(  'api/user/user-read/(:num)', 'UserController::userRead/$1', ['filter' => 'authUser']);
 
 $routes->get(  'api/user/module-permissions', 'UserController::selfModulePermissions', ['filter' => 'authUser']);
 
+$routes->post( 'api/user/signout', 'UserController::signout', ['filter' => 'authUser']);
+
+$routes->post( 'api/user/traffic-create', 'UserController::trafficCreate', ['filter' => 'authUser']);
+
 
 // Admin Controller
 $routes->post( 'api/admin/user-create', 'AdminController::userCreate', ['filter' => 'authUser']);
 $routes->get(  'api/admin/user-read/(:num)', 'AdminController::userRead/$1', ['filter' => 'authUser']);
 $routes->post( 'api/admin/user-update', 'AdminController::userUpdate', ['filter' => 'authUser']);
+$routes->post( 'api/admin/user-update-detail', 'AdminController::userUpdateDetail', ['filter' => 'authUser']);
+$routes->post( 'api/admin/user-update-password', 'AdminController::userUpdatePassword', ['filter' => 'authUser']);
 $routes->post( 'api/admin/user-delete', 'AdminController::userDelete', ['filter' => 'authUser']);
-$routes->post( 'api/admin/user-detail-update', 'AdminController::userDetailUpdate', ['filter' => 'authUser']);
-$routes->post( 'api/admin/user-password-update', 'AdminController::userPasswordUpdate', ['filter' => 'authUser']);
 
 
 // Super Admin Controller

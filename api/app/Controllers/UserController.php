@@ -9,6 +9,9 @@ use App\Models\UserRoleModel;
 
 use App\Models\ModuleModel;
 
+use App\Models\ActionLogModel;
+use App\Models\TrafficLogModel;
+
 class UserController extends ResourceController{
     protected $format = 'json';
 
@@ -68,8 +71,16 @@ class UserController extends ResourceController{
                 ]);
             }
             
-            $this->userModel->update($this->decoded['id'], $input);
             $input = $this->userModel->cleanData($input);
+            $this->userModel->update($this->decoded['id'], $input);
+            
+            $actionLogModel = new ActionLogModel();
+            $actionLogModel->insert([
+                'user_id' => $this->user['id'],
+                'action' => 'User Update',
+                'url' => !empty($input['url'])? $input['url']: null,
+                'ip' => !empty($input['ip'])? $input['ip']: null,
+            ]);
 
             return $this->respond([
                 'status' => 200,
@@ -80,14 +91,14 @@ class UserController extends ResourceController{
         }
         return $this->failValidationError();
     }
-    public function selfDetailUpdate(){
+    public function selfUpdateDetail(){
         if($this->request->getMethod()=='post'){
             $input = stdClassToArray($this->request->getJSON());
             $input['user_id'] = $this->decoded['id'];
             unset($input['id']);
             
             $validation = \Config\Services::validation();
-            if(!$validation->run($input, 'userDetailUpdate')){
+            if(!$validation->run($input, 'userUpdateDetail')){
                 return $this->respond([
                     'status' => 400,
                     'messages' => $validation->getErrors()
@@ -98,6 +109,14 @@ class UserController extends ResourceController{
             $detail = $userDetailModel->where('user_id', $input['user_id'])->first();
             if($detail) $input['id'] = $detail['id'];
             $userDetailModel->save($input);
+            
+            $actionLogModel = new ActionLogModel();
+            $actionLogModel->insert([
+                'user_id' => $this->user['id'],
+                'action' => 'User Update Detail',
+                'url' => !empty($input['url'])? $input['url']: null,
+                'ip' => !empty($input['ip'])? $input['ip']: null,
+            ]);
 
             return $this->respond([
                 'status' => 200,
@@ -107,21 +126,39 @@ class UserController extends ResourceController{
         }
         return $this->failValidationError();
     }
-    public function selfPasswordUpdate(){
+    public function selfUpdatePassword(){
         if($this->request->getMethod()=='post'){
             $input = stdClassToArray($this->request->getJSON());
             $input['id'] = $this->decoded['id'];
             
             $validation = \Config\Services::validation();
-            if(!$validation->run($input, 'userPasswordUpdate')){
-                return $this->respond([
-                    'status' => 400,
-                    'messages' => $validation->getErrors()
-                ]);
+            if($this->user['is_password_set']){
+                if(!$validation->run($input, 'userUpdatePassword')){
+                    return $this->respond([
+                        'status' => 400,
+                        'messages' => $validation->getErrors()
+                    ]);
+                }
+            }else{
+                if(!$validation->run($input, 'userUpdatePasswordWithoutPassword')){
+                    return $this->respond([
+                        'status' => 400,
+                        'messages' => $validation->getErrors()
+                    ]);
+                }
             }
             
             $this->userModel->save([
-                'id' => $this->decoded['id'], 'password' => $input['new_password']
+                'id' => $this->decoded['id'], 'password' => $input['new_password'],
+                'is_password_set' => 1,
+            ]);
+            
+            $actionLogModel = new ActionLogModel();
+            $actionLogModel->insert([
+                'user_id' => $this->user['id'],
+                'action' => 'User Update Password',
+                'url' => !empty($input['url'])? $input['url']: null,
+                'ip' => !empty($input['ip'])? $input['ip']: null,
             ]);
 
             return $this->respond([
@@ -181,6 +218,57 @@ class UserController extends ResourceController{
                 'status' => 200,
                 'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
                 'data' => $permissions,
+            ]);
+        }
+        return $this->failValidationError();
+    }
+
+
+    public function signout(){
+        if($this->request->getMethod()=='post'){
+            $input = stdClassToArray($this->request->getJSON());
+
+            $actionLogModel = new ActionLogModel();
+            $actionLogModel->insert([
+                'user_id' => $this->user['id'],
+                'action' => 'Sign Out',
+                'url' => !empty($input['url'])? $input['url']: null,
+                'ip' => !empty($input['ip'])? $input['ip']: null,
+            ]);
+
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'คุณได้ออกจากระบบสำเร็จแล้ว' ],
+                'jwt' => null,
+            ]);
+        }
+        return $this->failValidationError();
+    }
+
+
+    public function trafficCreate(){
+        if($this->request->getMethod()=='post'){
+            $input = stdClassToArray($this->request->getJSON());
+
+            $validation = \Config\Services::validation();
+            if(!$validation->run($input, 'trafficCreate')){
+                return $this->respond([
+                    'status' => 400,
+                    'messages' => $validation->getErrors()
+                ]);
+            }
+            
+            $trafficLogModel = new TrafficLogModel();
+            $trafficLogModel->insert([
+                'user_id' => $this->user['id'],
+                'url' => $input['url'],
+                'ip' => $input['ip'],
+            ]);
+
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'เพิ่มการเข้าชมสำเร็จแล้ว' ],
+                'data' => true,
             ]);
         }
         return $this->failValidationError();

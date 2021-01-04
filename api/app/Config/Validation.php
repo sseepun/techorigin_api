@@ -174,7 +174,7 @@ class Validation
 			]
 		],
 	];
-	public $userDetailUpdate = [
+	public $userUpdateDetail = [
 		'user_id' => [
 			'rules' => 'required',
 			'errors' => [
@@ -218,7 +218,7 @@ class Validation
 			]
 		],
 	];
-	public $userPasswordUpdate = [
+	public $userUpdatePassword = [
 		'password' => [
 			'rules' => 'required|min_length[6]|max_length[64]|isPasswordVerified[id,password]',
 			'errors' => [
@@ -241,6 +241,38 @@ class Validation
 			'errors' => [
 				'required' => 'ใส่ยืนยันรหัสผ่าน',
 				'matches' => 'ยืนยันรหัสผ่านไม่ตรงกับรหัสผ่านใหม่',
+			]
+		],
+	];
+	public $userUpdatePasswordWithoutPassword = [
+		'new_password' => [
+			'rules' => 'required|min_length[6]|max_length[64]',
+			'errors' => [
+				'required' => 'ใส่รหัสผ่านใหม่',
+				'min_length' => 'รหัสผ่านใหม่ขั้นต่ำ 6 ตัวอักษร',
+				'max_length' => 'รหัสผ่านใหม่สูงสุด 64 ตัวอักษร',
+			]
+		],
+		'new_password_confirm' => [
+			'rules' => 'required|matches[new_password]',
+			'errors' => [
+				'required' => 'ใส่ยืนยันรหัสผ่าน',
+				'matches' => 'ยืนยันรหัสผ่านไม่ตรงกับรหัสผ่านใหม่',
+			]
+		],
+	];
+
+	public $trafficCreate = [
+		'url' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'ใส่ Url',
+			]
+		],
+		'ip' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'ใส่ IP Address',
 			]
 		],
 	];
@@ -292,7 +324,7 @@ class Validation
 			]
 		],
 	];
-	public $adminUserPasswordUpdate = [
+	public $adminUserUpdatePassword = [
 		'id' => [
 			'rules' => 'required',
 			'errors' => [

@@ -10,6 +10,8 @@ use App\Models\UserRoleModel;
 use App\Models\ModuleModel;
 use App\Models\ModulePermissionModel;
 
+use App\Models\ActionLogModel;
+
 class SuperAdminController extends ResourceController{
     protected $format = 'json';
 
@@ -53,6 +55,15 @@ class SuperAdminController extends ResourceController{
             }
 
             $this->userRoleModel->save($input);
+            
+            $actionLogModel = new ActionLogModel();
+            $actionLogModel->insert([
+                'user_id' => $this->user['id'],
+                'action' => 'Super Admin - User Role Create',
+                'url' => !empty($input['url'])? $input['url']: null,
+                'ip' => !empty($input['ip'])? $input['ip']: null,
+            ]);
+
             return $this->respond([
                 'status' => 200,
                 'messages' => [ 'success' => 'สร้างข้อมูลสำเร็จ' ],
@@ -91,6 +102,15 @@ class SuperAdminController extends ResourceController{
             if(!$role) return $this->failValidationError();
 
             $this->userRoleModel->save($input);
+            
+            $actionLogModel = new ActionLogModel();
+            $actionLogModel->insert([
+                'user_id' => $this->user['id'],
+                'action' => 'Super Admin - User Role Update',
+                'url' => !empty($input['url'])? $input['url']: null,
+                'ip' => !empty($input['ip'])? $input['ip']: null,
+            ]);
+
             return $this->respond([
                 'status' => 200,
                 'messages' => [ 'success' => 'แก้ไขข้อมูลสำเร็จ' ],
@@ -116,6 +136,15 @@ class SuperAdminController extends ResourceController{
             if(!$role) return $this->failValidationError();
             
             $this->userRoleModel->delete($input['id']);
+            
+            $actionLogModel = new ActionLogModel();
+            $actionLogModel->insert([
+                'user_id' => $this->user['id'],
+                'action' => 'Super Admin - User Role Delete',
+                'url' => !empty($input['url'])? $input['url']: null,
+                'ip' => !empty($input['ip'])? $input['ip']: null,
+            ]);
+
             return $this->respond([
                 'status' => 200,
                 'messages' => [ 'success' => 'ลบข้อมูลสำเร็จ' ],
@@ -140,6 +169,15 @@ class SuperAdminController extends ResourceController{
 
             $moduleModel = new ModuleModel();
             $moduleModel->save($input);
+            
+            $actionLogModel = new ActionLogModel();
+            $actionLogModel->insert([
+                'user_id' => $this->user['id'],
+                'action' => 'Super Admin - Module Create',
+                'url' => !empty($input['url'])? $input['url']: null,
+                'ip' => !empty($input['ip'])? $input['ip']: null,
+            ]);
+
             return $this->respond([
                 'status' => 200,
                 'messages' => [ 'success' => 'สร้างข้อมูลสำเร็จ' ],
@@ -180,6 +218,15 @@ class SuperAdminController extends ResourceController{
             if(!$module) return $this->failValidationError();
 
             $moduleModel->save($input);
+            
+            $actionLogModel = new ActionLogModel();
+            $actionLogModel->insert([
+                'user_id' => $this->user['id'],
+                'action' => 'Super Admin - Module Update',
+                'url' => !empty($input['url'])? $input['url']: null,
+                'ip' => !empty($input['ip'])? $input['ip']: null,
+            ]);
+
             return $this->respond([
                 'status' => 200,
                 'messages' => [ 'success' => 'แก้ไขข้อมูลสำเร็จ' ],
@@ -206,6 +253,15 @@ class SuperAdminController extends ResourceController{
             if(!$module) return $this->failValidationError();
             
             $moduleModel->delete($input['id']);
+            
+            $actionLogModel = new ActionLogModel();
+            $actionLogModel->insert([
+                'user_id' => $this->user['id'],
+                'action' => 'Super Admin - Module Delete',
+                'url' => !empty($input['url'])? $input['url']: null,
+                'ip' => !empty($input['ip'])? $input['ip']: null,
+            ]);
+
             return $this->respond([
                 'status' => 200,
                 'messages' => [ 'success' => 'ลบข้อมูลสำเร็จ' ],

@@ -1,0 +1,97 @@
+CRITICAL - 2020-12-28 00:32:12 --> Cannot declare class App\Database\Migrations\Modules, because the name is already in use
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2020-12-28 01:02:57 --> Wrong number of segments
+#0 C:\xampp\htdocs\techorigin_works\techorigin_api\api\app\Helpers\jwt_helper.php(39): Firebase\JWT\JWT::decode(NULL, 'E7C8AD9FD2ADF', Array)
+#1 C:\xampp\htdocs\techorigin_works\techorigin_api\api\app\Controllers\UserController.php(25): jwtDecodeToken('')
+#2 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(890): App\Controllers\UserController->__construct()
+#3 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->createController()
+#4 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\techorigin_works\techorigin_api\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2020-12-28 01:03:24 --> Wrong number of segments
+#0 C:\xampp\htdocs\techorigin_works\techorigin_api\api\app\Helpers\jwt_helper.php(39): Firebase\JWT\JWT::decode(NULL, 'E7C8AD9FD2ADF', Array)
+#1 C:\xampp\htdocs\techorigin_works\techorigin_api\api\app\Controllers\UserController.php(25): jwtDecodeToken('')
+#2 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(890): App\Controllers\UserController->__construct()
+#3 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->createController()
+#4 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\techorigin_works\techorigin_api\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2020-12-28 01:05:50 --> Class 'App\Controllers\ActionLogModel' not found
+#0 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\UserController->signout()
+#1 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#2 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\techorigin_works\techorigin_api\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-12-28 01:06:35 --> Class 'App\Controllers\ActionLogModel' not found
+#0 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\UserController->signout()
+#1 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#2 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\techorigin_works\techorigin_api\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-12-28 02:15:25 --> addTraffic is not a validation rules group.
+#0 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\Validation\Validation.php(619): CodeIgniter\Validation\Exceptions\ValidationException::forGroupNotFound('addTraffic')
+#1 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\Validation\Validation.php(149): CodeIgniter\Validation\Validation->loadRuleGroup('addTraffic')
+#2 C:\xampp\htdocs\techorigin_works\techorigin_api\api\app\Controllers\UserController.php(254): CodeIgniter\Validation\Validation->run(Array, 'addTraffic')
+#3 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\UserController->addTraffic()
+#4 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#5 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\techorigin_works\techorigin_api\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-12-28 02:16:59 --> trafficCreate is not a validation rules group.
+#0 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\Validation\Validation.php(619): CodeIgniter\Validation\Exceptions\ValidationException::forGroupNotFound('trafficCreate')
+#1 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\Validation\Validation.php(149): CodeIgniter\Validation\Validation->loadRuleGroup('trafficCreate')
+#2 C:\xampp\htdocs\techorigin_works\techorigin_api\api\app\Controllers\UserController.php(254): CodeIgniter\Validation\Validation->run(Array, 'trafficCreate')
+#3 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\UserController->trafficCreate()
+#4 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#5 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\techorigin_works\techorigin_api\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-12-28 02:23:12 --> Call to undefined function App\Controllers\stdClassToArray()
+#0 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\AuthController->trafficCreate()
+#1 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+#2 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\techorigin_works\techorigin_api\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-12-28 02:23:57 --> Call to undefined function App\Controllers\stdClassToArray()
+#0 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\AuthController->trafficCreate()
+#1 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+#2 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\techorigin_works\techorigin_api\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-12-28 02:23:59 --> Call to undefined function App\Controllers\stdClassToArray()
+#0 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\AuthController->trafficCreate()
+#1 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+#2 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\techorigin_works\techorigin_api\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-12-28 02:24:03 --> Call to undefined function App\Controllers\stdClassToArray()
+#0 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\AuthController->trafficCreate()
+#1 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+#2 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\techorigin_works\techorigin_api\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-12-28 02:24:44 --> Call to undefined function App\Controllers\stdClassToArray()
+#0 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\AuthController->trafficCreate()
+#1 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+#2 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\techorigin_works\techorigin_api\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-12-28 02:24:44 --> Call to undefined function App\Controllers\stdClassToArray()
+#0 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\AuthController->trafficCreate()
+#1 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+#2 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\techorigin_works\techorigin_api\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-12-28 02:24:45 --> Call to undefined function App\Controllers\stdClassToArray()
+#0 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\AuthController->trafficCreate()
+#1 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+#2 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\techorigin_works\techorigin_api\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-12-28 02:25:11 --> Call to undefined function App\Controllers\stdClassToArray()
+#0 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\AuthController->trafficCreate()
+#1 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+#2 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\techorigin_works\techorigin_api\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
