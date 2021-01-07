@@ -128,7 +128,11 @@ class UserModel extends Model {
                     [ $user['id'], $action, $salt ]
                 );
             }
-            return [ 'email' => $user['email'], 'salt' => $salt ];
+            return [
+                'user_id' => $user['id'],
+                'email' => $user['email'], 
+                'salt' => $salt
+            ];
         }
         return false;
     }

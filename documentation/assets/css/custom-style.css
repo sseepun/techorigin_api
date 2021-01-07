@@ -1,0 +1,8 @@
+.sidebar .sidebar-sub-headers{display:none;}
+.sidebar .sidebar-sub-headers.active{display:block;}
+.page-iframe{display:block; width:100%; height:100vh;}
+table.table{display:table; width:100%;}
+table.table td{vertical-align:baseline;}
+.w-100{width:100%;}
+.ws-nowrap{white-space:nowrap;}
+.pt-adaptive{padding-top:3.75rem!important;}

@@ -46,8 +46,8 @@ class AuthController extends ResourceController{
             $actionLogModel->insert([
                 'user_id' => $user['id'],
                 'action' => 'Sign In',
-                'url' => !empty($input['url'])? $input['url']: null,
                 'ip' => !empty($input['ip'])? $input['ip']: null,
+                'url' => !empty($input['url'])? $input['url']: null,
             ]);
 
             return $this->respond([
@@ -87,13 +87,14 @@ class AuthController extends ResourceController{
             $actionLogModel->insert([
                 'user_id' => $userModel->getInsertID(),
                 'action' => 'Sign Up',
-                'url' => !empty($input['url'])? $input['url']: null,
                 'ip' => !empty($input['ip'])? $input['ip']: null,
+                'url' => !empty($input['url'])? $input['url']: null,
             ]);
 
             return $this->respond([
                 'status' => 200,
                 'messages' => [ 'success' => 'คุณได้สมัครสมาชิกสำเร็จแล้ว' ],
+                'data' => true,
             ]);
         }
         return $this->failValidationError();
@@ -119,6 +120,15 @@ class AuthController extends ResourceController{
                 $userId = false,
                 $ip = $input['ip'],
             );
+            
+            $actionLogModel = new ActionLogModel();
+            $actionLogModel->insert([
+                'user_id' => $data['user_id'],
+                'action' => 'Forget Password',
+                'ip' => !empty($input['ip'])? $input['ip']: null,
+                'url' => !empty($input['url'])? $input['url']: null,
+            ]);
+
             return $this->respond([
                 'status' => 200,
                 'messages' => [ 'success' => 'ทำตามขั้นตอนต่อไปเพื่อตั้งรหัสผ่านใหม่' ],
@@ -173,8 +183,8 @@ class AuthController extends ResourceController{
             $actionLogModel->insert([
                 'user_id' => $user['id'],
                 'action' => 'Reset Password',
-                'url' => !empty($input['url'])? $input['url']: null,
                 'ip' => !empty($input['ip'])? $input['ip']: null,
+                'url' => !empty($input['url'])? $input['url']: null,
             ]);
 
             return $this->respond([
@@ -202,8 +212,8 @@ class AuthController extends ResourceController{
             
             $trafficLogModel = new TrafficLogModel();
             $trafficLogModel->insert([
-                'url' => $input['url'],
                 'ip' => $input['ip'],
+                'url' => $input['url'],
             ]);
 
             return $this->respond([
