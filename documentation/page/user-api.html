@@ -23,6 +23,263 @@
                 in <strong>JSON Body</strong> for every request to the server.
             </p>
 
+            <!-- Read -->
+            <h2 id="read">
+                <a href="#read" aria-hidden="true" class="header-anchor">#</a>
+                Read
+            </h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>Endpoint</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>GET</code></td>
+                        <td><code>API_URL</code>api/user/read</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4 class="pt-adaptive">Body Variables</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>app_id</code></td>
+                        <td><code>String</code></td>
+                        <td>App id</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4 class="pt-adaptive">Response</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>status</code></td>
+                        <td><code>Number</code></td>
+                        <td>Response status code</td>
+                    </tr>
+                    <tr>
+                        <td><code>messages</code></td>
+                        <td><code>Array</code></td>
+                        <td>Response message array</td>
+                    </tr>
+                    <tr><td colspan="3"><code>data</code> array on successful request</td></tr>
+                    <tr>
+                        <td><code>id</code></td>
+                        <td><code>String</code></td>
+                        <td>The unique identifier for this request</td>
+                    </tr>
+                    <tr>
+                        <td><code>role_id</code></td>
+                        <td><code>String</code></td>
+                        <td>The unique identifier of role associated with user's permission</td>
+                    </tr>
+                    <tr>
+                        <td><code>username</code></td>
+                        <td><code>String</code></td>
+                        <td>User username</td>
+                    </tr>
+                    <tr>
+                        <td><code>firstname</code></td>
+                        <td><code>String</code></td>
+                        <td>User first name</td>
+                    </tr>
+                    <tr>
+                        <td><code>lastname</code></td>
+                        <td><code>String</code></td>
+                        <td>User last name</td>
+                    </tr>
+                    <tr>
+                        <td><code>is_password_set</code></td>
+                        <td><code>String</code></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><code>email</code></td>
+                        <td><code>String</code></td>
+                        <td>User email</td>
+                    </tr>
+                    <tr>
+                        <td><code>profile</code></td>
+                        <td><code>String</code></td>
+                        <td>User profile</td>
+                    </tr>
+                    <tr>
+                        <td><code>thai_id</code></td>
+                        <td><code>String</code></td>
+                        <td>User Thai id</td>
+                    </tr>
+                    <tr>
+                        <td><code>thai_id_path</code></td>
+                        <td><code>String</code></td>
+                        <td>User Thai id URL</td>
+                    </tr>
+                    <tr>
+                        <td><code>code</code></td>
+                        <td><code>String</code></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><code>facebook_id</code></td>
+                        <td><code>String</code></td>
+                        <td>User facebook id</td>
+                    </tr>
+                    <tr>
+                        <td><code>google_id</code></td>
+                        <td><code>String</code></td>
+                        <td>User google id</td>
+                    </tr>
+                    <tr>
+                        <td><code>last_ip</code></td>
+                        <td><code>String</code></td>
+                        <td>User last ip</td>
+                    </tr>
+                    <tr>
+                        <td><code>status</code></td>
+                        <td><code>String</code></td>
+                        <td>User status</td>
+                    </tr>
+                    <tr><td colspan="3"><code>detail</code> array on successful request</td></tr>
+                    <tr>
+                        <td><code>id</code></td>
+                        <td><code>String</code></td>
+                        <td>The unique identifier of user detail</td>
+                    </tr>
+                    <tr>
+                        <td><code>user_id</code></td>
+                        <td><code>String</code></td>
+                        <td>The unique identifier of user associated with user detail</td>
+                    </tr>
+                    <tr>
+                        <td><code>address</code></td>
+                        <td><code>String</code></td>
+                        <td>User address</td>
+                    </tr>
+                    <tr>
+                        <td><code>phone</code></td>
+                        <td><code>String</code></td>
+                        <td>User phone number</td>
+                    </tr>
+                    <tr>
+                        <td><code>title</code></td>
+                        <td><code>String</code></td>
+                        <td>User title</td>
+                    </tr>
+                    <tr>
+                        <td><code>company</code></td>
+                        <td><code>String</code></td>
+                        <td>User company</td>
+                    </tr>
+                    <tr>
+                        <td><code>company_address</code></td>
+                        <td><code>String</code></td>
+                        <td>User company address</td>
+                    </tr>
+                    <tr>
+                        <td><code>company_phone</code></td>
+                        <td><code>String</code></td>
+                        <td>User company phone number</td>
+                    </tr>
+                    <tr><td colspan="3"><code>role</code> array on successful request</td></tr>
+                    <tr>
+                        <td><code>id</code></td>
+                        <td><code>String</code></td>
+                        <td>The unique identifier of role</td>
+                    </tr>
+                    <tr>
+                        <td><code>name</code></td>
+                        <td><code>String</code></td>
+                        <td>Role name</td>
+                    </tr>
+                    <tr>
+                        <td><code>is_admin</code></td>
+                        <td><code>String</code></td>
+                        <td>Indicated whether role is admin</td>
+                    </tr>
+                    <tr>
+                        <td><code>is_super_admin</code></td>
+                        <td><code>String</code></td>
+                        <td>Indicated whether role is super admin</td>
+                    </tr>
+                    <tr>
+                        <td><code>is_default</code></td>
+                        <td><code>String</code></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><code>order</code></td>
+                        <td><code>String</code></td>
+                        <td>Indicated an authority of role</td>
+                    </tr>
+                    <tr>
+                        <td><code>status</code></td>
+                        <td><code>String</code></td>
+                        <td>Role status</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4 class="pt-adaptive">Request Example</h4>
+            <pre class="language-json">
+<code>
+{
+    "app_id": "5789541587749547"
+}
+</code>
+            </pre>
+            <h4 class="pt-adaptive">Response Example</h4>
+            <pre class="language-json"><code>
+{
+    "status": 200,
+    "messages": {
+        "success": "ดูข้อมูลสำเร็จ"
+    },
+    "data": {
+        "id": "3",
+        "role_id": "3",
+        "username": "Member",
+        "firstname": "General",
+        "lastname": "Member",
+        "email": "a@a.com",
+        "is_password_set": "1",
+        "profile": null,
+        "thai_id": null,
+        "thai_id_path": null,
+        "code": null,
+        "facebook_id": null,
+        "google_id": null,
+        "last_ip": "127.127.127.0",
+        "status": "1",
+        "role": {
+            "id": "3",
+            "name": "Member",
+            "is_admin": "0",
+            "is_super_admin": "0",
+            "is_default": "1",
+            "order": "0",
+            "status": "1",
+            "created_at": "2021-01-05 00:57:52",
+            "updated_at": "2021-01-05 00:57:52"
+        }
+    }
+}
+            </code></pre>
+
         </div>
 
         <div class="page-edit"></div>
