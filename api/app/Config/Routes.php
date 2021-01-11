@@ -43,6 +43,9 @@ $routes->get(  'api/auth/reset-password/(:segment)', 'AuthController::resetPassw
 $routes->post( 'api/auth/reset-password', 'AuthController::resetPassword');
 $routes->post( 'api/auth/traffic-create', 'AuthController::trafficCreate');
 
+$routes->post( 'api/auth/signin-with-facebook', 'AuthController::signinWithFacebook');
+$routes->post( 'api/auth/signin-with-google', 'AuthController::signinWithGoogle');
+
 
 // User Controller
 $routes->get(  'api/user/read', 'UserController::selfRead', ['filter' => 'authUser']);
@@ -67,6 +70,9 @@ $routes->post( 'api/admin/user-update', 'AdminController::userUpdate', ['filter'
 $routes->post( 'api/admin/user-update-detail', 'AdminController::userUpdateDetail', ['filter' => 'authUser']);
 $routes->post( 'api/admin/user-update-password', 'AdminController::userUpdatePassword', ['filter' => 'authUser']);
 $routes->post( 'api/admin/user-delete', 'AdminController::userDelete', ['filter' => 'authUser']);
+
+$routes->get(  'api/admin/traffic-report', 'AdminController::trafficReport', ['filter' => 'authUser']);
+$routes->get(  'api/admin/action-report', 'AdminController::actionReport', ['filter' => 'authUser']);
 
 
 // Super Admin Controller

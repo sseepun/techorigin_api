@@ -132,6 +132,73 @@ class Validation
 			]
 		],
 	];
+	
+	public $signinWithFacebook = [
+		'facebook_id' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'ใส่ Facebook id',
+			]
+		],
+		'access_token' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'ใส่ Facebook access token',
+			]
+		],
+		'firstname' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'ใส่ชื่อจริง',
+			]
+		],
+		'lastname' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'ใส่นามสกุล',
+			]
+		],
+		'email' => [
+			'rules' => 'required|valid_email',
+			'errors' => [
+				'required' => 'ใส่อีเมล',
+				'valid_email' => 'ใส่อีเมลที่ถูกต้อง',
+			]
+		],
+	];
+	public $signinWithGoogle = [
+		'google_id' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'ใส่ Google id',
+			]
+		],
+		'id_token' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'ใส่ Google id token',
+			]
+		],
+		'firstname' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'ใส่ชื่อจริง',
+			]
+		],
+		'lastname' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'ใส่นามสกุล',
+			]
+		],
+		'email' => [
+			'rules' => 'required|valid_email',
+			'errors' => [
+				'required' => 'ใส่อีเมล',
+				'valid_email' => 'ใส่อีเมลที่ถูกต้อง',
+			]
+		],
+	];
 
 	
 	//--------------------------------------------------------------------
@@ -352,6 +419,15 @@ class Validation
 			'rules' => 'required',
 			'errors' => [
 				'required' => 'เลือกผู้ใช้',
+			]
+		],
+	];
+
+	public $adminTrafficReport = [
+		'type' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'ใส่ประเภทรายงาน',
 			]
 		],
 	];

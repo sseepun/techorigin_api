@@ -35,9 +35,7 @@ class AuthController extends ResourceController{
             }
 
             $userModel = new UserModel();
-            $user = $userModel->authUserByUsernameOrEmail(
-                $input['username'], $input['password']
-            );
+            $user = $userModel->authUserByUsernameOrEmail($input['username'], $input['password']);
             if(!empty($input['ip'])){
                 $userModel->update($user['id'], [ 'last_ip' => $input['ip'] ]);
             }
@@ -222,6 +220,154 @@ class AuthController extends ResourceController{
                 'data' => true,
             ]);
         }
+        return $this->failValidationError();
+    }
+
+
+    public function signinWithFacebook(){
+        if($this->request->getMethod()=='post'){
+            helper(['input', 'jwt', 'api']);
+            $input = stdClassToArray($this->request->getJSON());
+
+            $validation = \Config\Services::validation();
+            if(!$validation->run($input, 'signinWithFacebook')){
+                return $this->respond([
+                    'status' => 400,
+                    'messages' => $validation->getErrors()
+                ]);
+            }
+
+            $facebookURL = "https://graph.facebook.com/".$input['facebook_id']."?access_token=".$input['access_token'];
+            $facebookResult = callAPI('GET', $facebookURL);
+            if(!$facebookResult || !empty($facebookResult['error']) || empty($facebookResult['id'])){
+                return $this->respond([
+                    'status' => 400,
+                    'messages' => $facebookResult,
+                ]);
+            }
+
+            $userModel = new UserModel();
+            $actionLogModel = new ActionLogModel();
+
+            $user = $userModel->authUserByFacebookId($input['email'], $input['facebook_id']);
+            $action = 'Sign In with Facebook';
+            $message = 'คุณได้เข้าสู่ระบบด้วย Facebook Account สำเร็จแล้ว';
+            if(!$user){
+                $action = 'Sign Up with Facebook';
+                $message = 'คุณสมัครสมาชิกด้วย Facebook Account สำเร็จแล้ว';
+                $insertData = [
+                    'facebook_id' => $input['facebook_id'],
+                    'role_id' => $userModel->getDefaultRoleId(),
+                    'firstname' => $input['firstname'],
+                    'lastname' => $input['lastname'],
+                    'email' => $input['email'],
+                    'username' => 'User'.$userModel->getNewestUserId(),
+                    'password' => randomAlphanum(12),
+                    'is_password_set' => 0,
+                    'last_ip' => !empty($input['ip'])? $input['ip']: null,
+                ];
+                if(!empty($input['profile'])){
+                    $insertData['profile'] = $input['profile'];
+                }
+                $userModel->insert($insertData);
+                $user = $userModel->authUserByFacebookId($input['email'], $input['facebook_id']);
+            }else{
+                $updateData = [
+                    'facebook_id' => $input['facebook_id'],
+                    'last_ip' => !empty($input['ip'])? $input['ip']: null,
+                ];
+                if(empty($user['profile']) && !empty($input['profile'])){
+                    $updateData['profile'] = $input['profile'];
+                }
+                $userModel->update($user['id'], $updateData);
+            }
+                
+            $actionLogModel->insert([
+                'user_id' => $user['id'],
+                'action' => $action,
+                'ip' => !empty($input['ip'])? $input['ip']: null,
+                'url' => !empty($input['url'])? $input['url']: null,
+            ]);
+
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => $message ],
+                'jwt' => jwtGenerateUserToken($user),
+            ]);
+        } 
+        return $this->failValidationError();
+    }
+    public function signinWithGoogle(){
+        if($this->request->getMethod()=='post'){
+            helper(['input', 'jwt', 'api']);
+            $input = stdClassToArray($this->request->getJSON());
+
+            $validation = \Config\Services::validation();
+            if(!$validation->run($input, 'signinWithGoogle')){
+                return $this->respond([
+                    'status' => 400,
+                    'messages' => $validation->getErrors()
+                ]);
+            }
+
+            $googleURL = "https://oauth2.googleapis.com/tokeninfo?id_token=".$input['id_token'];
+            $googleResult = callAPI('GET', $googleURL);
+            // if(!$googleResult || !empty($googleResult['error'])){
+                return $this->respond([
+                    'status' => 400,
+                    'messages' => $googleResult,
+                ]);
+            // }
+
+            $userModel = new UserModel();
+            $actionLogModel = new ActionLogModel();
+
+            $user = $userModel->authUserByGoogleId($input['email'], $input['google_id']);
+            $action = 'Sign In with Google';
+            $message = 'คุณได้เข้าสู่ระบบด้วย Google Account สำเร็จแล้ว';
+            if(!$user){
+                $action = 'Sign Up with Google';
+                $message = 'คุณสมัครสมาชิกด้วย Google Account สำเร็จแล้ว';
+                $insertData = [
+                    'google_id' => $input['google_id'],
+                    'role_id' => $userModel->getDefaultRoleId(),
+                    'firstname' => $input['firstname'],
+                    'lastname' => $input['lastname'],
+                    'email' => $input['email'],
+                    'username' => 'User'.$userModel->getNewestUserId(),
+                    'password' => randomAlphanum(12),
+                    'is_password_set' => 0,
+                    'last_ip' => !empty($input['ip'])? $input['ip']: null,
+                ];
+                if(!empty($input['profile'])){
+                    $insertData['profile'] = $input['profile'];
+                }
+                $userModel->insert($insertData);
+                $user = $userModel->authUserByGoogleId($input['email'], $input['google_id']);
+            }else{
+                $updateData = [
+                    'google_id' => $input['google_id'],
+                    'last_ip' => !empty($input['ip'])? $input['ip']: null,
+                ];
+                if(empty($user['profile']) && !empty($input['profile'])){
+                    $updateData['profile'] = $input['profile'];
+                }
+                $userModel->update($user['id'], $updateData);
+            }
+                
+            $actionLogModel->insert([
+                'user_id' => $user['id'],
+                'action' => $action,
+                'ip' => !empty($input['ip'])? $input['ip']: null,
+                'url' => !empty($input['url'])? $input['url']: null,
+            ]);
+
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => $message ],
+                'jwt' => jwtGenerateUserToken($user),
+            ]);
+        } 
         return $this->failValidationError();
     }
     

@@ -701,6 +701,256 @@
 }</code></pre>
 
 
+<!-- Sign In with Facebook Account -->
+<h2 id="sign-in-with-facebook-account">
+    <a href="#sign-in-with-facebook-account" aria-hidden="true" class="header-anchor">#</a>
+    Sign In with Facebook Account
+</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Method</th>
+            <th>Endpoint</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>POST</code></td>
+            <td><code>API_URL</code>api/auth/signin-with-facebook</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Body Variables</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>app_id</code></td>
+            <td><code>String</code></td>
+            <td>App id</td>
+        </tr>
+        <tr>
+            <td><code>facebook_id</code></td>
+            <td><code>String</code></td>
+            <td>From Facebook sign in API <code>id</code></td>
+        </tr>
+        <tr>
+            <td><code>access_token</code></td>
+            <td><code>String</code></td>
+            <td>From Facebook sign in API <code>access_token</code></td>
+        </tr>
+        <tr>
+            <td><code>firstname</code></td>
+            <td><code>String</code></td>
+            <td>From Facebook sign in API <code>first_name</code></td>
+        </tr>
+        <tr>
+            <td><code>lastname</code></td>
+            <td><code>String</code></td>
+            <td>From Facebook sign in API <code>last_name</code></td>
+        </tr>
+        <tr>
+            <td><code>email</code></td>
+            <td><code>String</code></td>
+            <td>From Facebook sign in API <code>email</code></td>
+        </tr>
+        <tr><td colspan="3"><strong>Optional</strong></td></tr>
+        <tr>
+            <td><code>profile</code></td>
+            <td><code>String</code></td>
+            <td>User profile URL path</td>
+        </tr>
+        <tr>
+            <td><code>ip</code></td>
+            <td><code>String</code></td>
+            <td>Visitor IP address for action log</td>
+        </tr>
+        <tr>
+            <td><code>url</code></td>
+            <td><code>String</code></td>
+            <td>Visited url for action log</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Response</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>status</code></td>
+            <td><code>Number</code></td>
+            <td>Response status code</td>
+        </tr>
+        <tr>
+            <td><code>messages</code></td>
+            <td><code>Array</code></td>
+            <td>Response message array</td>
+        </tr>
+        <tr>
+            <td><code>jwt</code></td>
+            <td><code>String</code></td>
+            <td>JSON Web Token used for authorization</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Request Example</h4>
+<pre class="language-json"><code>{
+    "app_id": "5789541587749547",
+    "facebook_id": "3987357477942309",
+    "access_token": "EAAPstZArE49YBAOZAlNXrfMUsEOAIey0i4WK3rjaMjIo9OoQUY8VKiJZCZCSatN3zm9HZC4PEYmOWOZC363nnTZAb6ZAmnwT8ZAIazixJKtvaFQbslffxInDh0Qz4SgZBsqR6ZAv1m6lUhLWypWnY5CW0lWYUe4nF5AKMTuZAHsEF8Rw3pMXdQxsZB4rAisxZCdq0y1p3GJsQshF8Xk7ZA1Kd6XZAxOZCtOlsfx5i7SAZD",
+    "firstname": "Sarun",
+    "lastname": "Seepun",
+    "email": "sarun_sla@hotmail.com",
+    "ip": "127.0.0.1",
+    "url": "https://techorigin.co.th/users/signin"
+}</code></pre>
+<h4 class="pt-adaptive">Response Example</h4>
+<pre class="language-json"><code>{
+    "status": 200,
+    "messages": {
+        "success": "คุณได้เข้าสู่ระบบด้วย Facebook Account สำเร็จแล้ว"
+    },
+    "jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjIiLCJyb2xlX2lkIjoiMiIsInVzZXJuYW1lIjoiQWRtaW4iLCJlbWFpbCI6InNhcnVuX3NsYUBob3RtYWlsLmNvbSIsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpbl93b3Jrc1wvdGVjaG9yaWdpbl9hcGlcLyIsImF1ZCI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpbl93b3Jrc1wvdGVjaG9yaWdpbl9hcGlcLyIsImlhdCI6MTYxMDI5ODE4MSwiZXhwIjoxNjEyODkwMTgxfQ.6Bq52F0D7fpHB87LovS8w6-st7nWgwezExQI5Y_kJQs"
+}</code></pre>
+
+
+<!-- Sign In with Google Account -->
+<h2 id="sign-in-with-google-account">
+    <a href="#sign-in-with-google-account" aria-hidden="true" class="header-anchor">#</a>
+    Sign In with Google Account
+</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Method</th>
+            <th>Endpoint</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>POST</code></td>
+            <td><code>API_URL</code>api/auth/signin-with-google</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Body Variables</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>app_id</code></td>
+            <td><code>String</code></td>
+            <td>App id</td>
+        </tr>
+        <tr>
+            <td><code>google_id</code></td>
+            <td><code>String</code></td>
+            <td>From Google sign in API <code>getId</code></td>
+        </tr>
+        <tr>
+            <td><code>id_token</code></td>
+            <td><code>String</code></td>
+            <td>From Google sign in API <code>getIdToken</code></td>
+        </tr>
+        <tr>
+            <td><code>firstname</code></td>
+            <td><code>String</code></td>
+            <td>From Google sign in API <code>getGivenName</code></td>
+        </tr>
+        <tr>
+            <td><code>lastname</code></td>
+            <td><code>String</code></td>
+            <td>From Google sign in API <code>getFamilyName</code></td>
+        </tr>
+        <tr>
+            <td><code>email</code></td>
+            <td><code>String</code></td>
+            <td>From Google sign in API <code>getEmail</code></td>
+        </tr>
+        <tr><td colspan="3"><strong>Optional</strong></td></tr>
+        <tr>
+            <td><code>profile</code></td>
+            <td><code>String</code></td>
+            <td>User profile URL path</td>
+        </tr>
+        <tr>
+            <td><code>ip</code></td>
+            <td><code>String</code></td>
+            <td>Visitor IP address for action log</td>
+        </tr>
+        <tr>
+            <td><code>url</code></td>
+            <td><code>String</code></td>
+            <td>Visited url for action log</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Response</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>status</code></td>
+            <td><code>Number</code></td>
+            <td>Response status code</td>
+        </tr>
+        <tr>
+            <td><code>messages</code></td>
+            <td><code>Array</code></td>
+            <td>Response message array</td>
+        </tr>
+        <tr>
+            <td><code>jwt</code></td>
+            <td><code>String</code></td>
+            <td>JSON Web Token used for authorization</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Request Example</h4>
+<pre class="language-json"><code>{
+    "app_id": "5789541587749547",
+    "google_id": "3987357477942309",
+    "id_token": "EAAPstZArE49YBAOZAlNXrfMUsEOAIey0i4WK3rjaMjIo9OoQUY8VKiJZCZCSatN3zm9HZC4PEYmOWOZC363nnTZAb6ZAmnwT8ZAIazixJKtvaFQbslffxInDh0Qz4SgZBsqR6ZAv1m6lUhLWypWnY5CW0lWYUe4nF5AKMTuZAHsEF8Rw3pMXdQxsZB4rAisxZCdq0y1p3GJsQshF8Xk7ZA1Kd6XZAxOZCtOlsfx5i7SAZD",
+    "firstname": "Sarun",
+    "lastname": "Seepun",
+    "email": "sarun_sla@hotmail.com",
+    "ip": "127.0.0.1",
+    "url": "https://techorigin.co.th/users/signin"
+}</code></pre>
+<h4 class="pt-adaptive">Response Example</h4>
+<pre class="language-json"><code>{
+    "status": 200,
+    "messages": {
+        "success": "คุณได้เข้าสู่ระบบด้วย Google Account สำเร็จแล้ว"
+    },
+    "jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjIiLCJyb2xlX2lkIjoiMiIsInVzZXJuYW1lIjoiQWRtaW4iLCJlbWFpbCI6InNhcnVuX3NsYUBob3RtYWlsLmNvbSIsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpbl93b3Jrc1wvdGVjaG9yaWdpbl9hcGlcLyIsImF1ZCI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpbl93b3Jrc1wvdGVjaG9yaWdpbl9hcGlcLyIsImlhdCI6MTYxMDI5ODE4MSwiZXhwIjoxNjEyODkwMTgxfQ.6Bq52F0D7fpHB87LovS8w6-st7nWgwezExQI5Y_kJQs"
+}</code></pre>
+
+
         </div>
 
         <div class="page-edit"></div>

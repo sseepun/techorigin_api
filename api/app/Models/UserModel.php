@@ -83,6 +83,13 @@ class UserModel extends Model {
         else return $role;
     }
 
+    public function getNewestUserId(){
+        $query = $this->db->query("SELECT `id` FROM `users` ORDER BY `id` DESC LIMIT 1");
+        $temp = $query->getRowArray();
+        if(!$temp) return 1;
+        else return $temp['id']+1;
+    }
+
     public function authUserByUsernameOrEmail($string, $password){
         $query = $this->db->query(
             "SELECT * FROM `users` WHERE `username` = ? OR `email` = ?", 
@@ -91,6 +98,34 @@ class UserModel extends Model {
         $user = $query->getRowArray();
         if(!$user) return false;
         else if(!password_verify($password, $user['password'])) return false;
+        else{
+            $this->user = $user;
+            return $user;
+        }
+    }
+    public function authUserByFacebookId($email, $facebookId){
+        $query = $this->db->query(
+            "SELECT * FROM `users` 
+            WHERE (`email` = ? AND `facebook_id` IS NULL) 
+            OR (`email` = ? AND `facebook_id` = ?)", 
+            [ $email, $email, $facebookId ]
+        );
+        $user = $query->getRowArray();
+        if(!$user) return false;
+        else{
+            $this->user = $user;
+            return $user;
+        }
+    }
+    public function authUserByGoogleId($email, $googleId){
+        $query = $this->db->query(
+            "SELECT * FROM `users` 
+            WHERE (`email` = ? AND `google_id` IS NULL) 
+            OR (`email` = ? AND `google_id` = ?)", 
+            [ $email, $email, $googleId ]
+        );
+        $user = $query->getRowArray();
+        if(!$user) return false;
         else{
             $this->user = $user;
             return $user;

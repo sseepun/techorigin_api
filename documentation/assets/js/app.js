@@ -18,6 +18,8 @@ var menu = [
             { name: 'Reset Password Exists' },
             { name: 'Reset Password' },
             { name: 'Traffic Create' },
+            { name: 'Sign In with Facebook Account' },
+            { name: 'Sign In with Google Account' },
         ]
     },
     {

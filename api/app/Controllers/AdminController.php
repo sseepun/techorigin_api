@@ -8,6 +8,7 @@ use App\Models\UserDetailModel;
 use App\Models\UserRoleModel;
 
 use App\Models\ActionLogModel;
+use App\Models\TrafficLogModel;
 
 class AdminController extends ResourceController{
     protected $format = 'json';
@@ -277,6 +278,29 @@ class AdminController extends ResourceController{
                 'status' => 200,
                 'messages' => [ 'success' => 'ลบข้อมูลสำเร็จ' ],
                 'data' => $input,
+            ]);
+        }
+        return $this->failValidationError();
+    }
+
+
+    public function trafficReport(){
+        if($this->request->getMethod()=='get'){
+            $input = stdClassToArray($this->request->getJSON());
+            
+            $validation = \Config\Services::validation();
+            if(!$validation->run($input, 'adminTrafficReport')){
+                return $this->respond([
+                    'status' => 400,
+                    'messages' => $validation->getErrors()
+                ]);
+            }
+
+            $trafficLogModel = new TrafficLogModel();
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
+                'data' => $trafficLogModel->getReport($input['type'], $input),
             ]);
         }
         return $this->failValidationError();
