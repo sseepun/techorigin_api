@@ -239,7 +239,8 @@ class AuthController extends ResourceController{
 
             $facebookURL = "https://graph.facebook.com/".$input['facebook_id']."?access_token=".$input['access_token'];
             $facebookResult = callAPI('GET', $facebookURL);
-            if(!$facebookResult || !empty($facebookResult['error']) || empty($facebookResult['id'])){
+            if(!$facebookResult || !empty($facebookResult['error']) || empty($facebookResult['id']) 
+            || ($facebookResult['id']!=$input['facebook_id'])){
                 return $this->respond([
                     'status' => 400,
                     'messages' => $facebookResult,
@@ -312,12 +313,13 @@ class AuthController extends ResourceController{
 
             $googleURL = "https://oauth2.googleapis.com/tokeninfo?id_token=".$input['id_token'];
             $googleResult = callAPI('GET', $googleURL);
-            // if(!$googleResult || !empty($googleResult['error'])){
+            if(!$googleResult || !empty($googleResult['error']) || empty($googleResult['sub']) 
+            || ($googleResult['sub']!=$input['google_id'])){
                 return $this->respond([
                     'status' => 400,
                     'messages' => $googleResult,
                 ]);
-            // }
+            }
 
             $userModel = new UserModel();
             $actionLogModel = new ActionLogModel();

@@ -45,6 +45,8 @@ var menu = [
             { name: 'User Update Detail' },
             { name: 'User Update Password' },
             { name: 'User Delete' },
+            { name: 'Traffic Report' },
+            { name: 'Action Report' },
         ]
     },
     {

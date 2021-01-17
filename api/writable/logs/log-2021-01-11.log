@@ -1,6 +1,0 @@
-CRITICAL - 2021-01-11 04:20:51 --> Class 'App\Controllers\TrafficLogModel' not found
-#0 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\AdminController->trafficReport()
-#1 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
-#2 C:\xampp\htdocs\techorigin_works\techorigin_api\api\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
-#3 C:\xampp\htdocs\techorigin_works\techorigin_api\index.php(45): CodeIgniter\CodeIgniter->run()
-#4 {main}

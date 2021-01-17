@@ -3,6 +3,7 @@
 use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
 
+use App\Models\UserTypeModel;
 use App\Models\UserModel;
 use App\Models\UserDetailModel;
 use App\Models\UserRoleModel;
@@ -45,7 +46,7 @@ class AdminController extends ResourceController{
         }
     }
 
-
+    
     public function checkRoleAccess($userId){
         $user = $this->userModel->getUserById($userId);
         if(!$user) return false;
@@ -60,8 +61,50 @@ class AdminController extends ResourceController{
         
         return $user;
     }
-    
 
+
+    public function userTypeList(){
+        if($this->request->getMethod()=='get'){
+            $userTypeModel = new UserTypeModel();
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
+                'data' => $userTypeModel->getUserTypes(true),
+            ]);
+        }
+        return $this->failValidationError();
+    }
+    public function userTypeRead($id){
+        if($this->request->getMethod()=='get' && !empty($id)){
+            $userTypeModel = new UserTypeModel();
+            $data = $userTypeModel->where(['id' => $id])->first();
+            if(!$data) return $this->failValidationError();
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
+                'data' => $data,
+            ]);
+        }
+        return $this->failValidationError();
+    }
+
+    
+    public function userList(){
+        if($this->request->getMethod()=='get'){
+            $tableObject = $this->userModel->getTableObject(
+                true,
+                !empty($this->request->getGet('page'))? $this->request->getGet('page'): 1,
+                !empty($this->request->getGet('pp'))? $this->request->getGet('pp'): 10,
+                !empty($this->request->getGet('keyword'))? $this->request->getGet('keyword'): '',
+            );
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
+                'data' => $tableObject,
+            ]);
+        }
+        return $this->failValidationError();
+    }
     public function userCreate(){
         if($this->request->getMethod()=='post'){
             $input = stdClassToArray($this->request->getJSON());
@@ -77,7 +120,7 @@ class AdminController extends ResourceController{
 
             $roleId = !empty($input['role_id'])
                 ? $input['role_id']: $this->userModel->getDefaultRoleId();
-            $this->userModel->insert([
+            $insertData = [
                 'role_id' => $roleId,
                 'firstname' => $input['firstname'],
                 'lastname' => $input['lastname'],
@@ -85,7 +128,8 @@ class AdminController extends ResourceController{
                 'username' => $input['username'],
                 'password' => $input['password'],
                 'profile' => !empty($input['profile'])? $input['profile']: null,
-            ]);
+            ];
+            $this->userModel->insert($insertData);
             
             $actionLogModel = new ActionLogModel();
             $actionLogModel->insert([
@@ -99,12 +143,11 @@ class AdminController extends ResourceController{
             return $this->respond([
                 'status' => 200,
                 'messages' => [ 'success' => 'สร้างข้อมูลสำเร็จ' ],
-                'data' => $input,
+                'data' => $insertData,
             ]);
         }
         return $this->failValidationError();
     }
-
     public function userRead($id){
         if($this->request->getMethod()=='get' && !empty($id)){
             $userDetailModel = new UserDetailModel();
@@ -179,6 +222,17 @@ class AdminController extends ResourceController{
             
             $validation = \Config\Services::validation();
             if(!$validation->run($input, 'userUpdateDetail')){
+                return $this->respond([
+                    'status' => 400,
+                    'messages' => $validation->getErrors()
+                ]);
+            }
+            if(!empty($input['user_subtype_id']) && !$validation->run($input, 'userUpdateUserTypes')){
+                return $this->respond([
+                    'status' => 400,
+                    'messages' => $validation->getErrors()
+                ]);
+            }else if(!empty($input['user_type_id']) && !$validation->run($input, 'userUpdateUserType')){
                 return $this->respond([
                     'status' => 400,
                     'messages' => $validation->getErrors()
@@ -277,7 +331,7 @@ class AdminController extends ResourceController{
             return $this->respond([
                 'status' => 200,
                 'messages' => [ 'success' => 'ลบข้อมูลสำเร็จ' ],
-                'data' => $input,
+                'data' => true,
             ]);
         }
         return $this->failValidationError();
@@ -301,6 +355,27 @@ class AdminController extends ResourceController{
                 'status' => 200,
                 'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
                 'data' => $trafficLogModel->getReport($input['type'], $input),
+            ]);
+        }
+        return $this->failValidationError();
+    }
+    public function actionReport(){
+        if($this->request->getMethod()=='get'){
+            $input = stdClassToArray($this->request->getJSON());
+            
+            $validation = \Config\Services::validation();
+            if(!$validation->run($input, 'adminActionReport')){
+                return $this->respond([
+                    'status' => 400,
+                    'messages' => $validation->getErrors()
+                ]);
+            }
+
+            $actionLogModel = new ActionLogModel();
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
+                'data' => $actionLogModel->getReport($input['type'], $input),
             ]);
         }
         return $this->failValidationError();

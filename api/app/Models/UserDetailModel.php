@@ -10,8 +10,8 @@ class UserDetailModel extends Model {
     protected $useSoftDeletes = false;
 
     protected $allowedFields = [
-        'user_id', 'address', 'phone', 'title', 'company', 
-        'company_address', 'company_phone'
+        'user_id', 'user_type_id', 'user_subtype_id', 'address', 'phone', 
+        'title', 'company', 'company_address', 'company_phone'
     ];
     protected $beforeInsert = ['beforeInsert'];
     protected $beforeUpdate = ['beforeUpdate'];

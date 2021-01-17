@@ -19,6 +19,18 @@ class UserDetails extends Migration{
 				'unsigned' => true,
 				'null' => true,
 			],
+			'user_type_id' => [
+				'type' => 'INT',
+				'constraint' => 5,
+				'unsigned' => true,
+				'null' => true,
+			],
+			'user_subtype_id' => [
+				'type' => 'INT',
+				'constraint' => 5,
+				'unsigned' => true,
+				'null' => true,
+			],
 			'address' => [
 				'type' => 'VARCHAR',
 				'constraint' => 512,
@@ -54,6 +66,8 @@ class UserDetails extends Migration{
 		]);
 		$this->forge->addPrimaryKey('id');
 		$this->forge->addForeignKey('user_id', 'users', 'id', 'NO ACTION', 'CASCADE');
+		$this->forge->addForeignKey('user_type_id', 'user_types', 'id', 'NO ACTION', 'SET NULL');
+		$this->forge->addForeignKey('user_subtype_id', 'user_types', 'id', 'NO ACTION', 'SET NULL');
 		$this->forge->addUniqueKey('user_id');
 		$this->forge->createTable('user_details', true);
 		

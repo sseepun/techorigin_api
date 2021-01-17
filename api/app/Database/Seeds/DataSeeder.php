@@ -32,6 +32,63 @@ class DataSeeder extends \CodeIgniter\Database\Seeder{
             'order' => 2,
         ]);
 
+
+        // User Types
+        $this->db->table('user_types')->insert([ 'name' => 'นักเรียนระดับประถมต้น' ]);
+        $parentId = $this->db->insertID();
+        $this->db->table('user_types')->insert([
+            'parent_id' => $parentId, 'name' => 'ประถมศึกษาปีที่ 1'
+        ]);
+        $this->db->table('user_types')->insert([
+            'parent_id' => $parentId, 'name' => 'ประถมศึกษาปีที่ 2'
+        ]);
+        $this->db->table('user_types')->insert([
+            'parent_id' => $parentId, 'name' => 'ประถมศึกษาปีที่ 3'
+        ]);
+
+        $this->db->table('user_types')->insert([ 'name' => 'นักเรียนระดับประถมปลาย' ]);
+        $parentId = $this->db->insertID();
+        $this->db->table('user_types')->insert([
+            'parent_id' => $parentId, 'name' => 'ประถมศึกษาปีที่ 4'
+        ]);
+        $this->db->table('user_types')->insert([
+            'parent_id' => $parentId, 'name' => 'ประถมศึกษาปีที่ 5'
+        ]);
+        $this->db->table('user_types')->insert([
+            'parent_id' => $parentId, 'name' => 'ประถมศึกษาปีที่ 6'
+        ]);
+
+        $this->db->table('user_types')->insert([ 'name' => 'นักเรียนระดับมัธยมต้น' ]);
+        $parentId = $this->db->insertID();
+        $this->db->table('user_types')->insert([
+            'parent_id' => $parentId, 'name' => 'มัธยมศึกษาปีที่ 1'
+        ]);
+        $this->db->table('user_types')->insert([
+            'parent_id' => $parentId, 'name' => 'มัธยมศึกษาปีที่ 2'
+        ]);
+        $this->db->table('user_types')->insert([
+            'parent_id' => $parentId, 'name' => 'มัธยมศึกษาปีที่ 3'
+        ]);
+
+        $this->db->table('user_types')->insert([ 'name' => 'นักเรียนระดับมัธยมปลาย' ]);
+        $parentId = $this->db->insertID();
+        $this->db->table('user_types')->insert([
+            'parent_id' => $parentId, 'name' => 'มัธยมศึกษาปีที่ 4'
+        ]);
+        $this->db->table('user_types')->insert([
+            'parent_id' => $parentId, 'name' => 'มัธยมศึกษาปีที่ 5'
+        ]);
+        $this->db->table('user_types')->insert([
+            'parent_id' => $parentId, 'name' => 'มัธยมศึกษาปีที่ 6'
+        ]);
+
+        $this->db->table('user_types')->insert([ 'name' => 'นักเรียนระดับปริญญาตรี' ]);
+        $this->db->table('user_types')->insert([ 'name' => 'นักเรียนระดับปริญญาโท' ]);
+        $this->db->table('user_types')->insert([ 'name' => 'นักเรียนระดับปริญญาเอก' ]);
+        $this->db->table('user_types')->insert([ 'name' => 'คุณครู' ]);
+        $this->db->table('user_types')->insert([ 'name' => 'อาจารย์มหาวิทยาลัย' ]);
+
+
         // Users
         $this->db->table('users')->insert([
             'role_id' => 1,
@@ -60,6 +117,7 @@ class DataSeeder extends \CodeIgniter\Database\Seeder{
             'password' => password_hash('123456', PASSWORD_DEFAULT),
             'status' => 1
         ]);
+
 
         // Modules
         $this->db->table('modules')->insert([

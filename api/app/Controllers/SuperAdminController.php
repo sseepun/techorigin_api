@@ -3,6 +3,7 @@
 use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
 
+use App\Models\UserTypeModel;
 use App\Models\UserModel;
 use App\Models\UserDetailModel;
 use App\Models\UserRoleModel;
@@ -43,8 +44,127 @@ class SuperAdminController extends ResourceController{
         $this->userRole = $this->userRoleModel->find($this->user['role_id']);
         if(!$this->userRole || !$this->userRole['is_super_admin']){ echo '404'; exit; }
     }
+    
+
+    public function userTypeCreate(){
+        if($this->request->getMethod()=='post'){
+            $input = stdClassToArray($this->request->getJSON());
+
+            $validation = \Config\Services::validation();
+            if(!$validation->run($input, 'sadminUserTypeCreate')){
+                return $this->respond([
+                    'status' => 400,
+                    'messages' => $validation->getErrors()
+                ]);
+            }
+            if(!empty($input['parent_id']) && !$validation->run($input, 'sadminValidateUserType')){
+                return $this->respond([
+                    'status' => 400,
+                    'messages' => $validation->getErrors()
+                ]);
+            }
+
+            $userTypeModel = new UserTypeModel();
+            $userTypeModel->save($input);
+            
+            $actionLogModel = new ActionLogModel();
+            $actionLogModel->insert([
+                'user_id' => $this->user['id'],
+                'action' => 'Super Admin - User Type Create',
+                'url' => !empty($input['url'])? $input['url']: null,
+                'ip' => !empty($input['ip'])? $input['ip']: null,
+            ]);
+
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'สร้างข้อมูลสำเร็จ' ],
+                'data' => $input,
+            ]);
+        }
+        return $this->failValidationError();
+    }
+    public function userTypeUpdate(){
+        if($this->request->getMethod()=='post'){
+            $input = stdClassToArray($this->request->getJSON());
+            unset($input['parent_id']);
+
+            $validation = \Config\Services::validation();
+            if(!$validation->run($input, 'sadminUserRoleUpdate')){
+                return $this->respond([
+                    'status' => 400,
+                    'messages' => $validation->getErrors()
+                ]);
+            }
+            
+            $userTypeModel = new UserTypeModel();
+            $userType = $userTypeModel->find($input['id']);
+            if(!$userType) return $this->failValidationError();
+            
+            $userTypeModel->save($input);
+            
+            $actionLogModel = new ActionLogModel();
+            $actionLogModel->insert([
+                'user_id' => $this->user['id'],
+                'action' => 'Super Admin - User Type Update',
+                'url' => !empty($input['url'])? $input['url']: null,
+                'ip' => !empty($input['ip'])? $input['ip']: null,
+            ]);
+
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'แก้ไขข้อมูลสำเร็จ' ],
+                'data' => $input,
+            ]);
+        }
+        return $this->failValidationError();
+    }
+    public function userTypeDelete(){
+        if($this->request->getMethod()=='post'){
+            $input = stdClassToArray($this->request->getJSON());
+            
+            $validation = \Config\Services::validation();
+            if(!$validation->run($input, 'sadminUserTypeDelete')){
+                return $this->respond([
+                    'status' => 400,
+                    'messages' => $validation->getErrors()
+                ]);
+            }
+            
+            $userTypeModel = new UserTypeModel();
+            $userType = $userTypeModel->find($input['id']);
+            if(!$userType) return $this->failValidationError();
+            
+            $userTypeModel->where([ 'id' => $input['id'] ])->delete();
+            $userTypeModel->where([ 'parent_id' => $input['id'] ])->delete();
+            
+            $actionLogModel = new ActionLogModel();
+            $actionLogModel->insert([
+                'user_id' => $this->user['id'],
+                'action' => 'Super Admin - User Type Delete',
+                'url' => !empty($input['url'])? $input['url']: null,
+                'ip' => !empty($input['ip'])? $input['ip']: null,
+            ]);
+
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'ลบข้อมูลสำเร็จ' ],
+                'data' => $input,
+            ]);
+        }
+        return $this->failValidationError();
+    }
 
 
+    public function userRoleList(){
+        if($this->request->getMethod()=='get'){
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
+                'data' => $this->userRoleModel->getUserRoles(true),
+            ]);
+        }
+        return $this->failValidationError();
+    }
     public function userRoleCreate(){
         if($this->request->getMethod()=='post'){
             $input = stdClassToArray($this->request->getJSON());
@@ -158,6 +278,7 @@ class SuperAdminController extends ResourceController{
         }
         return $this->failValidationError();
     }
+
 
     public function moduleCreate(){
         if($this->request->getMethod()=='post'){
@@ -275,6 +396,7 @@ class SuperAdminController extends ResourceController{
         }
         return $this->failValidationError();
     }
+
 
     public function rolePermissionsRead($roleId){
         if($this->request->getMethod()=='get' && !empty($roleId)){

@@ -17,7 +17,10 @@
                 Admin API
             </h1>
             <p>
-                This API set can be used by <strong>admins and super admins</strong>.
+                This API set can be used by <strong>admins and super admins</strong>. 
+                In order to use this API set, you need to provide 
+                <strong>JSON Web Token (JWT)</strong> in <strong>Authorization</strong> 
+                as <strong>Bearer Token</strong> type.
                 To ensure that you are communicating with the API, you will need to
                 include <code>app_id</code> (<code>app.id</code> in your environment file) 
                 in <strong>JSON Body</strong> for every request to the server.
@@ -62,7 +65,7 @@
         <tr>
             <td><code>role_id</code></td>
             <td><code>String</code></td>
-            <td>Role id</td>
+            <td>User role id</td>
         </tr>
         <tr>
             <td><code>firstname</code></td>
@@ -94,10 +97,16 @@
             <td><code>String</code></td>
             <td>User password confirmation</td>
         </tr>
+        <tr><td colspan="3"><strong>Optional</strong></td></tr>
         <tr>
             <td><code>ip</code></td>
             <td><code>String</code></td>
             <td>Visitor IP address for action log</td>
+        </tr>
+        <tr>
+            <td><code>url</code></td>
+            <td><code>String</code></td>
+            <td>Visited url for action log</td>
         </tr>
     </tbody>
 </table>
@@ -123,9 +132,9 @@
         </tr>
         <tr><td colspan="3"><code>data</code> array on successful request</td></tr>
         <tr>
-            <td><code>app_id</code></td>
+            <td><code>role_id</code></td>
             <td><code>String</code></td>
-            <td>App id</td>
+            <td>User role id</td>
         </tr>
         <tr>
             <td><code>firstname</code></td>
@@ -148,25 +157,14 @@
             <td>User username</td>
         </tr>
         <tr>
-            <td><code>password</code></td>
+            <td><code>profile</code></td>
             <td><code>String</code></td>
-            <td>User password</td>
-        </tr>
-        <tr>
-            <td><code>password_confirm</code></td>
-            <td><code>String</code></td>
-            <td>User password confirmation</td>
-        </tr>
-        <tr>
-            <td><code>ip</code></td>
-            <td><code>String</code></td>
-            <td>Visitor IP address for action log</td>
+            <td>User profile url path</td>
         </tr>
     </tbody>
 </table>
 <h4 class="pt-adaptive">Request Example</h4>
-<pre class="language-json"><code>
-{
+<pre class="language-json"><code>{
     "app_id": "5789541587749547",
     "role_id": 1,
     "firstname": "aaa",
@@ -175,28 +173,25 @@
     "username": "aaaaa",
     "password": "aaaaaa",
     "password_confirm": "aaaaaa",
-    "ip": "127.127.127.2"
-}    
-</code></pre>
+    "ip": "127.0.0.1",
+    "url": "http://techorigin.co.th/admin/user-create"
+}</code></pre>
 <h4 class="pt-adaptive">Response Example</h4>
-<pre class="language-json"><code>
-{
+<pre class="language-json"><code>{
     "status": 200,
     "messages": {
         "success": "สร้างข้อมูลสำเร็จ"
     },
     "data": {
-        "app_id": "5789541587749547",
+        "role_id": "3",
         "firstname": "aaa",
         "lastname": "aaa",
         "email": "aaa@a.com",
         "username": "aaaaa",
         "password": "aaaaaa",
-        "password_confirm": "aaaaaa",
-        "ip": "127.127.127.2"
+        "profile": null
     }
-}    
-</code></pre>
+}</code></pre>
 
 
 
@@ -215,7 +210,7 @@
     <tbody>
         <tr>
             <td><code>GET</code></td>
-            <td><code>API_URL</code>api/admin/user-read/<code>(:num)</code></td>
+            <td><code>API_URL</code>api/admin/user-read/<code>user_id</code></td>
         </tr>
     </tbody>
 </table>
@@ -230,7 +225,7 @@
     </thead>
     <tbody>
         <tr>
-            <td><code>num</code></td>
+            <td><code>user_id</code></td>
             <td><code>Number</code></td>
             <td>User id</td>
         </tr>
@@ -277,12 +272,12 @@
         <tr>
             <td><code>id</code></td>
             <td><code>String</code></td>
-            <td>The unique identifier for this request</td>
+            <td>The unique identifier for the user</td>
         </tr>
         <tr>
             <td><code>role_id</code></td>
             <td><code>String</code></td>
-            <td>Role id</td>
+            <td>User role id</td>
         </tr>
         <tr>
             <td><code>username</code></td>
@@ -302,7 +297,7 @@
         <tr>
             <td><code>is_password_set</code></td>
             <td><code>String</code></td>
-            <td></td>
+            <td>Whether this user has set the password or not</td>
         </tr>
         <tr>
             <td><code>email</code></td>
@@ -312,131 +307,42 @@
         <tr>
             <td><code>profile</code></td>
             <td><code>String</code></td>
-            <td>User profile</td>
-        </tr>
-        <tr>
-            <td><code>thai_id</code></td>
-            <td><code>String</code></td>
-            <td>User Thai id</td>
-        </tr>
-        <tr>
-            <td><code>thai_id_path</code></td>
-            <td><code>String</code></td>
-            <td>User Thai id URL</td>
-        </tr>
-        <tr>
-            <td><code>code</code></td>
-            <td><code>String</code></td>
-            <td></td>
+            <td>User profile url path</td>
         </tr>
         <tr>
             <td><code>facebook_id</code></td>
             <td><code>String</code></td>
-            <td>User facebook id</td>
+            <td>User Facebook id</td>
         </tr>
         <tr>
             <td><code>google_id</code></td>
             <td><code>String</code></td>
-            <td>User google id</td>
-        </tr>
-        <tr>
-            <td><code>last_ip</code></td>
-            <td><code>String</code></td>
-            <td>Last IP address in action log</td>
+            <td>User Google id</td>
         </tr>
         <tr>
             <td><code>status</code></td>
             <td><code>String</code></td>
             <td>User status</td>
         </tr>
-        <tr><td colspan="3"><code>detail</code> array on successful request</td></tr>
         <tr>
-            <td><code>id</code></td>
-            <td><code>String</code></td>
-            <td>User detail id</td>
+            <td><code>detail</code></td>
+            <td><code>Array</code></td>
+            <td>User detail</td>
         </tr>
         <tr>
-            <td><code>user_id</code></td>
-            <td><code>String</code></td>
-            <td>User id</td>
-        </tr>
-        <tr>
-            <td><code>address</code></td>
-            <td><code>String</code></td>
-            <td>User address</td>
-        </tr>
-        <tr>
-            <td><code>phone</code></td>
-            <td><code>String</code></td>
-            <td>User phone number</td>
-        </tr>
-        <tr>
-            <td><code>title</code></td>
-            <td><code>String</code></td>
-            <td>User title</td>
-        </tr>
-        <tr>
-            <td><code>company</code></td>
-            <td><code>String</code></td>
-            <td>User company</td>
-        </tr>
-        <tr>
-            <td><code>company_address</code></td>
-            <td><code>String</code></td>
-            <td>User company address</td>
-        </tr>
-        <tr>
-            <td><code>company_phone</code></td>
-            <td><code>String</code></td>
-            <td>User company phone number</td>
-        </tr>
-        <tr><td colspan="3"><code>role</code> array on successful request</td></tr>
-        <tr>
-            <td><code>id</code></td>
-            <td><code>String</code></td>
-            <td>Role id</td>
-        </tr>
-        <tr>
-            <td><code>name</code></td>
-            <td><code>String</code></td>
-            <td>Role name</td>
-        </tr>
-        <tr>
-            <td><code>is_admin</code></td>
-            <td><code>String</code></td>
-            <td>Return 1 if role is admin</td>
-        </tr>
-        <tr>
-            <td><code>is_super_admin</code></td>
-            <td><code>String</code></td>
-            <td>Return 1 if role is super admin</td>
-        </tr>
-        <tr>
-            <td><code>is_default</code></td>
-            <td><code>String</code></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><code>order</code></td>
-            <td><code>String</code></td>
-            <td>Role order</td>
-        </tr>
-        <tr>
-            <td><code>status</code></td>
-            <td><code>String</code></td>
-            <td>Role status</td>
+            <td><code>role</code></td>
+            <td><code>Array</code></td>
+            <td>User role detail</td>
         </tr>
     </tbody>
 </table>
 <h4 class="pt-adaptive">Request Example</h4>
-<pre class="language-json"><code>
-{
+<pre class="language-json"><code>{
     "app_id": "5789541587749547"
 } 
 </code></pre>
 <h4 class="pt-adaptive">Response Example</h4>
-<pre class="language-json"><code>
-{
+<pre class="language-json"><code>{
     "status": 200,
     "messages": {
         "success": "ดูข้อมูลสำเร็จ"
@@ -527,7 +433,7 @@
         <tr>
             <td><code>role_id</code></td>
             <td><code>String</code></td>
-            <td>Role id</td>
+            <td>User role id</td>
         </tr>
         <tr>
             <td><code>firstname</code></td>
@@ -549,10 +455,11 @@
             <td><code>String</code></td>
             <td>User username</td>
         </tr>
+        <tr><td colspan="3"><strong>Optional</strong></td></tr>
         <tr>
             <td><code>profile</code></td>
             <td><code>String</code></td>
-            <td>User profile</td>
+            <td>User profile url path</td>
         </tr>
         <tr>
             <td><code>thai_id</code></td>
@@ -562,7 +469,7 @@
         <tr>
             <td><code>thai_id_path</code></td>
             <td><code>String</code></td>
-            <td>User Thai id URL</td>
+            <td>User Thai id url path</td>
         </tr>
         <tr>
             <td><code>code</code></td>
@@ -573,6 +480,16 @@
             <td><code>status</code></td>
             <td><code>String</code></td>
             <td>User status</td>
+        </tr>
+        <tr>
+            <td><code>ip</code></td>
+            <td><code>String</code></td>
+            <td>Visitor IP address for action log</td>
+        </tr>
+        <tr>
+            <td><code>url</code></td>
+            <td><code>String</code></td>
+            <td>Visited url for action log</td>
         </tr>
     </tbody>
 </table>
@@ -596,89 +513,37 @@
             <td><code>Array</code></td>
             <td>Response message array</td>
         </tr>
-        <tr><td colspan="3"><code>data</code> array on successful request</td></tr>
         <tr>
-            <td><code>app_id</code></td>
-            <td><code>String</code></td>
-            <td>App id</td>
+            <td><code>data</code></td>
+            <td><code>Array</code></td>
+            <td>User updated data</td>
         </tr>
         <tr>
-            <td><code>id</code></td>
+            <td><code>jwt</code></td>
             <td><code>String</code></td>
-            <td>User id</td>
-        </tr>
-        <tr>
-            <td><code>role_id</code></td>
-            <td><code>String</code></td>
-            <td>Role id</td>
-        </tr>
-        <tr>
-            <td><code>firstname</code></td>
-            <td><code>String</code></td>
-            <td>User first name</td>
-        </tr>
-        <tr>
-            <td><code>lastname</code></td>
-            <td><code>String</code></td>
-            <td>User last name</td>
-        </tr>
-        <tr>
-            <td><code>email</code></td>
-            <td><code>String</code></td>
-            <td>User email</td>
-        </tr>
-        <tr>
-            <td><code>username</code></td>
-            <td><code>String</code></td>
-            <td>User username</td>
-        </tr>
-        <tr>
-            <td><code>profile</code></td>
-            <td><code>String</code></td>
-            <td>User profile</td>
-        </tr>
-        <tr>
-            <td><code>thai_id</code></td>
-            <td><code>String</code></td>
-            <td>User Thai id</td>
-        </tr>
-        <tr>
-            <td><code>thai_id_path</code></td>
-            <td><code>String</code></td>
-            <td>User Thai id URL</td>
-        </tr>
-        <tr>
-            <td><code>code</code></td>
-            <td><code>String</code></td>
-            <td>User code</td>
-        </tr>
-        <tr>
-            <td><code>status</code></td>
-            <td><code>String</code></td>
-            <td>User status</td>
+            <td>JSON Web Token will be provided in case of self update</td>
         </tr>
     </tbody>
 </table>
 <h4 class="pt-adaptive">Request Example</h4>
-<pre class="language-json"><code>
-{
+<pre class="language-json"><code>{
     "app_id": "5789541587749547",
     "id": 2,
     "role_id": 2,
     "firstname": "General",
     "lastname": "Admin",
-    "email": "b@a.com",
+    "email": "sarun_sla@hotmail.com",
     "username": "Admin",
     "profile": null,
     "thai_id": null,
     "thai_id_path": null,
     "code": "SS-2222",
-    "status": 1
-}
-</code></pre>
+    "status": 1,
+    "ip": "127.0.0.1",
+    "url": "http://techorigin.co.th/admin/user-update"
+}</code></pre>
 <h4 class="pt-adaptive">Response Example</h4>
-<pre class="language-json"><code>
-{
+<pre class="language-json"><code>{
     "status": 200,
     "messages": {
         "success": "แก้ไขข้อมูลสำเร็จ"
@@ -689,7 +554,7 @@
         "role_id": 2,
         "firstname": "General",
         "lastname": "Admin",
-        "email": "b@a.com",
+        "email": "sarun_sla@hotmail.com",
         "username": "Admin",
         "profile": null,
         "thai_id": null,
@@ -697,8 +562,7 @@
         "code": "SS-2222",
         "status": 1
     }
-}
-</code></pre>
+}</code></pre>
 
 
 <!-- User Update Detail -->
@@ -736,6 +600,12 @@
             <td>App id</td>
         </tr>
         <tr>
+            <td><code>user_id</code></td>
+            <td><code>String</code></td>
+            <td>User id</td>
+        </tr>
+        <tr><td colspan="3"><strong>Optional</strong></td></tr>
+        <tr>
             <td><code>address</code></td>
             <td><code>String</code></td>
             <td>User address</td>
@@ -769,6 +639,11 @@
             <td><code>ip</code></td>
             <td><code>String</code></td>
             <td>Visitor IP address for action log</td>
+        </tr>
+        <tr>
+            <td><code>url</code></td>
+            <td><code>String</code></td>
+            <td>Visited url for action log</td>
         </tr>
     </tbody>
 </table>
@@ -792,76 +667,28 @@
             <td><code>Array</code></td>
             <td>Response message array</td>
         </tr>
-        <tr><td colspan="3"><code>data</code> array on successful request</td></tr>
         <tr>
-            <td><code>app_id</code></td>
-            <td><code>String</code></td>
-            <td>App id</td>
-        </tr>
-        <tr>
-            <td><code>address</code></td>
-            <td><code>String</code></td>
-            <td>User address</td>
-        </tr>
-        <tr>
-            <td><code>phone</code></td>
-            <td><code>String</code></td>
-            <td>User phone number</td>
-        </tr>
-        <tr>
-            <td><code>title</code></td>
-            <td><code>String</code></td>
-            <td>User title</td>
-        </tr>
-        <tr>
-            <td><code>company</code></td>
-            <td><code>String</code></td>
-            <td>User company</td>
-        </tr>
-        <tr>
-            <td><code>company_address</code></td>
-            <td><code>String</code></td>
-            <td>User company's address</td>
-        </tr>
-        <tr>
-            <td><code>company_phone</code></td>
-            <td><code>String</code></td>
-            <td>User company's phone number</td>
-        </tr>
-        <tr>
-            <td><code>ip</code></td>
-            <td><code>String</code></td>
-            <td>Visitor IP address for action log</td>
-        </tr>
-        <tr>
-            <td><code>user_id</code></td>
-            <td><code>String</code></td>
-            <td>User id</td>
-        </tr>
-        <tr>
-            <td><code>id</code></td>
-            <td><code>String</code></td>
-            <td>The unique identifier for this request</td>
+            <td><code>data</code></td>
+            <td><code>Array</code></td>
+            <td>User updated detail data</td>
         </tr>
     </tbody>
 </table>
 <h4 class="pt-adaptive">Request Example</h4>
-<pre class="language-json"><code>
-{
+<pre class="language-json"><code>{
     "app_id": "5789541587749547",
-    "user_id": 3,
-    "address": "Somewhere in the world",
-    "phone": "+66 (63) 468-3150",
-    "title": "Mr.",
+    "user_id": 2,
+    "address": "10784 Walnut Street\nLos Alamitos, CA 90720",
+    "phone": "+66 (97) 305-2239",
+    "title": "Ph.D. Candidate",
     "company": "Tech Origin Co., Ltd.",
     "company_address": "10784 Walnut Street\nLos Alamitos, CA 90720",
     "company_phone": "+66 (97) 305-2239",
-    "ip": "222.222.22.2"
-}
-</code></pre>
+    "ip": "127.0.0.1",
+    "url": "http://techorigin.co.th/admin/user-update"
+}</code></pre>
 <h4 class="pt-adaptive">Response Example</h4>
-<pre class="language-json"><code>
-{
+<pre class="language-json"><code>{
     "status": 200,
     "messages": {
         "success": "แก้ไขข้อมูลสำเร็จ"
@@ -878,8 +705,8 @@
         "user_id": "3",
         "id": "2"
     }
-}
-</code></pre>
+}</code></pre>
+
 
 <!-- User Update Password -->
 <h2 id="user-update-password">
@@ -930,6 +757,17 @@
             <td><code>String</code></td>
             <td>User new password confirmation</td>
         </tr>
+        <tr><td colspan="3"><strong>Optional</strong></td></tr>
+        <tr>
+            <td><code>ip</code></td>
+            <td><code>String</code></td>
+            <td>Visitor IP address for action log</td>
+        </tr>
+        <tr>
+            <td><code>url</code></td>
+            <td><code>String</code></td>
+            <td>Visited url for action log</td>
+        </tr>
     </tbody>
 </table>
 <h4 class="pt-adaptive">Response</h4>
@@ -960,24 +798,23 @@
     </tbody>
 </table>
 <h4 class="pt-adaptive">Request Example</h4>
-<pre class="language-json"><code>
-{
+<pre class="language-json"><code>{
     "app_id": "5789541587749547",
     "id": 2,
-    "new_password": "aaaaaa",
-    "new_password_confirm": "aaaaaa"
-}
-</code></pre>
+    "new_password": "123456",
+    "new_password_confirm": "123456",
+    "ip": "127.0.0.1",
+    "url": "http://techorigin.co.th/admin/user-update"
+}</code></pre>
 <h4 class="pt-adaptive">Response Example</h4>
-<pre class="language-json"><code>
-{
+<pre class="language-json"><code>{
     "status": 200,
     "messages": {
         "success": "แก้ไขข้อมูลสำเร็จ"
     },
     "data": true
-}
-</code></pre>
+}</code></pre>
+
 
 <!-- User Delete -->
 <h2 id="user-delete">
@@ -1018,6 +855,17 @@
             <td><code>String</code></td>
             <td>User id</td>
         </tr>
+        <tr><td colspan="3"><strong>Optional</strong></td></tr>
+        <tr>
+            <td><code>ip</code></td>
+            <td><code>String</code></td>
+            <td>Visitor IP address for action log</td>
+        </tr>
+        <tr>
+            <td><code>url</code></td>
+            <td><code>String</code></td>
+            <td>Visited url for action log</td>
+        </tr>
     </tbody>
 </table>
 <h4 class="pt-adaptive">Response</h4>
@@ -1040,40 +888,296 @@
             <td><code>Array</code></td>
             <td>Response message array</td>
         </tr>
-        <tr><td colspan="3"><code>data</code> array on successful request</td></tr>
+        <tr>
+            <td><code>data</code></td>
+            <td><code>Boolean</code></td>
+            <td>Return true on successful request</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Request Example</h4>
+<pre class="language-json"><code>{
+    "app_id": "5789541587749547",
+    "id": 6
+}</code></pre>
+<h4 class="pt-adaptive">Response Example</h4>
+<pre class="language-json"><code>{
+    "status": 200,
+    "messages": {
+        "success": "ลบข้อมูลสำเร็จ"
+    },
+    "data": true
+}</code></pre>
+
+
+<!-- Traffic Report -->
+<h2 id="traffic-report">
+    <a href="#traffic-report" aria-hidden="true" class="header-anchor">#</a>
+    Traffic Report
+</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Method</th>
+            <th>Endpoint</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>GET</code></td>
+            <td><code>API_URL</code>api/admin/traffic-report</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Body Variables</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
         <tr>
             <td><code>app_id</code></td>
             <td><code>String</code></td>
             <td>App id</td>
         </tr>
         <tr>
-            <td><code>id</code></td>
+            <td><code>type</code></td>
             <td><code>String</code></td>
-            <td>User id</td>
+            <td>
+                Report type can be <strong>Total Report</strong>, <strong>Daily Report</strong>, 
+                <strong>Monthly Report</strong>, <strong>Yearly Report</strong> or 
+                <strong>Full Report</strong>
+            </td>
+        </tr>
+        <tr><td colspan="3"><strong>Optional</strong></td></tr>
+        <tr>
+            <td><code>start_date</code></td>
+            <td><code>String</code></td>
+            <td>Start data of format <code>YYYY-MM-DD</code></td>
+        </tr>
+        <tr>
+            <td><code>end_date</code></td>
+            <td><code>String</code></td>
+            <td>End data of format <code>YYYY-MM-DD</code></td>
+        </tr>
+        <tr>
+            <td><code>only_users</code></td>
+            <td><code>Boolean</code></td>
+            <td>Traffic report of users only</td>
+        </tr>
+        <tr>
+            <td><code>only_visitors</code></td>
+            <td><code>Boolean</code></td>
+            <td>Traffic report of visitors only</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Response</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>status</code></td>
+            <td><code>Number</code></td>
+            <td>Response status code</td>
+        </tr>
+        <tr>
+            <td><code>messages</code></td>
+            <td><code>Array</code></td>
+            <td>Response message array</td>
+        </tr>
+        <tr>
+            <td><code>data</code></td>
+            <td><code>Array</code></td>
+            <td>Traffic report array based on <code>type</code></td>
         </tr>
     </tbody>
 </table>
 <h4 class="pt-adaptive">Request Example</h4>
-<pre class="language-json"><code>
-{
+<pre class="language-json"><code>{
     "app_id": "5789541587749547",
-    "id": 6
-}
-</code></pre>
+    "type": "Daily Report",
+    "start_date": "2021-01-09",
+    "end_date": "2021-01-11",
+    "only_users": false,
+    "only_visitors": false
+}</code></pre>
 <h4 class="pt-adaptive">Response Example</h4>
-<pre class="language-json"><code>
-{
+<pre class="language-json"><code>{
     "status": 200,
     "messages": {
-        "success": "ลบข้อมูลสำเร็จ"
+        "success": "ดูข้อมูลสำเร็จ"
     },
-    "data": {
-        "app_id": "5789541587749547",
-        "id": 6
-    }
-}
-</code></pre>
+    "data": [
+        {
+            "date": "2021-01-09",
+            "total": "1"
+        },
+        {
+            "date": "2021-01-10",
+            "total": "2"
+        },
+        {
+            "date": "2021-01-11",
+            "total": "1"
+        }
+    ]
+}</code></pre>
 
+
+<!-- Action Report -->
+<h2 id="action-report">
+    <a href="#action-report" aria-hidden="true" class="header-anchor">#</a>
+    Action Report
+</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Method</th>
+            <th>Endpoint</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>GET</code></td>
+            <td><code>API_URL</code>api/admin/action-report</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Body Variables</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>app_id</code></td>
+            <td><code>String</code></td>
+            <td>App id</td>
+        </tr>
+        <tr>
+            <td><code>type</code></td>
+            <td><code>String</code></td>
+            <td>
+                Report type can be <strong>Total Report</strong>, <strong>Daily Report</strong>, 
+                <strong>Monthly Report</strong>, <strong>Yearly Report</strong> or 
+                <strong>Full Report</strong>
+            </td>
+        </tr>
+        <tr><td colspan="3"><strong>Optional</strong></td></tr>
+        <tr>
+            <td><code>start_date</code></td>
+            <td><code>String</code></td>
+            <td>Start data of format <code>YYYY-MM-DD</code></td>
+        </tr>
+        <tr>
+            <td><code>end_date</code></td>
+            <td><code>String</code></td>
+            <td>End data of format <code>YYYY-MM-DD</code></td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Response</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>status</code></td>
+            <td><code>Number</code></td>
+            <td>Response status code</td>
+        </tr>
+        <tr>
+            <td><code>messages</code></td>
+            <td><code>Array</code></td>
+            <td>Response message array</td>
+        </tr>
+        <tr>
+            <td><code>data</code></td>
+            <td><code>Array</code></td>
+            <td>Action report array based on <code>type</code></td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Request Example</h4>
+<pre class="language-json"><code>{
+    "app_id": "5789541587749547",
+    "type": "Daily Report",
+    "start_date": "2021-01-10",
+    "end_date": "2021-01-12"
+}</code></pre>
+<h4 class="pt-adaptive">Response Example</h4>
+<pre class="language-json"><code>{
+    "status": 200,
+    "messages": {
+        "success": "ดูข้อมูลสำเร็จ"
+    },
+    "data": [
+        {
+            "date": "2021-01-10",
+            "total": 6,
+            "types": [
+                {
+                    "action": "Sign In with Facebook",
+                    "total": "6"
+                }
+            ]
+        },
+        {
+            "date": "2021-01-11",
+            "total": 13,
+            "types": [
+                {
+                    "action": "Admin - User Create",
+                    "total": "2"
+                },
+                {
+                    "action": "Admin - User Update",
+                    "total": "2"
+                },
+                {
+                    "action": "Admin - User Update Detail",
+                    "total": "1"
+                },
+                {
+                    "action": "Admin - User Update Password",
+                    "total": "2"
+                },
+                {
+                    "action": "Sign In",
+                    "total": "2"
+                },
+                {
+                    "action": "Sign In with Facebook",
+                    "total": "1"
+                },
+                {
+                    "action": "Sign In with Google",
+                    "total": "3"
+                }
+            ]
+        }
+    ]
+}</code></pre>
 
 
         </div>

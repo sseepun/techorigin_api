@@ -3,6 +3,7 @@
 use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
 
+use App\Models\UserTypeModel;
 use App\Models\UserModel;
 use App\Models\UserDetailModel;
 use App\Models\UserRoleModel;
@@ -36,6 +37,32 @@ class UserController extends ResourceController{
         $this->userModel = new UserModel();
         $this->user = $this->userModel->getUserById($this->decoded['id']);
         if(!$this->user){ echo '404'; exit; }
+    }
+
+
+    public function userTypeList(){
+        if($this->request->getMethod()=='get'){
+            $userTypeModel = new UserTypeModel();
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
+                'data' => $userTypeModel->getUserTypes(false),
+            ]);
+        }
+        return $this->failValidationError();
+    }
+    public function userTypeRead($id){
+        if($this->request->getMethod()=='get' && !empty($id)){
+            $userTypeModel = new UserTypeModel();
+            $data = $userTypeModel->where(['id' => $id, 'status' => 1])->first();
+            if(!$data) return $this->failValidationError();
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
+                'data' => $data,
+            ]);
+        }
+        return $this->failValidationError();
     }
 
     
@@ -109,6 +136,21 @@ class UserController extends ResourceController{
                     'messages' => $validation->getErrors()
                 ]);
             }
+            if(!empty($input['user_subtype_id']) && !$validation->run($input, 'userUpdateUserTypes')){
+                return $this->respond([
+                    'status' => 400,
+                    'messages' => $validation->getErrors()
+                ]);
+            }else if(!empty($input['user_type_id']) && !$validation->run($input, 'userUpdateUserType')){
+                return $this->respond([
+                    'status' => 400,
+                    'messages' => $validation->getErrors()
+                ]);
+            }
+
+            if(!empty($input['user_type_id']) && empty($input['user_subtype_id'])){
+                $input['user_subtype_id'] = null;
+            }
             
             $userDetailModel = new UserDetailModel();
             $detail = $userDetailModel->where('user_id', $input['user_id'])->first();
@@ -178,7 +220,12 @@ class UserController extends ResourceController{
     
     public function userList(){
         if($this->request->getMethod()=='get'){
-            $tableObject = $this->userModel->getTableObject();
+            $tableObject = $this->userModel->getTableObject(
+                false,
+                !empty($this->request->getGet('page'))? $this->request->getGet('page'): 1,
+                !empty($this->request->getGet('pp'))? $this->request->getGet('pp'): 10,
+                !empty($this->request->getGet('keyword'))? $this->request->getGet('keyword'): '',
+            );
             return $this->respond([
                 'status' => 200,
                 'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
@@ -193,7 +240,7 @@ class UserController extends ResourceController{
             $userDetailModel = new UserDetailModel();
             $userRoleModel = new UserRoleModel();
 
-            $data = $userModel->where(['id' => $id])->first();
+            $data = $userModel->where(['id' => $id, 'status' => 1])->first();
             if(!$data) return $this->failValidationError();
             else{
                 unset($data['password']);
@@ -215,6 +262,7 @@ class UserController extends ResourceController{
         return $this->failValidationError();
     }
 
+    
     public function selfModulePermissions(){
         if($this->request->getMethod()=='get'){
             $moduleModel = new ModuleModel();
@@ -278,5 +326,5 @@ class UserController extends ResourceController{
         }
         return $this->failValidationError();
     }
-
+    
 }

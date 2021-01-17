@@ -25,36 +25,19 @@ class UserRoleModel extends Model {
         return $data;
     }
 
-    
-    // public function getTableObject($page=1, $pp=10, $keyword=''){
-    //     $whereQuery = "";
-    //     if(!empty($keyword)){
-    //         $whereQuery = " AND `name` LIKE '%".$keyword."%'";
-    //     }
-
-    //     $getQuery = $this->db->query(
-    //         "SELECT * FROM `user_roles` 
-    //         WHERE 1 ".$whereQuery." 
-    //         ORDER BY `order` ASC, `created_at` DESC 
-    //         LIMIT :start:, :pp:",
-    //         [ 'start' => ($page - 1) * $pp, 'pp' => $pp ]
-    //     );
-    //     $result = $getQuery->getResultArray();
-
-    //     $totalQuery = $this->db->query(
-    //         "SELECT COUNT(`id`) AS `total` 
-    //         FROM `user_roles` 
-    //         WHERE 1 ".$whereQuery,
-    //     );
-    //     $total = $totalQuery->getRowArray()['total'];
-
-    //     return [
-    //         'result' => $result,
-    //         'page' => $page,
-    //         'pp' => $pp,
-    //         'total' => $total,
-    //         'total_pages' => ceil($total / $pp)
-    //     ];
-    // }
+    public function getUserRoles($isAdmin){
+        if(!$isAdmin){
+            $query = $this->db->query(
+                "SELECT * FROM `user_roles` WHERE `status` = ? 
+                ORDER BY `order` ASC", [ 1 ]
+            );
+        }else{
+            $query = $this->db->query(
+                "SELECT * FROM `user_roles` WHERE 1 
+                ORDER BY `order` ASC"
+            );
+        }
+        return $query->getResultArray();
+    }
 
 }

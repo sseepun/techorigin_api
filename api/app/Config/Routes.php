@@ -48,6 +48,9 @@ $routes->post( 'api/auth/signin-with-google', 'AuthController::signinWithGoogle'
 
 
 // User Controller
+$routes->get(  'api/user/user-type-list', 'UserController::userTypeList', ['filter' => 'authUser']);
+$routes->get(  'api/user/user-type-read/(:num)', 'UserController::userTypeRead/$1', ['filter' => 'authUser']);
+
 $routes->get(  'api/user/read', 'UserController::selfRead', ['filter' => 'authUser']);
 $routes->post( 'api/user/update', 'UserController::selfUpdate', ['filter' => 'authUser']);
 $routes->post( 'api/user/update-detail', 'UserController::selfUpdateDetail', ['filter' => 'authUser']);
@@ -64,6 +67,11 @@ $routes->post( 'api/user/traffic-create', 'UserController::trafficCreate', ['fil
 
 
 // Admin Controller
+$routes->get(  'api/admin/user-type-list', 'AdminController::userTypeList', ['filter' => 'authUser']);
+$routes->get(  'api/admin/user-type-read/(:num)', 'AdminController::userTypeRead/$1', ['filter' => 'authUser']);
+
+$routes->get(  'api/admin/user-list', 'AdminController::userList', ['filter' => 'authUser']);
+
 $routes->post( 'api/admin/user-create', 'AdminController::userCreate', ['filter' => 'authUser']);
 $routes->get(  'api/admin/user-read/(:num)', 'AdminController::userRead/$1', ['filter' => 'authUser']);
 $routes->post( 'api/admin/user-update', 'AdminController::userUpdate', ['filter' => 'authUser']);
@@ -76,6 +84,11 @@ $routes->get(  'api/admin/action-report', 'AdminController::actionReport', ['fil
 
 
 // Super Admin Controller
+$routes->post( 'api/sadmin/user-type-create', 'SuperAdminController::userTypeCreate', ['filter' => 'authUser']);
+$routes->post( 'api/sadmin/user-type-update', 'SuperAdminController::userTypeUpdate', ['filter' => 'authUser']);
+$routes->post( 'api/sadmin/user-type-delete', 'SuperAdminController::userTypeDelete', ['filter' => 'authUser']);
+
+$routes->get(  'api/sadmin/user-role-list', 'SuperAdminController::userRoleList', ['filter' => 'authUser']);
 $routes->post( 'api/sadmin/user-role-create', 'SuperAdminController::userRoleCreate', ['filter' => 'authUser']);
 $routes->get(  'api/sadmin/user-role-read/(:num)', 'SuperAdminController::userRoleRead/$1', ['filter' => 'authUser']);
 $routes->post( 'api/sadmin/user-role-update', 'SuperAdminController::userRoleUpdate', ['filter' => 'authUser']);

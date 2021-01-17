@@ -207,8 +207,14 @@ class UserModel extends Model {
     }
 
 
-    public function getTableObject($page=1, $pp=10, $keyword=''){
+    public function getTableObject($isAdmin=false, $page=1, $pp=10, $keyword=''){
+        $page = (int) $page;
+        $pp = (int) $pp;
+
         $whereQuery = "";
+        if(!$isAdmin){
+            $whereQuery .= " AND u.`status` = 1";
+        }
         if(!empty($keyword)){
             $whereQuery = " AND u.`firstname` LIKE '%".$keyword."%' 
                 OR u.`lastname` LIKE '%".$keyword."%' 

@@ -18,6 +18,7 @@ class Validation
 		\CodeIgniter\Validation\FileRules::class,
 		\CodeIgniter\Validation\CreditCardRules::class,
 		\App\Validation\UserAuth::class,
+		\App\Validation\UserType::class,
 	];
 
 	/**
@@ -328,6 +329,31 @@ class Validation
 			]
 		],
 	];
+	public $userUpdateUserType = [
+		'user_type_id' => [
+			'rules' => 'required|isValidUserType[user_type_id]',
+			'errors' => [
+				'required' => 'ใส่เลขประเภทผู้ใช้',
+				'isValidUserType' => 'ประเภทผู้ใช้ไม่ถูกต้อง',
+			]
+		],
+	];
+	public $userUpdateUserTypes = [
+		'user_type_id' => [
+			'rules' => 'required|isValidUserType[user_type_id]',
+			'errors' => [
+				'required' => 'ใส่เลขประเภทผู้ใช้',
+				'isValidUserType' => 'ประเภทผู้ใช้ไม่ถูกต้อง',
+			]
+		],
+		'user_subtype_id' => [
+			'rules' => 'required|isValidUserSubtype[user_type_id, user_subtype_id]',
+			'errors' => [
+				'required' => 'ใส่เลขประเภทผู้ใช้ย่อย',
+				'isValidUserSubtype' => 'ประเภทผู้ใช้ย่อยไม่ถูกต้อง',
+			]
+		],
+	];
 
 	public $trafficCreate = [
 		'url' => [
@@ -431,6 +457,14 @@ class Validation
 			]
 		],
 	];
+	public $adminActionReport = [
+		'type' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'ใส่ประเภทรายงาน',
+			]
+		],
+	];
 
 	
 	//--------------------------------------------------------------------
@@ -525,6 +559,48 @@ class Validation
 			'rules' => 'required',
 			'errors' => [
 				'required' => 'เลือกตำแน่งผู้ใช้',
+			]
+		],
+	];
+
+	public $sadminUserTypeCreate = [
+		'name' => [
+			'rules' => 'required|max_length[256]',
+			'errors' => [
+				'required' => 'ใส่ชื่อประเภทผู้ใช้',
+				'max_length' => 'ชื่อประเภทผู้ใช้สูงสุด 256 ตัวอักษร',
+			]
+		],
+	];
+	public $sadminUserTypeUpdate = [
+		'id' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'เลือกประเภทผู้ใช้',
+			]
+		],
+		'name' => [
+			'rules' => 'required|max_length[256]',
+			'errors' => [
+				'required' => 'ใส่ชื่อประเภทผู้ใช้',
+				'max_length' => 'ชื่อประเภทผู้ใช้สูงสุด 256 ตัวอักษร',
+			]
+		],
+	];
+	public $sadminUserTypeDelete = [
+		'id' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'เลือกประเภทผู้ใช้',
+			]
+		],
+	];
+	public $sadminValidateUserType = [
+		'parent_id' => [
+			'rules' => 'required|isValidUserType[parent_id]',
+			'errors' => [
+				'required' => 'ใส่เลขประเภทผู้ใช้',
+				'isValidUserType' => 'ประเภทผู้ใช้ไม่ถูกต้อง',
 			]
 		],
 	];
