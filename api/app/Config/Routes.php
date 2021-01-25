@@ -94,6 +94,11 @@ $routes->get(  'api/sadmin/user-role-read/(:num)', 'SuperAdminController::userRo
 $routes->post( 'api/sadmin/user-role-update', 'SuperAdminController::userRoleUpdate', ['filter' => 'authUser']);
 $routes->post( 'api/sadmin/user-role-delete', 'SuperAdminController::userRoleDelete', ['filter' => 'authUser']);
 
+$routes->get(  'api/sadmin/user-custom-column-list', 'SuperAdminController::userCustomColumnList', ['filter' => 'authUser']);
+$routes->post( 'api/sadmin/user-custom-column-create', 'SuperAdminController::userCustomColumnCreate', ['filter' => 'authUser']);
+$routes->get(  'api/sadmin/user-custom-column-read/(:num)', 'SuperAdminController::userCustomColumnRead/$1', ['filter' => 'authUser']);
+$routes->post( 'api/sadmin/user-custom-column-update', 'SuperAdminController::userCustomColumnUpdate', ['filter' => 'authUser']);
+
 $routes->post( 'api/sadmin/module-create', 'SuperAdminController::moduleCreate', ['filter' => 'authUser']);
 $routes->get(  'api/sadmin/module-read/(:num)', 'SuperAdminController::moduleRead/$1', ['filter' => 'authUser']);
 $routes->post( 'api/sadmin/module-update', 'SuperAdminController::moduleUpdate', ['filter' => 'authUser']);

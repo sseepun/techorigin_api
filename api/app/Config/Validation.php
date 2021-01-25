@@ -19,6 +19,7 @@ class Validation
 		\CodeIgniter\Validation\CreditCardRules::class,
 		\App\Validation\UserAuth::class,
 		\App\Validation\UserType::class,
+		\App\Validation\UserCustomColumn::class,
 	];
 
 	/**
@@ -501,6 +502,39 @@ class Validation
 			'rules' => 'required',
 			'errors' => [
 				'required' => 'เลือกตำแหน่งผู้ใช้',
+			]
+		],
+	];
+	
+	public $sadminUserCustomColumnCreate = [
+		'name' => [
+			'rules' => 'required|max_length[256]|is_unique[user_custom_columns.name,id,{id}]|isValidUserColumnName[name]|exceedUserColumnNumber[name]|restrictedUserColumnNames[name]',
+			'errors' => [
+				'required' => 'ใส่ชื่อข้อมูล',
+				'max_length' => 'ชื่อข้อมูลสูงสุด 256 ตัวอักษร',
+				'is_unique' => 'ชื่อข้อมูลซ้ำในระบบ',
+				'isValidUserColumnName' => 'ชื่อข้อมูลรองรับ a-z และ _ เท่านั้น',
+				'exceedUserColumnNumber' => 'ไม่สามารถสร้างชื่อข้อมูลได้มากกว่า 20 ข้อมูล',
+				'restrictedUserColumnNames' => 'ไม่สามารถใช้ชื่อข้อมูลนี้ได้'
+			]
+		],
+	];
+	public $sadminUserCustomColumnUpdate = [
+		'id' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'เลือกชื่อข้อมูล',
+			]
+		],
+		'name' => [
+			'rules' => 'required|max_length[256]|is_unique[user_custom_columns.name,id,{id}]|isValidUserColumnName[name]|exceedUserColumnNumber[name]|restrictedUserColumnNames[name]',
+			'errors' => [
+				'required' => 'ใส่ชื่อข้อมูล',
+				'max_length' => 'ชื่อข้อมูลสูงสุด 256 ตัวอักษร',
+				'is_unique' => 'ชื่อข้อมูลซ้ำในระบบ',
+				'isValidUserColumnName' => 'ชื่อข้อมูลรองรับ a-z และ _ เท่านั้น',
+				'exceedUserColumnNumber' => 'ไม่สามารถสร้างชื่อข้อมูลได้มากกว่า 20 ข้อมูล',
+				'restrictedUserColumnNames' => 'ไม่สามารถใช้ชื่อข้อมูลนี้ได้'
 			]
 		],
 	];

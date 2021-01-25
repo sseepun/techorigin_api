@@ -76,6 +76,9 @@ class UserController extends ResourceController{
             if($detail) $data['detail'] = $detail;
             $data['role'] = $userRoleModel->find($data['role_id']);
 
+            $customDetails = $userDetailModel->getCustomDetails(false, $data['id']);
+            if($customDetails) $data = array_merge($data, $customDetails);
+
             return $this->respond([
                 'status' => 200,
                 'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
@@ -155,7 +158,9 @@ class UserController extends ResourceController{
             $userDetailModel = new UserDetailModel();
             $detail = $userDetailModel->where('user_id', $input['user_id'])->first();
             if($detail) $input['id'] = $detail['id'];
+
             $userDetailModel->save($input);
+            $userDetailModel->updateCustomDetails($input['user_id'], $input);
             
             $actionLogModel = new ActionLogModel();
             $actionLogModel->insert([
@@ -251,6 +256,9 @@ class UserController extends ResourceController{
                 $detail = $userDetailModel->where('user_id', $data['id'])->first();
                 if($detail) $data['detail'] = $detail;
                 $data['role'] = $userRoleModel->find($data['role_id']);
+                
+                $customDetails = $userDetailModel->getCustomDetails(false, $data['id']);
+                if($customDetails) $data = array_merge($data, $customDetails);
             }
 
             return $this->respond([

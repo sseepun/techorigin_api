@@ -158,6 +158,9 @@ class AdminController extends ResourceController{
                 $detail = $userDetailModel->where('user_id', $data['id'])->first();
                 if($detail) $data['detail'] = $detail;
                 $data['role'] = $this->userRoleModel->find($data['role_id']);
+                
+                $customDetails = $userDetailModel->getCustomDetails(true, $data['id']);
+                if($customDetails) $data = array_merge($data, $customDetails);
             }
 
             return $this->respond([
@@ -245,7 +248,9 @@ class AdminController extends ResourceController{
             $userDetailModel = new UserDetailModel();
             $detail = $userDetailModel->where('user_id', $input['user_id'])->first();
             if($detail) $input['id'] = $detail['id'];
+
             $userDetailModel->save($input);
+            $userDetailModel->updateCustomDetails($input['user_id'], $input);
 
             $actionLogModel = new ActionLogModel();
             $actionLogModel->insert([

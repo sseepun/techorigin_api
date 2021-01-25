@@ -7,6 +7,7 @@ use App\Models\UserTypeModel;
 use App\Models\UserModel;
 use App\Models\UserDetailModel;
 use App\Models\UserRoleModel;
+use App\Models\UserCustomColumnModel;
 
 use App\Models\ModuleModel;
 use App\Models\ModulePermissionModel;
@@ -273,6 +274,106 @@ class SuperAdminController extends ResourceController{
             return $this->respond([
                 'status' => 200,
                 'messages' => [ 'success' => 'ลบข้อมูลสำเร็จ' ],
+                'data' => $input,
+            ]);
+        }
+        return $this->failValidationError();
+    }
+
+
+    public function userCustomColumnList(){
+        if($this->request->getMethod()=='get'){
+            $userCustomColumnModel = new UserCustomColumnModel();
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
+                'data' => $userCustomColumnModel->getList(true),
+            ]);
+        }
+        return $this->failValidationError();
+    }
+    public function userCustomColumnCreate(){
+        if($this->request->getMethod()=='post'){
+            $input = stdClassToArray($this->request->getJSON());
+            unset($input['column_id']);
+
+            $validation = \Config\Services::validation();
+            if(!$validation->run($input, 'sadminUserCustomColumnCreate')){
+                return $this->respond([
+                    'status' => 400,
+                    'messages' => $validation->getErrors()
+                ]);
+            }
+
+            $userCustomColumnModel = new UserCustomColumnModel();
+            $columnId = $userCustomColumnModel->getNextColumnId();
+            $input['column_id'] = $columnId;
+            $userCustomColumnModel->save($input);
+            
+            $actionLogModel = new ActionLogModel();
+            $actionLogModel->insert([
+                'user_id' => $this->user['id'],
+                'action' => 'Super Admin - User Custom Column Create',
+                'url' => !empty($input['url'])? $input['url']: null,
+                'ip' => !empty($input['ip'])? $input['ip']: null,
+            ]);
+
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'สร้างข้อมูลสำเร็จ' ],
+                'data' => [
+                    'column_id' => $input['column_id'],
+                    'name' => $input['name'],
+                    'status' => 1,
+                ],
+            ]);
+        }
+        return $this->failValidationError();
+    }
+    public function userCustomColumnRead($id){
+        if($this->request->getMethod()=='get' && !empty($id)){
+            $userCustomColumnModel = new UserCustomColumnModel();
+            $userColumn = $userCustomColumnModel->find($id);
+            if(!$userColumn) return $this->failValidationError();
+
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
+                'data' => $userColumn,
+            ]);
+        }
+        return $this->failValidationError();
+    }
+    public function userCustomColumnUpdate(){
+        if($this->request->getMethod()=='post'){
+            $input = stdClassToArray($this->request->getJSON());
+            unset($input['column_id']);
+
+            $validation = \Config\Services::validation();
+            if(!$validation->run($input, 'sadminUserCustomColumnUpdate')){
+                return $this->respond([
+                    'status' => 400,
+                    'messages' => $validation->getErrors()
+                ]);
+            }
+            
+            $userCustomColumnModel = new UserCustomColumnModel();
+            $userColumn = $userCustomColumnModel->find($id);
+            if(!$userColumn) return $this->failValidationError();
+
+            $userCustomColumnModel->save($input);
+            
+            $actionLogModel = new ActionLogModel();
+            $actionLogModel->insert([
+                'user_id' => $this->user['id'],
+                'action' => 'Super Admin - User Custom Column Update',
+                'url' => !empty($input['url'])? $input['url']: null,
+                'ip' => !empty($input['ip'])? $input['ip']: null,
+            ]);
+
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'แก้ไขข้อมูลสำเร็จ' ],
                 'data' => $input,
             ]);
         }
