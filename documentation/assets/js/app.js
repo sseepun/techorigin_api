@@ -25,6 +25,8 @@ var menu = [
     {
         name: 'User API',
         children: [
+            { name: 'User Type List' },
+            { name: 'User Type Read' },
             { name: 'Read' },
             { name: 'Update' },
             { name: 'Update Detail' },
@@ -39,6 +41,9 @@ var menu = [
     {
         name: 'Admin API',
         children: [
+            { name: 'User Type List' },
+            { name: 'User Type Read' },
+            { name: 'User List' },
             { name: 'User Create' },
             { name: 'User Read' },
             { name: 'User Update' },
@@ -52,10 +57,18 @@ var menu = [
     {
         name: 'Super Admin API',
         children: [
+            { name: 'User Type Create' },
+            { name: 'User Type Update' },
+            { name: 'User Type Delete' },
+            { name: 'User Role List' },
             { name: 'User Role Create' },
             { name: 'User Role Read' },
             { name: 'User Role Update' },
             { name: 'User Role Delete' },
+            { name: 'User Custom Column List' },
+            { name: 'User Custom Column Create' },
+            { name: 'User Custom Column Read' },
+            { name: 'User Custom Column Update' },
             { name: 'Module Create' },
             { name: 'Module Read' },
             { name: 'Module Update' },

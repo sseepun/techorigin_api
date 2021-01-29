@@ -225,11 +225,11 @@ class UserController extends ResourceController{
     
     public function userList(){
         if($this->request->getMethod()=='get'){
+            $pp = !empty($this->request->getGet('pp'))? $this->request->getGet('pp'): 10;
+            if($pp>1000) $pp = 1000;
             $tableObject = $this->userModel->getTableObject(
-                false,
-                !empty($this->request->getGet('page'))? $this->request->getGet('page'): 1,
-                !empty($this->request->getGet('pp'))? $this->request->getGet('pp'): 10,
-                !empty($this->request->getGet('keyword'))? $this->request->getGet('keyword'): '',
+                false, !empty($this->request->getGet('page'))? $this->request->getGet('page'): 1,
+                $pp, !empty($this->request->getGet('keyword'))? $this->request->getGet('keyword'): '',
             );
             return $this->respond([
                 'status' => 200,

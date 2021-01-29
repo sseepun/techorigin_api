@@ -27,6 +27,499 @@
             </p>
 
 
+<!-- User Type List -->
+<h2 id="user-type-list">
+    <a href="#user-type-list" aria-hidden="true" class="header-anchor">#</a>
+    User Type List
+</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Method</th>
+            <th>Endpoint</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>GET</code></td>
+            <td><code>API_URL</code>api/admin/user-type-list</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Body Variables</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>app_id</code></td>
+            <td><code>String</code></td>
+            <td>App id</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Response</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>status</code></td>
+            <td><code>Number</code></td>
+            <td>Response status code</td>
+        </tr>
+        <tr>
+            <td><code>messages</code></td>
+            <td><code>Array</code></td>
+            <td>Response message array</td>
+        </tr>
+        <tr><td colspan="3"><code>data</code> array on successful request</td></tr>
+        <tr>
+            <td><code>id</code></td>
+            <td><code>String</code></td>
+            <td>The unique identifier for a user type</td>
+        </tr>
+        <tr>
+            <td><code>name</code></td>
+            <td><code>String</code></td>
+            <td>User type name</td>
+        </tr>
+        <tr>
+            <td><code>subtypes</code></td>
+            <td><code>Array</code></td>
+            <td>User sub types if any</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Request Example</h4>
+<pre class="language-json"><code>{
+    "app_id": "5789541587749547"
+}</code></pre>
+<h4 class="pt-adaptive">Response Example</h4>
+<pre class="language-json"><code>{
+    "status": 200,
+    "messages": {
+        "success": "ดูข้อมูลสำเร็จ"
+    },
+    "data": [
+        {
+            "id": "1",
+            "parent_id": null,
+            "name": "นักเรียนระดับประถมต้น",
+            "status": "1",
+            "created_at": "2021-01-28 01:56:30",
+            "updated_at": "2021-01-28 01:56:30",
+            "subtypes": [
+                {
+                    "id": "2",
+                    "parent_id": "1",
+                    "name": "ประถมศึกษาปีที่ 1",
+                    "status": "1",
+                    "created_at": "2021-01-28 01:56:30",
+                    "updated_at": "2021-01-28 01:56:30"
+                },
+                {
+                    "id": "3",
+                    "parent_id": "1",
+                    "name": "ประถมศึกษาปีที่ 2",
+                    "status": "1",
+                    "created_at": "2021-01-28 01:56:30",
+                    "updated_at": "2021-01-28 01:56:30"
+                },
+                {
+                    "id": "4",
+                    "parent_id": "1",
+                    "name": "ประถมศึกษาปีที่ 3",
+                    "status": "1",
+                    "created_at": "2021-01-28 01:56:30",
+                    "updated_at": "2021-01-28 01:56:30"
+                }
+            ]
+        },
+        {
+            "id": "17",
+            "parent_id": null,
+            "name": "นักเรียนระดับปริญญาตรี",
+            "status": "1",
+            "created_at": "2021-01-28 01:56:30",
+            "updated_at": "2021-01-28 01:56:30",
+            "subtypes": []
+        },
+        {
+            "id": "20",
+            "parent_id": null,
+            "name": "คุณครู",
+            "status": "1",
+            "created_at": "2021-01-28 01:56:30",
+            "updated_at": "2021-01-28 01:56:30",
+            "subtypes": []
+        },
+        {
+            "id": "21",
+            "parent_id": null,
+            "name": "อาจารย์มหาวิทยาลัย",
+            "status": "1",
+            "created_at": "2021-01-28 01:56:30",
+            "updated_at": "2021-01-28 01:56:30",
+            "subtypes": []
+        }
+    ]
+}</code></pre>
+
+<!-- User Type Read -->
+<h2 id="user-type-read">
+    <a href="#user-type-read" aria-hidden="true" class="header-anchor">#</a>
+    User Type Read
+</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Method</th>
+            <th>Endpoint</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>GET</code></td>
+            <td><code>API_URL</code>api/admin/user-type-read/<code>user_type_id</code></td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Path Variables</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>user_type_id</code></td>
+            <td><code>Number</code></td>
+            <td>User type id</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Body Variables</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>app_id</code></td>
+            <td><code>String</code></td>
+            <td>App id</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Response</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>status</code></td>
+            <td><code>Number</code></td>
+            <td>Response status code</td>
+        </tr>
+        <tr>
+            <td><code>messages</code></td>
+            <td><code>Array</code></td>
+            <td>Response message array</td>
+        </tr>
+        <tr><td colspan="3"><code>data</code> array on successful request</td></tr>
+        <tr>
+            <td><code>id</code></td>
+            <td><code>String</code></td>
+            <td>User type id</td>
+        </tr>
+        <tr>
+            <td><code>parent_id</code></td>
+            <td><code>String</code></td>
+            <td>User parent type id if any</td>
+        </tr>
+        <tr>
+            <td><code>name</code></td>
+            <td><code>String</code></td>
+            <td>User type name</td>
+        </tr>
+        <tr>
+            <td><code>status</code></td>
+            <td><code>String</code></td>
+            <td>User type status</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Request Example</h4>
+<pre class="language-json"><code>{
+    "app_id": "5789541587749547"
+}</code></pre>
+<h4 class="pt-adaptive">Response Example</h4>
+<pre class="language-json"><code>{
+    "status": 200,
+    "messages": {
+        "success": "ดูข้อมูลสำเร็จ"
+    },
+    "data": {
+        "id": "1",
+        "parent_id": null,
+        "name": "นักเรียนระดับประถมต้น",
+        "status": "1",
+        "created_at": "2021-01-28 01:56:30",
+        "updated_at": "2021-01-28 01:56:30"
+    }
+}</code></pre>
+
+
+<!-- User list -->
+<h2 id="user-list">
+    <a href="#user-list" aria-hidden="true" class="header-anchor">#</a>
+    User List
+</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Method</th>
+            <th>Endpoint</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>GET</code></td>
+            <td><code>API_URL</code>api/admin/user-list</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Body Variables</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>app_id</code></td>
+            <td><code>String</code></td>
+            <td>App id</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">GET Variables</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td colspan="3"><strong>Optional</strong></td></tr>
+        <tr>
+            <td><code>page</code></td>
+            <td><code>Number</code></td>
+            <td>User list page</td>
+        </tr>
+        <tr>
+            <td><code>pp</code></td>
+            <td><code>Number</code></td>
+            <td>User list per page</td>
+        </tr>
+        <tr>
+            <td><code>keyword</code></td>
+            <td><code>String</code></td>
+            <td>User list search keyword</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Response</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>status</code></td>
+            <td><code>Number</code></td>
+            <td>Response status code</td>
+        </tr>
+        <tr>
+            <td><code>messages</code></td>
+            <td><code>Array</code></td>
+            <td>Response message array</td>
+        </tr>
+        <tr><td colspan="3"><code>data</code> array on successful request</td></tr>
+        <tr>
+            <td><code>page</code></td>
+            <td><code>String</code></td>
+            <td>Current page</td>
+        </tr>
+        <tr>
+            <td><code>pp</code></td>
+            <td><code>String</code></td>
+            <td>Users per page</td>
+        </tr>
+        <tr>
+            <td><code>total</code></td>
+            <td><code>String</code></td>
+            <td>Total users</td>
+        </tr>
+        <tr>
+            <td><code>total_pages</code></td>
+            <td><code>String</code></td>
+            <td>Total pages</td>
+        </tr>
+        <tr><td colspan="3"><code>result</code> array on successful request</td></tr>
+        <tr>
+            <td><code>id</code></td>
+            <td><code>String</code></td>
+            <td>User id</td>
+        </tr>
+        <tr>
+            <td><code>role_id</code></td>
+            <td><code>String</code></td>
+            <td>User role id</td>
+        </tr>
+        <tr>
+            <td><code>firstname</code></td>
+            <td><code>String</code></td>
+            <td>User first name</td>
+        </tr>
+        <tr>
+            <td><code>lastname</code></td>
+            <td><code>String</code></td>
+            <td>User last name</td>
+        </tr>
+        <tr>
+            <td><code>email</code></td>
+            <td><code>String</code></td>
+            <td>User email</td>
+        </tr>
+        <tr>
+            <td><code>profile</code></td>
+            <td><code>String</code></td>
+            <td>User profile</td>
+        </tr>
+        <tr>
+            <td><code>status</code></td>
+            <td><code>String</code></td>
+            <td>User status</td>
+        </tr>
+        <tr>
+            <td><code>last_ip</code></td>
+            <td><code>String</code></td>
+            <td>Last IP address in action log</td>
+        </tr>
+        <tr>
+            <td><code>role</code></td>
+            <td><code>String</code></td>
+            <td>User role</td>
+        </tr>
+        <tr>
+            <td><code>role_is_admin</code></td>
+            <td><code>String</code></td>
+            <td>Return 1 if role is admin</td>
+        </tr>
+        <tr>
+            <td><code>role_is_super_admin</code></td>
+            <td><code>String</code></td>
+            <td>Return 1 if role is super admin</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Request Example</h4>
+<pre class="language-json"><code>{
+    "app_id": "5789541587749547"
+}</code></pre>
+<h4 class="pt-adaptive">Response Example</h4>
+<pre class="language-json"><code>{
+    "status": 200,
+    "messages": {
+        "success": "ดูข้อมูลสำเร็จ"
+    },
+    "data": {
+        "page": 1,
+        "pp": 10,
+        "total": "3",
+        "total_pages": 1,
+        "result": [
+            {
+                "id": "1",
+                "role_id": "1",
+                "firstname": "Super",
+                "lastname": "Admin",
+                "email": "sa@a.com",
+                "profile": null,
+                "status": "1",
+                "last_ip": "333.333.333.1",
+                "created_at": "2021-01-05 00:57:52",
+                "updated_at": "2021-01-05 17:31:55",
+                "role": "Super Admin",
+                "role_is_admin": "0",
+                "role_is_super_admin": "1"
+            },
+            {
+                "id": "2",
+                "role_id": "2",
+                "firstname": "General",
+                "lastname": "Admin",
+                "email": "b@b.com",
+                "profile": null,
+                "status": "1",
+                "last_ip": null,
+                "created_at": "2021-01-05 00:57:52",
+                "updated_at": "2021-01-05 00:57:52",
+                "role": "Admin",
+                "role_is_admin": "1",
+                "role_is_super_admin": "0"
+            },
+            {
+                "id": "3",
+                "role_id": "3",
+                "firstname": "General",
+                "lastname": "Member",
+                "email": "a@a.com",
+                "profile": null,
+                "status": "1",
+                "last_ip": "127.127.127.0",
+                "created_at": "2021-01-05 00:57:52",
+                "updated_at": "2021-01-05 15:39:52",
+                "role": "Member",
+                "role_is_admin": "0",
+                "role_is_super_admin": "0"
+            }
+        ]
+    }
+}</code></pre>
 
 <!-- User Create -->
 <h2 id="user-create">
@@ -193,8 +686,6 @@
     }
 }</code></pre>
 
-
-
 <!-- User Read -->
 <h2 id="user-read">
     <a href="#user-read" aria-hidden="true" class="header-anchor">#</a>
@@ -272,12 +763,12 @@
         <tr>
             <td><code>id</code></td>
             <td><code>String</code></td>
-            <td>The unique identifier for the user</td>
+            <td>The unique identifier for this request</td>
         </tr>
         <tr>
             <td><code>role_id</code></td>
             <td><code>String</code></td>
-            <td>User role id</td>
+            <td>Role id</td>
         </tr>
         <tr>
             <td><code>username</code></td>
@@ -297,7 +788,7 @@
         <tr>
             <td><code>is_password_set</code></td>
             <td><code>String</code></td>
-            <td>Whether this user has set the password or not</td>
+            <td></td>
         </tr>
         <tr>
             <td><code>email</code></td>
@@ -307,40 +798,86 @@
         <tr>
             <td><code>profile</code></td>
             <td><code>String</code></td>
-            <td>User profile url path</td>
+            <td>User profile</td>
+        </tr>
+        <tr>
+            <td><code>thai_id</code></td>
+            <td><code>String</code></td>
+            <td>User Thai id</td>
+        </tr>
+        <tr>
+            <td><code>thai_id_path</code></td>
+            <td><code>String</code></td>
+            <td>User Thai id URL</td>
+        </tr>
+        <tr>
+            <td><code>code</code></td>
+            <td><code>String</code></td>
+            <td></td>
         </tr>
         <tr>
             <td><code>facebook_id</code></td>
             <td><code>String</code></td>
-            <td>User Facebook id</td>
+            <td>User facebook id</td>
         </tr>
         <tr>
             <td><code>google_id</code></td>
             <td><code>String</code></td>
-            <td>User Google id</td>
+            <td>User google id</td>
+        </tr>
+        <tr>
+            <td><code>last_ip</code></td>
+            <td><code>String</code></td>
+            <td>Last IP address in action log</td>
         </tr>
         <tr>
             <td><code>status</code></td>
             <td><code>String</code></td>
             <td>User status</td>
         </tr>
+        <tr><td colspan="3"><code>detail</code> array of user details if any</td></tr>
+        <tr><td colspan="3"><code>role</code> array of user role</td></tr>
         <tr>
-            <td><code>detail</code></td>
-            <td><code>Array</code></td>
-            <td>User detail</td>
+            <td><code>id</code></td>
+            <td><code>String</code></td>
+            <td>Role id</td>
         </tr>
         <tr>
-            <td><code>role</code></td>
-            <td><code>Array</code></td>
-            <td>User role detail</td>
+            <td><code>name</code></td>
+            <td><code>String</code></td>
+            <td>Role name</td>
+        </tr>
+        <tr>
+            <td><code>is_admin</code></td>
+            <td><code>String</code></td>
+            <td>Return 1 if role is admin</td>
+        </tr>
+        <tr>
+            <td><code>is_super_admin</code></td>
+            <td><code>String</code></td>
+            <td>Return 1 if role is super admin</td>
+        </tr>
+        <tr>
+            <td><code>is_default</code></td>
+            <td><code>String</code></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><code>order</code></td>
+            <td><code>String</code></td>
+            <td>Role order</td>
+        </tr>
+        <tr>
+            <td><code>status</code></td>
+            <td><code>String</code></td>
+            <td>Role status</td>
         </tr>
     </tbody>
 </table>
 <h4 class="pt-adaptive">Request Example</h4>
 <pre class="language-json"><code>{
     "app_id": "5789541587749547"
-} 
-</code></pre>
+}</code></pre>
 <h4 class="pt-adaptive">Response Example</h4>
 <pre class="language-json"><code>{
     "status": 200,
@@ -353,7 +890,7 @@
         "username": "SuperAdmin",
         "firstname": "Super",
         "lastname": "Admin",
-        "email": "a@a.com",
+        "email": "sarun.seepun@gmail.com",
         "is_password_set": "1",
         "profile": null,
         "thai_id": null,
@@ -361,19 +898,23 @@
         "code": null,
         "facebook_id": null,
         "google_id": null,
-        "last_ip": "333.333.333.1",
+        "last_ip": "127.0.0.1",
         "status": "1",
+        "created_at": "2021-01-28 01:56:30",
+        "updated_at": "2021-01-28 02:07:31",
         "detail": {
             "id": "1",
             "user_id": "1",
+            "user_type_id": null,
+            "user_subtype_id": null,
             "address": "10784 Walnut Street\nLos Alamitos, CA 90720",
             "phone": "+66 (97) 305-2239",
             "title": "Ph.D. Candidate",
             "company": "Tech Origin Co., Ltd.",
             "company_address": "10784 Walnut Street\nLos Alamitos, CA 90720",
             "company_phone": "+66 (97) 305-2239",
-            "created_at": "2021-01-05 01:08:47",
-            "updated_at": "2021-01-05 17:19:27"
+            "created_at": "2021-01-30 01:32:35",
+            "updated_at": "2021-01-30 01:32:35"
         },
         "role": {
             "id": "1",
@@ -383,12 +924,11 @@
             "is_default": "0",
             "order": "99",
             "status": "1",
-            "created_at": "2021-01-05 00:57:52",
-            "updated_at": "2021-01-05 00:57:52"
+            "created_at": "2021-01-28 01:56:30",
+            "updated_at": "2021-01-28 01:56:30"
         }
     }
-}
-</code></pre>
+}</code></pre>
 
 
 <!-- User Update -->
@@ -564,7 +1104,6 @@
     }
 }</code></pre>
 
-
 <!-- User Update Detail -->
 <h2 id="user-update-detail">
     <a href="#user-update-detail" aria-hidden="true" class="header-anchor">#</a>
@@ -605,6 +1144,16 @@
             <td>User id</td>
         </tr>
         <tr><td colspan="3"><strong>Optional</strong></td></tr>
+        <tr>
+            <td><code>user_type_id</code></td>
+            <td><code>Number</code></td>
+            <td>User type id</td>
+        </tr>
+        <tr>
+            <td><code>user_subtype_id</code></td>
+            <td><code>Number</code></td>
+            <td>User sub type id</td>
+        </tr>
         <tr>
             <td><code>address</code></td>
             <td><code>String</code></td>
@@ -678,12 +1227,16 @@
 <pre class="language-json"><code>{
     "app_id": "5789541587749547",
     "user_id": 2,
+    "user_type_id": 1,
+    "user_subtype_id": 2,
     "address": "10784 Walnut Street\nLos Alamitos, CA 90720",
     "phone": "+66 (97) 305-2239",
     "title": "Ph.D. Candidate",
     "company": "Tech Origin Co., Ltd.",
     "company_address": "10784 Walnut Street\nLos Alamitos, CA 90720",
     "company_phone": "+66 (97) 305-2239",
+    "custom_note": "User dynamic custom note",
+    "custom_ticket": "TK-00254",
     "ip": "127.0.0.1",
     "url": "http://techorigin.co.th/admin/user-update"
 }</code></pre>
@@ -694,19 +1247,23 @@
         "success": "แก้ไขข้อมูลสำเร็จ"
     },
     "data": {
-        "app_id": "5789541587749547",
-        "address": "Somewhere in the world",
-        "phone": "+66 (63) 468-3150",
-        "title": "Mr.",
-        "company": "Tech Origin Co., Ltd.",
-        "company_address": "10784 Walnut Street\nLos Alamitos, CA 90720",
-        "company_phone": "+66 (97) 305-2239",
-        "ip": "222.222.22.2",
-        "user_id": "3",
-        "id": "2"
+        "id": "2",
+        "role_id": "2",
+        "username": "Admin",
+        "firstname": "General",
+        "lastname": "Admin",
+        "email": "sarun_sla@hotmail.com",
+        "is_password_set": "1",
+        "profile": null,
+        "thai_id": null,
+        "thai_id_path": null,
+        "code": null,
+        "facebook_id": null,
+        "google_id": null,
+        "last_ip": null,
+        "status": "1"
     }
 }</code></pre>
-
 
 <!-- User Update Password -->
 <h2 id="user-update-password">

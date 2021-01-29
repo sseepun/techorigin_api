@@ -91,11 +91,11 @@ class AdminController extends ResourceController{
     
     public function userList(){
         if($this->request->getMethod()=='get'){
+            $pp = !empty($this->request->getGet('pp'))? $this->request->getGet('pp'): 10;
+            if($pp>1000) $pp = 1000;
             $tableObject = $this->userModel->getTableObject(
-                true,
-                !empty($this->request->getGet('page'))? $this->request->getGet('page'): 1,
-                !empty($this->request->getGet('pp'))? $this->request->getGet('pp'): 10,
-                !empty($this->request->getGet('keyword'))? $this->request->getGet('keyword'): '',
+                true, !empty($this->request->getGet('page'))? $this->request->getGet('page'): 1,
+                $pp, !empty($this->request->getGet('keyword'))? $this->request->getGet('keyword'): '',
             );
             return $this->respond([
                 'status' => 200,
@@ -158,7 +158,7 @@ class AdminController extends ResourceController{
                 $detail = $userDetailModel->where('user_id', $data['id'])->first();
                 if($detail) $data['detail'] = $detail;
                 $data['role'] = $this->userRoleModel->find($data['role_id']);
-                
+                 
                 $customDetails = $userDetailModel->getCustomDetails(true, $data['id']);
                 if($customDetails) $data = array_merge($data, $customDetails);
             }

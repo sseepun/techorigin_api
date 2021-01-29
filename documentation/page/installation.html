@@ -26,6 +26,7 @@
             </p>
             <ul>
                 <li>PHP 7.2+</li>
+                <li>Composer (PHP package manager)</li>
                 <li>Intl PHP Extension</li>
                 <li>Mbstring PHP Extension</li>
                 <li>PDO PHP Extension</li>
@@ -81,70 +82,71 @@
                     <tr>
                         <td>app.baseURL</td>
                         <td>
-                            Description
+                            The url where you hosted the application
                             <br><i>Code line 25</i>
                         </td>
                     </tr>
                     <tr>
                         <td>app.title</td>
                         <td>
-                            Description
+                            The title of the application
                             <br><i>Code line 28</i>
                         </td>
                     </tr>
                     <tr>
                         <td>app.id</td>
                         <td>
-                            Description
+                            The application id used for validations
                             <br><i>Code line 29</i>
                         </td>
                     </tr>
                     <tr>
                         <td>database.default.hostname</td>
                         <td>
-                            Description
+                            The database hostname 
+                            (usually <code>localhost</code> or <code>127.0.0.1</code>)
                             <br><i>Code line 44</i>
                         </td>
                     </tr>
                     <tr>
                         <td>database.default.database</td>
                         <td>
-                            Description
+                            The database table name
                             <br><i>Code line 46</i>
                         </td>
                     </tr>
                     <tr>
                         <td>database.default.username</td>
                         <td>
-                            Description
+                            The database username
                             <br><i>Code line 47</i>
                         </td>
                     </tr>
                     <tr>
                         <td>database.default.password</td>
                         <td>
-                            Description
+                            The database password
                             <br><i>Code line 48</i>
                         </td>
                     </tr>
                     <tr>
                         <td>database.default.DBDriver</td>
                         <td>
-                            Description
+                            The database driver
                             <br><i>Code line 49</i>
                         </td>
                     </tr>
                     <tr>
                         <td>encryption.key</td>
                         <td>
-                            Description
+                            The encryption key used in the application
                             <br><i>Code line 85</i>
                         </td>
                     </tr>
                     <tr>
                         <td>jwt.secretKey</td>
                         <td>
-                            Description
+                            The JSON Web Token secret key
                             <br><i>Code line 93</i>
                         </td>
                     </tr>
@@ -160,12 +162,20 @@
                 Step 1: Install Data Tables
             </h3>
             <p>
-                Navigate to <code>api</code> directory and run <code>php spark migrate</code> 
-                command. This will generate necessary data tables in your database.
+                Navigate to <code>api</code> directory and run <code>composer update</code> 
+                command. This will install necessary PHP packages into <code>vendor</code> folder.
             </p>
             <h3 id="installing-step-2">
                 <a href="#installing-step-2" aria-hidden="true" class="header-anchor">#</a> 
-                Step 2: Install Initial Data
+                Step 2: Install Data Tables
+            </h3>
+            <p>
+                In <code>api</code> directory, run <code>php spark migrate</code> 
+                command. This will generate necessary data tables in your database.
+            </p>
+            <h3 id="installing-step-3">
+                <a href="#installing-step-3" aria-hidden="true" class="header-anchor">#</a> 
+                Step 3: Install Initial Data
             </h3>
             <p>
                 In <code>api</code> directory, run <code>php spark db:seed DataSeeder</code> 
