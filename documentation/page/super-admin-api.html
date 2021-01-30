@@ -26,6 +26,911 @@
                 in <strong>JSON Body</strong> for every request to the server.
             </p>
 
+
+<!-- User Type Create -->
+<h2 id="user-type-create">
+    <a href="#user-type-create" aria-hidden="true" class="header-anchor">#</a>
+    User Type Create
+</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Method</th>
+            <th>Endpoint</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>POST</code></td>
+            <td><code>API_URL</code>api/sadmin/user-type-create</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Body Variables</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>app_id</code></td>
+            <td><code>String</code></td>
+            <td>App id</td>
+        </tr>
+        <tr>
+            <td><code>parent_id</code></td>
+            <td><code>Number</code> of <code>NULL</code></td>
+            <td>User type parent id</td>
+        </tr>
+        <tr>
+            <td><code>name</code></td>
+            <td><code>String</code></td>
+            <td>User type name</td>
+        </tr>
+        <tr>
+            <td><code>status</code></td>
+            <td><code>Number</code></td>
+            <td>1 for active and 0 for inactive</td>
+        </tr>
+        <tr><td colspan="3"><strong>Optional</strong></td></tr>
+        <tr>
+            <td><code>ip</code></td>
+            <td><code>String</code></td>
+            <td>Visitor IP address for action log</td>
+        </tr>
+        <tr>
+            <td><code>url</code></td>
+            <td><code>String</code></td>
+            <td>Visited url for action log</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Response</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>status</code></td>
+            <td><code>Number</code></td>
+            <td>Response status code</td>
+        </tr>
+        <tr>
+            <td><code>messages</code></td>
+            <td><code>Array</code></td>
+            <td>Response message array</td>
+        </tr>
+        <tr><td colspan="3"><code>data</code> array of the user type created</td></tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Request Example</h4>
+<pre class="language-json"><code>{
+    "app_id": "5789541587749547",
+    "parent_id": null,
+    "name": "New User Type",
+    "status": 1,
+    "url": "http://techorigin.co.th/sadmin/user-type-create",
+    "ip": "127.0.0.1"
+}</code></pre>
+<h4 class="pt-adaptive">Response Example</h4>
+<pre class="language-json"><code>{
+    "status": 200,
+    "messages": {
+        "success": "สร้างข้อมูลสำเร็จ"
+    },
+    "data": {
+        "app_id": "5789541587749547",
+        "parent_id": null,
+        "name": "New User Type",
+        "status": 1,
+        "url": "http://techorigin.co.th/sadmin/user-type-create",
+        "ip": "127.0.0.1"
+    }
+}</code></pre>
+
+<!-- User Type Update -->
+<h2 id="user-type-update">
+    <a href="#user-type-update" aria-hidden="true" class="header-anchor">#</a>
+    User Type Update
+</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Method</th>
+            <th>Endpoint</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>POST</code></td>
+            <td><code>API_URL</code>api/sadmin/user-type-update</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Body Variables</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>app_id</code></td>
+            <td><code>String</code></td>
+            <td>App id</td>
+        </tr>
+        <tr>
+            <td><code>id</code></td>
+            <td><code>Number</code> of <code>NULL</code></td>
+            <td>User type id</td>
+        </tr>
+        <tr>
+            <td><code>name</code></td>
+            <td><code>String</code></td>
+            <td>User type name</td>
+        </tr>
+        <tr>
+            <td><code>status</code></td>
+            <td><code>Number</code></td>
+            <td>1 for active and 0 for inactive</td>
+        </tr>
+        <tr><td colspan="3"><strong>Optional</strong></td></tr>
+        <tr>
+            <td><code>ip</code></td>
+            <td><code>String</code></td>
+            <td>Visitor IP address for action log</td>
+        </tr>
+        <tr>
+            <td><code>url</code></td>
+            <td><code>String</code></td>
+            <td>Visited url for action log</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Response</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>status</code></td>
+            <td><code>Number</code></td>
+            <td>Response status code</td>
+        </tr>
+        <tr>
+            <td><code>messages</code></td>
+            <td><code>Array</code></td>
+            <td>Response message array</td>
+        </tr>
+        <tr><td colspan="3"><code>data</code> array of the user type updated</td></tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Request Example</h4>
+<pre class="language-json"><code>{
+    "app_id": "5789541587749547",
+    "id": 25,
+    "name": "New User Type Update",
+    "status": 0,
+    "url": "http://techorigin.co.th/admin/user-type-update",
+    "ip": "127.0.0.1"
+}</code></pre>
+<h4 class="pt-adaptive">Response Example</h4>
+<pre class="language-json"><code>{
+    "status": 200,
+    "messages": {
+        "success": "แก้ไขข้อมูลสำเร็จ"
+    },
+    "data": {
+        "app_id": "5789541587749547",
+        "id": 25,
+        "name": "New User Type Update",
+        "status": 0,
+        "url": "http://techorigin.co.th/admin/user-type-update",
+        "ip": "127.0.0.1"
+    }
+}</code></pre>
+
+<!-- User Type Delete -->
+<h2 id="user-type-delete">
+    <a href="#user-type-delete" aria-hidden="true" class="header-anchor">#</a>
+    User Type Delete
+</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Method</th>
+            <th>Endpoint</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>POST</code></td>
+            <td><code>API_URL</code>api/sadmin/user-type-delete</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Body Variables</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>app_id</code></td>
+            <td><code>String</code></td>
+            <td>App id</td>
+        </tr>
+        <tr>
+            <td><code>id</code></td>
+            <td><code>Number</code> of <code>NULL</code></td>
+            <td>User type id</td>
+        </tr>
+        <tr><td colspan="3"><strong>Optional</strong></td></tr>
+        <tr>
+            <td><code>ip</code></td>
+            <td><code>String</code></td>
+            <td>Visitor IP address for action log</td>
+        </tr>
+        <tr>
+            <td><code>url</code></td>
+            <td><code>String</code></td>
+            <td>Visited url for action log</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Response</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>status</code></td>
+            <td><code>Number</code></td>
+            <td>Response status code</td>
+        </tr>
+        <tr>
+            <td><code>messages</code></td>
+            <td><code>Array</code></td>
+            <td>Response message array</td>
+        </tr>
+        <tr><td colspan="3"><code>data</code> array of the user type deleted</td></tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Request Example</h4>
+<pre class="language-json"><code>{
+    "app_id": "5789541587749547",
+    "id": 25,
+    "url": "http://techorigin.co.th/admin/user-type-delete",
+    "ip": "127.0.0.1"
+}</code></pre>
+<h4 class="pt-adaptive">Response Example</h4>
+<pre class="language-json"><code>{
+    "status": 200,
+    "messages": {
+        "success": "ลบข้อมูลสำเร็จ"
+    },
+    "data": {
+        "app_id": "5789541587749547",
+        "id": 25,
+        "url": "http://techorigin.co.th/admin/user-type-delete",
+        "ip": "127.0.0.1"
+    }
+}</code></pre>
+
+
+<!-- User Custom Column List -->
+<h2 id="user-custom-column-list">
+    <a href="#user-custom-column-list" aria-hidden="true" class="header-anchor">#</a>
+    User Custom Column List
+</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Method</th>
+            <th>Endpoint</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>GET</code></td>
+            <td><code>API_URL</code>api/sadmin/user-custom-column-list</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Body Variables</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>app_id</code></td>
+            <td><code>String</code></td>
+            <td>App id</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Response</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>status</code></td>
+            <td><code>Number</code></td>
+            <td>Response status code</td>
+        </tr>
+        <tr>
+            <td><code>messages</code></td>
+            <td><code>Array</code></td>
+            <td>Response message array</td>
+        </tr>
+        <tr><td colspan="3"><code>data</code> array of user custom columns</td></tr>
+        <tr>
+            <td><code>id</code></td>
+            <td><code>Number</code></td>
+            <td>The unique identifier for a user custom column</td>
+        </tr>
+        <tr>
+            <td><code>column_id</code></td>
+            <td><code>Number</code></td>
+            <td>Internal custom column id</td>
+        </tr>
+        <tr>
+            <td><code>name</code></td>
+            <td><code>String</code></td>
+            <td>User custom column name</td>
+        </tr>
+        <tr>
+            <td><code>status</code></td>
+            <td><code>Number</code></td>
+            <td>1 if active and 0 otherwise</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Request Example</h4>
+<pre class="language-json"><code>{
+    "app_id": "5789541587749547"
+}</code></pre>
+<h4 class="pt-adaptive">Response Example</h4>
+<pre class="language-json"><code>{
+    "status": 200,
+    "messages": {
+        "success": "ดูข้อมูลสำเร็จ"
+    },
+    "data": [
+        {
+            "id": "1",
+            "column_id": "1",
+            "name": "custom_ticket",
+            "status": "1",
+            "created_at": "2021-01-31 03:20:30",
+            "updated_at": "2021-01-31 03:20:30"
+        }
+    ]
+}</code></pre>
+
+<!-- User Custom Column Create -->
+<h2 id="user-custom-column-create">
+    <a href="#user-custom-column-create" aria-hidden="true" class="header-anchor">#</a>
+    User Custom Column Create
+</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Method</th>
+            <th>Endpoint</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>POST</code></td>
+            <td><code>API_URL</code>api/sadmin/user-custom-column-create</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Body Variables</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>app_id</code></td>
+            <td><code>String</code></td>
+            <td>App id</td>
+        </tr>
+        <tr>
+            <td><code>name</code></td>
+            <td><code>String</code></td>
+            <td>User custom column name</td>
+        </tr>
+        <tr><td colspan="3"><strong>Optional</strong></td></tr>
+        <tr>
+            <td><code>status</code></td>
+            <td><code>Number</code></td>
+            <td>1 if active and 0 otherwise</td>
+        </tr>
+        <tr>
+            <td><code>ip</code></td>
+            <td><code>String</code></td>
+            <td>Visitor IP address for action log</td>
+        </tr>
+        <tr>
+            <td><code>url</code></td>
+            <td><code>String</code></td>
+            <td>Visited url for action log</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Response</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>status</code></td>
+            <td><code>Number</code></td>
+            <td>Response status code</td>
+        </tr>
+        <tr>
+            <td><code>messages</code></td>
+            <td><code>Array</code></td>
+            <td>Response message array</td>
+        </tr>
+        <tr><td colspan="3"><code>data</code> array of the user custom column created</td></tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Request Example</h4>
+<pre class="language-json"><code>{
+    "app_id": "5789541587749547",
+    "name": "custom_ticket",
+    "status": 1,
+    "url": "http://techorigin.co.th/admin/user-custom-column-create",
+    "ip": "127.0.0.1"
+}</code></pre>
+<h4 class="pt-adaptive">Response Example</h4>
+<pre class="language-json"><code>{
+    "status": 200,
+    "messages": {
+        "success": "สร้างข้อมูลสำเร็จ"
+    },
+    "data": {
+        "column_id": 1,
+        "name": "custom_ticket",
+        "status": 1
+    }
+}</code></pre>
+
+<!-- User Custom Column Read -->
+<h2 id="user-custom-column-read">
+    <a href="#user-custom-column-read" aria-hidden="true" class="header-anchor">#</a>
+    User Custom Column Read
+</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Method</th>
+            <th>Endpoint</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>GET</code></td>
+            <td><code>API_URL</code>api/sadmin/user-custom-column-read/<code>id</code></td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Path Variables</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>id</code></td>
+            <td><code>Number</code></td>
+            <td>User custom column id</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Body Variables</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>app_id</code></td>
+            <td><code>String</code></td>
+            <td>App id</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Response</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>status</code></td>
+            <td><code>Number</code></td>
+            <td>Response status code</td>
+        </tr>
+        <tr>
+            <td><code>messages</code></td>
+            <td><code>Array</code></td>
+            <td>Response message array</td>
+        </tr>
+        <tr><td colspan="3"><code>data</code> array of the user custom column</td></tr>
+        <tr>
+            <td><code>id</code></td>
+            <td><code>Number</code></td>
+            <td>The unique identifier for a user custom column</td>
+        </tr>
+        <tr>
+            <td><code>column_id</code></td>
+            <td><code>Number</code></td>
+            <td>Internal custom column id</td>
+        </tr>
+        <tr>
+            <td><code>name</code></td>
+            <td><code>String</code></td>
+            <td>User custom column name</td>
+        </tr>
+        <tr>
+            <td><code>status</code></td>
+            <td><code>Number</code></td>
+            <td>1 if active and 0 otherwise</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Request Example</h4>
+<pre class="language-json"><code>{
+    "app_id": "5789541587749547"
+}</code></pre>
+<h4 class="pt-adaptive">Response Example</h4>
+<pre class="language-json"><code>{
+    "status": 200,
+    "messages": {
+        "success": "ดูข้อมูลสำเร็จ"
+    },
+    "data": {
+        "id": "1",
+        "column_id": "1",
+        "name": "custom_ticket",
+        "status": "1",
+        "created_at": "2021-01-31 03:20:30",
+        "updated_at": "2021-01-31 03:20:30"
+    }
+}</code></pre>
+
+<!-- User Custom Column Update -->
+<h2 id="user-custom-column-update">
+    <a href="#user-custom-column-update" aria-hidden="true" class="header-anchor">#</a>
+    User Custom Column Update
+</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Method</th>
+            <th>Endpoint</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>POST</code></td>
+            <td><code>API_URL</code>api/sadmin/user-custom-column-update</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Body Variables</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>app_id</code></td>
+            <td><code>String</code></td>
+            <td>App id</td>
+        </tr>
+        <tr>
+            <td><code>id</code></td>
+            <td><code>Number</code></td>
+            <td>User custom column id</td>
+        </tr>
+        <tr>
+            <td><code>name</code></td>
+            <td><code>String</code></td>
+            <td>User custom column name</td>
+        </tr>
+        <tr><td colspan="3"><strong>Optional</strong></td></tr>
+        <tr>
+            <td><code>status</code></td>
+            <td><code>Number</code></td>
+            <td>1 if active and 0 otherwise</td>
+        </tr>
+        <tr>
+            <td><code>ip</code></td>
+            <td><code>String</code></td>
+            <td>Visitor IP address for action log</td>
+        </tr>
+        <tr>
+            <td><code>url</code></td>
+            <td><code>String</code></td>
+            <td>Visited url for action log</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Response</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>status</code></td>
+            <td><code>Number</code></td>
+            <td>Response status code</td>
+        </tr>
+        <tr>
+            <td><code>messages</code></td>
+            <td><code>Array</code></td>
+            <td>Response message array</td>
+        </tr>
+        <tr><td colspan="3"><code>data</code> array of the user custom column updated</td></tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Request Example</h4>
+<pre class="language-json"><code>{
+    "app_id": "5789541587749547",
+    "id": 1,
+    "name": "custom_note",
+    "status": 1,
+    "url": "http://techorigin.co.th/admin/user-custom-column-update",
+    "ip": "127.0.0.1"
+}</code></pre>
+<h4 class="pt-adaptive">Response Example</h4>
+<pre class="language-json"><code>{
+    "status": 200,
+    "messages": {
+        "success": "แก้ไขข้อมูลสำเร็จ"
+    },
+    "data": {
+        "app_id": "5789541587749547",
+        "id": 1,
+        "name": "custom_note",
+        "status": 1,
+        "url": "http://techorigin.co.th/admin/user-custom-column-update",
+        "ip": "127.0.0.1"
+    }
+}</code></pre>
+
+
+<!-- User Role List -->
+<h2 id="user-role-list">
+    <a href="#user-role-list" aria-hidden="true" class="header-anchor">#</a>
+    User Role List
+</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Method</th>
+            <th>Endpoint</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>GET</code></td>
+            <td><code>API_URL</code>api/sadmin/user-role-list</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Body Variables</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>app_id</code></td>
+            <td><code>String</code></td>
+            <td>App id</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Response</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>status</code></td>
+            <td><code>Number</code></td>
+            <td>Response status code</td>
+        </tr>
+        <tr>
+            <td><code>messages</code></td>
+            <td><code>Array</code></td>
+            <td>Response message array</td>
+        </tr>
+        <tr><td colspan="3"><code>data</code> array of user roles</td></tr>
+        <tr>
+            <td><code>id</code></td>
+            <td><code>Number</code></td>
+            <td>The unique identifier for a user role</td>
+        </tr>
+        <tr>
+            <td><code>name</code></td>
+            <td><code>String</code></td>
+            <td>User role name</td>
+        </tr>
+        <tr>
+            <td><code>is_admin</code></td>
+            <td><code>Number</code></td>
+            <td>1 if an admin role and 0 otherwise</td>
+        </tr>
+        <tr>
+            <td><code>is_super_admin</code></td>
+            <td><code>Number</code></td>
+            <td>1 if a super admin role and 0 otherwise</td>
+        </tr>
+        <tr>
+            <td><code>is_default</code></td>
+            <td><code>Number</code></td>
+            <td>1 if a default role and 0 otherwise</td>
+        </tr>
+        <tr>
+            <td><code>status</code></td>
+            <td><code>Number</code></td>
+            <td>1 if active and 0 otherwise</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Request Example</h4>
+<pre class="language-json"><code>{
+    "app_id": "5789541587749547"
+}</code></pre>
+<h4 class="pt-adaptive">Response Example</h4>
+<pre class="language-json"><code>{
+    "status": 200,
+    "messages": {
+        "success": "ดูข้อมูลสำเร็จ"
+    },
+    "data": [
+        {
+            "id": "3",
+            "name": "Member",
+            "is_admin": "0",
+            "is_super_admin": "0",
+            "is_default": "1",
+            "order": "0",
+            "status": "1",
+            "created_at": "2021-01-28 01:56:30",
+            "updated_at": "2021-01-28 01:56:30"
+        },
+        {
+            "id": "4",
+            "name": "Employee",
+            "is_admin": "0",
+            "is_super_admin": "0",
+            "is_default": "0",
+            "order": "1",
+            "status": "1",
+            "created_at": "2021-01-28 01:56:30",
+            "updated_at": "2021-01-28 01:56:30"
+        },
+        {
+            "id": "5",
+            "name": "HR",
+            "is_admin": "0",
+            "is_super_admin": "0",
+            "is_default": "0",
+            "order": "2",
+            "status": "1",
+            "created_at": "2021-01-28 01:56:30",
+            "updated_at": "2021-01-28 01:56:30"
+        },
+        {
+            "id": "2",
+            "name": "Admin",
+            "is_admin": "1",
+            "is_super_admin": "0",
+            "is_default": "0",
+            "order": "98",
+            "status": "1",
+            "created_at": "2021-01-28 01:56:30",
+            "updated_at": "2021-01-28 01:56:30"
+        },
+        {
+            "id": "1",
+            "name": "Super Admin",
+            "is_admin": "0",
+            "is_super_admin": "1",
+            "is_default": "0",
+            "order": "99",
+            "status": "1",
+            "created_at": "2021-01-28 01:56:30",
+            "updated_at": "2021-01-28 01:56:30"
+        }
+    ]
+}</code></pre>
+
 <!-- User Role Create -->
 <h2 id="user-role-create">
     <a href="#user-role-create" aria-hidden="true" class="header-anchor">#</a>
@@ -63,27 +968,43 @@
         <tr>
             <td><code>name</code></td>
             <td><code>String</code></td>
-            <td>Role name</td>
+            <td>User role name</td>
         </tr>
+        <tr><td colspan="3"><strong>Optional</strong></td></tr>
         <tr>
             <td><code>is_admin</code></td>
-            <td><code>String</code></td>
-            <td>1 if role is admin</td>
+            <td><code>Number</code></td>
+            <td>1 if an admin role and 0 otherwise</td>
         </tr>
         <tr>
             <td><code>is_super_admin</code></td>
-            <td><code>String</code></td>
-            <td>1 if role is super admin</td>
+            <td><code>Number</code></td>
+            <td>1 if a super admin role and 0 otherwise</td>
         </tr>
         <tr>
             <td><code>is_default</code></td>
-            <td><code>String</code></td>
-            <td></td>
+            <td><code>Number</code></td>
+            <td>1 if a default role and 0 otherwise</td>
         </tr>
         <tr>
             <td><code>order</code></td>
+            <td><code>Number</code></td>
+            <td>User role order</td>
+        </tr>
+        <tr>
+            <td><code>status</code></td>
+            <td><code>Number</code></td>
+            <td>1 if active and 0 otherwise</td>
+        </tr>
+        <tr>
+            <td><code>ip</code></td>
             <td><code>String</code></td>
-            <td>Role order</td>
+            <td>Visitor IP address for action log</td>
+        </tr>
+        <tr>
+            <td><code>url</code></td>
+            <td><code>String</code></td>
+            <td>Visited url for action log</td>
         </tr>
     </tbody>
 </table>
@@ -107,68 +1028,38 @@
             <td><code>Array</code></td>
             <td>Response message array</td>
         </tr>
-        <tr><td colspan="3"><code>data</code> array on successful request</td></tr>
-        <tr>
-            <td><code>app_id</code></td>
-            <td><code>String</code></td>
-            <td>App id</td>
-        </tr>
-        <tr>
-            <td><code>name</code></td>
-            <td><code>String</code></td>
-            <td>Role name</td>
-        </tr>
-        <tr>
-            <td><code>is_admin</code></td>
-            <td><code>String</code></td>
-            <td>Return 1 if role is admin</td>
-        </tr>
-        <tr>
-            <td><code>is_super_admin</code></td>
-            <td><code>String</code></td>
-            <td>Return 1 if role is super admin</td>
-        </tr>
-        <tr>
-            <td><code>is_default</code></td>
-            <td><code>String</code></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><code>order</code></td>
-            <td><code>String</code></td>
-            <td>Role order</td>
-        </tr>
+        <tr><td colspan="3"><code>data</code> array of the user role created</td></tr>
     </tbody>
 </table>
 <h4 class="pt-adaptive">Request Example</h4>
-<pre class="language-json"><code>
-{
+<pre class="language-json"><code>{
     "app_id": "5789541587749547",
-    "name": "Secretary",
+    "name": "New Admin",
     "is_admin": 1,
     "is_super_admin": 1,
     "is_default": 0,
-    "order": 3
-}
-    
-</code></pre>
+    "order": 3,
+    "stats": 1,
+    "url": "http://techorigin.co.th/admin/user-role-create",
+    "ip": "127.0.0.1"
+}</code></pre>
 <h4 class="pt-adaptive">Response Example</h4>
-<pre class="language-json"><code>
-{
+<pre class="language-json"><code>{
     "status": 200,
     "messages": {
         "success": "สร้างข้อมูลสำเร็จ"
     },
     "data": {
         "app_id": "5789541587749547",
-        "name": "Secretary",
+        "name": "New Admin",
         "is_admin": 1,
         "is_default": 0,
-        "order": 3
+        "order": 3,
+        "status": 1,
+        "url": "http://techorigin.co.th/admin/user-role-create",
+        "ip": "127.0.0.1"
     }
-}
-</code></pre>
-
+}</code></pre>
 
 <!-- User Role Read -->
 <h2 id="user-role-read">
@@ -185,7 +1076,7 @@
     <tbody>
         <tr>
             <td><code>GET</code></td>
-            <td><code>API_URL</code>api/sadmin/user-role-read/(:num)</td>
+            <td><code>API_URL</code>api/sadmin/user-role-read/<code>user_role_id</code></td>
         </tr>
     </tbody>
 </table>
@@ -200,9 +1091,9 @@
     </thead>
     <tbody>
         <tr>
-            <td><code>num</code></td>
-            <td><code>String</code></td>
-            <td>Role id</td>
+            <td><code>user_role_id</code></td>
+            <td><code>Number</code></td>
+            <td>User role id</td>
         </tr>
     </tbody>
 </table>
@@ -243,75 +1134,66 @@
             <td><code>Array</code></td>
             <td>Response message array</td>
         </tr>
-        <tr><td colspan="3"><code>data</code> array on successful request</td></tr>
+        <tr><td colspan="3"><code>data</code> array of the user role</td></tr>
         <tr>
-            <td><code>app_id</code></td>
-            <td><code>String</code></td>
-            <td>App id</td>
-        </tr>
-         <tr>
             <td><code>id</code></td>
-            <td><code>String</code></td>
-            <td>Role id</td>
+            <td><code>Number</code></td>
+            <td>The unique identifier for a user role</td>
         </tr>
         <tr>
             <td><code>name</code></td>
             <td><code>String</code></td>
-            <td>Role name</td>
+            <td>User role name</td>
         </tr>
         <tr>
             <td><code>is_admin</code></td>
-            <td><code>String</code></td>
-            <td>1 if role is admin</td>
+            <td><code>Number</code></td>
+            <td>1 if an admin role and 0 otherwise</td>
         </tr>
         <tr>
             <td><code>is_super_admin</code></td>
-            <td><code>String</code></td>
-            <td>1 if role is super admin</td>
+            <td><code>Number</code></td>
+            <td>1 if a super admin role and 0 otherwise</td>
         </tr>
         <tr>
             <td><code>is_default</code></td>
-            <td><code>String</code></td>
-            <td></td>
+            <td><code>Number</code></td>
+            <td>1 if a default role and 0 otherwise</td>
         </tr>
         <tr>
             <td><code>order</code></td>
-            <td><code>String</code></td>
-            <td>Role order</td>
+            <td><code>Number</code></td>
+            <td>User role order</td>
         </tr>
         <tr>
             <td><code>status</code></td>
-            <td><code>String</code></td>
-            <td>Role status</td>
+            <td><code>Number</code></td>
+            <td>1 if active and 0 otherwise</td>
         </tr>
     </tbody>
 </table>
 <h4 class="pt-adaptive">Request Example</h4>
-<pre class="language-json"><code>
-{
+<pre class="language-json"><code>{
     "app_id": "5789541587749547"
-}
-</code></pre>
+}</code></pre>
 <h4 class="pt-adaptive">Response Example</h4>
-<pre class="language-json"><code>
-{
+<pre class="language-json"><code>{
     "status": 200,
     "messages": {
         "success": "ดูข้อมูลสำเร็จ"
     },
     "data": {
-        "id": "4",
-        "name": "Employee",
-        "is_admin": "0",
+        "id": "6",
+        "name": "New Admin",
+        "is_admin": "1",
         "is_super_admin": "0",
         "is_default": "0",
-        "order": "1",
+        "order": "3",
         "status": "1",
-        "created_at": "2021-01-05 00:57:52",
-        "updated_at": "2021-01-05 00:57:52"
+        "created_at": "2021-01-31 02:56:25",
+        "updated_at": "2021-01-31 02:56:25"
     }
-}
-</code></pre>
+}</code></pre>
 
 <!-- User Role Update -->
 <h2 id="user-role-update">
@@ -328,7 +1210,7 @@
     <tbody>
         <tr>
             <td><code>POST</code></td>
-            <td><code>API_URL</code>api/sadmin/user-role-create</td>
+            <td><code>API_URL</code>api/sadmin/user-role-update</td>
         </tr>
     </tbody>
 </table>
@@ -349,38 +1231,49 @@
         </tr>
         <tr>
             <td><code>id</code></td>
-            <td><code>String</code></td>
-            <td>Role id</td>
+            <td><code>Number</code></td>
+            <td>User role id</td>
         </tr>
         <tr>
             <td><code>name</code></td>
             <td><code>String</code></td>
-            <td>Role name</td>
+            <td>User role name</td>
         </tr>
+        <tr><td colspan="3"><strong>Optional</strong></td></tr>
         <tr>
             <td><code>is_admin</code></td>
-            <td><code>String</code></td>
-            <td>1 if role is admin</td>
+            <td><code>Number</code></td>
+            <td>1 if an admin role and 0 otherwise</td>
         </tr>
         <tr>
             <td><code>is_super_admin</code></td>
-            <td><code>String</code></td>
-            <td>1 if role is super admin</td>
+            <td><code>Number</code></td>
+            <td>1 if a super admin role and 0 otherwise</td>
         </tr>
         <tr>
             <td><code>is_default</code></td>
-            <td><code>String</code></td>
-            <td></td>
+            <td><code>Number</code></td>
+            <td>1 if a default role and 0 otherwise</td>
         </tr>
         <tr>
             <td><code>order</code></td>
-            <td><code>String</code></td>
-            <td>Role order</td>
+            <td><code>Number</code></td>
+            <td>User role order</td>
         </tr>
         <tr>
             <td><code>status</code></td>
+            <td><code>Number</code></td>
+            <td>1 if active and 0 otherwise</td>
+        </tr>
+        <tr>
+            <td><code>ip</code></td>
             <td><code>String</code></td>
-            <td>Role status</td>
+            <td>Visitor IP address for action log</td>
+        </tr>
+        <tr>
+            <td><code>url</code></td>
+            <td><code>String</code></td>
+            <td>Visited url for action log</td>
         </tr>
     </tbody>
 </table>
@@ -404,81 +1297,40 @@
             <td><code>Array</code></td>
             <td>Response message array</td>
         </tr>
-        <tr><td colspan="3"><code>data</code> array on successful request</td></tr>
-        <tr>
-            <td><code>app_id</code></td>
-            <td><code>String</code></td>
-            <td>App id</td>
-        </tr>
-        <tr>
-            <td><code>id</code></td>
-            <td><code>String</code></td>
-            <td>Role id</td>
-        </tr>
-        <tr>
-            <td><code>name</code></td>
-            <td><code>String</code></td>
-            <td>Role name</td>
-        </tr>
-        <tr>
-            <td><code>is_admin</code></td>
-            <td><code>String</code></td>
-            <td>Return 1 if role is admin</td>
-        </tr>
-        <tr>
-            <td><code>is_super_admin</code></td>
-            <td><code>String</code></td>
-            <td>Return 1 if role is super admin</td>
-        </tr>
-        <tr>
-            <td><code>is_default</code></td>
-            <td><code>String</code></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><code>order</code></td>
-            <td><code>String</code></td>
-            <td>Role order</td>
-        </tr>
-        <tr>
-            <td><code>status</code></td>
-            <td><code>String</code></td>
-            <td>Role status</td>
-        </tr>
+        <tr><td colspan="3"><code>data</code> array of the user role updated</td></tr>
     </tbody>
 </table>
 <h4 class="pt-adaptive">Request Example</h4>
-<pre class="language-json"><code>
-{
+<pre class="language-json"><code>{
     "app_id": "5789541587749547",
-    "id": 2,
-    "name": "Admin",
-    "is_admin": 1,
-    "is_super_admin": 1,
-    "is_default": 0,
-    "order": 98,
-    "status": 1
-}
-</code></pre>
+    "id": 6,
+    "name": "User role updated",
+    "is_admin": 0,
+    "is_super_admin": 0,
+    "is_default": 3,
+    "order": 8,
+    "status": 1,
+    "url": "http://techorigin.co.th/admin/user-role-update",
+    "ip": "127.0.0.1"
+}</code></pre>
 <h4 class="pt-adaptive">Response Example</h4>
-<pre class="language-json"><code>
-{
+<pre class="language-json"><code>{
     "status": 200,
     "messages": {
         "success": "แก้ไขข้อมูลสำเร็จ"
     },
     "data": {
         "app_id": "5789541587749547",
-        "id": 2,
-        "name": "Admin",
-        "is_admin": 1,
-        "is_default": 0,
-        "order": 98,
-        "status": 1
+        "id": 6,
+        "name": "User role updated",
+        "is_admin": 0,
+        "is_default": 3,
+        "order": 8,
+        "status": 1,
+        "url": "http://techorigin.co.th/admin/user-role-update",
+        "ip": "127.0.0.1"
     }
-}
-</code></pre>
-
+}</code></pre>
 
 <!-- User Role Delete -->
 <h2 id="user-role-delete">
@@ -517,7 +1369,18 @@
         <tr>
             <td><code>id</code></td>
             <td><code>String</code></td>
-            <td>Role id</td>
+            <td>User role id</td>
+        </tr>
+        <tr><td colspan="3"><strong>Optional</strong></td></tr>
+        <tr>
+            <td><code>ip</code></td>
+            <td><code>String</code></td>
+            <td>Visitor IP address for action log</td>
+        </tr>
+        <tr>
+            <td><code>url</code></td>
+            <td><code>String</code></td>
+            <td>Visited url for action log</td>
         </tr>
     </tbody>
 </table>
@@ -541,39 +1404,29 @@
             <td><code>Array</code></td>
             <td>Response message array</td>
         </tr>
-        <tr><td colspan="3"><code>data</code> array on successful request</td></tr>
-        <tr>
-            <td><code>app_id</code></td>
-            <td><code>String</code></td>
-            <td>App id</td>
-        </tr>
-        <tr>
-            <td><code>id</code></td>
-            <td><code>String</code></td>
-            <td>Role id</td>
-        </tr>
+        <tr><td colspan="3"><code>data</code> array of the user role deleted</td></tr>
     </tbody>
 </table>
 <h4 class="pt-adaptive">Request Example</h4>
-<pre class="language-json"><code>
-{
+<pre class="language-json"><code>{
     "app_id": "5789541587749547",
-    "id": 6
-}
-</code></pre>
+    "id": 6,
+    "url": "http://techorigin.co.th/admin/user-role-delete",
+    "ip": "127.0.0.1"
+}</code></pre>
 <h4 class="pt-adaptive">Response Example</h4>
-<pre class="language-json"><code>
-{
+<pre class="language-json"><code>{
     "status": 200,
     "messages": {
         "success": "ลบข้อมูลสำเร็จ"
     },
     "data": {
         "app_id": "5789541587749547",
-        "id": 6
+        "id": 6,
+        "url": "http://techorigin.co.th/admin/user-role-delete",
+        "ip": "127.0.0.1"
     }
-}
-</code></pre>
+}</code></pre>
 
 
 <!-- Module Create -->
@@ -620,15 +1473,26 @@
             <td><code>String</code></td>
             <td>Module code</td>
         </tr>
+        <tr><td colspan="3"><strong>Optional</strong></td></tr>
         <tr>
             <td><code>order</code></td>
-            <td><code>String</code></td>
+            <td><code>Number</code></td>
             <td>Module order</td>
         </tr>
         <tr>
             <td><code>status</code></td>
+            <td><code>Number</code></td>
+            <td>1 if active and 0 otherwise</td>
+        </tr>
+        <tr>
+            <td><code>ip</code></td>
             <td><code>String</code></td>
-            <td>Module status</td>
+            <td>Visitor IP address for action log</td>
+        </tr>
+        <tr>
+            <td><code>url</code></td>
+            <td><code>String</code></td>
+            <td>Visited url for action log</td>
         </tr>
     </tbody>
 </table>
@@ -652,60 +1516,35 @@
             <td><code>Array</code></td>
             <td>Response message array</td>
         </tr>
-        <tr><td colspan="3"><code>data</code> array on successful request</td></tr>
-        <tr>
-            <td><code>app_id</code></td>
-            <td><code>String</code></td>
-            <td>App id</td>
-        </tr>
-        <tr>
-            <td><code>name</code></td>
-            <td><code>String</code></td>
-            <td>Module name</td>
-        </tr>
-        <tr>
-            <td><code>code</code></td>
-            <td><code>String</code></td>
-            <td>Module code</td>
-        </tr>
-        <tr>
-            <td><code>order</code></td>
-            <td><code>String</code></td>
-            <td>Module order</td>
-        </tr>
-        <tr>
-            <td><code>status</code></td>
-            <td><code>String</code></td>
-            <td>Module status</td>
-        </tr>
+        <tr><td colspan="3"><code>data</code> array of the module created</td></tr>
     </tbody>
 </table>
 <h4 class="pt-adaptive">Request Example</h4>
-<pre class="language-json"><code>
-{
+<pre class="language-json"><code>{
     "app_id": "5789541587749547",
-    "name": "temps",
-    "code": "temps",
+    "name": "New Module",
+    "code": "New Module Code",
     "order": 5,
-    "status": 0
-}
-</code></pre>
+    "status": 0,
+    "url": "http://techorigin.co.th/admin/module-create",
+    "ip": "127.0.0.1"
+}</code></pre>
 <h4 class="pt-adaptive">Response Example</h4>
-<pre class="language-json"><code>
-{
+<pre class="language-json"><code>{
     "status": 200,
     "messages": {
         "success": "สร้างข้อมูลสำเร็จ"
     },
     "data": {
         "app_id": "5789541587749547",
-        "name": "temps",
-        "code": "temps",
+        "name": "New Module",
+        "code": "New Module Code",
         "order": 5,
-        "status": 0
+        "status": 0,
+        "url": "http://techorigin.co.th/admin/module-create",
+        "ip": "127.0.0.1"
     }
-}   
-</code></pre>
+}</code></pre>
 
 <!-- Module Read -->
 <h2 id="module-read">
@@ -722,7 +1561,7 @@
     <tbody>
         <tr>
             <td><code>GET</code></td>
-            <td><code>API_URL</code>api/sadmin/module-read/<code>(:num)</code></td>
+            <td><code>API_URL</code>api/sadmin/module-read/<code>module_id</code></td>
         </tr>
     </tbody>
 </table>
@@ -737,8 +1576,8 @@
     </thead>
     <tbody>
         <tr>
-            <td><code>num</code></td>
-            <td><code>String</code></td>
+            <td><code>module_id</code></td>
+            <td><code>Number</code></td>
             <td>Module id</td>
         </tr>
     </tbody>
@@ -788,7 +1627,7 @@
         </tr>
         <tr>
             <td><code>id</code></td>
-            <td><code>String</code></td>
+            <td><code>Number</code></td>
             <td>Module id</td>
         </tr>
         <tr>
@@ -803,25 +1642,22 @@
         </tr>
         <tr>
             <td><code>order</code></td>
-            <td><code>String</code></td>
+            <td><code>Number</code></td>
             <td>Module order</td>
         </tr>
         <tr>
             <td><code>status</code></td>
-            <td><code>String</code></td>
-            <td>Module status</td>
+            <td><code>Number</code></td>
+            <td>1 if active and 0 otherwise</td>
         </tr>
     </tbody>
 </table>
 <h4 class="pt-adaptive">Request Example</h4>
-<pre class="language-json"><code>
-{
+<pre class="language-json"><code>{
     "app_id": "5789541587749547"
-}   
-</code></pre>
+}</code></pre>
 <h4 class="pt-adaptive">Response Example</h4>
-<pre class="language-json"><code>
-{
+<pre class="language-json"><code>{
     "status": 200,
     "messages": {
         "success": "ดูข้อมูลสำเร็จ"
@@ -832,11 +1668,10 @@
         "code": "cms",
         "order": "0",
         "status": "1",
-        "created_at": "2021-01-05 00:57:52",
-        "updated_at": "2021-01-05 00:57:52"
+        "created_at": "2021-01-28 01:56:30",
+        "updated_at": "2021-01-28 01:56:30"
     }
-}   
-</code></pre>
+}</code></pre>
 
 <!-- Module Update -->
 <h2 id="module-update">
@@ -882,15 +1717,26 @@
             <td><code>String</code></td>
             <td>Module name</td>
         </tr>
+        <tr><td colspan="3"><strong>Optional</strong></td></tr>
         <tr>
             <td><code>order</code></td>
-            <td><code>String</code></td>
+            <td><code>Number</code></td>
             <td>Module order</td>
         </tr>
         <tr>
             <td><code>status</code></td>
+            <td><code>Number</code></td>
+            <td>1 if active and 0 otherwise</td>
+        </tr>
+        <tr>
+            <td><code>ip</code></td>
             <td><code>String</code></td>
-            <td>Module status</td>
+            <td>Visitor IP address for action log</td>
+        </tr>
+        <tr>
+            <td><code>url</code></td>
+            <td><code>String</code></td>
+            <td>Visited url for action log</td>
         </tr>
     </tbody>
 </table>
@@ -914,60 +1760,35 @@
             <td><code>Array</code></td>
             <td>Response message array</td>
         </tr>
-        <tr><td colspan="3"><code>data</code> array on successful request</td></tr>
-        <tr>
-            <td><code>app_id</code></td>
-            <td><code>String</code></td>
-            <td>App id</td>
-        </tr>
-        <tr>
-            <td><code>id</code></td>
-            <td><code>String</code></td>
-            <td>Module id</td>
-        </tr>
-        <tr>
-            <td><code>name</code></td>
-            <td><code>String</code></td>
-            <td>Module name</td>
-        </tr>
-        <tr>
-            <td><code>order</code></td>
-            <td><code>String</code></td>
-            <td>Module order</td>
-        </tr>
-        <tr>
-            <td><code>status</code></td>
-            <td><code>String</code></td>
-            <td>Module status</td>
-        </tr>
+        <tr><td colspan="3"><code>data</code> array of the module updated</td></tr>
     </tbody>
 </table>
 <h4 class="pt-adaptive">Request Example</h4>
-<pre class="language-json"><code>
-{
+<pre class="language-json"><code>{
     "app_id": "5789541587749547",
-    "id": 2,
-    "name": "temp",
+    "id": 3,
+    "name": "New Module Updated",
     "order": 1,
-    "status": 1
-}
-</code></pre>
+    "status": 1,
+    "url": "http://techorigin.co.th/admin/module-update",
+    "ip": "127.0.0.1"
+}</code></pre>
 <h4 class="pt-adaptive">Response Example</h4>
-<pre class="language-json"><code>
-{
+<pre class="language-json"><code>{
     "status": 200,
     "messages": {
         "success": "แก้ไขข้อมูลสำเร็จ"
     },
     "data": {
         "app_id": "5789541587749547",
-        "id": 2,
-        "name": "temp",
+        "id": 3,
+        "name": "New Module Updated",
         "order": 1,
-        "status": 1
+        "status": 1,
+        "url": "http://techorigin.co.th/admin/module-update",
+        "ip": "127.0.0.1"
     }
-}
-</code></pre>
+}</code></pre>
 
 <!-- Module Delete -->
 <h2 id="module-delete">
@@ -984,7 +1805,7 @@
     <tbody>
         <tr>
             <td><code>POST</code></td>
-            <td><code>API_URL</code>api/sadmin/module-update</td>
+            <td><code>API_URL</code>api/sadmin/module-delete</td>
         </tr>
     </tbody>
 </table>
@@ -1008,6 +1829,17 @@
             <td><code>String</code></td>
             <td>Module id</td>
         </tr>
+        <tr><td colspan="3"><strong>Optional</strong></td></tr>
+        <tr>
+            <td><code>ip</code></td>
+            <td><code>String</code></td>
+            <td>Visitor IP address for action log</td>
+        </tr>
+        <tr>
+            <td><code>url</code></td>
+            <td><code>String</code></td>
+            <td>Visited url for action log</td>
+        </tr>
     </tbody>
 </table>
 <h4 class="pt-adaptive">Response</h4>
@@ -1030,39 +1862,29 @@
             <td><code>Array</code></td>
             <td>Response message array</td>
         </tr>
-        <tr><td colspan="3"><code>data</code> array on successful request</td></tr>
-        <tr>
-            <td><code>app_id</code></td>
-            <td><code>String</code></td>
-            <td>App id</td>
-        </tr>
-        <tr>
-            <td><code>id</code></td>
-            <td><code>String</code></td>
-            <td>Module id</td>
-        </tr>
+        <tr><td colspan="3"><code>data</code> array of the module deleted</td></tr>
     </tbody>
 </table>
 <h4 class="pt-adaptive">Request Example</h4>
-<pre class="language-json"><code>
-{
+<pre class="language-json"><code>{
     "app_id": "5789541587749547",
-    "id": 2
-}   
-</code></pre>
+    "id": 3,
+    "url": "http://techorigin.co.th/admin/module-delete",
+    "ip": "127.0.0.1"
+}</code></pre>
 <h4 class="pt-adaptive">Response Example</h4>
-<pre class="language-json"><code>
-{
+<pre class="language-json"><code>{
     "status": 200,
     "messages": {
         "success": "ลบข้อมูลสำเร็จ"
     },
     "data": {
         "app_id": "5789541587749547",
-        "id": 2
+        "id": 3,
+        "url": "http://techorigin.co.th/admin/module-delete",
+        "ip": "127.0.0.1"
     }
-}   
-</code></pre>
+}</code></pre>
 
 
 <!-- User Role Permissions Read -->
@@ -1080,7 +1902,7 @@
     <tbody>
         <tr>
             <td><code>GET</code></td>
-            <td><code>API_URL</code>api/sadmin/role-permissions-read/<code>(:num)</code></td>
+            <td><code>API_URL</code>api/sadmin/role-permissions-read/<code>user_role_id</code></td>
         </tr>
     </tbody>
 </table>
@@ -1095,9 +1917,9 @@
     </thead>
     <tbody>
         <tr>
-            <td><code>num</code></td>
+            <td><code>user_role_id</code></td>
             <td><code>String</code></td>
-            <td>User id</td>
+            <td>User role id</td>
         </tr>
     </tbody>
 </table>
@@ -1138,12 +1960,7 @@
             <td><code>Array</code></td>
             <td>Response message array</td>
         </tr>
-        <tr><td colspan="3"><code>data</code> array on successful request</td></tr>
-        <tr>
-            <td><code>app_id</code></td>
-            <td><code>String</code></td>
-            <td>App id</td>
-        </tr>
+        <tr><td colspan="3"><code>data</code> array of module perissions</td></tr>
         <tr>
             <td><code>name</code></td>
             <td><code>String</code></td>
@@ -1161,35 +1978,32 @@
         </tr>
         <tr>
             <td><code>create</code></td>
-            <td><code>String</code></td>
-            <td>Return 1 if user has permission to create</td>
+            <td><code>Number</code></td>
+            <td>1 if the user role has create permission and 0 otherwise</td>
         </tr>
         <tr>
             <td><code>read</code></td>
-            <td><code>String</code></td>
-            <td>Return 1 if user has permission to read</td>
+            <td><code>Number</code></td>
+            <td>1 if the user role has read permission and 0 otherwise</td>
         </tr>
         <tr>
             <td><code>update</code></td>
-            <td><code>String</code></td>
-            <td>Return 1 if user has permission to update</td>
+            <td><code>Number</code></td>
+            <td>1 if the user role has update permission and 0 otherwise</td>
         </tr>
         <tr>
             <td><code>delete</code></td>
-            <td><code>String</code></td>
-            <td>Return 1 if user has permission to delete</td>
+            <td><code>Number</code></td>
+            <td>1 if the user role has delete permission and 0 otherwise</td>
         </tr>
     </tbody>
 </table>
 <h4 class="pt-adaptive">Request Example</h4>
-<pre class="language-json"><code>
-{
+<pre class="language-json"><code>{
     "app_id": "5789541587749547"
-}
-</code></pre>
+}</code></pre>
 <h4 class="pt-adaptive">Response Example</h4>
-<pre class="language-json"><code>
-{
+<pre class="language-json"><code>{
     "status": 200,
     "messages": {
         "success": "ดูข้อมูลสำเร็จ"
@@ -1203,25 +2017,11 @@
             "read": 1,
             "update": 1,
             "delete": 1
-        },
-        {
-            "name": "temp",
-            "code": "temps",
-            "status": "1",
-            "create": 1,
-            "read": 1,
-            "update": 1,
-            "delete": 1
         }
     ]
-}
-</code></pre>
+}</code></pre>
 
-
-
-
-
-<!-- User role permissions Update -->
+<!-- User Role Permissions Update -->
 <h2 id="user-role-permissions-update">
     <a href="#module-update" aria-hidden="true" class="header-anchor">#</a>
     User Role Permissions Update
@@ -1263,27 +2063,28 @@
         <tr>
             <td><code>role_id</code></td>
             <td><code>String</code></td>
-            <td>Role id</td>
+            <td>User role id</td>
         </tr>
+        <tr><td colspan="3"><strong>Optional</strong></td></tr>
         <tr>
             <td><code>create</code></td>
-            <td><code>String</code></td>
-            <td>Permission to create</td>
+            <td><code>Number</code></td>
+            <td>1 if the user role has create permission and 0 otherwise</td>
         </tr>
         <tr>
             <td><code>read</code></td>
-            <td><code>String</code></td>
-            <td>Permission to read</td>
+            <td><code>Number</code></td>
+            <td>1 if the user role has read permission and 0 otherwise</td>
         </tr>
         <tr>
             <td><code>update</code></td>
-            <td><code>String</code></td>
-            <td>Permission to update</td>
+            <td><code>Number</code></td>
+            <td>1 if the user role has update permission and 0 otherwise</td>
         </tr>
         <tr>
             <td><code>delete</code></td>
-            <td><code>String</code></td>
-            <td>Permission to delete</td>
+            <td><code>Number</code></td>
+            <td>1 if the user role has delete permission and 0 otherwise</td>
         </tr>
     </tbody>
 </table>
@@ -1307,64 +2108,21 @@
             <td><code>Array</code></td>
             <td>Response message array</td>
         </tr>
-        <tr><td colspan="3"><code>data</code> array on successful request</td></tr>
-        <tr>
-            <td><code>app_id</code></td>
-            <td><code>String</code></td>
-            <td>App id</td>
-        </tr>
-        <tr>
-            <td><code>module_id</code></td>
-            <td><code>String</code></td>
-            <td>Module id</td>
-        </tr>
-        <tr>
-            <td><code>role_id</code></td>
-            <td><code>String</code></td>
-            <td>Role id</td>
-        </tr>
-        <tr>
-            <td><code>create</code></td>
-            <td><code>String</code></td>
-            <td>Permission to create</td>
-        </tr>
-        <tr>
-            <td><code>read</code></td>
-            <td><code>String</code></td>
-            <td>Permission to read</td>
-        </tr>
-        <tr>
-            <td><code>update</code></td>
-            <td><code>String</code></td>
-            <td>Permission to update</td>
-        </tr>
-        <tr>
-            <td><code>delete</code></td>
-            <td><code>String</code></td>
-            <td>Permission to delete</td>
-        </tr>
-        <tr>
-            <td><code>id</code></td>
-            <td><code>String</code></td>
-            <td>The unique identifier for this request</td>
-        </tr>
+        <tr><td colspan="3"><code>data</code> array of the permissions updated</td></tr>
     </tbody>
 </table>
 <h4 class="pt-adaptive">Request Example</h4>
-<pre class="language-json"><code>
-{
+<pre class="language-json"><code>{
     "app_id": "5789541587749547",
     "module_id": 1,
-    "role_id": 5,
-    "create": 0,
+    "role_id": 1,
+    "create": 1,
     "read": 1,
-    "update": 0,
-    "delete": 0
-}
-</code></pre>
+    "update": 1,
+    "delete": 1
+}</code></pre>
 <h4 class="pt-adaptive">Response Example</h4>
-<pre class="language-json"><code>
-{
+<pre class="language-json"><code>{
     "status": 200,
     "messages": {
         "success": "แก้ไขข้อมูลสำเร็จ"
@@ -1372,15 +2130,13 @@
     "data": {
         "app_id": "5789541587749547",
         "module_id": 1,
-        "role_id": 5,
-        "create": 0,
+        "role_id": 1,
+        "create": 1,
         "read": 1,
-        "update": 0,
-        "delete": 0,
-        "id": "1"
+        "update": 1,
+        "delete": 1
     }
-}
-</code></pre>
+}</code></pre>
 
 
         </div>

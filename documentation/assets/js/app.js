@@ -77,6 +77,12 @@ var menu = [
             { name: 'User Role Permissions Update' },
         ]
     },
+    {
+        name: 'Postman API Collection',
+        href: 'assets/data/TechOriginAPI.postman_collection.json',
+        target: '_blank',
+        attr: 'download'
+    },
 ];
 var pageIFrame = $('.page-iframe');
 
@@ -88,24 +94,32 @@ if(menuContainer.length && pageIFrame.length){
     menu.forEach(function(d, i){
         var url = cleanName(d.name)+'.html',
             classer = '';
-        if(paths[0] && paths[0]==url) classer = 'active';
-        else if(!paths[0] && i==0) classer = 'active';
-        html += '<li>'
-            +'<a class="sidebar-link '+classer+'" href="#" data-page="'+url+'">'
-                +d.name
-            +'</a>';
-        if(d.children && d.children.length){
-            html += '<ul class="sidebar-sub-headers '+classer+'">';
-            d.children.forEach(function(c){
-                html += '<li class="sidebar-sub-header">'
-                        +'<a class="sidebar-link" href="#" data-page="'+url+'#'+cleanName(c.name)+'">'
-                            +c.name
-                        +'</a>'
-                    +'</li>';
-            });
-            html += '</ul>';
+        if(d.href===undefined){
+            if(paths[0] && paths[0]==url) classer = 'active';
+            else if(!paths[0] && i==0) classer = 'active';
+            html += '<li>'
+                +'<a class="sidebar-link '+classer+'" href="#" data-page="'+url+'">'
+                    +d.name
+                +'</a>';
+            if(d.children && d.children.length){
+                html += '<ul class="sidebar-sub-headers '+classer+'">';
+                d.children.forEach(function(c){
+                    html += '<li class="sidebar-sub-header">'
+                            +'<a class="sidebar-link" href="#" data-page="'+url+'#'+cleanName(c.name)+'">'
+                                +c.name
+                            +'</a>'
+                        +'</li>';
+                });
+                html += '</ul>';
+            }
+            html += '</li>';
+        }else{
+            html += '<li>'
+                +'<a class="sidebar-link" href="'+d.href+'" target="'+d.target+'" '+d.attr+'>'
+                    +d.name
+                +'</a>'
+            +'</li>';
         }
-        html += '</li>';
 
         if(classer=='active'){
             if(hash) changePage(hash, true);
@@ -116,17 +130,19 @@ if(menuContainer.length && pageIFrame.length){
 
     var submenu = menuContainer.find('> li > a');
     menuContainer.find('a').click(function(e){
-        e.preventDefault();
         var self = $(this),
             page = self.data('page');
-        if(page) changePage(page, false);
-        if(!page.includes('#')){
-            submenu.removeClass('active');
-            submenu.find('+ *').stop().slideUp();
-            self.addClass('active');
-            self.find('+ *').stop().slideDown();
+        if(page!==undefined){
+            e.preventDefault();
+            if(page) changePage(page, false);
+            if(!page.includes('#')){
+                submenu.removeClass('active');
+                submenu.find('+ *').stop().slideUp();
+                self.addClass('active');
+                self.find('+ *').stop().slideDown();
+            }
+            window.location.hash = page;
         }
-        window.location.hash = page;
     });
 }else{
     $('a[data-page]').click(function(e){
