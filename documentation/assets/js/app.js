@@ -84,6 +84,12 @@ var menu = [
         target: '_blank',
         attr: 'download'
     },
+    {
+        name: 'Manual SQL Integration Script',
+        href: 'assets/data/TechOriginAPI-initial-SQL.sql',
+        target: '_blank',
+        attr: 'download'
+    },
 ];
 var pageIFrame = $('.page-iframe');
 
