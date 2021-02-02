@@ -254,6 +254,13 @@ class UserModel extends Model {
         ];
     }
 
+
+    public function integrationIDs(){
+        $query = $this->db->query("SELECT `id` AS `user_id`, `email` 
+            FROM `users` ORDER BY `id` ASC");
+        return $query->getResultArray();
+    }
+
 }
 
 ?>

@@ -565,7 +565,7 @@
         </tr>
     </tbody>
 </table>
-<h4 class="pt-adaptive">Path Variables</h4>
+<h4 class="pt-adaptive">GET Variables</h4>
 <table class="table">
     <thead>
         <tr>
@@ -1080,7 +1080,7 @@
         </tr>
     </tbody>
 </table>
-<h4 class="pt-adaptive">Path Variables</h4>
+<h4 class="pt-adaptive">GET Variables</h4>
 <table class="table">
     <thead>
         <tr>
@@ -1565,7 +1565,7 @@
         </tr>
     </tbody>
 </table>
-<h4 class="pt-adaptive">Path Variables</h4>
+<h4 class="pt-adaptive">GET Variables</h4>
 <table class="table">
     <thead>
         <tr>
@@ -1906,7 +1906,7 @@
         </tr>
     </tbody>
 </table>
-<h4 class="pt-adaptive">Path Variables</h4>
+<h4 class="pt-adaptive">GET Variables</h4>
 <table class="table">
     <thead>
         <tr>
@@ -2136,6 +2136,105 @@
         "update": 1,
         "delete": 1
     }
+}</code></pre>
+
+
+<!-- User Integration IDs -->
+<h2 id="user-integration-ids">
+    <a href="#user-integration-ids" aria-hidden="true" class="header-anchor">#</a>
+    User Integration IDs
+</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Method</th>
+            <th>Endpoint</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>GET</code></td>
+            <td><code>API_URL</code>api/sadmin/integration-ids</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Body Variables</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>app_id</code></td>
+            <td><code>String</code></td>
+            <td>App id</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Response</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>status</code></td>
+            <td><code>Number</code></td>
+            <td>Response status code</td>
+        </tr>
+        <tr>
+            <td><code>messages</code></td>
+            <td><code>Array</code></td>
+            <td>Response message array</td>
+        </tr>
+        <tr><td colspan="3"><code>data</code> array of user integration data</td></tr>
+        <tr>
+            <td><code>user_id</code></td>
+            <td><code>Number</code></td>
+            <td>API internal user id</td>
+        </tr>
+        <tr>
+            <td><code>email</code></td>
+            <td><code>String</code></td>
+            <td>API internal user email</td>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Request Example</h4>
+<pre class="language-json"><code>{
+    "app_id": "5789541587749547"
+}</code></pre>
+<h4 class="pt-adaptive">Response Example</h4>
+<pre class="language-json"><code>{
+    "status": 200,
+    "messages": {
+        "success": "ดูข้อมูลสำเร็จ"
+    },
+    "data": [
+        {
+            "user_id": "1",
+            "email": "sarun.seepun@gmail.com"
+        },
+        {
+            "user_id": "2",
+            "email": "sarun_sla@hotmail.com"
+        },
+        {
+            "user_id": "3",
+            "email": "a@a.com"
+        },
+        {
+            "user_id": "11",
+            "email": "new@user.com"
+        }
+    ]
 }</code></pre>
 
 

@@ -551,4 +551,16 @@ class SuperAdminController extends ResourceController{
         return $this->failValidationError();
     }
 
+
+    public function userIntegrationIDs(){
+        if($this->request->getMethod()=='get'){
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
+                'data' => $this->userModel->integrationIDs(),
+            ]);
+        }
+        return $this->failValidationError();
+    }
+
 }

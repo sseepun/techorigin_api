@@ -75,6 +75,7 @@ var menu = [
             { name: 'Module Delete' },
             { name: 'User Role Permissions Read' },
             { name: 'User Role Permissions Update' },
+            { name: 'User Integration IDs' },
         ]
     },
     {

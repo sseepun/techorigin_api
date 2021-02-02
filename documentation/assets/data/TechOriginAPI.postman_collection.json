@@ -1813,6 +1813,46 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "User Integration IDs",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJyb2xlX2lkIjoiMSIsInVzZXJuYW1lIjoiU3VwZXJBZG1pbiIsImVtYWlsIjoic2FydW4uc2VlcHVuQGdtYWlsLmNvbSIsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpblwvdGVjaG9yaWdpbl9hcGlcLyIsImF1ZCI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpblwvdGVjaG9yaWdpbl9hcGlcLyIsImlhdCI6MTYxMTk0NDUyMiwiZXhwIjoxNjE0NTM2NTIyfQ.D2cZSgvvpvEaY4LnTivzuIEIY1PfwJM9FBiFjE2HMy8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}api/sadmin/user-integration-ids",
+							"host": [
+								"{{API_URL}}api"
+							],
+							"path": [
+								"sadmin",
+								"user-integration-ids"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}

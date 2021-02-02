@@ -107,6 +107,7 @@ $routes->post( 'api/sadmin/module-delete', 'SuperAdminController::moduleDelete',
 $routes->get(  'api/sadmin/role-permissions-read/(:num)', 'SuperAdminController::rolePermissionsRead/$1', ['filter' => 'authUser']);
 $routes->post( 'api/sadmin/role-permissions-update', 'SuperAdminController::rolePermissionsUpdate', ['filter' => 'authUser']);
 
+$routes->get(  'api/sadmin/user-integration-ids', 'SuperAdminController::userIntegrationIDs', ['filter' => 'authUser']);
 
 /**
  * --------------------------------------------------------------------
