@@ -15,7 +15,7 @@ class UserRoles extends Migration{
 			],
 			'name' => [
 				'type' => 'VARCHAR',
-				'constraint' => 256
+				'constraint' => 255
 			],
 			'is_admin' => [
 				'type' => 'INT',

@@ -25,7 +25,7 @@ class UserTemp extends Migration{
 			],
 			'salt' => [
 				'type' => 'VARCHAR',
-				'constraint' => 256,
+				'constraint' => 255,
 			],
 			'is_used' => [
 				'type' => 'INT',

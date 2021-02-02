@@ -15,7 +15,7 @@ class Modules extends Migration{
 			],
 			'name' => [
 				'type' => 'VARCHAR',
-				'constraint' => 256
+				'constraint' => 255
 			],
 			'code' => [
 				'type' => 'VARCHAR',

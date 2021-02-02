@@ -19,7 +19,7 @@ class UserCustomColumns extends Migration{
 			],
 			'name' => [
 				'type' => 'VARCHAR',
-				'constraint' => 256
+				'constraint' => 255
 			],
 			'status' => [
 				'type' => 'INT',
