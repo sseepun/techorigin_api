@@ -573,10 +573,16 @@
             <td><code>String</code></td>
             <td>User username</td>
         </tr>
+        <tr><td colspan="3"><strong>Optional</strong></td></tr>
         <tr>
             <td><code>profile</code></td>
             <td><code>String</code></td>
             <td>User profile</td>
+        </tr>
+        <tr>
+            <td><code>external_app_id</code></td>
+            <td><code>Number</code></td>
+            <td>External app id for action log</td>
         </tr>
         <tr>
             <td><code>ip</code></td>
@@ -671,6 +677,7 @@
     "email": "sarun.seepun@gmail.com",
     "username": "SuperAdmin",
     "profile": null,
+    "external_app_id": 1,
     "ip": "127.0.0.1",
     "url": "https://techorigin.co.th/users/update"
 }</code></pre>
@@ -740,6 +747,26 @@
             <td>User sub type id</td>
         </tr>
         <tr>
+            <td><code>display_name</code></td>
+            <td><code>String</code></td>
+            <td>User display name</td>
+        </tr>
+        <tr>
+            <td><code>birth_date</code></td>
+            <td><code>String</code></td>
+            <td>User birth date of format <code>YYYY-MM-DD</code></td>
+        </tr>
+        <tr>
+            <td><code>sex</code></td>
+            <td><code>String</code></td>
+            <td>User sex</td>
+        </tr>
+        <tr>
+            <td><code>prefix</code></td>
+            <td><code>String</code></td>
+            <td>User prefix</td>
+        </tr>
+        <tr>
             <td><code>address</code></td>
             <td><code>String</code></td>
             <td>User address</td>
@@ -768,6 +795,11 @@
             <td><code>company_phone</code></td>
             <td><code>String</code></td>
             <td>User company's phone number</td>
+        </tr>
+        <tr>
+            <td><code>external_app_id</code></td>
+            <td><code>Number</code></td>
+            <td>External app id for action log</td>
         </tr>
         <tr>
             <td><code>ip</code></td>
@@ -801,69 +833,27 @@
             <td><code>Array</code></td>
             <td>Response message array</td>
         </tr>
-        <tr><td colspan="3"><code>data</code> array on successful request</td></tr>
-        <tr>
-            <td><code>app_id</code></td>
-            <td><code>String</code></td>
-            <td>App id</td>
-        </tr>
-        <tr>
-            <td><code>address</code></td>
-            <td><code>String</code></td>
-            <td>User address</td>
-        </tr>
-        <tr>
-            <td><code>phone</code></td>
-            <td><code>String</code></td>
-            <td>User phone number</td>
-        </tr>
-        <tr>
-            <td><code>title</code></td>
-            <td><code>String</code></td>
-            <td>User title</td>
-        </tr>
-        <tr>
-            <td><code>company</code></td>
-            <td><code>String</code></td>
-            <td>User company</td>
-        </tr>
-        <tr>
-            <td><code>company_address</code></td>
-            <td><code>String</code></td>
-            <td>User company's address</td>
-        </tr>
-        <tr>
-            <td><code>company_phone</code></td>
-            <td><code>String</code></td>
-            <td>User company's phone number</td>
-        </tr>
-        <tr>
-            <td><code>ip</code></td>
-            <td><code>String</code></td>
-            <td>Visitor IP address for action log</td>
-        </tr>
-        <tr>
-            <td><code>user_id</code></td>
-            <td><code>String</code></td>
-            <td>User id</td>
-        </tr>
-        <tr>
-            <td><code>id</code></td>
-            <td><code>String</code></td>
-            <td>The unique identifier for this request</td>
-        </tr>
+        <tr><td colspan="3"><code>data</code> array of the updated data</td></tr>
     </tbody>
 </table>
 <h4 class="pt-adaptive">Request Example</h4>
 <pre class="language-json"><code>{
     "app_id": "5789541587749547",
-    "address": "Somewhere in the world",
-    "phone": "+66 (63) 468-3150",
-    "title": "Mr.",
+    "user_type_id": 19,
+    "user_subtype_id": null,
+    "display_name": "sseepun",
+    "birth_date": "1990-09-07",
+    "sex": "เพศชาย",
+    "prefix": "นาย",
+    "address": "10784 Walnut Street\nLos Alamitos, CA 90720",
+    "phone": "+66 (97) 305-2239",
+    "title": "Ph.D. Candidate",
     "company": "Tech Origin Co., Ltd.",
     "company_address": "10784 Walnut Street\nLos Alamitos, CA 90720",
     "company_phone": "+66 (97) 305-2239",
-    "ip": "222.222.22.2"
+    "external_app_id": 1,
+    "ip": "127.0.0.1",
+    "url": "https://techorigin.co.th/users/update"
 }</code></pre>
 <h4 class="pt-adaptive">Response Example</h4>
 <pre class="language-json"><code>{
@@ -873,15 +863,23 @@
     },
     "data": {
         "app_id": "5789541587749547",
-        "address": "Somewhere in the world",
-        "phone": "+66 (63) 468-3150",
-        "title": "Mr.",
+        "user_type_id": 19,
+        "user_subtype_id": null,
+        "display_name": "sseepun",
+        "birth_date": "1990-09-07",
+        "sex": "เพศชาย",
+        "prefix": "นาย",
+        "address": "10784 Walnut Street\nLos Alamitos, CA 90720",
+        "phone": "+66 (97) 305-2239",
+        "title": "Ph.D. Candidate",
         "company": "Tech Origin Co., Ltd.",
         "company_address": "10784 Walnut Street\nLos Alamitos, CA 90720",
         "company_phone": "+66 (97) 305-2239",
-        "ip": "222.222.22.2",
-        "user_id": "5",
-        "id": "2"
+        "external_app_id": 1,
+        "ip": "127.0.0.1",
+        "url": "https://techorigin.co.th/users/update",
+        "user_id": "1",
+        "id": "1"
     }
 }</code></pre>
 
@@ -936,6 +934,11 @@
         </tr>
         <tr><td colspan="3"><strong>Optional</strong></td></tr>
         <tr>
+            <td><code>external_app_id</code></td>
+            <td><code>Number</code></td>
+            <td>External app id for action log</td>
+        </tr>
+        <tr>
             <td><code>ip</code></td>
             <td><code>String</code></td>
             <td>Visitor IP address for action log</td>
@@ -980,6 +983,7 @@
     "password": "123456",
     "new_password": "123456",
     "new_password_confirm": "123456",
+    "external_app_id": 1,
     "ip": "127.0.0.1",
     "url": "https://techorigin.co.th/users/reset-password"
 }</code></pre>
@@ -993,7 +997,7 @@
 }</code></pre>
 
 
-<!-- User list -->
+<!-- User List -->
 <h2 id="user-list">
     <a href="#user-list" aria-hidden="true" class="header-anchor">#</a>
     User List
@@ -1646,6 +1650,11 @@
         </tr>
         <tr><td colspan="3"><strong>Optional</strong></td></tr>
         <tr>
+            <td><code>external_app_id</code></td>
+            <td><code>Number</code></td>
+            <td>External app id for action log</td>
+        </tr>
+        <tr>
             <td><code>ip</code></td>
             <td><code>String</code></td>
             <td>Visitor IP address for action log</td>
@@ -1687,6 +1696,7 @@
 <h4 class="pt-adaptive">Request Example</h4>
 <pre class="language-json"><code>{
     "app_id": "5789541587749547",
+    "external_app_id": 1,
     "ip": "127.0.0.1",
     "url": "https://techorigin.co.th/users/signout"
 }</code></pre>
@@ -1734,6 +1744,12 @@
             <td><code>String</code></td>
             <td>App id</td>
         </tr>
+        <tr><td colspan="3"><strong>Optional</strong></td></tr>
+        <tr>
+            <td><code>external_app_id</code></td>
+            <td><code>Number</code></td>
+            <td>External app id for action log</td>
+        </tr>
         <tr>
             <td><code>ip</code></td>
             <td><code>String</code></td>
@@ -1776,6 +1792,7 @@
 <h4 class="pt-adaptive">Request Example</h4>
 <pre class="language-json"><code>{
     "app_id": "5789541587749547",
+    "external_app_id": 1,
     "ip": "127.0.0.1",
     "url": "https://techorigin.co.th/users/traffic-create"
 }</code></pre>

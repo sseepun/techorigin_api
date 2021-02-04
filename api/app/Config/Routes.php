@@ -79,8 +79,15 @@ $routes->post( 'api/admin/user-update-detail', 'AdminController::userUpdateDetai
 $routes->post( 'api/admin/user-update-password', 'AdminController::userUpdatePassword', ['filter' => 'authUser']);
 $routes->post( 'api/admin/user-delete', 'AdminController::userDelete', ['filter' => 'authUser']);
 
+$routes->get(  'api/admin/external-app-list', 'AdminController::externalAppList', ['filter' => 'authUser']);
+$routes->post( 'api/admin/external-app-create', 'AdminController::externalAppCreate', ['filter' => 'authUser']);
+$routes->get(  'api/admin/external-app-read/(:num)', 'AdminController::externalAppRead/$1', ['filter' => 'authUser']);
+$routes->post( 'api/admin/external-app-update', 'AdminController::externalAppUpdate', ['filter' => 'authUser']);
+$routes->post( 'api/admin/external-app-delete', 'AdminController::externalAppDelete', ['filter' => 'authUser']);
+
 $routes->get(  'api/admin/traffic-report', 'AdminController::trafficReport', ['filter' => 'authUser']);
 $routes->get(  'api/admin/action-report', 'AdminController::actionReport', ['filter' => 'authUser']);
+$routes->get(  'api/admin/user-registration-report', 'AdminController::userRegistrationReport', ['filter' => 'authUser']);
 
 
 // Super Admin Controller

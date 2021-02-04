@@ -104,12 +104,21 @@ class UserModel extends Model {
         }
     }
     public function authUserByFacebookId($email, $facebookId){
-        $query = $this->db->query(
-            "SELECT * FROM `users` 
-            WHERE (`email` = ? AND `facebook_id` IS NULL) 
-            OR (`email` = ? AND `facebook_id` = ?)", 
-            [ $email, $email, $facebookId ]
-        );
+        if(empty($email)){
+            $query = $this->db->query(
+                "SELECT * FROM `users` 
+                WHERE (`email` IS NULL AND `facebook_id` IS NULL) 
+                OR (`email` IS NULL AND `facebook_id` = ?)", 
+                [ $facebookId ]
+            );
+        }else{
+            $query = $this->db->query(
+                "SELECT * FROM `users` 
+                WHERE (`email` = ? AND `facebook_id` IS NULL) 
+                OR (`email` = ? AND `facebook_id` = ?)", 
+                [ $email, $email, $facebookId ]
+            );
+        }
         $user = $query->getRowArray();
         if(!$user) return false;
         else{
@@ -255,9 +264,107 @@ class UserModel extends Model {
     }
 
 
+    public function getRegistrationReport($type, $filter){
+        if($type=='Total Report'){
+            $queryStr = "SELECT COUNT(`id`) AS `total` FROM `users` WHERE 1";
+            $condition = "";
+            if(!empty($filter['start_date'])){
+                $condition .= " AND `created_at` >= '{$filter['start_date']}'";
+            }
+            if(!empty($filter['end_date'])){
+                $condition .= " AND `created_at` <= '{$filter['end_date']}'";
+            }
+            $query = $this->db->query($queryStr.$condition);
+            return $query->getRowArray();
+        }else if($type=='Daily Report'){
+            $queryStr = "SELECT DATE(`created_at`) AS `date`, COUNT(`id`) AS `total` 
+                FROM `users` WHERE 1";
+            $condition = "";
+            if(!empty($filter['start_date'])){
+                $condition .= " AND `created_at` >= '{$filter['start_date']}'";
+            }
+            if(!empty($filter['end_date'])){
+                $condition .= " AND `created_at` <= '{$filter['end_date']}'";
+            }
+            $query = $this->db->query($queryStr.$condition." GROUP BY `date` ORDER BY `date` ASC");
+            return $query->getResultArray();
+        }else if($type=='Monthly Report'){
+            $queryStr = "SELECT SUBSTRING(DATE(`created_at`), 1, 7) AS `date`, COUNT(`id`) AS `total` 
+                FROM `users` WHERE 1";
+            $condition = "";
+            if(!empty($filter['start_date'])){
+                $condition .= " AND `created_at` >= '{$filter['start_date']}'";
+            }
+            if(!empty($filter['end_date'])){
+                $condition .= " AND `created_at` <= '{$filter['end_date']}'";
+            }
+            $query = $this->db->query($queryStr.$condition." GROUP BY `date` ORDER BY `date` ASC");
+            return $query->getResultArray();
+        }else if($type=='Yearly Report'){
+            $queryStr = "SELECT YEAR(`created_at`) AS `date`, COUNT(`id`) AS `total` 
+                FROM `users` WHERE 1";
+            $condition = "";
+            if(!empty($filter['start_date'])){
+                $condition .= " AND `created_at` >= '{$filter['start_date']}'";
+            }
+            if(!empty($filter['end_date'])){
+                $condition .= " AND `created_at` <= '{$filter['end_date']}'";
+            }
+            $query = $this->db->query($queryStr.$condition." GROUP BY `date` ORDER BY `date` ASC");
+            return $query->getResultArray();
+        }else if($type=='Full Report'){
+            $queryStr = "SELECT `username`, `firstname`, `lastname`, `created_at` 
+                FROM `users` WHERE 1";
+            $condition = "";
+            if(!empty($filter['start_date'])){
+                $condition .= " AND `created_at` >= '{$filter['start_date']}'";
+            }
+            if(!empty($filter['end_date'])){
+                $condition .= " AND `created_at` <= '{$filter['end_date']}'";
+            }
+            $limit = "";
+            if(!empty($filter['limit'])){
+                $limit .= " LIMIT {$filter['limit']}";
+            }
+            $query = $this->db->query(
+                $queryStr.$condition." ORDER BY `created_at` DESC".$limit
+            );
+            return $query->getResultArray();
+        }
+        return false;
+    }
+
+
     public function integrationIDs(){
-        $query = $this->db->query("SELECT `id` AS `user_id`, `email` 
+        $userQuery = $this->db->query("SELECT `id`, `email` 
             FROM `users` ORDER BY `id` ASC");
+        $users = $userQuery->getResultArray();
+
+        $userIds = [];
+        foreach($users as $u){
+            $userIds[] = $u['id'];
+        }
+
+        if(sizeof($userIds)){
+            $deleteQuery = $this->db->query("DELETE FROM `user_temp`  
+                WHERE `action` = 'RESET PASSWORD' AND `is_used` = 0 
+                AND `user_id` IN (".implode(',', $userIds).")");
+            foreach($users as $u){
+                $this->generateUserTemp(
+                    $action = 'RESET PASSWORD', 
+                    $email = $u['email'], $userId = $u['id']
+                );
+            }
+        }
+
+        $query = $this->db->query("SELECT u.`id` AS `user_id`, 
+            u.`username`, u.`email`, 
+            u.`facebook_id`, u.`google_id`, 
+            ut.`salt` AS `reset_password_salt` 
+            FROM `users` AS u 
+            LEFT JOIN `user_temp` AS ut ON ut.`user_id` = u.`id` 
+            WHERE ut.`action` = 'RESET PASSWORD' AND ut.`is_used` = 0 
+            ORDER BY u.`id` ASC");
         return $query->getResultArray();
     }
 

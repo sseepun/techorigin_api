@@ -160,13 +160,13 @@ class Validation
 				'required' => 'ใส่นามสกุล',
 			]
 		],
-		'email' => [
-			'rules' => 'required|valid_email',
-			'errors' => [
-				'required' => 'ใส่อีเมล',
-				'valid_email' => 'ใส่อีเมลที่ถูกต้อง',
-			]
-		],
+		// 'email' => [
+		// 	'rules' => 'required|valid_email',
+		// 	'errors' => [
+		// 		'required' => 'ใส่อีเมล',
+		// 		'valid_email' => 'ใส่อีเมลที่ถูกต้อง',
+		// 	]
+		// ],
 	];
 	public $signinWithGoogle = [
 		'google_id' => [
@@ -449,12 +449,47 @@ class Validation
 			]
 		],
 	];
+	
+	public $adminExternalAppCreate = [
+		'name' => [
+			'rules' => 'required|max_length[128]|is_unique[external_apps.name,id,{id}]',
+			'errors' => [
+				'required' => 'ใส่ชื่อแอปพลิเคชั่นภายนอก',
+				'max_length' => 'ชื่อแอปพลิเคชั่นภายนอกสูงสุด 128 ตัวอักษร',
+				'is_unique' => 'ชื่อแอปพลิเคชั่นภายนอกซ้ำในระบบ',
+			]
+		],
+	];
+	public $adminExternalAppUpdate = [
+		'id' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'เลือกแอปพลิเคชั่นภายนอก',
+			]
+		],
+		'name' => [
+			'rules' => 'required|max_length[128]|is_unique[external_apps.name,id,{id}]',
+			'errors' => [
+				'required' => 'ใส่ชื่อแอปพลิเคชั่นภายนอก',
+				'max_length' => 'ชื่อแอปพลิเคชั่นภายนอกสูงสุด 128 ตัวอักษร',
+				'is_unique' => 'ชื่อแอปพลิเคชั่นภายนอกซ้ำในระบบ',
+			]
+		],
+	];
+	public $adminExternalAppDelete = [
+		'id' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'เลือกแอปพลิเคชั่นภายนอก',
+			]
+		],
+	];
 
 	public $adminTrafficReport = [
 		'type' => [
 			'rules' => 'required',
 			'errors' => [
-				'required' => 'ใส่ประเภทรายงาน',
+				'required' => 'เลือกประเภทรายงาน',
 			]
 		],
 	];
@@ -462,7 +497,15 @@ class Validation
 		'type' => [
 			'rules' => 'required',
 			'errors' => [
-				'required' => 'ใส่ประเภทรายงาน',
+				'required' => 'เลือกประเภทรายงาน',
+			]
+		],
+	];
+	public $adminNewRegistrationReport = [
+		'type' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'เลือกประเภทรายงาน',
 			]
 		],
 	];

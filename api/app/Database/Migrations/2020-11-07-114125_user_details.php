@@ -31,6 +31,25 @@ class UserDetails extends Migration{
 				'unsigned' => true,
 				'null' => true,
 			],
+			'display_name' => [
+				'type' => 'VARCHAR',
+				'constraint' => 128,
+				'default' => null,
+			],
+			'birth_date' => [
+				'type' => 'DATE',
+				'default' => null,
+			],
+			'sex' => [
+				'type' => 'VARCHAR',
+				'constraint' => 32,
+				'default' => null,
+			],
+			'prefix' => [
+				'type' => 'VARCHAR',
+				'constraint' => 64,
+				'default' => null,
+			],
 			'address' => [
 				'type' => 'VARCHAR',
 				'constraint' => 512,

@@ -12,6 +12,7 @@ use App\Models\UserCustomColumnModel;
 use App\Models\ModuleModel;
 use App\Models\ModulePermissionModel;
 
+use App\Models\ExternalAppModel;
 use App\Models\ActionLogModel;
 
 class SuperAdminController extends ResourceController{
@@ -69,7 +70,8 @@ class SuperAdminController extends ResourceController{
             $userTypeModel->save($input);
             
             $actionLogModel = new ActionLogModel();
-            $actionLogModel->insert([
+            $actionLogModel->saveLog([
+                'external_app_id' => !empty($input['external_app_id'])? $input['external_app_id']: null,
                 'user_id' => $this->user['id'],
                 'action' => 'Super Admin - User Type Create',
                 'url' => !empty($input['url'])? $input['url']: null,
@@ -104,7 +106,8 @@ class SuperAdminController extends ResourceController{
             $userTypeModel->save($input);
             
             $actionLogModel = new ActionLogModel();
-            $actionLogModel->insert([
+            $actionLogModel->saveLog([
+                'external_app_id' => !empty($input['external_app_id'])? $input['external_app_id']: null,
                 'user_id' => $this->user['id'],
                 'action' => 'Super Admin - User Type Update',
                 'url' => !empty($input['url'])? $input['url']: null,
@@ -139,7 +142,8 @@ class SuperAdminController extends ResourceController{
             $userTypeModel->where([ 'parent_id' => $input['id'] ])->delete();
             
             $actionLogModel = new ActionLogModel();
-            $actionLogModel->insert([
+            $actionLogModel->saveLog([
+                'external_app_id' => !empty($input['external_app_id'])? $input['external_app_id']: null,
                 'user_id' => $this->user['id'],
                 'action' => 'Super Admin - User Type Delete',
                 'url' => !empty($input['url'])? $input['url']: null,
@@ -183,7 +187,8 @@ class SuperAdminController extends ResourceController{
             $this->userRoleModel->save($input);
             
             $actionLogModel = new ActionLogModel();
-            $actionLogModel->insert([
+            $actionLogModel->saveLog([
+                'external_app_id' => !empty($input['external_app_id'])? $input['external_app_id']: null,
                 'user_id' => $this->user['id'],
                 'action' => 'Super Admin - User Role Create',
                 'url' => !empty($input['url'])? $input['url']: null,
@@ -230,7 +235,8 @@ class SuperAdminController extends ResourceController{
             $this->userRoleModel->save($input);
             
             $actionLogModel = new ActionLogModel();
-            $actionLogModel->insert([
+            $actionLogModel->saveLog([
+                'external_app_id' => !empty($input['external_app_id'])? $input['external_app_id']: null,
                 'user_id' => $this->user['id'],
                 'action' => 'Super Admin - User Role Update',
                 'url' => !empty($input['url'])? $input['url']: null,
@@ -264,7 +270,8 @@ class SuperAdminController extends ResourceController{
             $this->userRoleModel->delete($input['id']);
             
             $actionLogModel = new ActionLogModel();
-            $actionLogModel->insert([
+            $actionLogModel->saveLog([
+                'external_app_id' => !empty($input['external_app_id'])? $input['external_app_id']: null,
                 'user_id' => $this->user['id'],
                 'action' => 'Super Admin - User Role Delete',
                 'url' => !empty($input['url'])? $input['url']: null,
@@ -311,7 +318,8 @@ class SuperAdminController extends ResourceController{
             $userCustomColumnModel->save($input);
             
             $actionLogModel = new ActionLogModel();
-            $actionLogModel->insert([
+            $actionLogModel->saveLog([
+                'external_app_id' => !empty($input['external_app_id'])? $input['external_app_id']: null,
                 'user_id' => $this->user['id'],
                 'action' => 'Super Admin - User Custom Column Create',
                 'url' => !empty($input['url'])? $input['url']: null,
@@ -364,7 +372,8 @@ class SuperAdminController extends ResourceController{
             $userCustomColumnModel->save($input);
             
             $actionLogModel = new ActionLogModel();
-            $actionLogModel->insert([
+            $actionLogModel->saveLog([
+                'external_app_id' => !empty($input['external_app_id'])? $input['external_app_id']: null,
                 'user_id' => $this->user['id'],
                 'action' => 'Super Admin - User Custom Column Update',
                 'url' => !empty($input['url'])? $input['url']: null,
@@ -398,7 +407,8 @@ class SuperAdminController extends ResourceController{
             $moduleModel->save($input);
             
             $actionLogModel = new ActionLogModel();
-            $actionLogModel->insert([
+            $actionLogModel->saveLog([
+                'external_app_id' => !empty($input['external_app_id'])? $input['external_app_id']: null,
                 'user_id' => $this->user['id'],
                 'action' => 'Super Admin - Module Create',
                 'url' => !empty($input['url'])? $input['url']: null,
@@ -447,7 +457,8 @@ class SuperAdminController extends ResourceController{
             $moduleModel->save($input);
             
             $actionLogModel = new ActionLogModel();
-            $actionLogModel->insert([
+            $actionLogModel->saveLog([
+                'external_app_id' => !empty($input['external_app_id'])? $input['external_app_id']: null,
                 'user_id' => $this->user['id'],
                 'action' => 'Super Admin - Module Update',
                 'url' => !empty($input['url'])? $input['url']: null,
@@ -482,7 +493,8 @@ class SuperAdminController extends ResourceController{
             $moduleModel->delete($input['id']);
             
             $actionLogModel = new ActionLogModel();
-            $actionLogModel->insert([
+            $actionLogModel->saveLog([
+                'external_app_id' => !empty($input['external_app_id'])? $input['external_app_id']: null,
                 'user_id' => $this->user['id'],
                 'action' => 'Super Admin - Module Delete',
                 'url' => !empty($input['url'])? $input['url']: null,

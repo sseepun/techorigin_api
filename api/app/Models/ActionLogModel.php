@@ -9,7 +9,9 @@ class ActionLogModel extends Model {
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['user_id', 'target_user_id', 'action', 'url', 'ip'];
+    protected $allowedFields = [
+        'external_app_id', 'user_id', 'target_user_id', 'action', 'url', 'ip'
+    ];
     protected $beforeInsert = ['beforeInsert'];
     protected $beforeUpdate = ['beforeUpdate'];
 
@@ -128,20 +130,57 @@ class ActionLogModel extends Model {
             }
             return array_values($result);
         }else if($type=='Full Report'){
-            $queryStr = "SELECT `user_id`, `target_user_id`, `action`, 
-                `url`, `ip`, `created_at` AS `visited_time` 
-                FROM `action_logs` WHERE 1";
+            $queryStr = "SELECT e.`name` AS `external_app_name`, 
+                db.`user_id`, u.`username`, u.`firstname`, u.`lastname`,
+                db.`action`, db.`url`, db.`ip`, db.`created_at` AS `visited_time` 
+                FROM `action_logs` AS db 
+                LEFT JOIN `users` AS u ON u.`id` = db.`user_id` 
+                LEFT JOIN `external_apps` AS e ON e.`id` = db.`external_app_id` 
+                WHERE 1";
             $condition = "";
             if(!empty($filter['start_date'])){
-                $condition .= " AND `created_at` >= '{$filter['start_date']}'";
+                $condition .= " AND db.`created_at` >= '{$filter['start_date']}'";
             }
             if(!empty($filter['end_date'])){
-                $condition .= " AND `created_at` <= '{$filter['end_date']}'";
+                $condition .= " AND db.`created_at` <= '{$filter['end_date']}'";
             }
-            $query = $this->db->query($queryStr.$condition." ORDER BY `created_at` ASC");
+            $limit = "";
+            if(!empty($filter['limit'])){
+                $limit .= " LIMIT {$filter['limit']}";
+            }
+            $query = $this->db->query(
+                $queryStr.$condition." ORDER BY db.`created_at` DESC".$limit
+            );
             return $query->getResultArray();
         }
         return false;
+    }
+
+    public function saveLog($data){
+        if(!empty($data['external_app_id'])){
+            $tempQuery = $this->db->query(
+                "SELECT `id` FROM `external_apps` WHERE `id` = ? LIMIT 1", 
+                [ $data['external_app_id'] ]
+            );
+            $temp = $tempQuery->getRowArray();
+            if(!$temp) $data['external_app_id'] = null;
+        }else{
+            $data['external_app_id'] = null;
+        }
+        $this->db->query(
+            "INSERT INTO `action_logs` 
+            (`external_app_id`, `user_id`, `target_user_id`, `action`, `url`, `ip`) 
+            VALUES 
+            (:external_app_id:, :user_id:, :target_user_id:, :action:, :url:, :ip:)",
+            [
+                'external_app_id' => $data['external_app_id'],
+                'user_id' => empty($data['user_id'])? null: $data['user_id'],
+                'target_user_id' => empty($data['target_user_id'])? null: $data['target_user_id'],
+                'action' => empty($data['action'])? null: $data['action'],
+                'url' => empty($data['url'])? null: $data['url'],
+                'ip' => empty($data['ip'])? null: $data['ip'],
+            ]
+        );
     }
 
 }

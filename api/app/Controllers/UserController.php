@@ -10,6 +10,7 @@ use App\Models\UserRoleModel;
 
 use App\Models\ModuleModel;
 
+use App\Models\ExternalAppModel;
 use App\Models\ActionLogModel;
 use App\Models\TrafficLogModel;
 
@@ -110,7 +111,8 @@ class UserController extends ResourceController{
             $this->userModel->update($this->decoded['id'], $input);
             
             $actionLogModel = new ActionLogModel();
-            $actionLogModel->insert([
+            $actionLogModel->saveLog([
+                'external_app_id' => !empty($input['external_app_id'])? $input['external_app_id']: null,
                 'user_id' => $this->user['id'],
                 'action' => 'User Update',
                 'url' => !empty($input['url'])? $input['url']: null,
@@ -163,7 +165,8 @@ class UserController extends ResourceController{
             $userDetailModel->updateCustomDetails($input['user_id'], $input);
             
             $actionLogModel = new ActionLogModel();
-            $actionLogModel->insert([
+            $actionLogModel->saveLog([
+                'external_app_id' => !empty($input['external_app_id'])? $input['external_app_id']: null,
                 'user_id' => $this->user['id'],
                 'action' => 'User Update Detail',
                 'url' => !empty($input['url'])? $input['url']: null,
@@ -206,7 +209,8 @@ class UserController extends ResourceController{
             ]);
             
             $actionLogModel = new ActionLogModel();
-            $actionLogModel->insert([
+            $actionLogModel->saveLog([
+                'external_app_id' => !empty($input['external_app_id'])? $input['external_app_id']: null,
                 'user_id' => $this->user['id'],
                 'action' => 'User Update Password',
                 'url' => !empty($input['url'])? $input['url']: null,
@@ -290,7 +294,8 @@ class UserController extends ResourceController{
             $input = stdClassToArray($this->request->getJSON());
 
             $actionLogModel = new ActionLogModel();
-            $actionLogModel->insert([
+            $actionLogModel->saveLog([
+                'external_app_id' => !empty($input['external_app_id'])? $input['external_app_id']: null,
                 'user_id' => $this->user['id'],
                 'action' => 'Sign Out',
                 'url' => !empty($input['url'])? $input['url']: null,
@@ -320,7 +325,8 @@ class UserController extends ResourceController{
             }
             
             $trafficLogModel = new TrafficLogModel();
-            $trafficLogModel->insert([
+            $trafficLogModel->saveLog([
+                'external_app_id' => !empty($input['external_app_id'])? $input['external_app_id']: null,
                 'user_id' => $this->user['id'],
                 'url' => $input['url'],
                 'ip' => $input['ip'],

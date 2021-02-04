@@ -2,27 +2,24 @@
 
 use CodeIgniter\Database\Migration;
 
-class TrafficLogs extends Migration{
+class ExternalApps extends Migration{
 	public function up(){
 		$this->db->disableForeignKeyChecks();
 
 		$this->forge->addField([
 			'id' => [
 				'type' => 'INT',
-				'constraint' => 13,
+				'constraint' => 5,
 				'unsigned' => true,
 				'auto_increment' => true
 			],
-			'external_app_id' => [
-				'type' => 'INT',
-				'constraint' => 5,
-				'unsigned' => true,
-				'null' => true,
+			'name' => [
+				'type' => 'VARCHAR',
+				'constraint' => 128,
 			],
-			'user_id' => [
-				'type' => 'INT',
-				'constraint' => 11,
-				'unsigned' => true,
+			'description' => [
+				'type' => 'VARCHAR',
+				'constraint' => 512,
 				'null' => true,
 			],
 			'url' => [
@@ -30,23 +27,22 @@ class TrafficLogs extends Migration{
 				'constraint' => 256,
 				'null' => true,
 			],
-			'ip' => [
-				'type' => 'VARCHAR',
-				'constraint' => 32,
-				'null' => true,
+			'status' => [
+				'type' => 'INT',
+				'constraint' => 1,
+				'default' => 1
 			],
 			'created_at datetime default current_timestamp',
 			'updated_at datetime default current_timestamp on update current_timestamp',
 		]);
 		$this->forge->addPrimaryKey('id');
-		$this->forge->addForeignKey('user_id', 'users', 'id', 'NO ACTION', 'CASCADE');
-		$this->forge->addForeignKey('external_app_id', 'external_apps', 'id', 'NO ACTION', 'SET NULL');
-		$this->forge->createTable('traffic_logs', true);
+		$this->forge->addUniqueKey('name');
+		$this->forge->createTable('external_apps', true);
 		
         $this->db->enableForeignKeyChecks();
 	}
 
 	public function down(){
-		$this->forge->dropTable('traffic_logs');
+		$this->forge->dropTable('external_apps');
 	}
 }

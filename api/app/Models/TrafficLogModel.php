@@ -9,7 +9,7 @@ class TrafficLogModel extends Model {
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['user_id', 'url', 'ip'];
+    protected $allowedFields = ['external_app_id', 'user_id', 'url', 'ip'];
     protected $beforeInsert = ['beforeInsert'];
     protected $beforeUpdate = ['beforeUpdate'];
 
@@ -94,24 +94,60 @@ class TrafficLogModel extends Model {
             $query = $this->db->query($queryStr.$condition." GROUP BY `date` ORDER BY `date` ASC");
             return $query->getResultArray();
         }else if($type=='Full Report'){
-            $queryStr = "SELECT `user_id`, `url`, `ip`, `created_at` AS `visited_time` 
-                FROM `traffic_logs` WHERE 1";
+            $queryStr = "SELECT e.`name` AS `external_app_name`, 
+                db.`user_id`, u.`username`, u.`firstname`, u.`lastname`,
+                db.`url`, db.`ip`, db.`created_at` AS `visited_time` 
+                FROM `traffic_logs` AS db 
+                LEFT JOIN `users` AS u ON u.`id` = db.`user_id` 
+                LEFT JOIN `external_apps` AS e ON e.`id` = db.`external_app_id` 
+                WHERE 1";
             $condition = "";
             if(!empty($filter['start_date'])){
-                $condition .= " AND `created_at` >= '{$filter['start_date']}'";
+                $condition .= " AND db.`created_at` >= '{$filter['start_date']}'";
             }
             if(!empty($filter['end_date'])){
-                $condition .= " AND `created_at` <= '{$filter['end_date']}'";
+                $condition .= " AND db.`created_at` <= '{$filter['end_date']}'";
             }
             if(!empty($filter['only_users']) && $filter['only_users']){
-                $condition .= " AND `user_id` IS NOT NULL";
+                $condition .= " AND db.`user_id` IS NOT NULL";
             }else if(!empty($filter['only_visitors']) && $filter['only_visitors']){
-                $condition .= " AND `user_id` IS NULL";
+                $condition .= " AND db.`user_id` IS NULL";
             }
-            $query = $this->db->query($queryStr.$condition." ORDER BY `created_at` ASC");
+            $limit = "";
+            if(!empty($filter['limit'])){
+                $limit .= " LIMIT {$filter['limit']}";
+            }
+            $query = $this->db->query(
+                $queryStr.$condition." ORDER BY db.`created_at` ASC".$limit
+            );
             return $query->getResultArray();
         }
         return false;
+    }
+
+    public function saveLog($data){
+        if(!empty($data['external_app_id'])){
+            $tempQuery = $this->db->query(
+                "SELECT `id` FROM `external_apps` WHERE `id` = ? LIMIT 1", 
+                [ $data['external_app_id'] ]
+            );
+            $temp = $tempQuery->getRowArray();
+            if(!$temp) $data['external_app_id'] = null;
+        }else{
+            $data['external_app_id'] = null;
+        }
+        $this->db->query(
+            "INSERT INTO `traffic_logs` 
+            (`external_app_id`, `user_id`, `url`, `ip`) 
+            VALUES 
+            (:external_app_id:, :user_id:, :url:, :ip:)",
+            [
+                'external_app_id' => $data['external_app_id'],
+                'user_id' => empty($data['user_id'])? null: $data['user_id'],
+                'url' => empty($data['url'])? null: $data['url'],
+                'ip' => empty($data['ip'])? null: $data['ip'],
+            ]
+        );
     }
 
 }

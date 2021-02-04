@@ -50,8 +50,14 @@ var menu = [
             { name: 'User Update Detail' },
             { name: 'User Update Password' },
             { name: 'User Delete' },
+            { name: 'External App List' },
+            { name: 'External App Create' },
+            { name: 'External App Read' },
+            { name: 'External App Update' },
+            { name: 'External App Delete' },
             { name: 'Traffic Report' },
             { name: 'Action Report' },
+            { name: 'User Registration Report' },
         ]
     },
     {

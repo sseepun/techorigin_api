@@ -4,6 +4,8 @@ use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
 
 use App\Models\UserModel;
+
+use App\Models\ExternalAppModel;
 use App\Models\ActionLogModel;
 use App\Models\TrafficLogModel;
 
@@ -41,7 +43,8 @@ class AuthController extends ResourceController{
             }
 
             $actionLogModel = new ActionLogModel();
-            $actionLogModel->insert([
+            $actionLogModel->saveLog([
+                'external_app_id' => !empty($input['external_app_id'])? $input['external_app_id']: null,
                 'user_id' => $user['id'],
                 'action' => 'Sign In',
                 'ip' => !empty($input['ip'])? $input['ip']: null,
@@ -82,7 +85,8 @@ class AuthController extends ResourceController{
             ]);
 
             $actionLogModel = new ActionLogModel();
-            $actionLogModel->insert([
+            $actionLogModel->saveLog([
+                'external_app_id' => !empty($input['external_app_id'])? $input['external_app_id']: null,
                 'user_id' => $userModel->getInsertID(),
                 'action' => 'Sign Up',
                 'ip' => !empty($input['ip'])? $input['ip']: null,
@@ -120,7 +124,8 @@ class AuthController extends ResourceController{
             );
             
             $actionLogModel = new ActionLogModel();
-            $actionLogModel->insert([
+            $actionLogModel->saveLog([
+                'external_app_id' => !empty($input['external_app_id'])? $input['external_app_id']: null,
                 'user_id' => $data['user_id'],
                 'action' => 'Forget Password',
                 'ip' => !empty($input['ip'])? $input['ip']: null,
@@ -178,7 +183,8 @@ class AuthController extends ResourceController{
             $userModel->update($user['id'], [ 'password' => $input['password_new'] ]);
 
             $actionLogModel = new ActionLogModel();
-            $actionLogModel->insert([
+            $actionLogModel->saveLog([
+                'external_app_id' => !empty($input['external_app_id'])? $input['external_app_id']: null,
                 'user_id' => $user['id'],
                 'action' => 'Reset Password',
                 'ip' => !empty($input['ip'])? $input['ip']: null,
@@ -209,7 +215,8 @@ class AuthController extends ResourceController{
             }
             
             $trafficLogModel = new TrafficLogModel();
-            $trafficLogModel->insert([
+            $trafficLogModel->saveLog([
+                'external_app_id' => !empty($input['external_app_id'])? $input['external_app_id']: null,
                 'ip' => $input['ip'],
                 'url' => $input['url'],
             ]);
@@ -261,7 +268,7 @@ class AuthController extends ResourceController{
                     'role_id' => $userModel->getDefaultRoleId(),
                     'firstname' => $input['firstname'],
                     'lastname' => $input['lastname'],
-                    'email' => $input['email'],
+                    'email' => empty($input['email'])? null: $input['email'],
                     'username' => 'User'.$userModel->getNewestUserId(),
                     'password' => randomAlphanum(12),
                     'is_password_set' => 0,
@@ -282,8 +289,9 @@ class AuthController extends ResourceController{
                 }
                 $userModel->update($user['id'], $updateData);
             }
-                
-            $actionLogModel->insert([
+            
+            $actionLogModel->saveLog([
+                'external_app_id' => !empty($input['external_app_id'])? $input['external_app_id']: null,
                 'user_id' => $user['id'],
                 'action' => $action,
                 'ip' => !empty($input['ip'])? $input['ip']: null,
@@ -356,8 +364,9 @@ class AuthController extends ResourceController{
                 }
                 $userModel->update($user['id'], $updateData);
             }
-                
-            $actionLogModel->insert([
+            
+            $actionLogModel->saveLog([
+                'external_app_id' => !empty($input['external_app_id'])? $input['external_app_id']: null,
                 'user_id' => $user['id'],
                 'action' => $action,
                 'ip' => !empty($input['ip'])? $input['ip']: null,

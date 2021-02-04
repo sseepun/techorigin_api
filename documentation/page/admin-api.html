@@ -592,6 +592,11 @@
         </tr>
         <tr><td colspan="3"><strong>Optional</strong></td></tr>
         <tr>
+            <td><code>external_app_id</code></td>
+            <td><code>Number</code></td>
+            <td>External app id for action log</td>
+        </tr>
+        <tr>
             <td><code>ip</code></td>
             <td><code>String</code></td>
             <td>Visitor IP address for action log</td>
@@ -666,6 +671,7 @@
     "username": "aaaaa",
     "password": "aaaaaa",
     "password_confirm": "aaaaaa",
+    "external_app_id": 1,
     "ip": "127.0.0.1",
     "url": "http://techorigin.co.th/admin/user-create"
 }</code></pre>
@@ -1002,24 +1008,14 @@
             <td>User profile url path</td>
         </tr>
         <tr>
-            <td><code>thai_id</code></td>
-            <td><code>String</code></td>
-            <td>User Thai id</td>
-        </tr>
-        <tr>
-            <td><code>thai_id_path</code></td>
-            <td><code>String</code></td>
-            <td>User Thai id url path</td>
-        </tr>
-        <tr>
-            <td><code>code</code></td>
-            <td><code>String</code></td>
-            <td>User code</td>
-        </tr>
-        <tr>
             <td><code>status</code></td>
             <td><code>String</code></td>
             <td>User status</td>
+        </tr>
+        <tr>
+            <td><code>external_app_id</code></td>
+            <td><code>Number</code></td>
+            <td>External app id for action log</td>
         </tr>
         <tr>
             <td><code>ip</code></td>
@@ -1054,9 +1050,7 @@
             <td>Response message array</td>
         </tr>
         <tr>
-            <td><code>data</code></td>
-            <td><code>Array</code></td>
-            <td>User updated data</td>
+            <tr><td colspan="3"><code>data</code> array of the updated data</td></tr>
         </tr>
         <tr>
             <td><code>jwt</code></td>
@@ -1075,10 +1069,8 @@
     "email": "sarun_sla@hotmail.com",
     "username": "Admin",
     "profile": null,
-    "thai_id": null,
-    "thai_id_path": null,
-    "code": "SS-2222",
     "status": 1,
+    "external_app_id": 1,
     "ip": "127.0.0.1",
     "url": "http://techorigin.co.th/admin/user-update"
 }</code></pre>
@@ -1097,10 +1089,11 @@
         "email": "sarun_sla@hotmail.com",
         "username": "Admin",
         "profile": null,
-        "thai_id": null,
-        "thai_id_path": null,
-        "code": "SS-2222",
-        "status": 1
+        "status": 1,
+        "external_app_id": 1,
+        "ip": "127.0.0.1",
+        "url": "http://techorigin.co.th/admin/user-update",
+        "last_ip": "127.0.0.1"
     }
 }</code></pre>
 
@@ -1155,6 +1148,26 @@
             <td>User sub type id</td>
         </tr>
         <tr>
+            <td><code>display_name</code></td>
+            <td><code>String</code></td>
+            <td>User display name</td>
+        </tr>
+        <tr>
+            <td><code>birth_date</code></td>
+            <td><code>String</code></td>
+            <td>User birth date of format <code>YYYY-MM-DD</code></td>
+        </tr>
+        <tr>
+            <td><code>sex</code></td>
+            <td><code>String</code></td>
+            <td>User sex</td>
+        </tr>
+        <tr>
+            <td><code>prefix</code></td>
+            <td><code>String</code></td>
+            <td>User prefix</td>
+        </tr>
+        <tr>
             <td><code>address</code></td>
             <td><code>String</code></td>
             <td>User address</td>
@@ -1183,6 +1196,11 @@
             <td><code>company_phone</code></td>
             <td><code>String</code></td>
             <td>User company's phone number</td>
+        </tr>
+        <tr>
+            <td><code>external_app_id</code></td>
+            <td><code>Number</code></td>
+            <td>External app id for action log</td>
         </tr>
         <tr>
             <td><code>ip</code></td>
@@ -1217,28 +1235,29 @@
             <td>Response message array</td>
         </tr>
         <tr>
-            <td><code>data</code></td>
-            <td><code>Array</code></td>
-            <td>User updated detail data</td>
+            <tr><td colspan="3"><code>data</code> array of the updated data</td></tr>
         </tr>
     </tbody>
 </table>
 <h4 class="pt-adaptive">Request Example</h4>
 <pre class="language-json"><code>{
     "app_id": "5789541587749547",
-    "user_id": 2,
-    "user_type_id": 1,
-    "user_subtype_id": 2,
+    "user_id": 1,
+    "user_type_id": 19,
+    "user_subtype_id": null,
+    "display_name": "sseepun",
+    "birth_date": "1990-09-07",
+    "sex": "เพศชาย",
+    "prefix": "นาย",
     "address": "10784 Walnut Street\nLos Alamitos, CA 90720",
     "phone": "+66 (97) 305-2239",
     "title": "Ph.D. Candidate",
     "company": "Tech Origin Co., Ltd.",
     "company_address": "10784 Walnut Street\nLos Alamitos, CA 90720",
     "company_phone": "+66 (97) 305-2239",
-    "custom_note": "User dynamic custom note",
-    "custom_ticket": "TK-00254",
+    "external_app_id": 1,
     "ip": "127.0.0.1",
-    "url": "http://techorigin.co.th/admin/user-update"
+    "url": "https://techorigin.co.th/users/update"
 }</code></pre>
 <h4 class="pt-adaptive">Response Example</h4>
 <pre class="language-json"><code>{
@@ -1247,12 +1266,12 @@
         "success": "แก้ไขข้อมูลสำเร็จ"
     },
     "data": {
-        "id": "2",
-        "role_id": "2",
-        "username": "Admin",
-        "firstname": "General",
+        "id": "1",
+        "role_id": "1",
+        "username": "SuperAdmin",
+        "firstname": "Super",
         "lastname": "Admin",
-        "email": "sarun_sla@hotmail.com",
+        "email": "sarun.seepun@gmail.com",
         "is_password_set": "1",
         "profile": null,
         "thai_id": null,
@@ -1260,7 +1279,7 @@
         "code": null,
         "facebook_id": null,
         "google_id": null,
-        "last_ip": null,
+        "last_ip": "127.0.0.1",
         "status": "1"
     }
 }</code></pre>
@@ -1316,6 +1335,11 @@
         </tr>
         <tr><td colspan="3"><strong>Optional</strong></td></tr>
         <tr>
+            <td><code>external_app_id</code></td>
+            <td><code>Number</code></td>
+            <td>External app id for action log</td>
+        </tr>
+        <tr>
             <td><code>ip</code></td>
             <td><code>String</code></td>
             <td>Visitor IP address for action log</td>
@@ -1360,6 +1384,7 @@
     "id": 2,
     "new_password": "123456",
     "new_password_confirm": "123456",
+    "external_app_id": 1,
     "ip": "127.0.0.1",
     "url": "http://techorigin.co.th/admin/user-update"
 }</code></pre>
@@ -1414,6 +1439,11 @@
         </tr>
         <tr><td colspan="3"><strong>Optional</strong></td></tr>
         <tr>
+            <td><code>external_app_id</code></td>
+            <td><code>Number</code></td>
+            <td>External app id for action log</td>
+        </tr>
+        <tr>
             <td><code>ip</code></td>
             <td><code>String</code></td>
             <td>Visitor IP address for action log</td>
@@ -1455,7 +1485,473 @@
 <h4 class="pt-adaptive">Request Example</h4>
 <pre class="language-json"><code>{
     "app_id": "5789541587749547",
-    "id": 6
+    "id": 8,
+    "external_app_id": 1,
+    "ip": "127.0.0.1",
+    "url": "http://techorigin.co.th/admin/user-delete"
+}</code></pre>
+<h4 class="pt-adaptive">Response Example</h4>
+<pre class="language-json"><code>{
+    "status": 200,
+    "messages": {
+        "success": "ลบข้อมูลสำเร็จ"
+    },
+    "data": true
+}</code></pre>
+
+
+<!-- External App List -->
+<h2 id="external-app-list">
+    <a href="#external-app-list" aria-hidden="true" class="header-anchor">#</a>
+    External App List
+</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Method</th>
+            <th>Endpoint</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>GET</code></td>
+            <td><code>API_URL</code>api/admin/external-app-list</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Body Variables</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>app_id</code></td>
+            <td><code>String</code></td>
+            <td>App id</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Response</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>status</code></td>
+            <td><code>Number</code></td>
+            <td>Response status code</td>
+        </tr>
+        <tr>
+            <td><code>messages</code></td>
+            <td><code>Array</code></td>
+            <td>Response message array</td>
+        </tr>
+        <tr><td colspan="3"><code>data</code> array of external apps</td></tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Request Example</h4>
+<pre class="language-json"><code>{
+    "app_id": "5789541587749547"
+}</code></pre>
+<h4 class="pt-adaptive">Response Example</h4>
+<pre class="language-json"><code>{
+    "status": 200,
+    "messages": {
+        "success": "ดูข้อมูลสำเร็จ"
+    },
+    "data": [
+        {
+            "id": "1",
+            "name": "Student Application",
+            "description": null,
+            "status": "1",
+            "url": null,
+            "created_at": "2021-02-04 20:08:54",
+            "updated_at": "2021-02-04 20:08:54"
+        }
+    ]
+}</code></pre>
+
+<!-- External App Create -->
+<h2 id="external-app-create">
+    <a href="#external-app-create" aria-hidden="true" class="header-anchor">#</a>
+    External App Create
+</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Method</th>
+            <th>Endpoint</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>POST</code></td>
+            <td><code>API_URL</code>api/admin/external-app-create</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Body Variables</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>app_id</code></td>
+            <td><code>String</code></td>
+            <td>App id</td>
+        </tr>
+        <tr>
+            <td><code>name</code></td>
+            <td><code>String</code></td>
+            <td>External app id</td>
+        </tr>
+        <tr><td colspan="3"><strong>Optional</strong></td></tr>
+        <tr>
+            <td><code>description</code></td>
+            <td><code>String</code></td>
+            <td>External app description</td>
+        </tr>
+        <tr>
+            <td><code>url</code></td>
+            <td><code>String</code></td>
+            <td>External app URL</td>
+        </tr>
+        <tr>
+            <td><code>status</code></td>
+            <td><code>Number</code></td>
+            <td>External app status</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Response</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>status</code></td>
+            <td><code>Number</code></td>
+            <td>Response status code</td>
+        </tr>
+        <tr>
+            <td><code>messages</code></td>
+            <td><code>Array</code></td>
+            <td>Response message array</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Request Example</h4>
+<pre class="language-json"><code>{
+    "app_id": "5789541587749547",
+    "name": "Student Application 2",
+    "description": "External app description",
+    "url": null,
+    "status": 1
+}</code></pre>
+<h4 class="pt-adaptive">Response Example</h4>
+<pre class="language-json"><code>{
+    "status": 200,
+    "messages": {
+        "success": "สร้างข้อมูลสำเร็จ"
+    },
+    "data": null
+}</code></pre>
+
+<!-- External App Read -->
+<h2 id="external-app-read">
+    <a href="#external-app-read" aria-hidden="true" class="header-anchor">#</a>
+    External App Read
+</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Method</th>
+            <th>Endpoint</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>GET</code></td>
+            <td><code>API_URL</code>api/admin/external-app-read/<code>external_app_id</code></td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">GET Variables</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>external_app_id</code></td>
+            <td><code>Number</code></td>
+            <td>External app id</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Body Variables</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>app_id</code></td>
+            <td><code>String</code></td>
+            <td>App id</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Response</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>status</code></td>
+            <td><code>Number</code></td>
+            <td>Response status code</td>
+        </tr>
+        <tr>
+            <td><code>messages</code></td>
+            <td><code>Array</code></td>
+            <td>Response message array</td>
+        </tr>
+        <tr><td colspan="3"><code>data</code> array of the requested external app</td></tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Request Example</h4>
+<pre class="language-json"><code>{
+    "app_id": "5789541587749547"
+}</code></pre>
+<h4 class="pt-adaptive">Response Example</h4>
+<pre class="language-json"><code>{
+    "status": 200,
+    "messages": {
+        "success": "ดูข้อมูลสำเร็จ"
+    },
+    "data": {
+        "id": "1",
+        "name": "Student Application",
+        "description": null,
+        "status": "1",
+        "url": null,
+        "created_at": "2021-02-04 20:08:54",
+        "updated_at": "2021-02-04 20:08:54"
+    }
+}</code></pre>
+
+<!-- External App Update -->
+<h2 id="external-app-update">
+    <a href="#external-app-update" aria-hidden="true" class="header-anchor">#</a>
+    External App Update
+</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Method</th>
+            <th>Endpoint</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>POST</code></td>
+            <td><code>API_URL</code>api/admin/external-app-update</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Body Variables</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>app_id</code></td>
+            <td><code>String</code></td>
+            <td>App id</td>
+        </tr>
+        <tr>
+            <td><code>id</code></td>
+            <td><code>Number</code></td>
+            <td>External app id</td>
+        </tr>
+        <tr>
+            <td><code>name</code></td>
+            <td><code>String</code></td>
+            <td>External app id</td>
+        </tr>
+        <tr><td colspan="3"><strong>Optional</strong></td></tr>
+        <tr>
+            <td><code>description</code></td>
+            <td><code>String</code></td>
+            <td>External app description</td>
+        </tr>
+        <tr>
+            <td><code>url</code></td>
+            <td><code>String</code></td>
+            <td>External app URL</td>
+        </tr>
+        <tr>
+            <td><code>status</code></td>
+            <td><code>Number</code></td>
+            <td>External app status</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Response</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>status</code></td>
+            <td><code>Number</code></td>
+            <td>Response status code</td>
+        </tr>
+        <tr>
+            <td><code>messages</code></td>
+            <td><code>Array</code></td>
+            <td>Response message array</td>
+        </tr>
+        <tr><td colspan="3"><code>data</code> array of the updated external app</td></tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Request Example</h4>
+<pre class="language-json"><code>{
+    "app_id": "5789541587749547",
+    "id": 1,
+    "name": "Student Application",
+    "description": "External app description",
+    "url": null,
+    "status": 1
+}</code></pre>
+<h4 class="pt-adaptive">Response Example</h4>
+<pre class="language-json"><code>{
+    "status": 200,
+    "messages": {
+        "success": "แก้ไขข้อมูลสำเร็จ"
+    },
+    "data": {
+        "app_id": "5789541587749547",
+        "id": 1,
+        "name": "Student Application",
+        "description": "External app description",
+        "url": null,
+        "status": 1
+    }
+}</code></pre>
+
+<!-- External App Delete -->
+<h2 id="external-app-delete">
+    <a href="#external-app-delete" aria-hidden="true" class="header-anchor">#</a>
+    External App Delete
+</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Method</th>
+            <th>Endpoint</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>POST</code></td>
+            <td><code>API_URL</code>api/admin/external-app-delete</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Body Variables</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>app_id</code></td>
+            <td><code>String</code></td>
+            <td>App id</td>
+        </tr>
+        <tr>
+            <td><code>id</code></td>
+            <td><code>Number</code></td>
+            <td>External app id</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Response</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>status</code></td>
+            <td><code>Number</code></td>
+            <td>Response status code</td>
+        </tr>
+        <tr>
+            <td><code>messages</code></td>
+            <td><code>Array</code></td>
+            <td>Response message array</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Request Example</h4>
+<pre class="language-json"><code>{
+    "app_id": "5789541587749547",
+    "id": 5
 }</code></pre>
 <h4 class="pt-adaptive">Response Example</h4>
 <pre class="language-json"><code>{
@@ -1531,6 +2027,11 @@
             <td><code>Boolean</code></td>
             <td>Traffic report of visitors only</td>
         </tr>
+        <tr>
+            <td><code>limit</code></td>
+            <td><code>Number</code></td>
+            <td>Full report limit</td>
+        </tr>
     </tbody>
 </table>
 <h4 class="pt-adaptive">Response</h4>
@@ -1554,20 +2055,19 @@
             <td>Response message array</td>
         </tr>
         <tr>
-            <td><code>data</code></td>
-            <td><code>Array</code></td>
-            <td>Traffic report array based on <code>type</code></td>
+            <td colspan="3"><code>data</code> array based on report <code>type</code></td>
         </tr>
     </tbody>
 </table>
 <h4 class="pt-adaptive">Request Example</h4>
 <pre class="language-json"><code>{
     "app_id": "5789541587749547",
-    "type": "Daily Report",
+    "type": "Full Report",
     "start_date": "2021-01-09",
-    "end_date": "2021-01-11",
+    "end_date": "2021-03-11",
     "only_users": false,
-    "only_visitors": false
+    "only_visitors": false,
+    "limit": 2
 }</code></pre>
 <h4 class="pt-adaptive">Response Example</h4>
 <pre class="language-json"><code>{
@@ -1577,20 +2077,27 @@
     },
     "data": [
         {
-            "date": "2021-01-09",
-            "total": "1"
+            "external_app_name": "Student Application",
+            "user_id": null,
+            "username": null,
+            "firstname": null,
+            "lastname": null,
+            "url": "https://techorigin.co.th",
+            "ip": "127.0.0.1",
+            "visited_time": "2021-02-04 21:09:23"
         },
         {
-            "date": "2021-01-10",
-            "total": "2"
-        },
-        {
-            "date": "2021-01-11",
-            "total": "1"
+            "external_app_name": null,
+            "user_id": null,
+            "username": null,
+            "firstname": null,
+            "lastname": null,
+            "url": "https://techorigin.co.th",
+            "ip": "127.0.0.1",
+            "visited_time": "2021-02-04 21:09:54"
         }
     ]
 }</code></pre>
-
 
 <!-- Action Report -->
 <h2 id="action-report">
@@ -1646,6 +2153,11 @@
             <td><code>String</code></td>
             <td>End data of format <code>YYYY-MM-DD</code></td>
         </tr>
+        <tr>
+            <td><code>limit</code></td>
+            <td><code>Number</code></td>
+            <td>Full report limit</td>
+        </tr>
     </tbody>
 </table>
 <h4 class="pt-adaptive">Response</h4>
@@ -1669,18 +2181,17 @@
             <td>Response message array</td>
         </tr>
         <tr>
-            <td><code>data</code></td>
-            <td><code>Array</code></td>
-            <td>Action report array based on <code>type</code></td>
+            <td colspan="3"><code>data</code> array based on report <code>type</code></td>
         </tr>
     </tbody>
 </table>
 <h4 class="pt-adaptive">Request Example</h4>
 <pre class="language-json"><code>{
     "app_id": "5789541587749547",
-    "type": "Daily Report",
+    "type": "Full Report",
     "start_date": "2021-01-10",
-    "end_date": "2021-01-12"
+    "end_date": "2021-03-12",
+    "limit": 2
 }</code></pre>
 <h4 class="pt-adaptive">Response Example</h4>
 <pre class="language-json"><code>{
@@ -1690,48 +2201,142 @@
     },
     "data": [
         {
-            "date": "2021-01-10",
-            "total": 6,
-            "types": [
-                {
-                    "action": "Sign In with Facebook",
-                    "total": "6"
-                }
-            ]
+            "external_app_name": "Student Application",
+            "user_id": "1",
+            "username": "SuperAdmin",
+            "firstname": "Super",
+            "lastname": "Admin",
+            "action": "Admin - User Delete",
+            "url": "http://techorigin.co.th/admin/user-delete",
+            "ip": "127.0.0.1",
+            "visited_time": "2021-02-04 21:43:32"
         },
         {
-            "date": "2021-01-11",
-            "total": 13,
-            "types": [
-                {
-                    "action": "Admin - User Create",
-                    "total": "2"
-                },
-                {
-                    "action": "Admin - User Update",
-                    "total": "2"
-                },
-                {
-                    "action": "Admin - User Update Detail",
-                    "total": "1"
-                },
-                {
-                    "action": "Admin - User Update Password",
-                    "total": "2"
-                },
-                {
-                    "action": "Sign In",
-                    "total": "2"
-                },
-                {
-                    "action": "Sign In with Facebook",
-                    "total": "1"
-                },
-                {
-                    "action": "Sign In with Google",
-                    "total": "3"
-                }
-            ]
+            "external_app_name": "Student Application",
+            "user_id": "1",
+            "username": "SuperAdmin",
+            "firstname": "Super",
+            "lastname": "Admin",
+            "action": "Admin - User Delete",
+            "url": "http://techorigin.co.th/admin/user-delete",
+            "ip": "127.0.0.1",
+            "visited_time": "2021-02-04 21:43:28"
+        }
+    ]
+}</code></pre>
+
+<!-- User Registration Report -->
+<h2 id="user-registration-report">
+    <a href="#user-registration-report" aria-hidden="true" class="header-anchor">#</a>
+    User Registration Report
+</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Method</th>
+            <th>Endpoint</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>GET</code></td>
+            <td><code>API_URL</code>api/admin/user-registration-report</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Body Variables</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>app_id</code></td>
+            <td><code>String</code></td>
+            <td>App id</td>
+        </tr>
+        <tr>
+            <td><code>type</code></td>
+            <td><code>String</code></td>
+            <td>
+                Report type can be <strong>Total Report</strong>, <strong>Daily Report</strong>, 
+                <strong>Monthly Report</strong>, <strong>Yearly Report</strong> or 
+                <strong>Full Report</strong>
+            </td>
+        </tr>
+        <tr><td colspan="3"><strong>Optional</strong></td></tr>
+        <tr>
+            <td><code>start_date</code></td>
+            <td><code>String</code></td>
+            <td>Start data of format <code>YYYY-MM-DD</code></td>
+        </tr>
+        <tr>
+            <td><code>end_date</code></td>
+            <td><code>String</code></td>
+            <td>End data of format <code>YYYY-MM-DD</code></td>
+        </tr>
+        <tr>
+            <td><code>limit</code></td>
+            <td><code>Number</code></td>
+            <td>Full report limit</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Response</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>status</code></td>
+            <td><code>Number</code></td>
+            <td>Response status code</td>
+        </tr>
+        <tr>
+            <td><code>messages</code></td>
+            <td><code>Array</code></td>
+            <td>Response message array</td>
+        </tr>
+        <tr>
+            <td colspan="3"><code>data</code> array based on report <code>type</code></td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Request Example</h4>
+<pre class="language-json"><code>{
+    "app_id": "5789541587749547",
+    "type": "Full Report",
+    "start_date": "2021-01-09",
+    "end_date": "2021-03-11",
+    "limit": 2
+}</code></pre>
+<h4 class="pt-adaptive">Response Example</h4>
+<pre class="language-json"><code>{
+    "status": 200,
+    "messages": {
+        "success": "ดูข้อมูลสำเร็จ"
+    },
+    "data": [
+        {
+            "username": "SuperAdmin",
+            "firstname": "Super",
+            "lastname": "Admin",
+            "created_at": "2021-02-04 20:08:54"
+        },
+        {
+            "username": "Admin",
+            "firstname": "General",
+            "lastname": "Admin",
+            "created_at": "2021-02-04 20:08:54"
         }
     ]
 }</code></pre>

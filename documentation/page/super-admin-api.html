@@ -63,7 +63,7 @@
         </tr>
         <tr>
             <td><code>parent_id</code></td>
-            <td><code>Number</code> of <code>NULL</code></td>
+            <td><code>Number</code></td>
             <td>User type parent id</td>
         </tr>
         <tr>
@@ -77,6 +77,11 @@
             <td>1 for active and 0 for inactive</td>
         </tr>
         <tr><td colspan="3"><strong>Optional</strong></td></tr>
+        <tr>
+            <td><code>external_app_id</code></td>
+            <td><code>Number</code></td>
+            <td>External app id</td>
+        </tr>
         <tr>
             <td><code>ip</code></td>
             <td><code>String</code></td>
@@ -118,6 +123,7 @@
     "parent_id": null,
     "name": "New User Type",
     "status": 1,
+    "external_app_id": 1,
     "url": "http://techorigin.co.th/sadmin/user-type-create",
     "ip": "127.0.0.1"
 }</code></pre>
@@ -173,7 +179,7 @@
         </tr>
         <tr>
             <td><code>id</code></td>
-            <td><code>Number</code> of <code>NULL</code></td>
+            <td><code>Number</code></td>
             <td>User type id</td>
         </tr>
         <tr>
@@ -187,6 +193,11 @@
             <td>1 for active and 0 for inactive</td>
         </tr>
         <tr><td colspan="3"><strong>Optional</strong></td></tr>
+        <tr>
+            <td><code>external_app_id</code></td>
+            <td><code>Number</code></td>
+            <td>External app id</td>
+        </tr>
         <tr>
             <td><code>ip</code></td>
             <td><code>String</code></td>
@@ -228,6 +239,7 @@
     "id": 25,
     "name": "New User Type Update",
     "status": 0,
+    "external_app_id": 1,
     "url": "http://techorigin.co.th/admin/user-type-update",
     "ip": "127.0.0.1"
 }</code></pre>
@@ -283,10 +295,15 @@
         </tr>
         <tr>
             <td><code>id</code></td>
-            <td><code>Number</code> of <code>NULL</code></td>
+            <td><code>Number</code></td>
             <td>User type id</td>
         </tr>
         <tr><td colspan="3"><strong>Optional</strong></td></tr>
+        <tr>
+            <td><code>external_app_id</code></td>
+            <td><code>Number</code></td>
+            <td>External app id</td>
+        </tr>
         <tr>
             <td><code>ip</code></td>
             <td><code>String</code></td>
@@ -326,6 +343,7 @@
 <pre class="language-json"><code>{
     "app_id": "5789541587749547",
     "id": 25,
+    "external_app_id": 1,
     "url": "http://techorigin.co.th/admin/user-type-delete",
     "ip": "127.0.0.1"
 }</code></pre>
@@ -491,6 +509,11 @@
             <td>1 if active and 0 otherwise</td>
         </tr>
         <tr>
+            <td><code>external_app_id</code></td>
+            <td><code>Number</code></td>
+            <td>External app id</td>
+        </tr>
+        <tr>
             <td><code>ip</code></td>
             <td><code>String</code></td>
             <td>Visitor IP address for action log</td>
@@ -530,6 +553,7 @@
     "app_id": "5789541587749547",
     "name": "custom_ticket",
     "status": 1,
+    "external_app_id": 1,
     "url": "http://techorigin.co.th/admin/user-custom-column-create",
     "ip": "127.0.0.1"
 }</code></pre>
@@ -713,6 +737,11 @@
             <td>1 if active and 0 otherwise</td>
         </tr>
         <tr>
+            <td><code>external_app_id</code></td>
+            <td><code>Number</code></td>
+            <td>External app id</td>
+        </tr>
+        <tr>
             <td><code>ip</code></td>
             <td><code>String</code></td>
             <td>Visitor IP address for action log</td>
@@ -753,6 +782,7 @@
     "id": 1,
     "name": "custom_note",
     "status": 1,
+    "external_app_id": 1,
     "url": "http://techorigin.co.th/admin/user-custom-column-update",
     "ip": "127.0.0.1"
 }</code></pre>
@@ -997,6 +1027,11 @@
             <td>1 if active and 0 otherwise</td>
         </tr>
         <tr>
+            <td><code>external_app_id</code></td>
+            <td><code>Number</code></td>
+            <td>External app id</td>
+        </tr>
+        <tr>
             <td><code>ip</code></td>
             <td><code>String</code></td>
             <td>Visitor IP address for action log</td>
@@ -1040,6 +1075,7 @@
     "is_default": 0,
     "order": 3,
     "stats": 1,
+    "external_app_id": 1,
     "url": "http://techorigin.co.th/admin/user-role-create",
     "ip": "127.0.0.1"
 }</code></pre>
@@ -1266,6 +1302,11 @@
             <td>1 if active and 0 otherwise</td>
         </tr>
         <tr>
+            <td><code>external_app_id</code></td>
+            <td><code>Number</code></td>
+            <td>External app id</td>
+        </tr>
+        <tr>
             <td><code>ip</code></td>
             <td><code>String</code></td>
             <td>Visitor IP address for action log</td>
@@ -1310,6 +1351,7 @@
     "is_default": 3,
     "order": 8,
     "status": 1,
+    "external_app_id": 1,
     "url": "http://techorigin.co.th/admin/user-role-update",
     "ip": "127.0.0.1"
 }</code></pre>
@@ -1373,6 +1415,11 @@
         </tr>
         <tr><td colspan="3"><strong>Optional</strong></td></tr>
         <tr>
+            <td><code>external_app_id</code></td>
+            <td><code>Number</code></td>
+            <td>External app id</td>
+        </tr>
+        <tr>
             <td><code>ip</code></td>
             <td><code>String</code></td>
             <td>Visitor IP address for action log</td>
@@ -1411,6 +1458,7 @@
 <pre class="language-json"><code>{
     "app_id": "5789541587749547",
     "id": 6,
+    "external_app_id": 1,
     "url": "http://techorigin.co.th/admin/user-role-delete",
     "ip": "127.0.0.1"
 }</code></pre>
@@ -1485,6 +1533,11 @@
             <td>1 if active and 0 otherwise</td>
         </tr>
         <tr>
+            <td><code>external_app_id</code></td>
+            <td><code>Number</code></td>
+            <td>External app id</td>
+        </tr>
+        <tr>
             <td><code>ip</code></td>
             <td><code>String</code></td>
             <td>Visitor IP address for action log</td>
@@ -1526,6 +1579,7 @@
     "code": "New Module Code",
     "order": 5,
     "status": 0,
+    "external_app_id": 1,
     "url": "http://techorigin.co.th/admin/module-create",
     "ip": "127.0.0.1"
 }</code></pre>
@@ -1729,6 +1783,11 @@
             <td>1 if active and 0 otherwise</td>
         </tr>
         <tr>
+            <td><code>external_app_id</code></td>
+            <td><code>Number</code></td>
+            <td>External app id</td>
+        </tr>
+        <tr>
             <td><code>ip</code></td>
             <td><code>String</code></td>
             <td>Visitor IP address for action log</td>
@@ -1770,6 +1829,7 @@
     "name": "New Module Updated",
     "order": 1,
     "status": 1,
+    "external_app_id": 1,
     "url": "http://techorigin.co.th/admin/module-update",
     "ip": "127.0.0.1"
 }</code></pre>
@@ -1831,6 +1891,11 @@
         </tr>
         <tr><td colspan="3"><strong>Optional</strong></td></tr>
         <tr>
+            <td><code>external_app_id</code></td>
+            <td><code>Number</code></td>
+            <td>External app id</td>
+        </tr>
+        <tr>
             <td><code>ip</code></td>
             <td><code>String</code></td>
             <td>Visitor IP address for action log</td>
@@ -1869,6 +1934,7 @@
 <pre class="language-json"><code>{
     "app_id": "5789541587749547",
     "id": 3,
+    "external_app_id": 1,
     "url": "http://techorigin.co.th/admin/module-delete",
     "ip": "127.0.0.1"
 }</code></pre>
@@ -2202,9 +2268,30 @@
             <td>API internal user id</td>
         </tr>
         <tr>
+            <td><code>username</code></td>
+            <td><code>String</code></td>
+            <td>API internal username</td>
+        </tr>
+        <tr>
             <td><code>email</code></td>
             <td><code>String</code></td>
             <td>API internal user email</td>
+        </tr>
+        <tr>
+            <td><code>facebook_id</code></td>
+            <td><code>String</code></td>
+            <td>API internal user Facebook id</td>
+        </tr>
+        <tr>
+            <td><code>google_id</code></td>
+            <td><code>String</code></td>
+            <td>API internal user Google id</td>
+        </tr>
+        <tr>
+            <td><code>reset_password_salt</code></td>
+            <td><code>String</code></td>
+            <td>API user reset password <code>salt</code></td>
+        </tr>
     </tbody>
 </table>
 <h4 class="pt-adaptive">Request Example</h4>
@@ -2220,19 +2307,27 @@
     "data": [
         {
             "user_id": "1",
-            "email": "sarun.seepun@gmail.com"
+            "username": "SuperAdmin",
+            "email": "sarun.seepun@gmail.com",
+            "facebook_id": null,
+            "google_id": null,
+            "reset_password_salt": "sQ5QKVxJKo7PhlsCcda9MPGps2ARzpxxt2xIG8tLwvGRTmOOIe7mnrZHeOjVChwC"
         },
         {
             "user_id": "2",
-            "email": "sarun_sla@hotmail.com"
+            "username": "Admin",
+            "email": "sarun_sla@hotmail.com",
+            "facebook_id": null,
+            "google_id": null,
+            "reset_password_salt": "GNOao8pkykKHE1iyfh5Qjl3cpzwk4VwkN8GchCtlCru8cwoSoNHg98swasT8pD70"
         },
         {
             "user_id": "3",
-            "email": "a@a.com"
-        },
-        {
-            "user_id": "11",
-            "email": "new@user.com"
+            "username": "Member",
+            "email": "a@a.com",
+            "facebook_id": null,
+            "google_id": null,
+            "reset_password_salt": "oOMnj7KyWwf0bJr4NDwq8gZZkEyHRXaYO79uH85OistbJGlsU6a7pC9uBtRan3C5"
         }
     ]
 }</code></pre>

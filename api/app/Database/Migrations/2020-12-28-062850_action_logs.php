@@ -13,6 +13,12 @@ class ActionLogs extends Migration{
 				'unsigned' => true,
 				'auto_increment' => true
 			],
+			'external_app_id' => [
+				'type' => 'INT',
+				'constraint' => 5,
+				'unsigned' => true,
+				'null' => true,
+			],
 			'user_id' => [
 				'type' => 'INT',
 				'constraint' => 11,
@@ -42,6 +48,7 @@ class ActionLogs extends Migration{
 			'updated_at datetime default current_timestamp on update current_timestamp',
 		]);
 		$this->forge->addPrimaryKey('id');
+		$this->forge->addForeignKey('external_app_id', 'external_apps', 'id', 'NO ACTION', 'SET NULL');
 		$this->forge->addForeignKey('user_id', 'users', 'id', 'NO ACTION', 'CASCADE');
 		$this->forge->createTable('action_logs', true);
 		

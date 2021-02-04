@@ -8,6 +8,7 @@ use App\Models\UserModel;
 use App\Models\UserDetailModel;
 use App\Models\UserRoleModel;
 
+use App\Models\ExternalAppModel;
 use App\Models\ActionLogModel;
 use App\Models\TrafficLogModel;
 
@@ -132,7 +133,8 @@ class AdminController extends ResourceController{
             $this->userModel->insert($insertData);
             
             $actionLogModel = new ActionLogModel();
-            $actionLogModel->insert([
+            $actionLogModel->saveLog([
+                'external_app_id' => !empty($input['external_app_id'])? $input['external_app_id']: null,
                 'user_id' => $this->user['id'],
                 'target_user_id' => $this->userModel->getInsertID(),
                 'action' => 'Admin - User Create',
@@ -193,7 +195,8 @@ class AdminController extends ResourceController{
             $input = $this->userModel->cleanData($input);
 
             $actionLogModel = new ActionLogModel();
-            $actionLogModel->insert([
+            $actionLogModel->saveLog([
+                'external_app_id' => !empty($input['external_app_id'])? $input['external_app_id']: null,
                 'user_id' => $this->user['id'],
                 'target_user_id' => $user['id'],
                 'action' => 'Admin - User Update',
@@ -253,7 +256,8 @@ class AdminController extends ResourceController{
             $userDetailModel->updateCustomDetails($input['user_id'], $input);
 
             $actionLogModel = new ActionLogModel();
-            $actionLogModel->insert([
+            $actionLogModel->saveLog([
+                'external_app_id' => !empty($input['external_app_id'])? $input['external_app_id']: null,
                 'user_id' => $this->user['id'],
                 'target_user_id' => $user['id'],
                 'action' => 'Admin - User Update Detail',
@@ -289,7 +293,8 @@ class AdminController extends ResourceController{
             ]);
 
             $actionLogModel = new ActionLogModel();
-            $actionLogModel->insert([
+            $actionLogModel->saveLog([
+                'external_app_id' => !empty($input['external_app_id'])? $input['external_app_id']: null,
                 'user_id' => $this->user['id'],
                 'target_user_id' => $input['id'],
                 'action' => 'Admin - User Update Password',
@@ -325,13 +330,115 @@ class AdminController extends ResourceController{
             $this->userModel->delete($input['id']);
 
             $actionLogModel = new ActionLogModel();
-            $actionLogModel->insert([
+            $actionLogModel->saveLog([
+                'external_app_id' => !empty($input['external_app_id'])? $input['external_app_id']: null,
                 'user_id' => $this->user['id'],
                 'target_user_id' => $input['id'],
                 'action' => 'Admin - User Delete',
                 'url' => !empty($input['url'])? $input['url']: null,
                 'ip' => !empty($input['ip'])? $input['ip']: null,
             ]);
+
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'ลบข้อมูลสำเร็จ' ],
+                'data' => true,
+            ]);
+        }
+        return $this->failValidationError();
+    }
+
+
+    public function externalAppList(){
+        if($this->request->getMethod()=='get'){
+            $externalAppModel = new ExternalAppModel();
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
+                'data' => $externalAppModel->findAll(),
+            ]);
+        }
+        return $this->failValidationError();
+    }
+    public function externalAppCreate(){
+        if($this->request->getMethod()=='post'){
+            $input = stdClassToArray($this->request->getJSON());
+
+            $validation = \Config\Services::validation();
+            if(!$validation->run($input, 'adminExternalAppCreate')){
+                return $this->respond([
+                    'status' => 400,
+                    'messages' => $validation->getErrors()
+                ]);
+            }
+
+            $externalAppModel = new ExternalAppModel();
+            $externalAppModel->insert($input);
+
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'สร้างข้อมูลสำเร็จ' ],
+                'data' => $insertData,
+            ]);
+        }
+        return $this->failValidationError();
+    }
+    public function externalAppRead($id){
+        if($this->request->getMethod()=='get' && !empty($id)){
+            $externalAppModel = new ExternalAppModel();
+            $data = $externalAppModel->where(['id' => $id])->first();
+            if(!$data) return $this->failValidationError();
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
+                'data' => $data,
+            ]);
+        }
+        return $this->failValidationError();
+    }
+    public function externalAppUpdate(){
+        if($this->request->getMethod()=='post'){
+            $input = stdClassToArray($this->request->getJSON());
+            
+            $validation = \Config\Services::validation();
+            if(!$validation->run($input, 'adminExternalAppUpdate')){
+                return $this->respond([
+                    'status' => 400,
+                    'messages' => $validation->getErrors()
+                ]);
+            }
+
+            $externalAppModel = new ExternalAppModel();
+            $externalApp = $externalAppModel->where('id', $input['id'])->first();
+            if(!$externalApp) return $this->failValidationError();
+
+            $externalAppModel->update($input['id'], $input);
+
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'แก้ไขข้อมูลสำเร็จ' ],
+                'data' => $input,
+            ]);
+        }
+        return $this->failValidationError();
+    }
+    public function externalAppDelete(){
+        if($this->request->getMethod()=='post'){
+            $input = stdClassToArray($this->request->getJSON());
+            
+            $validation = \Config\Services::validation();
+            if(!$validation->run($input, 'adminExternalAppDelete')){
+                return $this->respond([
+                    'status' => 400,
+                    'messages' => $validation->getErrors()
+                ]);
+            }
+            
+            $externalAppModel = new ExternalAppModel();
+            $externalApp = $externalAppModel->where('id', $input['id'])->first();
+            if(!$externalApp) return $this->failValidationError();
+            
+            $externalAppModel->delete($input['id']);
 
             return $this->respond([
                 'status' => 200,
@@ -381,6 +488,26 @@ class AdminController extends ResourceController{
                 'status' => 200,
                 'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
                 'data' => $actionLogModel->getReport($input['type'], $input),
+            ]);
+        }
+        return $this->failValidationError();
+    }
+    public function userRegistrationReport(){
+        if($this->request->getMethod()=='get'){
+            $input = stdClassToArray($this->request->getJSON());
+            
+            $validation = \Config\Services::validation();
+            if(!$validation->run($input, 'adminNewRegistrationReport')){
+                return $this->respond([
+                    'status' => 400,
+                    'messages' => $validation->getErrors()
+                ]);
+            }
+
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
+                'data' => $this->userModel->getRegistrationReport($input['type'], $input),
             ]);
         }
         return $this->failValidationError();

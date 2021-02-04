@@ -125,6 +125,12 @@ class DataSeeder extends \CodeIgniter\Database\Seeder{
             'code' => 'cms',
             'order' => 0
         ]);
+
+
+        // External Apps
+        $this->db->table('external_apps')->insert([
+            'name' => 'Student Application',
+        ]);
         
     }
 }
