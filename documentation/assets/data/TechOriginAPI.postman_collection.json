@@ -18,7 +18,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"username\": \"SuperAdmin\",\r\n    \"password\": \"123456\",\r\n    \"ip\": \"127.0.0.1\",\r\n    \"url\": \"https://techorigin.co.th/users/signin\"\r\n}",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"username\": \"SuperAdmin\",\r\n    \"password\": \"123456\",\r\n    \"external_app_id\": 1,\r\n    \"ip\": \"127.0.0.1\",\r\n    \"url\": \"https://techorigin.co.th/users/signin\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -45,7 +45,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"firstname\": \"New\",\r\n    \"lastname\": \"User\",\r\n    \"email\": \"new@user.com\",\r\n    \"username\": \"NewUser\",\r\n    \"password\": \"123456\",\r\n    \"password_confirm\": \"123456\",\r\n    \"ip\": \"127.0.0.1\",\r\n    \"url\": \"https://techorigin.co.th/users/signup\"\r\n}",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"firstname\": \"New\",\r\n    \"lastname\": \"User\",\r\n    \"email\": \"new@user.com\",\r\n    \"username\": \"NewUser\",\r\n    \"password\": \"123456\",\r\n    \"password_confirm\": \"123456\",\r\n    \"external_app_id\": 1,\r\n    \"ip\": \"127.0.0.1\",\r\n    \"url\": \"https://techorigin.co.th/users/signup\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -72,7 +72,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"email\": \"new@user.com\",\r\n    \"ip\": \"127.0.0.1\",\r\n    \"url\": \"https://techorigin.co.th/users/forget-password\"\r\n}",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"email\": \"new@user.com\",\r\n    \"external_app_id\": 1,\r\n    \"ip\": \"127.0.0.1\",\r\n    \"url\": \"https://techorigin.co.th/users/forget-password\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -110,14 +110,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{API_URL}}api/auth/reset-password/UBrf97SgyfFf7cIQtTrVJS90Qg3H7iRMMGPTUtvwfNfRAPTswWjHyAtFxUEjQLEg",
+							"raw": "{{API_URL}}api/auth/reset-password/FXULVwegXh2jduGgrvfBDkMVwJ1gKUUnEBZ6ZJ9iar7QRjagQk8dzNpVCVKaCQYh",
 							"host": [
 								"{{API_URL}}api"
 							],
 							"path": [
 								"auth",
 								"reset-password",
-								"UBrf97SgyfFf7cIQtTrVJS90Qg3H7iRMMGPTUtvwfNfRAPTswWjHyAtFxUEjQLEg"
+								"FXULVwegXh2jduGgrvfBDkMVwJ1gKUUnEBZ6ZJ9iar7QRjagQk8dzNpVCVKaCQYh"
 							]
 						}
 					},
@@ -130,7 +130,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"salt\": \"UBrf97SgyfFf7cIQtTrVJS90Qg3H7iRMMGPTUtvwfNfRAPTswWjHyAtFxUEjQLEg\",\r\n    \"password_new\": \"123456\",\r\n    \"password_confirm\": \"123456\",\r\n    \"ip\": \"127.0.0.1\",\r\n    \"url\": \"https://techorigin.co.th/users/reset-password\"\r\n}",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"salt\": \"FXULVwegXh2jduGgrvfBDkMVwJ1gKUUnEBZ6ZJ9iar7QRjagQk8dzNpVCVKaCQYh\",\r\n    \"password_new\": \"123456\",\r\n    \"password_confirm\": \"123456\",\r\n    \"external_app_id\": 1,\r\n    \"ip\": \"127.0.0.1\",\r\n    \"url\": \"https://techorigin.co.th/users/reset-password\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -157,7 +157,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"ip\": \"127.0.0.1\",\r\n    \"url\": \"https://techorigin.co.th\"\r\n}",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"external_app_id\": 1,\r\n    \"ip\": \"127.0.0.1\",\r\n    \"url\": \"https://techorigin.co.th\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -187,7 +187,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"facebook_id\": \"3987357477942309\",\r\n    \"access_token\": \"EAAPstZArE49YBAJH1qMBKAqD7SsceLJUXMEQJEZAPEroor6N5VlrZCbZAGtdquinpZCmq49sWpRvf2V8xQQZBwsVmuuacFBPXBfihJhZCqmVLontDhE2C5eELdUpiQftQHILS1ZAuWKyTZBqlomlZAFQ4BC9AHmMaEjN6vI9h2ZCpbhpF4nDczQIZBMOMV9w9GLLl0Nm4CdDCAVwZCXXRKY7M3gxIZCeTDnDHiQigZD\",\r\n    \"firstname\": \"Sarun\",\r\n    \"lastname\": \"Seepun\",\r\n    \"email\": \"sarun_sla@hotmail.com\",\r\n    \"ip\": \"127.0.0.1\",\r\n    \"url\": \"https://techorigin.co.th/users/signin\"\r\n}",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"facebook_id\": \"3987357477942309\",\r\n    \"access_token\": \"EAAPstZArE49YBAJH1qMBKAqD7SsceLJUXMEQJEZAPEroor6N5VlrZCbZAGtdquinpZCmq49sWpRvf2V8xQQZBwsVmuuacFBPXBfihJhZCqmVLontDhE2C5eELdUpiQftQHILS1ZAuWKyTZBqlomlZAFQ4BC9AHmMaEjN6vI9h2ZCpbhpF4nDczQIZBMOMV9w9GLLl0Nm4CdDCAVwZCXXRKY7M3gxIZCeTDnDHiQigZD\",\r\n    \"firstname\": \"Sarun\",\r\n    \"lastname\": \"Seepun\",\r\n    \"email\": \"sarun_sla@hotmail.com\",\r\n    \"profile\": null,\r\n    \"external_app_id\": 1,\r\n    \"ip\": \"127.0.0.1\",\r\n    \"url\": \"https://techorigin.co.th/users/signin\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -217,7 +217,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"google_id\": \"107266038776229747286\",\r\n    \"id_token\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6IjI1MmZjYjk3ZGY1YjZiNGY2ZDFhODg1ZjFlNjNkYzRhOWNkMjMwYzUiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiNDEzNDY3Nzc3NDcyLXBnaWxjNGt0cmoyMGk0cHVxOGRucWJ2aW0zZzN1M2tvLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiNDEzNDY3Nzc3NDcyLXBnaWxjNGt0cmoyMGk0cHVxOGRucWJ2aW0zZzN1M2tvLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTA3MjY2MDM4Nzc2MjI5NzQ3Mjg2IiwiZW1haWwiOiJzYXJ1bi5zZWVwdW5AZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF0X2hhc2giOiJJZm1Pa0RoZTdVb3VhTWRGRVJ5aElRIiwibmFtZSI6IlNhcnVuIFNlZXB1biIsInBpY3R1cmUiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vLVhfWmItYkdFYzNzL0FBQUFBQUFBQUFJL0FBQUFBQUFBQUFBL0FNWnV1Y2tUMWp4MkZyc2VmdDBfbG1xaUdlRFZWbWZVNUEvczk2LWMvcGhvdG8uanBnIiwiZ2l2ZW5fbmFtZSI6IlNhcnVuIiwiZmFtaWx5X25hbWUiOiJTZWVwdW4iLCJsb2NhbGUiOiJlbiIsImlhdCI6MTYxMDM2OTcwNSwiZXhwIjoxNjEwMzczMzA1LCJqdGkiOiJkOTRmY2ZlNDgyOWNkNjE4NjBlNGJlNmVlZDk2MGQ2Y2Y4MDViNjNjIn0.NrAzo05LVC4PMtzjpSq60xwfrVZtpouVDNqMAmNh2xSNODVUxOAbn3IvYXM2EEq4GFCMaXCJtHRDMZbQ6UtjP6r3mSIS3iWUh-2X8ivGprilBJlpdOWu9XM9tmTj9WHiz6ujt2GX_C07f3cDbDIlNkP1ZlrxXc9QxU8Hyz6kxmiV_20-WHzzEC92u7kBTfBcVhihZEDvj32vk-vyfFL-7XJ572NRwIq0BaaGDfD2Rg6iNwwBH_411m_9NkEkxrZ8k0rDIRzrRhWWULjZ1Sv9pJXiR9EMKRHl43Hx-X8Yc1rCLc6zkT_r-bAqmmBWIsbFmbap9lzBt1iWvsCi9pOgaQ\",\r\n    \"firstname\": \"Sarun\",\r\n    \"lastname\": \"Seepun\",\r\n    \"email\": \"sarun.seepun@gmail.com\",\r\n    \"ip\": \"127.0.0.1\",\r\n    \"url\": \"https://techorigin.co.th/users/signin\"\r\n}",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"google_id\": \"107266038776229747286\",\r\n    \"id_token\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6IjI1MmZjYjk3ZGY1YjZiNGY2ZDFhODg1ZjFlNjNkYzRhOWNkMjMwYzUiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiNDEzNDY3Nzc3NDcyLXBnaWxjNGt0cmoyMGk0cHVxOGRucWJ2aW0zZzN1M2tvLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiNDEzNDY3Nzc3NDcyLXBnaWxjNGt0cmoyMGk0cHVxOGRucWJ2aW0zZzN1M2tvLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTA3MjY2MDM4Nzc2MjI5NzQ3Mjg2IiwiZW1haWwiOiJzYXJ1bi5zZWVwdW5AZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF0X2hhc2giOiJJZm1Pa0RoZTdVb3VhTWRGRVJ5aElRIiwibmFtZSI6IlNhcnVuIFNlZXB1biIsInBpY3R1cmUiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vLVhfWmItYkdFYzNzL0FBQUFBQUFBQUFJL0FBQUFBQUFBQUFBL0FNWnV1Y2tUMWp4MkZyc2VmdDBfbG1xaUdlRFZWbWZVNUEvczk2LWMvcGhvdG8uanBnIiwiZ2l2ZW5fbmFtZSI6IlNhcnVuIiwiZmFtaWx5X25hbWUiOiJTZWVwdW4iLCJsb2NhbGUiOiJlbiIsImlhdCI6MTYxMDM2OTcwNSwiZXhwIjoxNjEwMzczMzA1LCJqdGkiOiJkOTRmY2ZlNDgyOWNkNjE4NjBlNGJlNmVlZDk2MGQ2Y2Y4MDViNjNjIn0.NrAzo05LVC4PMtzjpSq60xwfrVZtpouVDNqMAmNh2xSNODVUxOAbn3IvYXM2EEq4GFCMaXCJtHRDMZbQ6UtjP6r3mSIS3iWUh-2X8ivGprilBJlpdOWu9XM9tmTj9WHiz6ujt2GX_C07f3cDbDIlNkP1ZlrxXc9QxU8Hyz6kxmiV_20-WHzzEC92u7kBTfBcVhihZEDvj32vk-vyfFL-7XJ572NRwIq0BaaGDfD2Rg6iNwwBH_411m_9NkEkxrZ8k0rDIRzrRhWWULjZ1Sv9pJXiR9EMKRHl43Hx-X8Yc1rCLc6zkT_r-bAqmmBWIsbFmbap9lzBt1iWvsCi9pOgaQ\",\r\n    \"firstname\": \"Sarun\",\r\n    \"lastname\": \"Seepun\",\r\n    \"email\": \"sarun.seepun@gmail.com\",\r\n    \"profile\": null,\r\n    \"external_app_id\": 1,\r\n    \"ip\": \"127.0.0.1\",\r\n    \"url\": \"https://techorigin.co.th/users/signin\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -253,7 +253,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJyb2xlX2lkIjoiMSIsInVzZXJuYW1lIjoiU3VwZXJBZG1pbiIsImVtYWlsIjoic2FydW4uc2VlcHVuQGdtYWlsLmNvbSIsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpblwvdGVjaG9yaWdpbl9hcGlcLyIsImF1ZCI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpblwvdGVjaG9yaWdpbl9hcGlcLyIsImlhdCI6MTYxMTk0NDUyMiwiZXhwIjoxNjE0NTM2NTIyfQ.D2cZSgvvpvEaY4LnTivzuIEIY1PfwJM9FBiFjE2HMy8",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJyb2xlX2lkIjoiMSIsInVzZXJuYW1lIjoiU3VwZXJBZG1pbiIsImVtYWlsIjoic2FydW4uc2VlcHVuQGdtYWlsLmNvbSIsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpblwvdGVjaG9yaWdpbl9hcGlcLyIsImF1ZCI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpblwvdGVjaG9yaWdpbl9hcGlcLyIsImlhdCI6MTYxMjQ0Nzk5MSwiZXhwIjoxNjE1MDM5OTkxfQ.iu-a3BTvVO2uvxFbo_kvuphutunrHlo-qVvM_8Xkq2E",
 									"type": "string"
 								}
 							]
@@ -371,7 +371,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJyb2xlX2lkIjoiMSIsInVzZXJuYW1lIjoiU3VwZXJBZG1pbiIsImVtYWlsIjoic2FydW4uc2VlcHVuQGdtYWlsLmNvbSIsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpblwvdGVjaG9yaWdpbl9hcGlcLyIsImF1ZCI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpblwvdGVjaG9yaWdpbl9hcGlcLyIsImlhdCI6MTYxMTk0NDUyMiwiZXhwIjoxNjE0NTM2NTIyfQ.D2cZSgvvpvEaY4LnTivzuIEIY1PfwJM9FBiFjE2HMy8",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJyb2xlX2lkIjoiMSIsInVzZXJuYW1lIjoiU3VwZXJBZG1pbiIsImVtYWlsIjoic2FydW4uc2VlcHVuQGdtYWlsLmNvbSIsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpblwvdGVjaG9yaWdpbl9hcGlcLyIsImF1ZCI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpblwvdGVjaG9yaWdpbl9hcGlcLyIsImlhdCI6MTYxMjQyMzkwNSwiZXhwIjoxNjE1MDE1OTA1fQ.Urmd4H0mf6v9E0jMj4lxEKJo-HnZzYwJvpU2Msm1YOs",
 									"type": "string"
 								}
 							]
@@ -380,7 +380,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"firstname\": \"Super\",\r\n    \"lastname\": \"Admin\",\r\n    \"email\": \"sarun.seepun@gmail.com\",\r\n    \"username\": \"SuperAdmin\",\r\n    \"profile\": null,\r\n    \"ip\": \"127.0.0.1\",\r\n    \"url\": \"https://techorigin.co.th/users/update\"\r\n}",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"firstname\": \"Super\",\r\n    \"lastname\": \"Admin\",\r\n    \"email\": \"sarun.seepun@gmail.com\",\r\n    \"username\": \"SuperAdmin\",\r\n    \"profile\": null,\r\n    \"external_app_id\": 1,\r\n    \"ip\": \"127.0.0.1\",\r\n    \"url\": \"https://techorigin.co.th/users/update\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -417,7 +417,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"user_type_id\": 23,\r\n    \"user_subtype_id\": 24,\r\n    \"address\": \"10784 Walnut Street\\nLos Alamitos, CA 90720\",\r\n    \"phone\": \"+66 (97) 305-2239\",\r\n    \"title\": \"Ph.D. Candidate\",\r\n    \"company\": \"Tech Origin Co., Ltd.\",\r\n    \"company_address\": \"10784 Walnut Street\\nLos Alamitos, CA 90720\",\r\n    \"company_phone\": \"+66 (97) 305-2239\",\r\n    \"custom_note\": \"User dynamic custom note\",\r\n    \"custom_ticket\": \"TK-00254\",\r\n    \"ip\": \"127.0.0.1\",\r\n    \"url\": \"https://techorigin.co.th/users/signin\"\r\n}",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"user_type_id\": 19,\r\n    \"user_subtype_id\": null,\r\n    \"display_name\": \"sseepun\",\r\n    \"birth_date\": \"1990-09-07\",\r\n    \"sex\": \"เพศชาย\",\r\n    \"prefix\": \"นาย\",\r\n    \"address\": \"10784 Walnut Street\\nLos Alamitos, CA 90720\",\r\n    \"phone\": \"+66 (97) 305-2239\",\r\n    \"title\": \"Ph.D. Candidate\",\r\n    \"company\": \"Tech Origin Co., Ltd.\",\r\n    \"company_address\": \"10784 Walnut Street\\nLos Alamitos, CA 90720\",\r\n    \"company_phone\": \"+66 (97) 305-2239\",\r\n    \"external_app_id\": 1,\r\n    \"ip\": \"127.0.0.1\",\r\n    \"url\": \"https://techorigin.co.th/users/update\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -445,7 +445,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJyb2xlX2lkIjoiMSIsInVzZXJuYW1lIjoiU3VwZXJBZG1pbiIsImVtYWlsIjoic2FydW4uc2VlcHVuQGdtYWlsLmNvbSIsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpbl93b3Jrc1wvdGVjaG9yaWdpbl9hcGlcLyIsImF1ZCI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpbl93b3Jrc1wvdGVjaG9yaWdpbl9hcGlcLyIsImlhdCI6MTYwOTEzOTAxMywiZXhwIjoxNjExNzMxMDEzfQ.7t0_xd7ZSD9ou1Id1tHkD2uFsFJc5xVuGi5k8ycWDlE",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJyb2xlX2lkIjoiMSIsInVzZXJuYW1lIjoiU3VwZXJBZG1pbiIsImVtYWlsIjoic2FydW4uc2VlcHVuQGdtYWlsLmNvbSIsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpbl93b3Jrc1wvdGVjaG9yaWdpbl9hcGlcLyIsImF1ZCI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpbl93b3Jrc1wvdGVjaG9yaWdpbl9hcGlcLyIsImlhdCI6MTYxMDU0NDI5NiwiZXhwIjoxNjEzMTM2Mjk2fQ.ZHsVnlnOPhTEJItilaeNTP-EmJXIe7p0QZTePqO1j5A",
 									"type": "string"
 								}
 							]
@@ -454,7 +454,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"password\": \"123456\",\r\n    \"new_password\": \"123456\",\r\n    \"new_password_confirm\": \"123456\",\r\n    \"ip\": \"127.0.0.1\",\r\n    \"url\": \"https://techorigin.co.th/users/reset-password\"\r\n}",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"password\": \"123456\",\r\n    \"new_password\": \"123456\",\r\n    \"new_password_confirm\": \"123456\",\r\n    \"external_app_id\": 1,\r\n    \"ip\": \"127.0.0.1\",\r\n    \"url\": \"https://techorigin.co.th/users/reset-password\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -613,7 +613,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJyb2xlX2lkIjoiMSIsInVzZXJuYW1lIjoiU3VwZXJBZG1pbiIsImVtYWlsIjoic2FydW4uc2VlcHVuQGdtYWlsLmNvbSIsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpbl93b3Jrc1wvdGVjaG9yaWdpbl9hcGlcLyIsImF1ZCI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpbl93b3Jrc1wvdGVjaG9yaWdpbl9hcGlcLyIsImlhdCI6MTYwODc4NTI5MywiZXhwIjoxNjExMzc3MjkzfQ.J4uldDs3ja4RWybkGRKsNYGv4HCqr6cDFUDEBZg8xLU",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJyb2xlX2lkIjoiMSIsInVzZXJuYW1lIjoiU3VwZXJBZG1pbiIsImVtYWlsIjoic2FydW4uc2VlcHVuQGdtYWlsLmNvbSIsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpblwvdGVjaG9yaWdpbl9hcGlcLyIsImF1ZCI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpblwvdGVjaG9yaWdpbl9hcGlcLyIsImlhdCI6MTYxMjQyMzkwNSwiZXhwIjoxNjE1MDE1OTA1fQ.Urmd4H0mf6v9E0jMj4lxEKJo-HnZzYwJvpU2Msm1YOs",
 									"type": "string"
 								}
 							]
@@ -622,7 +622,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"ip\": \"127.0.0.1\",\r\n    \"url\": \"https://techorigin.co.th/users/signout\"\r\n}",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"external_app_id\": 1,\r\n    \"ip\": \"127.0.0.1\",\r\n    \"url\": \"https://techorigin.co.th/users/signout\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -650,7 +650,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJyb2xlX2lkIjoiMSIsInVzZXJuYW1lIjoiU3VwZXJBZG1pbiIsImVtYWlsIjoic2FydW4uc2VlcHVuQGdtYWlsLmNvbSIsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpbl93b3Jrc1wvdGVjaG9yaWdpbl9hcGlcLyIsImF1ZCI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpbl93b3Jrc1wvdGVjaG9yaWdpbl9hcGlcLyIsImlhdCI6MTYwOTEzOTAxMywiZXhwIjoxNjExNzMxMDEzfQ.7t0_xd7ZSD9ou1Id1tHkD2uFsFJc5xVuGi5k8ycWDlE",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJyb2xlX2lkIjoiMSIsInVzZXJuYW1lIjoiU3VwZXJBZG1pbiIsImVtYWlsIjoic2FydW4uc2VlcHVuQGdtYWlsLmNvbSIsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpblwvdGVjaG9yaWdpbl9hcGlcLyIsImF1ZCI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpblwvdGVjaG9yaWdpbl9hcGlcLyIsImlhdCI6MTYxMjQyMzkwNSwiZXhwIjoxNjE1MDE1OTA1fQ.Urmd4H0mf6v9E0jMj4lxEKJo-HnZzYwJvpU2Msm1YOs",
 									"type": "string"
 								}
 							]
@@ -659,7 +659,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"ip\": \"127.0.0.1\",\r\n    \"url\": \"https://techorigin.co.th/users/traffic-create\"\r\n}",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"external_app_id\": 1,\r\n    \"ip\": \"127.0.0.1\",\r\n    \"url\": \"https://techorigin.co.th/users/traffic-create\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -823,7 +823,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJyb2xlX2lkIjoiMSIsInVzZXJuYW1lIjoiU3VwZXJBZG1pbiIsImVtYWlsIjoic2FydW4uc2VlcHVuQGdtYWlsLmNvbSIsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpbl93b3Jrc1wvdGVjaG9yaWdpbl9hcGlcLyIsImF1ZCI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpbl93b3Jrc1wvdGVjaG9yaWdpbl9hcGlcLyIsImlhdCI6MTYwOTEzOTAxMywiZXhwIjoxNjExNzMxMDEzfQ.7t0_xd7ZSD9ou1Id1tHkD2uFsFJc5xVuGi5k8ycWDlE",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJyb2xlX2lkIjoiMSIsInVzZXJuYW1lIjoiU3VwZXJBZG1pbiIsImVtYWlsIjoic2FydW4uc2VlcHVuQGdtYWlsLmNvbSIsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpblwvdGVjaG9yaWdpbl9hcGlcLyIsImF1ZCI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpblwvdGVjaG9yaWdpbl9hcGlcLyIsImlhdCI6MTYxMjQyMzkwNSwiZXhwIjoxNjE1MDE1OTA1fQ.Urmd4H0mf6v9E0jMj4lxEKJo-HnZzYwJvpU2Msm1YOs",
 									"type": "string"
 								}
 							]
@@ -832,7 +832,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"role_id\": 1,\r\n    \"firstname\": \"aaa\",\r\n    \"lastname\": \"aaa\",\r\n    \"email\": \"aaa@a.com\",\r\n    \"username\": \"aaaaa\",\r\n    \"password\": \"aaaaaa\",\r\n    \"password_confirm\": \"aaaaaa\",\r\n    \"ip\": \"127.0.0.1\",\r\n    \"url\": \"http://techorigin.co.th/admin/user-create\"\r\n}",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"role_id\": 1,\r\n    \"firstname\": \"aaa\",\r\n    \"lastname\": \"aaa\",\r\n    \"email\": \"aaa@a.com\",\r\n    \"username\": \"aaaaa\",\r\n    \"password\": \"aaaaaa\",\r\n    \"password_confirm\": \"aaaaaa\",\r\n    \"external_app_id\": 1,\r\n    \"ip\": \"127.0.0.1\",\r\n    \"url\": \"http://techorigin.co.th/admin/user-create\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -901,7 +901,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJyb2xlX2lkIjoiMSIsInVzZXJuYW1lIjoiU3VwZXJBZG1pbiIsImVtYWlsIjoic2FydW4uc2VlcHVuQGdtYWlsLmNvbSIsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpbl93b3Jrc1wvdGVjaG9yaWdpbl9hcGlcLyIsImF1ZCI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpbl93b3Jrc1wvdGVjaG9yaWdpbl9hcGlcLyIsImlhdCI6MTYwOTEzOTAxMywiZXhwIjoxNjExNzMxMDEzfQ.7t0_xd7ZSD9ou1Id1tHkD2uFsFJc5xVuGi5k8ycWDlE",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJyb2xlX2lkIjoiMSIsInVzZXJuYW1lIjoiU3VwZXJBZG1pbiIsImVtYWlsIjoic2FydW4uc2VlcHVuQGdtYWlsLmNvbSIsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpblwvdGVjaG9yaWdpbl9hcGlcLyIsImF1ZCI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpblwvdGVjaG9yaWdpbl9hcGlcLyIsImlhdCI6MTYxMTk0NDUyMiwiZXhwIjoxNjE0NTM2NTIyfQ.D2cZSgvvpvEaY4LnTivzuIEIY1PfwJM9FBiFjE2HMy8",
 									"type": "string"
 								}
 							]
@@ -910,7 +910,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"id\": 2,\r\n    \"role_id\": 2,\r\n    \"firstname\": \"General\",\r\n    \"lastname\": \"Admin\",\r\n    \"email\": \"sarun_sla@hotmail.com\",\r\n    \"username\": \"Admin\",\r\n    \"profile\": null,\r\n    \"thai_id\": null,\r\n    \"thai_id_path\": null,\r\n    \"code\": \"SS-2222\",\r\n    \"status\": 1,\r\n    \"ip\": \"127.0.0.1\",\r\n    \"url\": \"http://techorigin.co.th/admin/user-update\"\r\n}",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"id\": 2,\r\n    \"role_id\": 2,\r\n    \"firstname\": \"General\",\r\n    \"lastname\": \"Admin\",\r\n    \"email\": \"sarun_sla@hotmail.com\",\r\n    \"username\": \"Admin\",\r\n    \"profile\": null,\r\n    \"status\": 1,\r\n    \"external_app_id\": 1,\r\n    \"ip\": \"127.0.0.1\",\r\n    \"url\": \"http://techorigin.co.th/admin/user-update\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -947,7 +947,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"user_id\": 2,\r\n    \"user_type_id\": 1,\r\n    \"user_subtype_id\": 2,\r\n    \"address\": \"10784 Walnut Street\\nLos Alamitos, CA 90720\",\r\n    \"phone\": \"+66 (97) 305-2239\",\r\n    \"title\": \"Ph.D. Candidate\",\r\n    \"company\": \"Tech Origin Co., Ltd.\",\r\n    \"company_address\": \"10784 Walnut Street\\nLos Alamitos, CA 90720\",\r\n    \"company_phone\": \"+66 (97) 305-2239\",\r\n    \"custom_note\": \"User dynamic custom note\",\r\n    \"custom_ticket\": \"TK-00254\",\r\n    \"ip\": \"127.0.0.1\",\r\n    \"url\": \"http://techorigin.co.th/admin/user-update\"\r\n}",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"user_id\": 1,\r\n    \"user_type_id\": 19,\r\n    \"user_subtype_id\": null,\r\n    \"display_name\": \"sseepun\",\r\n    \"birth_date\": \"1990-09-07\",\r\n    \"sex\": \"เพศชาย\",\r\n    \"prefix\": \"นาย\",\r\n    \"address\": \"10784 Walnut Street\\nLos Alamitos, CA 90720\",\r\n    \"phone\": \"+66 (97) 305-2239\",\r\n    \"title\": \"Ph.D. Candidate\",\r\n    \"company\": \"Tech Origin Co., Ltd.\",\r\n    \"company_address\": \"10784 Walnut Street\\nLos Alamitos, CA 90720\",\r\n    \"company_phone\": \"+66 (97) 305-2239\",\r\n    \"external_app_id\": 1,\r\n    \"ip\": \"127.0.0.1\",\r\n    \"url\": \"https://techorigin.co.th/users/update\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -975,7 +975,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJyb2xlX2lkIjoiMSIsInVzZXJuYW1lIjoiU3VwZXJBZG1pbiIsImVtYWlsIjoic2FydW4uc2VlcHVuQGdtYWlsLmNvbSIsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpbl93b3Jrc1wvdGVjaG9yaWdpbl9hcGlcLyIsImF1ZCI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpbl93b3Jrc1wvdGVjaG9yaWdpbl9hcGlcLyIsImlhdCI6MTYwOTEzOTAxMywiZXhwIjoxNjExNzMxMDEzfQ.7t0_xd7ZSD9ou1Id1tHkD2uFsFJc5xVuGi5k8ycWDlE",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJyb2xlX2lkIjoiMSIsInVzZXJuYW1lIjoiU3VwZXJBZG1pbiIsImVtYWlsIjoic2FydW4uc2VlcHVuQGdtYWlsLmNvbSIsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpblwvdGVjaG9yaWdpbl9hcGlcLyIsImF1ZCI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpblwvdGVjaG9yaWdpbl9hcGlcLyIsImlhdCI6MTYxMTk0NDUyMiwiZXhwIjoxNjE0NTM2NTIyfQ.D2cZSgvvpvEaY4LnTivzuIEIY1PfwJM9FBiFjE2HMy8",
 									"type": "string"
 								}
 							]
@@ -984,7 +984,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"id\": 2,\r\n    \"new_password\": \"123456\",\r\n    \"new_password_confirm\": \"123456\",\r\n    \"ip\": \"127.0.0.1\",\r\n    \"url\": \"http://techorigin.co.th/admin/user-update\"\r\n}",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"id\": 2,\r\n    \"new_password\": \"123456\",\r\n    \"new_password_confirm\": \"123456\",\r\n    \"external_app_id\": 1,\r\n    \"ip\": \"127.0.0.1\",\r\n    \"url\": \"http://techorigin.co.th/admin/user-update\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1012,7 +1012,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJyb2xlX2lkIjoiMSIsInVzZXJuYW1lIjoiU3VwZXJBZG1pbiIsImVtYWlsIjoic2FydW4uc2VlcHVuQGdtYWlsLmNvbSIsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpbl93b3Jrc1wvdGVjaG9yaWdpbl9hcGlcLyIsImF1ZCI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpbl93b3Jrc1wvdGVjaG9yaWdpbl9hcGlcLyIsImlhdCI6MTYwOTEzOTAxMywiZXhwIjoxNjExNzMxMDEzfQ.7t0_xd7ZSD9ou1Id1tHkD2uFsFJc5xVuGi5k8ycWDlE",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJyb2xlX2lkIjoiMSIsInVzZXJuYW1lIjoiU3VwZXJBZG1pbiIsImVtYWlsIjoic2FydW4uc2VlcHVuQGdtYWlsLmNvbSIsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpblwvdGVjaG9yaWdpbl9hcGlcLyIsImF1ZCI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpblwvdGVjaG9yaWdpbl9hcGlcLyIsImlhdCI6MTYxMTk0NDUyMiwiZXhwIjoxNjE0NTM2NTIyfQ.D2cZSgvvpvEaY4LnTivzuIEIY1PfwJM9FBiFjE2HMy8",
 									"type": "string"
 								}
 							]
@@ -1021,7 +1021,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"id\": 8\r\n}",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"id\": 4,\r\n    \"external_app_id\": 1,\r\n    \"ip\": \"127.0.0.1\",\r\n    \"url\": \"http://techorigin.co.th/admin/user-delete\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1036,6 +1036,198 @@
 							"path": [
 								"admin",
 								"user-delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "External App List",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJyb2xlX2lkIjoiMSIsInVzZXJuYW1lIjoiU3VwZXJBZG1pbiIsImVtYWlsIjoic2FydW4uc2VlcHVuQGdtYWlsLmNvbSIsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpblwvdGVjaG9yaWdpbl9hcGlcLyIsImF1ZCI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpblwvdGVjaG9yaWdpbl9hcGlcLyIsImlhdCI6MTYxMjQ0NDY1OCwiZXhwIjoxNjE1MDM2NjU4fQ.WcGzN1v9T4nk_-Cy9OhkSQ1OkEqFHOgO0EFXtl5SsMQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}api/admin/external-app-list",
+							"host": [
+								"{{API_URL}}api"
+							],
+							"path": [
+								"admin",
+								"external-app-list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "External App Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJyb2xlX2lkIjoiMSIsInVzZXJuYW1lIjoiU3VwZXJBZG1pbiIsImVtYWlsIjoic2FydW4uc2VlcHVuQGdtYWlsLmNvbSIsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpblwvdGVjaG9yaWdpbl9hcGlcLyIsImF1ZCI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpblwvdGVjaG9yaWdpbl9hcGlcLyIsImlhdCI6MTYxMjQ0NDY1OCwiZXhwIjoxNjE1MDM2NjU4fQ.WcGzN1v9T4nk_-Cy9OhkSQ1OkEqFHOgO0EFXtl5SsMQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"name\": \"Student Application 2\",\r\n    \"description\": \"External app description\",\r\n    \"url\": null,\r\n    \"status\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}api/admin/external-app-create",
+							"host": [
+								"{{API_URL}}api"
+							],
+							"path": [
+								"admin",
+								"external-app-create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "External App Read",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJyb2xlX2lkIjoiMSIsInVzZXJuYW1lIjoiU3VwZXJBZG1pbiIsImVtYWlsIjoic2FydW4uc2VlcHVuQGdtYWlsLmNvbSIsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpblwvdGVjaG9yaWdpbl9hcGlcLyIsImF1ZCI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpblwvdGVjaG9yaWdpbl9hcGlcLyIsImlhdCI6MTYxMjQ0NDY1OCwiZXhwIjoxNjE1MDM2NjU4fQ.WcGzN1v9T4nk_-Cy9OhkSQ1OkEqFHOgO0EFXtl5SsMQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}api/admin/external-app-read/1",
+							"host": [
+								"{{API_URL}}api"
+							],
+							"path": [
+								"admin",
+								"external-app-read",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "External App Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJyb2xlX2lkIjoiMSIsInVzZXJuYW1lIjoiU3VwZXJBZG1pbiIsImVtYWlsIjoic2FydW4uc2VlcHVuQGdtYWlsLmNvbSIsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpblwvdGVjaG9yaWdpbl9hcGlcLyIsImF1ZCI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpblwvdGVjaG9yaWdpbl9hcGlcLyIsImlhdCI6MTYxMjQ0NDY1OCwiZXhwIjoxNjE1MDM2NjU4fQ.WcGzN1v9T4nk_-Cy9OhkSQ1OkEqFHOgO0EFXtl5SsMQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"id\": 1,\r\n    \"name\": \"Student Application\",\r\n    \"description\": \"External app description\",\r\n    \"url\": null,\r\n    \"status\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}api/admin/external-app-update",
+							"host": [
+								"{{API_URL}}api"
+							],
+							"path": [
+								"admin",
+								"external-app-update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "External App Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJyb2xlX2lkIjoiMSIsInVzZXJuYW1lIjoiU3VwZXJBZG1pbiIsImVtYWlsIjoic2FydW4uc2VlcHVuQGdtYWlsLmNvbSIsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpblwvdGVjaG9yaWdpbl9hcGlcLyIsImF1ZCI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpblwvdGVjaG9yaWdpbl9hcGlcLyIsImlhdCI6MTYxMjQ0NDY1OCwiZXhwIjoxNjE1MDM2NjU4fQ.WcGzN1v9T4nk_-Cy9OhkSQ1OkEqFHOgO0EFXtl5SsMQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"id\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}api/admin/external-app-delete",
+							"host": [
+								"{{API_URL}}api"
+							],
+							"path": [
+								"admin",
+								"external-app-delete"
 							]
 						}
 					},
@@ -1061,7 +1253,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"type\": \"Daily Report\",\r\n    \"start_date\": \"2021-01-09\",\r\n    \"end_date\": \"2021-01-11\",\r\n    \"only_users\": false,\r\n    \"only_visitors\": false\r\n}",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"type\": \"Full Report\",\r\n    \"start_date\": \"2021-01-09\",\r\n    \"end_date\": \"2021-03-11\",\r\n    \"only_users\": false,\r\n    \"only_visitors\": false,\r\n    \"limit\": 2\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1101,7 +1293,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"type\": \"Daily Report\",\r\n    \"start_date\": \"2021-01-10\",\r\n    \"end_date\": \"2021-01-12\"\r\n}",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"type\": \"Full Report\",\r\n    \"start_date\": \"2021-01-10\",\r\n    \"end_date\": \"2021-03-12\",\r\n    \"limit\": 2\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1120,6 +1312,46 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "User Registration Report",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJyb2xlX2lkIjoiMSIsInVzZXJuYW1lIjoiU3VwZXJBZG1pbiIsImVtYWlsIjoic2FydW4uc2VlcHVuQGdtYWlsLmNvbSIsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpbl93b3Jrc1wvdGVjaG9yaWdpbl9hcGlcLyIsImF1ZCI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpbl93b3Jrc1wvdGVjaG9yaWdpbl9hcGlcLyIsImlhdCI6MTYxMDM1Mzg2NiwiZXhwIjoxNjEyOTQ1ODY2fQ.eHjqTfa3eO8ZqYd8ZQC6hfxu27losPosMi6z3d-2Ik8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"type\": \"Full Report\",\r\n    \"start_date\": \"2021-01-09\",\r\n    \"end_date\": \"2021-03-11\",\r\n    \"limit\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}api/admin/user-registration-report",
+							"host": [
+								"{{API_URL}}api"
+							],
+							"path": [
+								"admin",
+								"user-registration-report"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -1134,7 +1366,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJyb2xlX2lkIjoiMSIsInVzZXJuYW1lIjoiU3VwZXJBZG1pbiIsImVtYWlsIjoic2FydW4uc2VlcHVuQGdtYWlsLmNvbSIsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpblwvdGVjaG9yaWdpbl9hcGlcLyIsImF1ZCI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpblwvdGVjaG9yaWdpbl9hcGlcLyIsImlhdCI6MTYxMTk0NDUyMiwiZXhwIjoxNjE0NTM2NTIyfQ.D2cZSgvvpvEaY4LnTivzuIEIY1PfwJM9FBiFjE2HMy8",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJyb2xlX2lkIjoiMSIsInVzZXJuYW1lIjoiU3VwZXJBZG1pbiIsImVtYWlsIjoic2FydW4uc2VlcHVuQGdtYWlsLmNvbSIsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpblwvdGVjaG9yaWdpbl9hcGlcLyIsImF1ZCI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpblwvdGVjaG9yaWdpbl9hcGlcLyIsImlhdCI6MTYxMjQ0NDY1OCwiZXhwIjoxNjE1MDM2NjU4fQ.WcGzN1v9T4nk_-Cy9OhkSQ1OkEqFHOgO0EFXtl5SsMQ",
 									"type": "string"
 								}
 							]
@@ -1143,7 +1375,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"parent_id\": null,\r\n    \"name\": \"New User Type\",\r\n    \"status\": 1,\r\n    \"url\": \"http://techorigin.co.th/sadmin/user-type-create\",\r\n    \"ip\": \"127.0.0.1\"\r\n}",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"parent_id\": null,\r\n    \"name\": \"New User Type\",\r\n    \"status\": 1,\r\n    \"external_app_id\": 1,\r\n    \"url\": \"http://techorigin.co.th/sadmin/user-type-create\",\r\n    \"ip\": \"127.0.0.1\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1180,7 +1412,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"id\": 25,\r\n    \"name\": \"New User Type Update\",\r\n    \"status\": 0,\r\n    \"url\": \"http://techorigin.co.th/admin/user-type-update\",\r\n    \"ip\": \"127.0.0.1\"\r\n}",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"id\": 25,\r\n    \"name\": \"New User Type Update\",\r\n    \"status\": 0,\r\n    \"external_app_id\": 1,\r\n    \"url\": \"http://techorigin.co.th/admin/user-type-update\",\r\n    \"ip\": \"127.0.0.1\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1217,7 +1449,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"id\": 25,\r\n    \"url\": \"http://techorigin.co.th/admin/user-type-delete\",\r\n    \"ip\": \"127.0.0.1\"\r\n}",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"id\": 25,\r\n    \"external_app_id\": 1,\r\n    \"url\": \"http://techorigin.co.th/admin/user-type-delete\",\r\n    \"ip\": \"127.0.0.1\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1294,7 +1526,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"name\": \"New Admin\",\r\n    \"is_admin\": 1,\r\n    \"is_super_admin\": 1,\r\n    \"is_default\": 0,\r\n    \"order\": 3,\r\n    \"stats\": 1,\r\n    \"url\": \"http://techorigin.co.th/admin/user-role-create\",\r\n    \"ip\": \"127.0.0.1\"\r\n}",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"name\": \"New Admin\",\r\n    \"is_admin\": 1,\r\n    \"is_super_admin\": 1,\r\n    \"is_default\": 0,\r\n    \"order\": 3,\r\n    \"stats\": 1,\r\n    \"external_app_id\": 1,\r\n    \"url\": \"http://techorigin.co.th/admin/user-role-create\",\r\n    \"ip\": \"127.0.0.1\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1372,7 +1604,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"id\": 6,\r\n    \"name\": \"User role updated\",\r\n    \"is_admin\": 0,\r\n    \"is_super_admin\": 0,\r\n    \"is_default\": 3,\r\n    \"order\": 8,\r\n    \"status\": 1,\r\n    \"url\": \"http://techorigin.co.th/admin/user-role-update\",\r\n    \"ip\": \"127.0.0.1\"\r\n}",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"id\": 6,\r\n    \"name\": \"User role updated\",\r\n    \"is_admin\": 0,\r\n    \"is_super_admin\": 0,\r\n    \"is_default\": 3,\r\n    \"order\": 8,\r\n    \"status\": 1,\r\n    \"external_app_id\": 1,\r\n    \"url\": \"http://techorigin.co.th/admin/user-role-update\",\r\n    \"ip\": \"127.0.0.1\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1409,7 +1641,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"id\": 6,\r\n    \"url\": \"http://techorigin.co.th/admin/user-role-delete\",\r\n    \"ip\": \"127.0.0.1\"\r\n}",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"id\": 6,\r\n    \"external_app_id\": 1,\r\n    \"url\": \"http://techorigin.co.th/admin/user-role-delete\",\r\n    \"ip\": \"127.0.0.1\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1486,7 +1718,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"name\": \"custom_ticket\",\r\n    \"status\": 1,\r\n    \"url\": \"http://techorigin.co.th/admin/user-custom-column-create\",\r\n    \"ip\": \"127.0.0.1\"\r\n}",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"name\": \"custom_ticket\",\r\n    \"status\": 1,\r\n    \"external_app_id\": 1,\r\n    \"url\": \"http://techorigin.co.th/admin/user-custom-column-create\",\r\n    \"ip\": \"127.0.0.1\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1564,7 +1796,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"id\": 1,\r\n    \"name\": \"custom_note\",\r\n    \"status\": 1,\r\n    \"url\": \"http://techorigin.co.th/admin/user-custom-column-update\",\r\n    \"ip\": \"127.0.0.1\"\r\n}",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"id\": 1,\r\n    \"name\": \"custom_note\",\r\n    \"status\": 1,\r\n    \"external_app_id\": 1,\r\n    \"url\": \"http://techorigin.co.th/admin/user-custom-column-update\",\r\n    \"ip\": \"127.0.0.1\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1601,7 +1833,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"name\": \"New Module\",\r\n    \"code\": \"New Module Code\",\r\n    \"order\": 5,\r\n    \"status\": 0,\r\n    \"url\": \"http://techorigin.co.th/admin/module-create\",\r\n    \"ip\": \"127.0.0.1\"\r\n}",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"name\": \"New Module\",\r\n    \"code\": \"New Module Code\",\r\n    \"order\": 5,\r\n    \"status\": 0,\r\n    \"external_app_id\": 1,\r\n    \"url\": \"http://techorigin.co.th/admin/module-create\",\r\n    \"ip\": \"127.0.0.1\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1679,7 +1911,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"id\": 3,\r\n    \"name\": \"New Module Updated\",\r\n    \"order\": 1,\r\n    \"status\": 1,\r\n    \"url\": \"http://techorigin.co.th/admin/module-update\",\r\n    \"ip\": \"127.0.0.1\"\r\n}",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"id\": 3,\r\n    \"name\": \"New Module Updated\",\r\n    \"order\": 1,\r\n    \"status\": 1,\r\n    \"external_app_id\": 1,\r\n    \"url\": \"http://techorigin.co.th/admin/module-update\",\r\n    \"ip\": \"127.0.0.1\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1716,7 +1948,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"id\": 3,\r\n    \"url\": \"http://techorigin.co.th/admin/module-delete\",\r\n    \"ip\": \"127.0.0.1\"\r\n}",
+							"raw": "{\r\n    \"app_id\": \"5789541587749547\",\r\n    \"id\": 3,\r\n    \"external_app_id\": 1,\r\n    \"url\": \"http://techorigin.co.th/admin/module-delete\",\r\n    \"ip\": \"127.0.0.1\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

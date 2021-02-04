@@ -85,6 +85,9 @@ var menu = [
         ]
     },
     {
+        name: 'API integration'
+    },
+    {
         name: 'Postman API Collection',
         href: 'assets/data/TechOriginAPI.postman_collection.json',
         target: '_blank',
