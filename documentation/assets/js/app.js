@@ -101,7 +101,7 @@ var menu = [
     },
     {
         name: 'Manual SQL Integration Script',
-        href: 'assets/data/TechOriginAPI-initial-SQL.sql',
+        href: 'assets/data/TechOriginAPI-initial.sql.zip',
         target: '_blank',
         attr: 'download'
     },
