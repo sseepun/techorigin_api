@@ -88,6 +88,12 @@ var menu = [
         name: 'API integration'
     },
     {
+        name: 'API Database Schema',
+        href: 'assets/data/TechOriginAPI-schema.pdf',
+        target: '_blank',
+        attr: ''
+    },
+    {
         name: 'Postman API Collection',
         href: 'assets/data/TechOriginAPI.postman_collection.json',
         target: '_blank',
@@ -95,7 +101,7 @@ var menu = [
     },
     {
         name: 'Manual SQL Integration Script',
-        href: 'assets/data/TechOriginAPI-initial-SQL.sql',
+        href: 'assets/data/TechOriginAPI-initial.sql.zip',
         target: '_blank',
         attr: 'download'
     },
