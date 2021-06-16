@@ -36,85 +36,85 @@ $routes->setAutoRoute(true);
  */
 
 // Auth Controller
-$routes->post( 'auth/signin', 'AuthController::signin');
-$routes->post( 'auth/signup', 'AuthController::signup');
-$routes->post( 'auth/forget-password', 'AuthController::forgetPassword');
-$routes->get(  'auth/reset-password/(:segment)', 'AuthController::resetPasswordExists/$1');
-$routes->post( 'auth/reset-password', 'AuthController::resetPassword');
-$routes->post( 'auth/traffic-create', 'AuthController::trafficCreate');
+$routes->post( 'api/auth/signin', 'AuthController::signin');
+$routes->post( 'api/auth/signup', 'AuthController::signup');
+$routes->post( 'api/auth/forget-password', 'AuthController::forgetPassword');
+$routes->get(  'api/auth/reset-password/(:segment)', 'AuthController::resetPasswordExists/$1');
+$routes->post( 'api/auth/reset-password', 'AuthController::resetPassword');
+$routes->post( 'api/auth/traffic-create', 'AuthController::trafficCreate');
 
-$routes->post( 'auth/signin-with-facebook', 'AuthController::signinWithFacebook');
-$routes->post( 'auth/signin-with-google', 'AuthController::signinWithGoogle');
+$routes->post( 'api/auth/signin-with-facebook', 'AuthController::signinWithFacebook');
+$routes->post( 'api/auth/signin-with-google', 'AuthController::signinWithGoogle');
 
 
 // User Controller
-$routes->get(  'user/user-type-list', 'UserController::userTypeList', ['filter' => 'authUser']);
-$routes->get(  'user/user-type-read/(:num)', 'UserController::userTypeRead/$1', ['filter' => 'authUser']);
+$routes->get(  'api/user/user-type-list', 'UserController::userTypeList', ['filter' => 'authUser']);
+$routes->get(  'api/user/user-type-read/(:num)', 'UserController::userTypeRead/$1', ['filter' => 'authUser']);
 
-$routes->get(  'user/read', 'UserController::selfRead', ['filter' => 'authUser']);
-$routes->post( 'user/update', 'UserController::selfUpdate', ['filter' => 'authUser']);
-$routes->post( 'user/update-detail', 'UserController::selfUpdateDetail', ['filter' => 'authUser']);
-$routes->post( 'user/update-password', 'UserController::selfUpdatePassword', ['filter' => 'authUser']);
+$routes->get(  'api/user/read', 'UserController::selfRead', ['filter' => 'authUser']);
+$routes->post( 'api/user/update', 'UserController::selfUpdate', ['filter' => 'authUser']);
+$routes->post( 'api/user/update-detail', 'UserController::selfUpdateDetail', ['filter' => 'authUser']);
+$routes->post( 'api/user/update-password', 'UserController::selfUpdatePassword', ['filter' => 'authUser']);
 
-$routes->get(  'user/user-list', 'UserController::userList', ['filter' => 'authUser']);
-$routes->get(  'user/user-read/(:num)', 'UserController::userRead/$1', ['filter' => 'authUser']);
+$routes->get(  'api/user/user-list', 'UserController::userList', ['filter' => 'authUser']);
+$routes->get(  'api/user/user-read/(:num)', 'UserController::userRead/$1', ['filter' => 'authUser']);
 
-$routes->get(  'user/module-permissions', 'UserController::selfModulePermissions', ['filter' => 'authUser']);
+$routes->get(  'api/user/module-permissions', 'UserController::selfModulePermissions', ['filter' => 'authUser']);
 
-$routes->post( 'user/signout', 'UserController::signout', ['filter' => 'authUser']);
+$routes->post( 'api/user/signout', 'UserController::signout', ['filter' => 'authUser']);
 
-$routes->post( 'user/traffic-create', 'UserController::trafficCreate', ['filter' => 'authUser']);
+$routes->post( 'api/user/traffic-create', 'UserController::trafficCreate', ['filter' => 'authUser']);
 
 
 // Admin Controller
-$routes->get(  'admin/user-type-list', 'AdminController::userTypeList', ['filter' => 'authUser']);
-$routes->get(  'admin/user-type-read/(:num)', 'AdminController::userTypeRead/$1', ['filter' => 'authUser']);
+$routes->get(  'api/admin/user-type-list', 'AdminController::userTypeList', ['filter' => 'authUser']);
+$routes->get(  'api/admin/user-type-read/(:num)', 'AdminController::userTypeRead/$1', ['filter' => 'authUser']);
 
-$routes->get(  'admin/user-list', 'AdminController::userList', ['filter' => 'authUser']);
+$routes->get(  'api/admin/user-list', 'AdminController::userList', ['filter' => 'authUser']);
 
-$routes->post( 'admin/user-create', 'AdminController::userCreate', ['filter' => 'authUser']);
-$routes->get(  'admin/user-read/(:num)', 'AdminController::userRead/$1', ['filter' => 'authUser']);
-$routes->post( 'admin/user-update', 'AdminController::userUpdate', ['filter' => 'authUser']);
-$routes->post( 'admin/user-update-detail', 'AdminController::userUpdateDetail', ['filter' => 'authUser']);
-$routes->post( 'admin/user-update-password', 'AdminController::userUpdatePassword', ['filter' => 'authUser']);
-$routes->post( 'admin/user-delete', 'AdminController::userDelete', ['filter' => 'authUser']);
+$routes->post( 'api/admin/user-create', 'AdminController::userCreate', ['filter' => 'authUser']);
+$routes->get(  'api/admin/user-read/(:num)', 'AdminController::userRead/$1', ['filter' => 'authUser']);
+$routes->post( 'api/admin/user-update', 'AdminController::userUpdate', ['filter' => 'authUser']);
+$routes->post( 'api/admin/user-update-detail', 'AdminController::userUpdateDetail', ['filter' => 'authUser']);
+$routes->post( 'api/admin/user-update-password', 'AdminController::userUpdatePassword', ['filter' => 'authUser']);
+$routes->post( 'api/admin/user-delete', 'AdminController::userDelete', ['filter' => 'authUser']);
 
-$routes->get(  'admin/external-app-list', 'AdminController::externalAppList', ['filter' => 'authUser']);
-$routes->post( 'admin/external-app-create', 'AdminController::externalAppCreate', ['filter' => 'authUser']);
-$routes->get(  'admin/external-app-read/(:num)', 'AdminController::externalAppRead/$1', ['filter' => 'authUser']);
-$routes->post( 'admin/external-app-update', 'AdminController::externalAppUpdate', ['filter' => 'authUser']);
-$routes->post( 'admin/external-app-delete', 'AdminController::externalAppDelete', ['filter' => 'authUser']);
+$routes->get(  'api/admin/external-app-list', 'AdminController::externalAppList', ['filter' => 'authUser']);
+$routes->post( 'api/admin/external-app-create', 'AdminController::externalAppCreate', ['filter' => 'authUser']);
+$routes->get(  'api/admin/external-app-read/(:num)', 'AdminController::externalAppRead/$1', ['filter' => 'authUser']);
+$routes->post( 'api/admin/external-app-update', 'AdminController::externalAppUpdate', ['filter' => 'authUser']);
+$routes->post( 'api/admin/external-app-delete', 'AdminController::externalAppDelete', ['filter' => 'authUser']);
 
-$routes->get(  'admin/traffic-report', 'AdminController::trafficReport', ['filter' => 'authUser']);
-$routes->get(  'admin/action-report', 'AdminController::actionReport', ['filter' => 'authUser']);
-$routes->get(  'admin/user-registration-report', 'AdminController::userRegistrationReport', ['filter' => 'authUser']);
+$routes->get(  'api/admin/traffic-report', 'AdminController::trafficReport', ['filter' => 'authUser']);
+$routes->get(  'api/admin/action-report', 'AdminController::actionReport', ['filter' => 'authUser']);
+$routes->get(  'api/admin/user-registration-report', 'AdminController::userRegistrationReport', ['filter' => 'authUser']);
 
 
 // Super Admin Controller
-$routes->post( 'sadmin/user-type-create', 'SuperAdminController::userTypeCreate', ['filter' => 'authUser']);
-$routes->post( 'sadmin/user-type-update', 'SuperAdminController::userTypeUpdate', ['filter' => 'authUser']);
-$routes->post( 'sadmin/user-type-delete', 'SuperAdminController::userTypeDelete', ['filter' => 'authUser']);
+$routes->post( 'api/sadmin/user-type-create', 'SuperAdminController::userTypeCreate', ['filter' => 'authUser']);
+$routes->post( 'api/sadmin/user-type-update', 'SuperAdminController::userTypeUpdate', ['filter' => 'authUser']);
+$routes->post( 'api/sadmin/user-type-delete', 'SuperAdminController::userTypeDelete', ['filter' => 'authUser']);
 
-$routes->get(  'sadmin/user-role-list', 'SuperAdminController::userRoleList', ['filter' => 'authUser']);
-$routes->post( 'sadmin/user-role-create', 'SuperAdminController::userRoleCreate', ['filter' => 'authUser']);
-$routes->get(  'sadmin/user-role-read/(:num)', 'SuperAdminController::userRoleRead/$1', ['filter' => 'authUser']);
-$routes->post( 'sadmin/user-role-update', 'SuperAdminController::userRoleUpdate', ['filter' => 'authUser']);
-$routes->post( 'sadmin/user-role-delete', 'SuperAdminController::userRoleDelete', ['filter' => 'authUser']);
+$routes->get(  'api/sadmin/user-role-list', 'SuperAdminController::userRoleList', ['filter' => 'authUser']);
+$routes->post( 'api/sadmin/user-role-create', 'SuperAdminController::userRoleCreate', ['filter' => 'authUser']);
+$routes->get(  'api/sadmin/user-role-read/(:num)', 'SuperAdminController::userRoleRead/$1', ['filter' => 'authUser']);
+$routes->post( 'api/sadmin/user-role-update', 'SuperAdminController::userRoleUpdate', ['filter' => 'authUser']);
+$routes->post( 'api/sadmin/user-role-delete', 'SuperAdminController::userRoleDelete', ['filter' => 'authUser']);
 
-$routes->get(  'sadmin/user-custom-column-list', 'SuperAdminController::userCustomColumnList', ['filter' => 'authUser']);
-$routes->post( 'sadmin/user-custom-column-create', 'SuperAdminController::userCustomColumnCreate', ['filter' => 'authUser']);
-$routes->get(  'sadmin/user-custom-column-read/(:num)', 'SuperAdminController::userCustomColumnRead/$1', ['filter' => 'authUser']);
-$routes->post( 'sadmin/user-custom-column-update', 'SuperAdminController::userCustomColumnUpdate', ['filter' => 'authUser']);
+$routes->get(  'api/sadmin/user-custom-column-list', 'SuperAdminController::userCustomColumnList', ['filter' => 'authUser']);
+$routes->post( 'api/sadmin/user-custom-column-create', 'SuperAdminController::userCustomColumnCreate', ['filter' => 'authUser']);
+$routes->get(  'api/sadmin/user-custom-column-read/(:num)', 'SuperAdminController::userCustomColumnRead/$1', ['filter' => 'authUser']);
+$routes->post( 'api/sadmin/user-custom-column-update', 'SuperAdminController::userCustomColumnUpdate', ['filter' => 'authUser']);
 
-$routes->post( 'sadmin/module-create', 'SuperAdminController::moduleCreate', ['filter' => 'authUser']);
-$routes->get(  'sadmin/module-read/(:num)', 'SuperAdminController::moduleRead/$1', ['filter' => 'authUser']);
-$routes->post( 'sadmin/module-update', 'SuperAdminController::moduleUpdate', ['filter' => 'authUser']);
-$routes->post( 'sadmin/module-delete', 'SuperAdminController::moduleDelete', ['filter' => 'authUser']);
+$routes->post( 'api/sadmin/module-create', 'SuperAdminController::moduleCreate', ['filter' => 'authUser']);
+$routes->get(  'api/sadmin/module-read/(:num)', 'SuperAdminController::moduleRead/$1', ['filter' => 'authUser']);
+$routes->post( 'api/sadmin/module-update', 'SuperAdminController::moduleUpdate', ['filter' => 'authUser']);
+$routes->post( 'api/sadmin/module-delete', 'SuperAdminController::moduleDelete', ['filter' => 'authUser']);
 
-$routes->get(  'sadmin/role-permissions-read/(:num)', 'SuperAdminController::rolePermissionsRead/$1', ['filter' => 'authUser']);
-$routes->post( 'sadmin/role-permissions-update', 'SuperAdminController::rolePermissionsUpdate', ['filter' => 'authUser']);
+$routes->get(  'api/sadmin/role-permissions-read/(:num)', 'SuperAdminController::rolePermissionsRead/$1', ['filter' => 'authUser']);
+$routes->post( 'api/sadmin/role-permissions-update', 'SuperAdminController::rolePermissionsUpdate', ['filter' => 'authUser']);
 
-$routes->get(  'sadmin/user-integration-ids', 'SuperAdminController::userIntegrationIDs', ['filter' => 'authUser']);
+$routes->get(  'api/sadmin/user-integration-ids', 'SuperAdminController::userIntegrationIDs', ['filter' => 'authUser']);
 
 /**
  * --------------------------------------------------------------------
