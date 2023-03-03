@@ -1000,6 +1000,126 @@
 }</code></pre>
 
 
+<!-- Sign In with Line Account -->
+<h2 id="sign-in-with-line-account">
+    <a href="#sign-in-with-line-account" aria-hidden="true" class="header-anchor">#</a>
+    Sign In with Line Account
+</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Method</th>
+            <th>Endpoint</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>POST</code></td>
+            <td><code>API_URL</code>api/auth/signin-with-liff</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Body Variables</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>app_id</code></td>
+            <td><code>String</code></td>
+            <td>App id</td>
+        </tr>
+        <tr>
+            <td><code>liff_id</code></td>
+            <td><code>String</code></td>
+            <td>From LIFF sign in API <code>userId</code></td>
+        </tr>
+        <tr>
+            <td><code>firstname</code></td>
+            <td><code>String</code></td>
+            <td>From LIFF sign in API <code>displayName</code> first name</td>
+        </tr>
+        <tr>
+            <td><code>lastname</code></td>
+            <td><code>String</code></td>
+            <td>From LIFF sign in API <code>displayName</code> last name</td>
+        </tr>
+        <tr><td colspan="3"><strong>Optional</strong></td></tr>
+        <tr>
+            <td><code>profile</code></td>
+            <td><code>String</code></td>
+            <td>User profile URL path</td>
+        </tr>
+        <tr>
+            <td><code>external_app_id</code></td>
+            <td><code>Number</code></td>
+            <td>External app id for action log</td>
+        </tr>
+        <tr>
+            <td><code>ip</code></td>
+            <td><code>String</code></td>
+            <td>Visitor IP address for action log</td>
+        </tr>
+        <tr>
+            <td><code>url</code></td>
+            <td><code>String</code></td>
+            <td>Visited url for action log</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Response</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>status</code></td>
+            <td><code>Number</code></td>
+            <td>Response status code</td>
+        </tr>
+        <tr>
+            <td><code>messages</code></td>
+            <td><code>Array</code></td>
+            <td>Response message array</td>
+        </tr>
+        <tr>
+            <td><code>jwt</code></td>
+            <td><code>String</code></td>
+            <td>JSON Web Token used for authorization</td>
+        </tr>
+    </tbody>
+</table>
+<h4 class="pt-adaptive">Request Example</h4>
+<pre class="language-json"><code>{
+    "app_id": "5789541587749547",
+    "liff_id": "107266038776229747286",
+    "firstname": "Sarun",
+    "lastname": "Seepun",
+    "profile": null,
+    "external_app_id": 1,
+    "ip": "127.0.0.1",
+    "url": "https://techorigin.co.th/users/signin"
+}</code></pre>
+<h4 class="pt-adaptive">Response Example</h4>
+<pre class="language-json"><code>{
+    "status": 200,
+    "messages": {
+        "success": "คุณได้เข้าสู่ระบบด้วย LIFF Account สำเร็จแล้ว"
+    },
+    "jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjIiLCJyb2xlX2lkIjoiMiIsInVzZXJuYW1lIjoiQWRtaW4iLCJlbWFpbCI6InNhcnVuX3NsYUBob3RtYWlsLmNvbSIsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpbl93b3Jrc1wvdGVjaG9yaWdpbl9hcGlcLyIsImF1ZCI6Imh0dHA6XC9cL2xvY2FsaG9zdFwvdGVjaG9yaWdpbl93b3Jrc1wvdGVjaG9yaWdpbl9hcGlcLyIsImlhdCI6MTYxMDI5ODE4MSwiZXhwIjoxNjEyODkwMTgxfQ.6Bq52F0D7fpHB87LovS8w6-st7nWgwezExQI5Y_kJQs"
+}</code></pre>
+
+
         </div>
 
         <div class="page-edit"></div>

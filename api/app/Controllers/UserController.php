@@ -7,6 +7,7 @@ use App\Models\UserTypeModel;
 use App\Models\UserModel;
 use App\Models\UserDetailModel;
 use App\Models\UserRoleModel;
+use App\Models\UserCustomColumnModel;
 
 use App\Models\ModuleModel;
 
@@ -27,8 +28,10 @@ class UserController extends ResourceController{
         $request = \Config\Services::request();
         
         $input = stdClassToArray($request->getJSON());
-        if(empty($input['app_id']) || $input['app_id']!=getenv('app.id')){
-            echo '404'; exit;
+        if($request->getMethod()!='get'){
+            if(empty($input['app_id']) || $input['app_id']!=getenv('app.id')){
+                echo '404'; exit;
+            }
         }
         
         $this->decoded = stdClassToArray(jwtDecodeToken(
@@ -225,6 +228,31 @@ class UserController extends ResourceController{
         }
         return $this->failValidationError();
     }
+    
+    public function selfRequestToDelete(){
+        if($this->request->getMethod()=='post'){
+            $input = stdClassToArray($this->request->getJSON());
+            $this->userModel->update($this->decoded['id'], [
+                'status' => -1
+            ]);
+            
+            $actionLogModel = new ActionLogModel();
+            $actionLogModel->saveLog([
+                'external_app_id' => !empty($input['external_app_id'])? $input['external_app_id']: null,
+                'user_id' => $this->decoded['id'],
+                'action' => 'User Request To Delete',
+                'url' => !empty($input['url'])? $input['url']: null,
+                'ip' => !empty($input['ip'])? $input['ip']: null,
+            ]);
+
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'คำขอลบบัญชีผู้ใช้สำเร็จ' ],
+                'data' => true
+            ]);
+        }
+        return $this->failValidationError();
+    }
 
     
     public function userList(){
@@ -269,6 +297,32 @@ class UserController extends ResourceController{
                 'status' => 200,
                 'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
                 'data' => $data,
+            ]);
+        }
+        return $this->failValidationError();
+    }
+    
+    public function userCustomColumnList(){
+        if($this->request->getMethod()=='get'){
+            $userCustomColumnModel = new UserCustomColumnModel();
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
+                'data' => $userCustomColumnModel->getList(false),
+            ]);
+        }
+        return $this->failValidationError();
+    }
+    public function userCustomColumnRead($id){
+        if($this->request->getMethod()=='get' && !empty($id)){
+            $userCustomColumnModel = new UserCustomColumnModel();
+            $userColumn = $userCustomColumnModel->find($id);
+            if(!$userColumn) return $this->failValidationError();
+
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
+                'data' => $userColumn,
             ]);
         }
         return $this->failValidationError();

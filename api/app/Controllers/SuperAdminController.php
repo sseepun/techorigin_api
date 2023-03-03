@@ -30,8 +30,10 @@ class SuperAdminController extends ResourceController{
         $request = \Config\Services::request();
         
         $input = stdClassToArray($request->getJSON());
-        if(empty($input['app_id']) || $input['app_id']!=getenv('app.id')){
-            echo '404'; exit;
+        if($request->getMethod()!='get'){
+            if(empty($input['app_id']) || $input['app_id']!=getenv('app.id')){
+                echo '404'; exit;
+            }
         }
         
         $this->decoded = stdClassToArray(jwtDecodeToken(
@@ -41,7 +43,7 @@ class SuperAdminController extends ResourceController{
         $this->userModel = new UserModel();
         $this->user = $this->userModel->getUserById($this->decoded['id']);
         if(!$this->user){ echo '404'; exit; }
-
+        
         $this->userRoleModel = new UserRoleModel();
         $this->userRole = $this->userRoleModel->find($this->user['role_id']);
         if(!$this->userRole || !$this->userRole['is_super_admin']){ echo '404'; exit; }
@@ -317,14 +319,16 @@ class SuperAdminController extends ResourceController{
             $input['column_id'] = $columnId;
             $userCustomColumnModel->save($input);
             
-            $actionLogModel = new ActionLogModel();
-            $actionLogModel->saveLog([
-                'external_app_id' => !empty($input['external_app_id'])? $input['external_app_id']: null,
-                'user_id' => $this->user['id'],
-                'action' => 'Super Admin - User Custom Column Create',
-                'url' => !empty($input['url'])? $input['url']: null,
-                'ip' => !empty($input['ip'])? $input['ip']: null,
-            ]);
+            if(false){
+                $actionLogModel = new ActionLogModel();
+                $actionLogModel->saveLog([
+                    'external_app_id' => !empty($input['external_app_id'])? $input['external_app_id']: null,
+                    'user_id' => $this->user['id'],
+                    'action' => 'Super Admin - User Custom Column Create',
+                    'url' => !empty($input['url'])? $input['url']: null,
+                    'ip' => !empty($input['ip'])? $input['ip']: null,
+                ]);
+            }
 
             return $this->respond([
                 'status' => 200,
@@ -366,19 +370,21 @@ class SuperAdminController extends ResourceController{
             }
             
             $userCustomColumnModel = new UserCustomColumnModel();
-            $userColumn = $userCustomColumnModel->find($id);
+            $userColumn = $userCustomColumnModel->find($input['id']);
             if(!$userColumn) return $this->failValidationError();
 
             $userCustomColumnModel->save($input);
             
-            $actionLogModel = new ActionLogModel();
-            $actionLogModel->saveLog([
-                'external_app_id' => !empty($input['external_app_id'])? $input['external_app_id']: null,
-                'user_id' => $this->user['id'],
-                'action' => 'Super Admin - User Custom Column Update',
-                'url' => !empty($input['url'])? $input['url']: null,
-                'ip' => !empty($input['ip'])? $input['ip']: null,
-            ]);
+            if(false){
+                $actionLogModel = new ActionLogModel();
+                $actionLogModel->saveLog([
+                    'external_app_id' => !empty($input['external_app_id'])? $input['external_app_id']: null,
+                    'user_id' => $this->user['id'],
+                    'action' => 'Super Admin - User Custom Column Update',
+                    'url' => !empty($input['url'])? $input['url']: null,
+                    'ip' => !empty($input['ip'])? $input['ip']: null,
+                ]);
+            }
 
             return $this->respond([
                 'status' => 200,
@@ -390,6 +396,17 @@ class SuperAdminController extends ResourceController{
     }
 
 
+    public function moduleList(){
+        if($this->request->getMethod()=='get'){
+            $moduleModel = new ModuleModel();
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
+                'data' => $moduleModel->findAll(),
+            ]);
+        }
+        return $this->failValidationError();
+    }
     public function moduleCreate(){
         if($this->request->getMethod()=='post'){
             $input = stdClassToArray($this->request->getJSON());

@@ -201,6 +201,26 @@ class Validation
 			]
 		],
 	];
+	public $signinWithLIFF = [
+		'liff_id' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'ใส่ LIFF id',
+			]
+		],
+		'firstname' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'ใส่ชื่อจริง',
+			]
+		],
+		'lastname' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'ใส่นามสกุล',
+			]
+		],
+	];
 
 	
 	//--------------------------------------------------------------------

@@ -77,6 +77,11 @@ class Users extends Migration{
 				'constraint' => 48,
 				'null' => true,
 			],
+			'liff_id' => [
+				'type' => 'VARCHAR',
+				'constraint' => 48,
+				'null' => true,
+			],
 			'last_ip' => [
 				'type' => 'VARCHAR',
 				'constraint' => 32,

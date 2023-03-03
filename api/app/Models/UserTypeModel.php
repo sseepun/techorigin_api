@@ -49,5 +49,13 @@ class UserTypeModel extends Model {
         }
         return array_values($userTypes);
     }
+    
+    public function getUserSubtypes($parentId){
+        $query = $this->db->query(
+            "SELECT * FROM `user_types` WHERE `parent_id` = ? 
+            ORDER BY `parent_id` ASC, `id` ASC", [ $parentId ]
+        );
+        return $query->getResultArray();
+    }
 
 }

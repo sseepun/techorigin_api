@@ -7,6 +7,10 @@ use App\Models\UserTypeModel;
 use App\Models\UserModel;
 use App\Models\UserDetailModel;
 use App\Models\UserRoleModel;
+use App\Models\UserCustomColumnModel;
+
+use App\Models\ModuleModel;
+use App\Models\ModulePermissionModel;
 
 use App\Models\ExternalAppModel;
 use App\Models\ActionLogModel;
@@ -27,8 +31,10 @@ class AdminController extends ResourceController{
         $request = \Config\Services::request();
         
         $input = stdClassToArray($request->getJSON());
-        if(empty($input['app_id']) || $input['app_id']!=getenv('app.id')){
-            echo '404'; exit;
+        if($request->getMethod()!='get'){
+            if(empty($input['app_id']) || $input['app_id']!=getenv('app.id')){
+                echo '404'; exit;
+            }
         }
         
         $this->decoded = stdClassToArray(jwtDecodeToken(
@@ -80,10 +86,38 @@ class AdminController extends ResourceController{
             $userTypeModel = new UserTypeModel();
             $data = $userTypeModel->where(['id' => $id])->first();
             if(!$data) return $this->failValidationError();
+
+            $data['subtypes'] = $userTypeModel->getUserSubtypes($data['id']);
+
             return $this->respond([
                 'status' => 200,
                 'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
                 'data' => $data,
+            ]);
+        }
+        return $this->failValidationError();
+    }
+
+    
+    public function userRoleList(){
+        if($this->request->getMethod()=='get'){
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
+                'data' => $this->userRoleModel->getUserRoles(true),
+            ]);
+        }
+        return $this->failValidationError();
+    }
+    public function userRoleRead($roleId){
+        if($this->request->getMethod()=='get' && !empty($roleId)){
+            $role = $this->userRoleModel->find($roleId);
+            if(!$role) return $this->failValidationError();
+
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
+                'data' => $role,
             ]);
         }
         return $this->failValidationError();
@@ -131,6 +165,7 @@ class AdminController extends ResourceController{
                 'profile' => !empty($input['profile'])? $input['profile']: null,
             ];
             $this->userModel->insert($insertData);
+            $insertData['id'] = $this->userModel->getInsertID();
             
             $actionLogModel = new ActionLogModel();
             $actionLogModel->saveLog([
@@ -347,6 +382,32 @@ class AdminController extends ResourceController{
         }
         return $this->failValidationError();
     }
+    
+    public function userCustomColumnList(){
+        if($this->request->getMethod()=='get'){
+            $userCustomColumnModel = new UserCustomColumnModel();
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
+                'data' => $userCustomColumnModel->getList(true),
+            ]);
+        }
+        return $this->failValidationError();
+    }
+    public function userCustomColumnRead($id){
+        if($this->request->getMethod()=='get' && !empty($id)){
+            $userCustomColumnModel = new UserCustomColumnModel();
+            $userColumn = $userCustomColumnModel->find($id);
+            if(!$userColumn) return $this->failValidationError();
+
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
+                'data' => $userColumn,
+            ]);
+        }
+        return $this->failValidationError();
+    }
 
 
     public function externalAppList(){
@@ -378,7 +439,7 @@ class AdminController extends ResourceController{
             return $this->respond([
                 'status' => 200,
                 'messages' => [ 'success' => 'สร้างข้อมูลสำเร็จ' ],
-                'data' => $insertData,
+                'data' => true,
             ]);
         }
         return $this->failValidationError();
@@ -449,9 +510,53 @@ class AdminController extends ResourceController{
         return $this->failValidationError();
     }
 
+    public function moduleList(){
+        if($this->request->getMethod()=='get'){
+            $moduleModel = new ModuleModel();
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
+                'data' => $moduleModel->findAll(),
+            ]);
+        }
+        return $this->failValidationError();
+    }
+    public function moduleRead($moduleId){
+        if($this->request->getMethod()=='get' && !empty($moduleId)){
+            $moduleModel = new ModuleModel();
+            $module = $moduleModel->find($moduleId);
+            if(!$module) return $this->failValidationError();
+
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
+                'data' => $module,
+            ]);
+        }
+        return $this->failValidationError();
+    }
+
+
+    public function rolePermissionsRead($roleId){
+        if($this->request->getMethod()=='get' && !empty($roleId)){
+            $role = $this->userRoleModel->find($roleId);
+            if(!$role) return $this->failValidationError();
+
+            $moduleModel = new ModuleModel();
+            $permissions = $moduleModel->getPermissionsByUserRoleId($roleId);
+            
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => 'ดูข้อมูลสำเร็จ' ],
+                'data' => $permissions,
+            ]);
+        }
+        return $this->failValidationError();
+    }
+
 
     public function trafficReport(){
-        if($this->request->getMethod()=='get'){
+        if($this->request->getMethod()=='post'){
             $input = stdClassToArray($this->request->getJSON());
             
             $validation = \Config\Services::validation();
@@ -472,7 +577,7 @@ class AdminController extends ResourceController{
         return $this->failValidationError();
     }
     public function actionReport(){
-        if($this->request->getMethod()=='get'){
+        if($this->request->getMethod()=='post'){
             $input = stdClassToArray($this->request->getJSON());
             
             $validation = \Config\Services::validation();
@@ -493,7 +598,7 @@ class AdminController extends ResourceController{
         return $this->failValidationError();
     }
     public function userRegistrationReport(){
-        if($this->request->getMethod()=='get'){
+        if($this->request->getMethod()=='post'){
             $input = stdClassToArray($this->request->getJSON());
             
             $validation = \Config\Services::validation();

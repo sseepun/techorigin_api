@@ -12,7 +12,7 @@ class UserModel extends Model {
     protected $allowedFields = [
         'role_id', 'username', 'firstname', 'lastname', 'email', 
         'password', 'is_password_set', 'profile', 'thai_id', 'thai_id_path', 
-        'code', 'facebook_id', 'google_id', 'last_ip', 'status',
+        'code', 'facebook_id', 'google_id', 'liff_id', 'last_ip', 'status',
     ];
     protected $beforeInsert = ['beforeInsert'];
     protected $beforeUpdate = ['beforeUpdate'];
@@ -140,6 +140,19 @@ class UserModel extends Model {
             return $user;
         }
     }
+    public function authUserByLIFFId($liffId){
+        $query = $this->db->query(
+            "SELECT * FROM `users` 
+            WHERE `liff_id` = ?", 
+            [ $liffId ]
+        );
+        $user = $query->getRowArray();
+        if(!$user) return false;
+        else{
+            $this->user = $user;
+            return $user;
+        }
+    }
 
 
     public function generateUserTemp($action, $email=false, $userId=false, $ip=null){
@@ -236,7 +249,8 @@ class UserModel extends Model {
             "SELECT u.`id`, u.`role_id`, u.`firstname`, u.`lastname`, u.`email`, 
             u.`profile`, u.`status`, u.`last_ip`, u.`created_at`, u.`updated_at`, 
             ur.`name` AS `role`, ur.`is_admin` AS `role_is_admin`, 
-            ur.`is_super_admin` AS `role_is_super_admin` 
+            ur.`is_super_admin` AS `role_is_super_admin`, 
+            u.`facebook_id`, u.`google_id`, u.`liff_id` 
             FROM `users` AS u 
             INNER JOIN `user_roles` AS ur ON ur.`id` = u.`role_id` 
             WHERE 1 ".$whereQuery." 

@@ -28,13 +28,14 @@ class ModuleModel extends Model {
 
     public function getPermissionsByUserRoleId($roleId){
         $query = $this->db->query(
-            "SELECT m.`name`, m.`code`, m.`status`, 
+            "SELECT m.`id` AS 'module_id', m.`name`, m.`code`, m.`status`, 
             COALESCE(mp.`create`, 0) AS 'create', 
             COALESCE(mp.`read`, 0) AS 'read', 
             COALESCE(mp.`update`, 0) AS 'update', 
             COALESCE(mp.`delete`, 0) AS 'delete' 
             FROM `modules` AS m 
-            LEFT JOIN `module_permissions` AS mp ON mp.`module_id` = m.`id` 
+            LEFT JOIN `module_permissions` AS mp 
+                ON mp.`module_id` = m.`id` AND mp.`role_id` = ? 
             WHERE 1",
             [ $roleId ]
         );

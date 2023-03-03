@@ -20,6 +20,7 @@ var menu = [
             { name: 'Traffic Create' },
             { name: 'Sign In with Facebook Account' },
             { name: 'Sign In with Google Account' },
+            { name: 'Sign In with Line Account' },
         ]
     },
     {
@@ -36,6 +37,7 @@ var menu = [
             { name: 'Module Permissions' },
             { name: 'Sign Out' },
             { name: 'Traffic Create' },
+            { name: 'Request To Delete' },
         ]
     },
     {

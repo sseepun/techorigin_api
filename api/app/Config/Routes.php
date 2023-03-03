@@ -45,6 +45,7 @@ $routes->post( 'api/auth/traffic-create', 'AuthController::trafficCreate');
 
 $routes->post( 'api/auth/signin-with-facebook', 'AuthController::signinWithFacebook');
 $routes->post( 'api/auth/signin-with-google', 'AuthController::signinWithGoogle');
+$routes->post( 'api/auth/signin-with-liff', 'AuthController::signinWithLIFF');
 
 
 // User Controller
@@ -56,8 +57,13 @@ $routes->post( 'api/user/update', 'UserController::selfUpdate', ['filter' => 'au
 $routes->post( 'api/user/update-detail', 'UserController::selfUpdateDetail', ['filter' => 'authUser']);
 $routes->post( 'api/user/update-password', 'UserController::selfUpdatePassword', ['filter' => 'authUser']);
 
+$routes->post( 'api/user/request-to-delete', 'UserController::selfRequestToDelete', ['filter' => 'authUser']);
+
 $routes->get(  'api/user/user-list', 'UserController::userList', ['filter' => 'authUser']);
 $routes->get(  'api/user/user-read/(:num)', 'UserController::userRead/$1', ['filter' => 'authUser']);
+
+$routes->get(  'api/user/user-custom-column-list', 'UserController::userCustomColumnList', ['filter' => 'authUser']);
+$routes->get(  'api/user/user-custom-column-read/(:num)', 'UserController::userCustomColumnRead/$1', ['filter' => 'authUser']);
 
 $routes->get(  'api/user/module-permissions', 'UserController::selfModulePermissions', ['filter' => 'authUser']);
 
@@ -67,6 +73,9 @@ $routes->post( 'api/user/traffic-create', 'UserController::trafficCreate', ['fil
 
 
 // Admin Controller
+$routes->get(  'api/admin/user-role-list', 'AdminController::userRoleList', ['filter' => 'authUser']);
+$routes->get(  'api/admin/user-role-read/(:num)', 'AdminController::userRoleRead/$1', ['filter' => 'authUser']);
+
 $routes->get(  'api/admin/user-type-list', 'AdminController::userTypeList', ['filter' => 'authUser']);
 $routes->get(  'api/admin/user-type-read/(:num)', 'AdminController::userTypeRead/$1', ['filter' => 'authUser']);
 
@@ -79,15 +88,23 @@ $routes->post( 'api/admin/user-update-detail', 'AdminController::userUpdateDetai
 $routes->post( 'api/admin/user-update-password', 'AdminController::userUpdatePassword', ['filter' => 'authUser']);
 $routes->post( 'api/admin/user-delete', 'AdminController::userDelete', ['filter' => 'authUser']);
 
+$routes->get(  'api/admin/user-custom-column-list', 'AdminController::userCustomColumnList', ['filter' => 'authUser']);
+$routes->get(  'api/admin/user-custom-column-read/(:num)', 'AdminController::userCustomColumnRead/$1', ['filter' => 'authUser']);
+
 $routes->get(  'api/admin/external-app-list', 'AdminController::externalAppList', ['filter' => 'authUser']);
 $routes->post( 'api/admin/external-app-create', 'AdminController::externalAppCreate', ['filter' => 'authUser']);
 $routes->get(  'api/admin/external-app-read/(:num)', 'AdminController::externalAppRead/$1', ['filter' => 'authUser']);
 $routes->post( 'api/admin/external-app-update', 'AdminController::externalAppUpdate', ['filter' => 'authUser']);
 $routes->post( 'api/admin/external-app-delete', 'AdminController::externalAppDelete', ['filter' => 'authUser']);
 
-$routes->get(  'api/admin/traffic-report', 'AdminController::trafficReport', ['filter' => 'authUser']);
-$routes->get(  'api/admin/action-report', 'AdminController::actionReport', ['filter' => 'authUser']);
-$routes->get(  'api/admin/user-registration-report', 'AdminController::userRegistrationReport', ['filter' => 'authUser']);
+$routes->get(  'api/admin/module-list', 'AdminController::moduleList', ['filter' => 'authUser']);
+$routes->get(  'api/admin/module-read/(:num)', 'AdminController::moduleRead/$1', ['filter' => 'authUser']);
+
+$routes->get(  'api/admin/role-permissions-read/(:num)', 'AdminController::rolePermissionsRead/$1', ['filter' => 'authUser']);
+
+$routes->post( 'api/admin/traffic-report', 'AdminController::trafficReport', ['filter' => 'authUser']);
+$routes->post( 'api/admin/action-report', 'AdminController::actionReport', ['filter' => 'authUser']);
+$routes->post( 'api/admin/user-registration-report', 'AdminController::userRegistrationReport', ['filter' => 'authUser']);
 
 
 // Super Admin Controller
@@ -106,6 +123,7 @@ $routes->post( 'api/sadmin/user-custom-column-create', 'SuperAdminController::us
 $routes->get(  'api/sadmin/user-custom-column-read/(:num)', 'SuperAdminController::userCustomColumnRead/$1', ['filter' => 'authUser']);
 $routes->post( 'api/sadmin/user-custom-column-update', 'SuperAdminController::userCustomColumnUpdate', ['filter' => 'authUser']);
 
+$routes->get(  'api/sadmin/module-list', 'SuperAdminController::moduleList', ['filter' => 'authUser']);
 $routes->post( 'api/sadmin/module-create', 'SuperAdminController::moduleCreate', ['filter' => 'authUser']);
 $routes->get(  'api/sadmin/module-read/(:num)', 'SuperAdminController::moduleRead/$1', ['filter' => 'authUser']);
 $routes->post( 'api/sadmin/module-update', 'SuperAdminController::moduleUpdate', ['filter' => 'authUser']);

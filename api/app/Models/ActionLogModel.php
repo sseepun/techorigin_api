@@ -37,6 +37,9 @@ class ActionLogModel extends Model {
             if(!empty($filter['end_date'])){
                 $condition .= " AND `created_at` <= '{$filter['end_date']}'";
             }
+            if(!empty($filter['user_id'])){
+                $condition .= " AND `user_id` = '{$filter['user_id']}'";
+            }
             $query = $this->db->query($queryStr.$condition);
             return $query->getRowArray();
         }else if($type=='Daily Report'){
@@ -49,6 +52,9 @@ class ActionLogModel extends Model {
             }
             if(!empty($filter['end_date'])){
                 $condition .= " AND `created_at` <= '{$filter['end_date']}'";
+            }
+            if(!empty($filter['user_id'])){
+                $condition .= " AND `user_id` = '{$filter['user_id']}'";
             }
             $query = $this->db->query($queryStr.$condition
                 ." GROUP BY `date`, `action` ORDER BY `date` ASC");
@@ -80,6 +86,9 @@ class ActionLogModel extends Model {
             if(!empty($filter['end_date'])){
                 $condition .= " AND `created_at` <= '{$filter['end_date']}'";
             }
+            if(!empty($filter['user_id'])){
+                $condition .= " AND `user_id` = '{$filter['user_id']}'";
+            }
             $query = $this->db->query($queryStr.$condition
                 ." GROUP BY `date`, `action` ORDER BY `date` ASC");
             $data = $query->getResultArray();
@@ -109,6 +118,9 @@ class ActionLogModel extends Model {
             }
             if(!empty($filter['end_date'])){
                 $condition .= " AND `created_at` <= '{$filter['end_date']}'";
+            }
+            if(!empty($filter['user_id'])){
+                $condition .= " AND `user_id` = '{$filter['user_id']}'";
             }
             $query = $this->db->query($queryStr.$condition
                 ." GROUP BY `date`, `action` ORDER BY `date` ASC");
@@ -143,6 +155,9 @@ class ActionLogModel extends Model {
             }
             if(!empty($filter['end_date'])){
                 $condition .= " AND db.`created_at` <= '{$filter['end_date']}'";
+            }
+            if(!empty($filter['user_id'])){
+                $condition .= " AND db.`user_id` = '{$filter['user_id']}'";
             }
             $limit = "";
             if(!empty($filter['limit'])){

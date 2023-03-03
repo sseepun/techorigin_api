@@ -17,8 +17,10 @@ class AuthController extends ResourceController{
         $request = \Config\Services::request();
         
         $input = stdClassToArray($request->getJSON());
-        if(empty($input['app_id']) || $input['app_id']!=getenv('app.id')){
-            echo '404'; exit;
+        if($request->getMethod()!='get'){
+            if(empty($input['app_id']) || $input['app_id']!=getenv('app.id')){
+                echo '404'; exit;
+            }
         }
     }
 
@@ -38,7 +40,17 @@ class AuthController extends ResourceController{
 
             $userModel = new UserModel();
             $user = $userModel->authUserByUsernameOrEmail($input['username'], $input['password']);
-            if(!empty($input['ip'])){
+            if($user['status'] == 0){
+                return $this->respond([
+                    'status' => 400,
+                    'messages' => [ 'username' => 'บัญชีผู้ใช้ของคุณยังไม่ได้เปิดใช้งาน' ]
+                ]);
+            }else if($user['status'] == -1){
+                return $this->respond([
+                    'status' => 400,
+                    'messages' => [ 'username' => 'บัญชีผู้ใช้ของคุณกำลังถูกลบออกจากระบบภายใน 24 ชั่วโมง' ]
+                ]);
+            }else if(!empty($input['ip'])){
                 $userModel->update($user['id'], [ 'last_ip' => $input['ip'] ]);
             }
 
@@ -83,11 +95,12 @@ class AuthController extends ResourceController{
                 'password' => $input['password'],
                 'last_ip' => $input['ip'],
             ]);
+            $insertedID = $userModel->getInsertID();
 
             $actionLogModel = new ActionLogModel();
             $actionLogModel->saveLog([
                 'external_app_id' => !empty($input['external_app_id'])? $input['external_app_id']: null,
-                'user_id' => $userModel->getInsertID(),
+                'user_id' => $insertedID,
                 'action' => 'Sign Up',
                 'ip' => !empty($input['ip'])? $input['ip']: null,
                 'url' => !empty($input['url'])? $input['url']: null,
@@ -96,7 +109,7 @@ class AuthController extends ResourceController{
             return $this->respond([
                 'status' => 200,
                 'messages' => [ 'success' => 'คุณได้สมัครสมาชิกสำเร็จแล้ว' ],
-                'data' => true,
+                'data' => [ 'id' => $insertedID ]
             ]);
         }
         return $this->failValidationError();
@@ -280,6 +293,18 @@ class AuthController extends ResourceController{
                 $userModel->insert($insertData);
                 $user = $userModel->authUserByFacebookId($input['email'], $input['facebook_id']);
             }else{
+                if($user['status'] == 0){
+                    return $this->respond([
+                        'status' => 400,
+                        'messages' => [ 'username' => 'บัญชีผู้ใช้ของคุณยังไม่ได้เปิดใช้งาน' ]
+                    ]);
+                }else if($user['status'] == -1){
+                    return $this->respond([
+                        'status' => 400,
+                        'messages' => [ 'username' => 'บัญชีผู้ใช้ของคุณกำลังถูกลบออกจากระบบภายใน 24 ชั่วโมง' ]
+                    ]);
+                }
+
                 $updateData = [
                     'facebook_id' => $input['facebook_id'],
                     'last_ip' => !empty($input['ip'])? $input['ip']: null,
@@ -355,8 +380,98 @@ class AuthController extends ResourceController{
                 $userModel->insert($insertData);
                 $user = $userModel->authUserByGoogleId($input['email'], $input['google_id']);
             }else{
+                if($user['status'] == 0){
+                    return $this->respond([
+                        'status' => 400,
+                        'messages' => [ 'username' => 'บัญชีผู้ใช้ของคุณยังไม่ได้เปิดใช้งาน' ]
+                    ]);
+                }else if($user['status'] == -1){
+                    return $this->respond([
+                        'status' => 400,
+                        'messages' => [ 'username' => 'บัญชีผู้ใช้ของคุณกำลังถูกลบออกจากระบบภายใน 24 ชั่วโมง' ]
+                    ]);
+                }
+
                 $updateData = [
                     'google_id' => $input['google_id'],
+                    'last_ip' => !empty($input['ip'])? $input['ip']: null,
+                ];
+                if(empty($user['profile']) && !empty($input['profile'])){
+                    $updateData['profile'] = $input['profile'];
+                }
+                $userModel->update($user['id'], $updateData);
+            }
+            
+            $actionLogModel->saveLog([
+                'external_app_id' => !empty($input['external_app_id'])? $input['external_app_id']: null,
+                'user_id' => $user['id'],
+                'action' => $action,
+                'ip' => !empty($input['ip'])? $input['ip']: null,
+                'url' => !empty($input['url'])? $input['url']: null,
+            ]);
+
+            return $this->respond([
+                'status' => 200,
+                'messages' => [ 'success' => $message ],
+                'jwt' => jwtGenerateUserToken($user),
+            ]);
+        } 
+        return $this->failValidationError();
+    }
+    public function signinWithLIFF(){
+        if($this->request->getMethod()=='post'){
+            helper(['input', 'jwt', 'api']);
+            $input = stdClassToArray($this->request->getJSON());
+
+            $validation = \Config\Services::validation();
+            if(!$validation->run($input, 'signinWithLIFF')){
+                return $this->respond([
+                    'status' => 400,
+                    'messages' => $validation->getErrors()
+                ]);
+            }
+
+            $userModel = new UserModel();
+            $actionLogModel = new ActionLogModel();
+
+            $user = $userModel->authUserByLIFFId($input['liff_id']);
+            $action = 'Sign In with LIFF';
+            $message = 'คุณได้เข้าสู่ระบบด้วย LIFF Account สำเร็จแล้ว';
+            if(!$user){
+                $action = 'Sign Up with LIFF';
+                $message = 'คุณสมัครสมาชิกด้วย LIFF Account สำเร็จแล้ว';
+                $newId = $userModel->getNewestUserId();
+                $insertData = [
+                    'liff_id' => $input['liff_id'],
+                    'role_id' => $userModel->getDefaultRoleId(),
+                    'firstname' => $input['firstname'],
+                    'lastname' => $input['lastname'],
+                    'email' => 'liff-'.$newId.'@liff.com',
+                    'username' => 'User'.$newId,
+                    'password' => randomAlphanum(12),
+                    'is_password_set' => 0,
+                    'last_ip' => !empty($input['ip'])? $input['ip']: null,
+                ];
+                if(!empty($input['profile'])){
+                    $insertData['profile'] = $input['profile'];
+                }
+                $userModel->insert($insertData);
+                $user = $userModel->authUserByLIFFId($input['liff_id']);
+            }else{
+                if($user['status'] == 0){
+                    return $this->respond([
+                        'status' => 400,
+                        'messages' => [ 'username' => 'บัญชีผู้ใช้ของคุณยังไม่ได้เปิดใช้งาน' ]
+                    ]);
+                }else if($user['status'] == -1){
+                    return $this->respond([
+                        'status' => 400,
+                        'messages' => [ 'username' => 'บัญชีผู้ใช้ของคุณกำลังถูกลบออกจากระบบภายใน 24 ชั่วโมง' ]
+                    ]);
+                }
+                
+                $updateData = [
+                    'liff_id' => $input['liff_id'],
                     'last_ip' => !empty($input['ip'])? $input['ip']: null,
                 ];
                 if(empty($user['profile']) && !empty($input['profile'])){
