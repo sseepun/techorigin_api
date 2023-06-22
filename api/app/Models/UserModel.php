@@ -244,13 +244,13 @@ class UserModel extends Model {
                 OR u.`email` LIKE '%".$keyword."%' 
                 OR u.`username` LIKE '%".$keyword."%' 
                 OR ur.`name` LIKE '%".$keyword."%' 
+                OR CONCAT(IFNULL(u.`firstname`, ''), ' ', IFNULL(u.`lastname`, '')) LIKE '%".$keyword."%' 
             )";
         }
 
         $getQuery = $this->db->query(
             "SELECT u.`id`, u.`role_id`, 
             u.`email`, u.`firstname`, u.`lastname`, 
-            CONCAT(IFNULL(u.`firstname`, ''), ' ', IFNULL(u.`lastname`, '')) AS `fullname`, 
             u.`profile`, u.`status`, u.`last_ip`, u.`created_at`, u.`updated_at`, 
             ur.`name` AS `role`, ur.`is_admin` AS `role_is_admin`, 
             ur.`is_super_admin` AS `role_is_super_admin`, 
