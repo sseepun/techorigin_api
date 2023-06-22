@@ -118,7 +118,7 @@ class TrafficLogModel extends Model {
                 $limit .= " LIMIT {$filter['limit']}";
             }
             $query = $this->db->query(
-                $queryStr.$condition." ORDER BY db.`created_at` ASC".$limit
+                $queryStr.$condition." ORDER BY db.`created_at` DESC".$limit
             );
             return $query->getResultArray();
         }
