@@ -48,7 +48,7 @@ class AuthController extends ResourceController{
             }else if($user['status'] == -1){
                 return $this->respond([
                     'status' => 400,
-                    'messages' => [ 'username' => 'บัญชีผู้ใช้ของคุณกำลังถูกลบออกจากระบบภายใน 24 ชั่วโมง' ]
+                    'messages' => [ 'username' => 'คำร้องขอลบบัญชีผู้ใช้งานของท่านได้ส่งไปยังผู้ดูแลระบบเรียบร้อยแล้ว' ]
                 ]);
             }else if(!empty($input['ip'])){
                 $userModel->update($user['id'], [ 'last_ip' => $input['ip'] ]);
@@ -301,7 +301,7 @@ class AuthController extends ResourceController{
                 }else if($user['status'] == -1){
                     return $this->respond([
                         'status' => 400,
-                        'messages' => [ 'username' => 'บัญชีผู้ใช้ของคุณกำลังถูกลบออกจากระบบภายใน 24 ชั่วโมง' ]
+                        'messages' => [ 'username' => 'คำร้องขอลบบัญชีผู้ใช้งานของท่านได้ส่งไปยังผู้ดูแลระบบเรียบร้อยแล้ว' ]
                     ]);
                 }
 
@@ -388,7 +388,7 @@ class AuthController extends ResourceController{
                 }else if($user['status'] == -1){
                     return $this->respond([
                         'status' => 400,
-                        'messages' => [ 'username' => 'บัญชีผู้ใช้ของคุณกำลังถูกลบออกจากระบบภายใน 24 ชั่วโมง' ]
+                        'messages' => [ 'username' => 'คำร้องขอลบบัญชีผู้ใช้งานของท่านได้ส่งไปยังผู้ดูแลระบบเรียบร้อยแล้ว' ]
                     ]);
                 }
 
@@ -466,7 +466,7 @@ class AuthController extends ResourceController{
                 }else if($user['status'] == -1){
                     return $this->respond([
                         'status' => 400,
-                        'messages' => [ 'username' => 'บัญชีผู้ใช้ของคุณกำลังถูกลบออกจากระบบภายใน 24 ชั่วโมง' ]
+                        'messages' => [ 'username' => 'คำร้องขอลบบัญชีผู้ใช้งานของท่านได้ส่งไปยังผู้ดูแลระบบเรียบร้อยแล้ว' ]
                     ]);
                 }
                 
