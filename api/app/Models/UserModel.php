@@ -238,12 +238,12 @@ class UserModel extends Model {
             $whereQuery .= " AND u.`status` = 1";
         }
         if(!empty($keyword)){
-            $whereQuery = " AND u.`firstname` LIKE '%".$keyword."%' 
-                OR u.`lastname` LIKE '%".$keyword."%' 
-                OR u.`email` LIKE '%".$keyword."%' 
-                OR u.`username` LIKE '%".$keyword."%' 
-                OR ur.`name` LIKE '%".$keyword."%' 
-                OR `fullname` LIKE '%".$keyword."%'";
+            // $whereQuery .= " AND u.`firstname` LIKE '%".$keyword."%' 
+            //     OR u.`lastname` LIKE '%".$keyword."%' 
+            //     OR u.`email` LIKE '%".$keyword."%' 
+            //     OR u.`username` LIKE '%".$keyword."%' 
+            //     OR ur.`name` LIKE '%".$keyword."%' 
+            //     OR `fullname` LIKE '%".$keyword."%'";
         }
 
         $getQuery = $this->db->query(
