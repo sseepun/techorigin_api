@@ -98,7 +98,7 @@ class TrafficLogModel extends Model {
                 db.`user_id`, u.`username`, u.`firstname`, u.`lastname`,
                 db.`url`, db.`ip`, db.`created_at` AS `visited_time` 
                 FROM `traffic_logs` AS db 
-                LEFT JOIN `users` AS u ON u.`id` = db.`user_id` 
+                INNER JOIN `users` AS u ON u.`id` = db.`user_id` 
                 LEFT JOIN `external_apps` AS e ON e.`id` = db.`external_app_id` 
                 WHERE 1";
             $condition = "";
