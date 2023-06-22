@@ -232,6 +232,7 @@ class AuthController extends ResourceController{
                 'external_app_id' => !empty($input['external_app_id'])? $input['external_app_id']: null,
                 'ip' => $input['ip'],
                 'url' => $input['url'],
+                'user_id' => $input['user_id'],
             ]);
 
             return $this->respond([
