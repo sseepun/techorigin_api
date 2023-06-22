@@ -244,7 +244,6 @@ class UserModel extends Model {
                 OR u.`email` LIKE '%".$keyword."%' 
                 OR u.`username` LIKE '%".$keyword."%' 
                 OR ur.`name` LIKE '%".$keyword."%' 
-                OR `fullname` LIKE '%".$keyword."%' 
             )";
         }
 
