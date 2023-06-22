@@ -249,8 +249,9 @@ class UserModel extends Model {
         }
 
         $getQuery = $this->db->query(
-            "SELECT u.`id`, u.`role_id`, u.`email`, 
-            u.`firstname`, u.`lastname`, CONCAT(u.`firstname`, u.`lastname`) AS `fullname`, 
+            "SELECT u.`id`, u.`role_id`, 
+            u.`email`, u.`firstname`, u.`lastname`, 
+            COALESCE(CONCAT(u.`firstname`, ' ', u.`lastname`)) AS `fullname`, 
             u.`profile`, u.`status`, u.`last_ip`, u.`created_at`, u.`updated_at`, 
             ur.`name` AS `role`, ur.`is_admin` AS `role_is_admin`, 
             ur.`is_super_admin` AS `role_is_super_admin`, 
