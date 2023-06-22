@@ -238,19 +238,17 @@ class UserModel extends Model {
             $whereQuery .= " AND u.`status` = 1";
         }
         if(!empty($keyword)){
-            $keywords = explode(" ", str_replace("  ", " ", trim($keyword)));
-            $sep = " AND ";
-            foreach($keywords as $k){
-                $whereQuery .= $sep."u.`firstname` LIKE '%".$k."%'"; $sep = " OR ";
-                $whereQuery .= $sep."u.`lastname` LIKE '%".$k."%'";
-                $whereQuery .= $sep."u.`email` LIKE '%".$k."%'";
-                $whereQuery .= $sep."u.`username` LIKE '%".$k."%'";
-                $whereQuery .= $sep."u.`name` LIKE '%".$k."%'";
-            }
+            $whereQuery = " AND u.`firstname` LIKE '%".$keyword."%' 
+                OR u.`lastname` LIKE '%".$keyword."%' 
+                OR u.`email` LIKE '%".$keyword."%' 
+                OR u.`username` LIKE '%".$keyword."%' 
+                OR ur.`name` LIKE '%".$keyword."%' 
+                OR `fullname` LIKE '%".$keyword."%'";
         }
 
         $getQuery = $this->db->query(
-            "SELECT u.`id`, u.`role_id`, u.`firstname`, u.`lastname`, u.`email`, 
+            "SELECT u.`id`, u.`role_id`, u.`email`, 
+            u.`firstname`, u.`lastname`, CONCAT(u.`firstname`, u.`lastname`) AS `fullname`, 
             u.`profile`, u.`status`, u.`last_ip`, u.`created_at`, u.`updated_at`, 
             ur.`name` AS `role`, ur.`is_admin` AS `role_is_admin`, 
             ur.`is_super_admin` AS `role_is_super_admin`, 
